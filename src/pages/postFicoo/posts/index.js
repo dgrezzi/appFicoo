@@ -156,7 +156,10 @@ export default function Posts() {
 
       <TouchableOpacity
         onPress={
-          () => storage.set('active', 'passActivate')
+          () => {
+            // storage.set('active', 'passActivate')
+            storage.clearAll();
+          }
           // setModalVisible(true)
         }>
         <Text>Teste</Text>

@@ -20,7 +20,9 @@ export default function CardPost({ data, userId }) {
   const natigation = useNavigation();
 
   const getDataUser = storage.getString('user');
-  const dataUser = JSON.parse(getDataUser);
+  let dataUser = '';
+
+  getDataUser ? (dataUser = JSON.parse(getDataUser)) : (dataUser = '');
 
   async function handleLikePost(id, like) {
     const docId = `${userId}_${id}`;

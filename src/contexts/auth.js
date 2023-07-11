@@ -13,11 +13,11 @@ export default function AuthProvider({ children }) {
   const activationPass = 'lc5816qd2';
 
   useEffect(() => {
-    const dataUser = storage.getString('user');
-    dataUser ? setDataContext(JSON.parse(dataUser)) : setDataContext();
-    const dataLocale = storage.getString('locale');
+    let dataUser = storage.getString('user');
+    dataUser ? setDataContext(JSON.parse(dataUser)) : setDataContext({});
+    let dataLocale = storage.getString('locale');
     dataLocale ? setLocale(JSON.parse(dataLocale)) : setLocale('pt');
-    const dataActive = storage.getString('active');
+    let dataActive = storage.getString('active');
     if (dataActive == activationPass) {
       setActive(true);
     }
