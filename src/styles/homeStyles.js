@@ -10,42 +10,35 @@ export default homeStyles = StyleSheet.create({
     borderWidth: 0,
     borderColor: APP_VARS.color.secundary,
   },
-  dest1: {
-    width: '100%',
-    height: '30%',
-    padding: 5,
-    flexDirection: 'row',
-    gap: 10,
-    justifyContent: 'center',
-    backgroundColor: 'red',
+  destaque1: {
+    height: '34%',
   },
-  destcard: {
-    width: '95%',
-    backgroundColor: 'yellow',
+  cardDestaque1: {
+    width: 300,
+    aspectRatio: 1.62,
+    marginHorizontal: 5,
+    borderRadius: 25,
   },
-  dest2: {
-    width: '100%',
-    height: '40%',
-    justifyContent: 'space-around',
-    flexDirection: 'row',
+  destaque2: {
+    height: '50%',
     gap: 5,
-    backgroundColor: 'blue',
-    padding: 5,
+    padding: 8,
   },
-  parc: {
-    width: '100%',
-    height: '25%',
-    padding: '5%',
-    flexDirection: 'row',
-    gap: 5,
-    backgroundColor: 'green',
+
+  cardDestaque2: {
+    width: 190,
+    aspectRatio: 0.6,
+    marginHorizontal: 5,
+    borderRadius: 25,
   },
-  card: {
-    width: '30%',
-    backgroundColor: 'yellow',
+  parceiros: {
+    height: '16%',
+    gap: 25,
   },
+
   parcFlag: {
-    width: 150,
-    aspectRatio: '1.5',
+    width: 110,
+    aspectRatio: '1.1',
+    marginHorizontal: 10,
   },
 });

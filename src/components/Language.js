@@ -14,9 +14,8 @@ import flagBr from '../assets/br.png';
 import flagEn from '../assets/en.png';
 import flagEs from '../assets/es.png';
 
-import { MMKV } from 'react-native-mmkv';
 import handleLocale from '../functions/handleLocale';
-const storage = new MMKV({ id: 'appFicoo' });
+import languageStyles from '../styles/languageStyles';
 
 export default function Language() {
   return (
@@ -31,7 +30,7 @@ export default function Language() {
               onPress={() => {
                 handleLocale('en');
               }}>
-              <Image style={homeStyles.flag} source={flagEn} />
+              <Image style={languageStyles.flag} source={flagEn} />
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -39,7 +38,7 @@ export default function Language() {
               onPress={() => {
                 handleLocale('es');
               }}>
-              <Image style={homeStyles.flag} source={flagEs} />
+              <Image style={languageStyles.flag} source={flagEs} />
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -47,7 +46,7 @@ export default function Language() {
               onPress={() => {
                 handleLocale('pt');
               }}>
-              <Image style={homeStyles.flag} source={flagBr} />
+              <Image style={languageStyles.flag} source={flagBr} />
             </TouchableOpacity>
           </View>
         </View>
