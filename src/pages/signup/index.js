@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import logo from '../../../src/assets/logo.png';
+import Language from '../../components/Language';
 import Loading from '../../components/Loading';
 import { APP_VARS } from '../../constants/APP_VARS';
 import { AuthContext } from '../../contexts/auth';
@@ -109,6 +110,7 @@ export default function Signup() {
               </Text>
             </TouchableOpacity>
           </View>
+          <Language />
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

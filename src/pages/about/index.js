@@ -15,12 +15,8 @@ import { AuthContext } from '../../contexts/auth';
 import aboutStyles from '../../styles/aboutStyles';
 import globalStyles from '../../styles/globalStyles';
 
-import flagBr from '../../assets/br.png';
-import flagEn from '../../assets/en.png';
-import flagEs from '../../assets/es.png';
-
 import { MMKV } from 'react-native-mmkv';
-import handleLocale from '../../functions/handleLocale';
+import Language from '../../components/Language';
 const storage = new MMKV({ id: 'appFicoo' });
 
 export default function About() {
@@ -76,32 +72,7 @@ export default function About() {
               </Text>
             </TouchableOpacity>
           </View>
-
-          <View style={[aboutStyles.flag, globalStyles.center]}>
-            <TouchableOpacity
-              style={globalStyles.btnFlag}
-              onPress={() => {
-                handleLocale('en');
-              }}>
-              <Image style={homeStyles.flag} source={flagEn} />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={globalStyles.btnFlag}
-              onPress={() => {
-                handleLocale('es');
-              }}>
-              <Image style={homeStyles.flag} source={flagEs} />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={globalStyles.btnFlag}
-              onPress={() => {
-                handleLocale('pt');
-              }}>
-              <Image style={homeStyles.flag} source={flagBr} />
-            </TouchableOpacity>
-          </View>
+          <Language />
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
