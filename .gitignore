@@ -42,3 +42,4 @@ GoogleService-Info.plist
 release.keystore.properties
 android/
 ios/
+*store
