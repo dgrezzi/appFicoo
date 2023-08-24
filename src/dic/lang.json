@@ -1,0 +1,149 @@
+{
+  "pt": {
+    "skip": "Pular",
+    "next": "Próxima",
+    "preview": "Anterior",
+
+    "titleT1": "A Experiência FICOO começa agora!",
+    "messageT1": "Descubra o que vai acontecer nesta edição e fique por dentro de todas as novidades!",
+
+    "titleT2": "PROGRAMAÇÃO GERAL",
+    "messageT2": "Acompanhe a programação e conheça todas as pessoas confirmadas!",
+
+    "titleT3": "CONECTE-SE!!",
+    "messageT3": "Interaja e crie conexões colaborativas com participantes de todo Brasil!",
+
+    "activate": "Ativação",
+    "active": "Ativar",
+    "code": "Código de Ativação",
+    "enter": "ENTRE",
+
+    "test": "teste",
+    "homePage": "Bem vindo ao Ficoo",
+    "dateMonth": "Out",
+
+    "postTitle": "Titulo",
+    "postContent": "O que está acontecendo?",
+
+    "pagePostTitle": "Postagem",
+    "pageNewPostTitle": "Nova Postagem",
+    "pageProfileTitle": "Perfil",
+    "share": "Compartilhar",
+
+    "createGroupAsk": "Criar Grupo",
+    "nameGroupAsk": "Nome para sua sala?",
+    "createRoom": "Criar sala",
+    "back": "Voltar",
+
+    "nameRoomAsk": "Digite o nome da sala?",
+    "serarchGroup": "Procurando algum grupo?",
+
+    "network": "Ajude, colabore, faça network!",
+    "signin": "Acessar",
+    "signout": "Sair",
+    "signup": "Cadastrar",
+    "iHaveAccount": "Já possuo uma conta",
+    "newUser": "Cadastrar novo usuário",
+    "placeHName": "Nome Completo",
+    "placeHEmail": "e-mail",
+    "placeCity": "Cidade onde mora",
+    "placeHPass": "Senha",
+    "placeHPassConfirm": "Confirme sua Senha"
+  },
+  "en": {
+    "skip": "Skip",
+    "next": "Next",
+
+    "titleT1": "FICOO Experience starts now!",
+    "messageT1": "Find out what will happen in this edition and stay on top of all the news!",
+
+    "titleT2": "GENERAL PROGRAMMING",
+    "messageT2": "Follow the schedule and meet all confirmed people!",
+
+    "titleT3": "CONNECT!!",
+    "messageT3": "Interact and create collaborative connections with participants from all over Brazil!",
+
+    "code": "Activation Code",
+    "activate": "Activation",
+    "active": "Activate",
+    "enter": "SIGN IN",
+
+    "test": "test",
+    "homePage": "Welcome to Ficoo",
+    "dateMonth": "Oct",
+
+    "postTitle": "Title",
+    "postContent": "What is happening?",
+
+    "pagePostTitle": "Post",
+    "pageNewPostTitle": "New Post",
+    "pageProfileTitle": "Profile",
+    "share": "Share",
+
+    "createGroupAsk": "Create new group?",
+    "nameGroupAsk": "Name for your room?",
+    "createRoom": "Create room",
+    "back": "Back",
+
+    "searchGroup": "Looking for a group?",
+    "nameRoomAsk": "Type the room name?",
+
+    "network": "Help, collaborate, network!",
+    "signin": "Login",
+    "signout": "Logout",
+    "signup": "Signup",
+    "iHaveAccount": "I already have an account",
+    "newUser": "Register new user",
+    "placeHName": "Name",
+    "placeHEmail": "e-mail",
+    "placeHPass": "Password"
+  },
+  "es": {
+    "skip": "Saltar",
+    "siguiente": "siguiente",
+
+    "titleT1": "¡La experiencia FICOO comienza ahora!",
+    "messageT1": "¡Entérate de lo que sucederá en esta edición y mantente al tanto de todas las novedades!",
+
+    "titleT2": "PROGRAMACION GENERAL",
+    "messageT2": "¡Sigue el horario y conoce a todas las personas confirmadas!",
+
+    "titleT3": "¡¡CONECTAR!!",
+    "messageT3": "¡Interactúa y crea conexiones colaborativas con participantes de todo Brasil!",
+
+    "code": "Código de Activación",
+    "activate": "Activación",
+    "active": "Ativar",
+    "enter": "ENTRE",
+
+    "test": "teste",
+    "homePage": "Bienvenido a Ficoo",
+    "dateMonth": "Out",
+
+    "postTitle": "Título",
+    "postContent": "¿Qué está pasando?",
+
+    "pagePostTitle": "Publicación",
+    "pageNewPostTitle": "Nueva Publicación",
+    "pageProfileTitle": "Perfil",
+    "share": "Comparte",
+
+    "createGroupAsk": "¿Crear un nuevo grupo?",
+    "nameGroupAsk": "¿Nombre de tu sala?",
+    "createRoom": "Crear sala",
+    "back": "Voltar",
+
+    "nameRoomAsk": "¿Cuál es el nombre de la sala?",
+    "serarchGroup": "¿Buscas un grupo?",
+
+    "network": "¡Ayuda, colabora, trabaja en red!",
+    "signin": "Iniciar sesión",
+    "signout": "Cerrar sesión",
+    "signup": "Registrarse",
+    "iHaveAccount": "Ya tengo una cuenta",
+    "newUser": "Registrar nuevo usuario",
+    "placeHName": "Nombre",
+    "placeHEmail": "Correo electrónico",
+    "placeHPass": "Contraseña"
+  }
+}

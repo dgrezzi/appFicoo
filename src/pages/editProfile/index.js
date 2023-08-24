@@ -1,0 +1,292 @@
+import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
+import { useNavigation } from '@react-navigation/native';
+import * as imagePiker from 'expo-image-picker';
+import React, { useContext, useEffect, useState } from 'react';
+import {
+  ActivityIndicator,
+  Image,
+  KeyboardAvoidingView,
+  ScrollView,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import Btn from '../../components/Btn/intex';
+import EditInputText from '../../components/EditInputText';
+import Language from '../../components/Language';
+import { VARS } from '../../constants/VARS';
+import { AuthContext } from '../../contexts/auth';
+import setAuthContext from '../../functions/setAuthContext';
+import setUpdateUserFirebase from '../../functions/setUpdateUserFirebase';
+import styles from '../../styles/styles';
+
+export default function EditProfile() {
+  const navigation = useNavigation();
+
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
+
+  const { dataContext, setLoading } = useContext(AuthContext);
+  const [imageLoad, setImageLoad] = useState(false);
+  const [name, setName] = useState(dataContext.storageData?.name);
+  const [email, setEmail] = useState(dataContext.user.email);
+  const [phone, setPhone] = useState(dataContext.storageData?.phone);
+  const [city, setCity] = useState(dataContext.storageData?.city);
+  const [aboutme, setAboutme] = useState(dataContext.storageData?.aboutme);
+
+  const [photoAvatar, setPhotoAvatar] = useState(
+    'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/avatarM.jpg?alt=media&token=a494693c-611f-435a-b34a-d54fcc38461d',
+  );
+
+  useEffect(() => {
+    setLoading(false);
+    dataContext.storageData.photoURL
+      ? setPhotoAvatar(dataContext.storageData.photoURL)
+      : setPhotoAvatar(
+          'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/avatarM.jpg?alt=media&token=a494693c-611f-435a-b34a-d54fcc38461d',
+        );
+  }, []);
+
+  const handleGetFile = async () => {
+    const options = {
+      noData: true,
+      mediaType: 'photo',
+      aspect: [1, 1],
+    };
+    const result = await imagePiker.launchImageLibraryAsync(options);
+    if (!result.canceled) {
+      uploadFirebase(result.assets[0].uri).then(() => {
+        uploadAvatarPosts();
+      });
+    }
+    if (result.canceled) {
+      setImageLoad(false);
+    }
+  };
+
+  const uploadFirebase = async response => {
+    const storegaRef = storage().ref('users').child(dataContext.user?.uid);
+    return await storegaRef.putFile(response);
+  };
+
+  const uploadAvatarPosts = async () => {
+    const storageRef = storage().ref('users').child(dataContext.user?.uid);
+    const url = await storageRef
+      .getDownloadURL()
+      .then(async image => {
+        await firestore()
+          .collection('user')
+          .doc(dataContext.user?.uid)
+          .update({
+            photoURL: image,
+          })
+          .then(() => {})
+          .catch(err => {
+            console.error('erro no banco:', err);
+          });
+        const postDocs = await firestore()
+          .collection('posts')
+          .where('uid', '==', dataContext.user?.uid)
+          .get();
+        postDocs.forEach(async doc => {
+          await firestore().collection('posts').doc(doc.id).update({
+            avatarURL: image,
+          });
+        });
+
+        const newDataContext = dataContext;
+        newDataContext.storageData.photoURL = image;
+        setAuthContext(newDataContext);
+        setPhotoAvatar(image);
+        setImageLoad(false);
+      })
+      .catch(error => {
+        console.log('ERROR AO ATUALIZAR FOTO DOS POSTS ', error);
+        setImageLoad(false);
+      });
+  };
+
+  function formatPhoneNumber(text, previousText) {
+    if (!text) return text;
+
+    const deleting = previousText && previousText.length > text.length;
+    if (deleting) {
+      return text;
+    }
+
+    let cleaned = text.replace(/\D/g, '');
+    let match = null;
+
+    if (cleaned.length > 0 && cleaned.length < 1) {
+      return `(${cleaned}`;
+    } else if (cleaned.length == 2) {
+      return `(${cleaned}) `;
+    } else if (cleaned.length > 2 && cleaned.length < 6) {
+      match = cleaned.match(/(\d{2})(\d{2,4})$/);
+      if (match) {
+        return `(${match[1]}) ${match[2]}`;
+      }
+    } else if (cleaned.length == 7) {
+      match = cleaned.match(/(\d{2})(\d{5})$/);
+      if (match) {
+        return `(${match[1]}) ${match[2]}-`;
+      }
+    } else if (cleaned.length > 7 && cleaned.length < 10) {
+      match = cleaned.match(/(\d{2})(\d{5})(\d{5})$/);
+      if (match) {
+        return `(${match[1]}) ${match[2]}-${match[3]}`;
+      }
+    }
+
+    return text;
+  }
+
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : null}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
+      style={[
+        styles.keyboardAvoidingView,
+        {
+          backgroundColor: VARS.color.white,
+        },
+      ]}>
+      <ScrollView
+        contentContainerStyle={{
+          alignItems: 'center',
+        }}>
+        <View
+          style={[
+            styles.container,
+            { gap: 8, justifyContent: 'flex-start', paddingBottom: 20 },
+          ]}>
+          <View
+            style={{
+              alignItems: 'center',
+              width: '100%',
+              marginTop: 20,
+              borderRadius: 100,
+            }}>
+            {imageLoad && (
+              <ActivityIndicator
+                style={{ marginBottom: 10 }}
+                size={VARS.size.load}
+                color={VARS.color.blue}
+              />
+            )}
+            {!imageLoad && (
+              <TouchableOpacity
+                style={{
+                  shadowColor: 'black',
+                  width: VARS.size.avatar,
+                  height: VARS.size.avatar,
+                  borderRadius: VARS.size.avatar / 2,
+                  elevation: 10,
+                }}
+                onPress={() => {
+                  setImageLoad(true);
+                  handleGetFile();
+                }}>
+                <Image
+                  style={{
+                    borderRadius: VARS.size.avatar,
+                    width: '100%',
+                    height: '100%',
+                  }}
+                  source={{ uri: photoAvatar }}
+                />
+                {/* colocar icone camera AQUI*/}
+              </TouchableOpacity>
+            )}
+          </View>
+          <View style={{ alignItems: 'flex-start', gap: 5, width: '100%' }}>
+            <EditInputText
+              label="Nome"
+              placeholder=""
+              value={name}
+              editable={true}
+              security={false}
+              onChangeText={txt => {
+                setName(txt);
+              }}
+            />
+
+            <EditInputText
+              label="e-mail"
+              placeholder=""
+              value={email}
+              security={false}
+              editable={false}
+              onChangeText={txt => {
+                setEmail(txt);
+              }}
+            />
+
+            <EditInputText
+              label="Telefone"
+              placeholder=""
+              value={phone}
+              security={false}
+              keyboardType="numeric"
+              maxLength={15}
+              editable={true}
+              onChangeText={txt => {
+                setPhone(formatPhoneNumber(txt));
+              }}
+            />
+            <EditInputText
+              label="Cidade"
+              placeholder=""
+              value={city}
+              security={false}
+              editable={true}
+              onChangeText={txt => {
+                setCity(txt);
+              }}
+            />
+
+            <EditInputText
+              label="Sobre mim"
+              placeholder=""
+              value={aboutme}
+              security={false}
+              multiline={true}
+              maxLength={200}
+              textAlignVertical="top"
+              editable={true}
+              onChangeText={txt => {
+                setAboutme(txt);
+              }}
+            />
+          </View>
+          <Language />
+        </View>
+      </ScrollView>
+      <View
+        style={{
+          width: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Btn
+          label="Salvar"
+          color={VARS.color.blue}
+          icon="checkmark-circle-outline"
+          iconColor={VARS.color.white}
+          iconSize={VARS.size.icons}
+          onPress={() => {
+            const data = {
+              name: name,
+              phone: phone,
+              city: city,
+              aboutme: aboutme,
+            };
+            setUpdateUserFirebase(dataContext, data);
+            navigation.goBack();
+          }}
+        />
+      </View>
+    </KeyboardAvoidingView>
+  );
+}
