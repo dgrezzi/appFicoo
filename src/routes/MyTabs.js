@@ -119,9 +119,9 @@ export default function MyTabs() {
         <Tab.Screen
           name="adminRoute"
           component={AdminRoute}
-          options={{
-            headerTitle: 'Painel Administrativo',
-            headerShown: true,
+          options={({ route }) => ({
+            headerTitle: 'FICOO',
+            headerShown: false,
             tabBarIcon: ({ color }) => (
               <Ionicons
                 name="settings-outline"
@@ -129,7 +129,7 @@ export default function MyTabs() {
                 color={color}
               />
             ),
-          }}
+          })}
         />
       )}
     </Tab.Navigator>

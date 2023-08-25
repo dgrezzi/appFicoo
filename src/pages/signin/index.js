@@ -59,7 +59,7 @@ export default function Signin() {
           <View
             style={[
               styles.container,
-              { paddingTop: 25, justifyContent: 'space-between', gap: 10 },
+              { paddingVertical: 25, justifyContent: 'space-between', gap: 20 },
             ]}>
             <Image style={[styles.logo]} source={logo} />
             <View
@@ -128,24 +128,39 @@ export default function Signin() {
               }}
             />
             <Language />
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Signup');
-              }}
-              activeOpacity={0.5}>
-              <Text
-                style={[
+            <View
+              style={{
+                backgroundColor: 'white',
+                paddingHorizontal: 30,
+                padding: 10,
+                borderRadius: 12,
+                elevation: 5,
+                borderWidth: 1,
+                borderColor: VARS.color.whiteDark,
+              }}>
+              <TouchableOpacity
+                style={
                   {
-                    fontFamily: 'Abel',
-                    color: VARS.color.title,
-                    fontSize: 22,
-                    letterSpacing: 1,
-                    marginBottom: 25,
-                  },
-                ]}>
-                INSCREVA-SE
-              </Text>
-            </TouchableOpacity>
+                    // flex: 1,
+                  }
+                }
+                onPress={() => {
+                  navigation.navigate('Signup');
+                }}
+                activeOpacity={0.5}>
+                <Text
+                  style={[
+                    {
+                      fontFamily: 'Abel',
+                      color: VARS.color.title,
+                      fontSize: 22,
+                      letterSpacing: 1,
+                    },
+                  ]}>
+                  INSCREVA-SE
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </ScrollView>
       </TouchableWithoutFeedback>

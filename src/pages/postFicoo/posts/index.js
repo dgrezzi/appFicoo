@@ -68,7 +68,7 @@ export default function Posts() {
           />
         ) : null,
     });
-  }, []);
+  }, [dataContext]);
 
   async function handleRefreshPosts() {
     setLoadingRefresh(true);

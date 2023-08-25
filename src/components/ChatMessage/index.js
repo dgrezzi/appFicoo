@@ -7,15 +7,11 @@ import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 
 function ChatMessage({ data }) {
-  const user = auth().currentUser.toJSON();
+  const user = auth().currentUser?.toJSON();
   const { locale } = useContext(AuthContext);
 
-  const postado = () => {
-    const timeObject = data.createdAt;
-    if (!timeObject) return;
-    const datePost = new Date(
-      timeObject?.seconds * 1000 + timeObject?.nanoseconds / 1000,
-    );
+  function formatTime() {
+    const datePost = new Date(data.createdAt.seconds * 1000);
     if (locale == 'pt') {
       return formatDistance(new Date(), datePost, {
         locale: ptBR,
@@ -31,8 +27,7 @@ function ChatMessage({ data }) {
         locale: es,
       });
     }
-    return;
-  };
+  }
 
   const isMyMessage = useMemo(() => {
     return data?.user?._id === user.uid;
@@ -92,7 +87,7 @@ function ChatMessage({ data }) {
             fontSize: 13,
             color: isMyMessage ? VARS.color.white : VARS.color.blue,
           }}>
-          {postado()}
+          {formatTime()}
         </Text>
       </View>
     </View>

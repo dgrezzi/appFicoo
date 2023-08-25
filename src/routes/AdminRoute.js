@@ -13,25 +13,24 @@ export default function AdminRoute() {
         name="dashboard"
         component={Dashboard}
         options={({ route }) => ({
-          headerShown: false,
-          title: 'DashBoard',
+          headerShown: true,
+          title: 'FICOO',
         })}
       />
       <AppStack.Screen
         name="checkin"
         component={Checkin}
-        options={{
-          headerShown: true,
+        options={({ route }) => ({
           title: 'Check in',
-        }}
+        })}
       />
       <AppStack.Screen
         name="ListUser"
         component={ListUser}
-        options={{
+        options={({ route }) => ({
           headerShown: true,
           title: 'Participantes',
-        }}
+        })}
       />
     </AppStack.Navigator>
   );

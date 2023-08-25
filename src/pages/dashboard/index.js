@@ -1,8 +1,9 @@
 import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { MMKV } from 'react-native-mmkv';
+import ficoo from '../../assets/logoFicoo23.png';
 import { VARS } from '../../constants/VARS';
 import styles from '../../styles/styles';
 
@@ -67,8 +68,21 @@ export default function Dashboard() {
     <View
       style={[
         styles.container,
-        { justifyContent: 'flex-start', paddingVertical: 20, gap: 15 },
+        {
+          justifyContent: 'flex-start',
+          gap: 20,
+        },
       ]}>
+      <Image
+        style={{
+          height: 250,
+          backgroundColor: 'transparent',
+          resizeMode: 'contain',
+          margin: 15,
+        }}
+        source={ficoo}
+      />
+
       <Links
         onPress={() => {
           navigation.navigate('checkin');
@@ -111,12 +125,12 @@ export default function Dashboard() {
             <Text>UID: {JSON.stringify(item?.uid)}</Text>
           </View>
         ))}
-      <TouchableOpacity
+      {/* <TouchableOpacity
         onPress={() => {
           storage.clearAll();
         }}>
         <Text>Teste</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }

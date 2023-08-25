@@ -281,11 +281,10 @@ export default function ListUser() {
       <View
         style={{
           width: '100%',
-          aspectRatio: 1.6,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <GestureFlipView width={window.width} height={window.width / 1.6}>
+        <GestureFlipView width={window.width} height={window.width / 1.65}>
           <RenderFront />
           {item?.aboutme ? <RenderBack /> : <RenderFront />}
         </GestureFlipView>
@@ -295,7 +294,7 @@ export default function ListUser() {
 
   return (
     <View style={[styles.container, { paddingHorizontal: 0 }]}>
-      <View style={[{ padding: 15 }]}>
+      <View style={[{ paddingHorizontal: 20, padding: 8 }]}>
         <InputTxt
           icon="search-outline"
           multiline={false}
@@ -309,7 +308,7 @@ export default function ListUser() {
           }}
         />
       </View>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{ paddingBottom: 25 }}>
         <FlipCard index={1} item={ficoo} ficoo={true} />
         {list.map((value, index) => {
           return (

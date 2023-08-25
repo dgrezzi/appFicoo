@@ -1,17 +1,18 @@
 {
   "expo": {
-    "name": "appficoo",
+    "name": "Ficoo",
+    "owner": "dgrezzi",
     "slug": "appficoo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "assetBundlePatterns": ["**/*"],
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
     "ios": {
       "googleServicesFile": "./GoogleService-Info.plist",
       "userInterfaceStyle": "light",
@@ -51,7 +52,6 @@
       ],
       "@react-native-firebase/app",
       "@react-native-firebase/auth"
-    ],
-    "owner": "dgrezzi"
+    ]
   }
 }

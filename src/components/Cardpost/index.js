@@ -67,7 +67,7 @@ export default function CardPost({ data, userId }) {
         <Text
           style={{
             fontFamily: 'Abel',
-            fontSize: 22,
+            fontSize: 18,
             letterSpacing: 1,
             textAlign: 'justify',
           }}
@@ -113,7 +113,7 @@ export default function CardPost({ data, userId }) {
             )}
             <Text
               numberOfLines={1}
-              style={{ fontFamily: 'Abel', fontSize: 20, letterSpacing: 1 }}
+              style={{ fontFamily: 'Abel', fontSize: 18, letterSpacing: 1 }}
               multiline={false}>
               {data.autor}
             </Text>
@@ -122,7 +122,7 @@ export default function CardPost({ data, userId }) {
             numberOfLines={1}
             style={{
               fontFamily: 'Abel',
-              fontSize: 18,
+              fontSize: 16,
               letterSpacing: 1,
             }}
             multiline={false}>

@@ -131,7 +131,7 @@ export default function ChatRoom() {
           }}>
           <Text
             style={{ fontFamily: 'AbelBold', letterSpacing: 1, fontSize: 22 }}>
-            Chat FICOO
+            Bate Papo
           </Text>
           <BtnEdit
             label="Criar Grupo"

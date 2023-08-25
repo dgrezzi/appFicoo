@@ -7,11 +7,10 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { AuthContext } from '../../../contexts/auth';
-
 import BtnEdit from '../../../components/BtnEdit/intex';
 import InputTxt from '../../../components/InputTxt';
 import { VARS } from '../../../constants/VARS';
+import { AuthContext } from '../../../contexts/auth';
 import handlePost from '../../../functions/handlePost';
 import styles from '../../../styles/styles';
 

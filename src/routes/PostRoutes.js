@@ -18,7 +18,7 @@ export default function PostRoutes() {
         name="Post"
         component={Posts}
         options={{
-          title: 'FICOO Junto',
+          title: 'NOVIDADES FICOO',
           headerShown: true,
         }}
       />
