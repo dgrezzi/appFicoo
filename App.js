@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
+import React from 'react';
+import { StatusBar } from 'react-native';
+import { VARS } from './src/constants/VARS';
+import AuthProvider from './src/contexts/auth';
+import Routes from './src/routes/Routes';
+import Start from './src/routes/Start';
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Abel: require('./assets/abel.ttf'),
+  });
+  const [fontsBoldLoaded] = useFonts({
+    AbelBold: require('./assets/abelBold.ttf'),
+  });
+
+  const teste = Routes;
+  const start = Start;
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <AuthProvider>
+        <StatusBar
+          barStyle="dark-content"
+          animated={true}
+          backgroundColor={VARS.color.white}
+          showHideTransition="fade"
+          hidden={false}
+        />
+        <Routes />
+      </AuthProvider>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

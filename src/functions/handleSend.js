@@ -11,7 +11,7 @@ export default async function handleSend(dataContext, thread, input) {
       createdAt: firestore.FieldValue.serverTimestamp(),
       user: {
         _id: dataContext.user.uid,
-        displayName: dataContext.storageData.name,
+        displayName: dataContext.storageData?.name,
       },
     });
 
