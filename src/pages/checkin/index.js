@@ -52,6 +52,8 @@ export default function Checkin() {
   const checkinUser = async info => {
     await firestore()
       .collection('checkin')
+      .doc('evento')
+      .collection('users')
       .doc(info.id)
       .get()
       .then(result => {
@@ -69,6 +71,8 @@ export default function Checkin() {
   const setCheckinFirebase = async info => {
     await firestore()
       .collection('checkin')
+      .doc('evento')
+      .collection('users')
       .doc(info.id)
       .set({
         createdAt: new Date(),

@@ -5,7 +5,7 @@ import { VARS } from '../../constants/VARS';
 export default function Btn(props) {
   return (
     <TouchableOpacity
-      activeOpacity={0.7}
+      activeOpacity={props.disable ? 0.95 : 0.7}
       onPress={() => props.onPress()}
       style={[
         {
@@ -13,7 +13,7 @@ export default function Btn(props) {
           height: 52,
           elevation: 10,
           shadowColor: VARS.color.blue,
-          backgroundColor: props.color,
+          backgroundColor: props.disable ? 'gray' : props.color,
           borderRadius: 15,
           marginVertical: 8,
           justifyContent: 'center',

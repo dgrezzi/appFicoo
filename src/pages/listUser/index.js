@@ -72,6 +72,8 @@ export default function ListUser() {
     const check = [];
     await firestore()
       .collection('checkin')
+      .doc('evento')
+      .collection('users')
       .get()
       .then(result => {
         result.forEach(doc => {

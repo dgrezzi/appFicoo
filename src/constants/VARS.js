@@ -13,6 +13,7 @@ export const VARS = {
     opacity: 'rgba(94, 51, 140, 0.4)',
     blueSolid: '#5669FF',
     orange: '#DF633A',
+    orangeLight: '#FF936A',
     subColor: '#747688',
     title: '#120D26',
     // whiteDark: '#c0c0d0',

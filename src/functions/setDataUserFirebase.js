@@ -8,6 +8,7 @@ function toBase64(input) {
 function fromBase64(encoded) {
   return Buffer.from(encoded, 'base64').toString('utf8');
 }
+
 export default async function setDataUserFirebase(uid, data) {
   await firestore()
     .collection('user')
