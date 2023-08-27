@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
+import firestore from '@react-native-firebase/firestore';
 import { useState } from 'react';
-
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import logo from '../../../assets/icon.png';
 import exclamation from '../../assets/exclamation.png';
@@ -163,26 +163,39 @@ export const Botoes = ({ abaChange }) => {
   );
 };
 
+const checkVacancy = async vaga => {
+  const vagas = [];
+  await firestore()
+    .collection('checkin')
+    .doc(vaga)
+    .collection('users')
+    .get()
+    .then(result => {
+      result.forEach(doc => {
+        doc.data().uid = doc.id;
+        vagas.push(doc.data());
+      });
+      const info = result._data;
+      const quant = vagas.length;
+      return quant;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  return vagas.length;
+};
+
 export const Atividade = props => {
-  if (props.type == 'painel') {
-    var selected = painel;
-  }
-  if (props.type == 'oficina1') {
-    var selected = oficina1;
-  }
-  if (props.type == 'oficina2') {
-    var selected = oficina2;
-  }
-  vagas = props.vagas ? props.vagas : 20;
   return (
     <View style={{ paddingHorizontal: 15 }}>
       <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={props.onPress}
+        activeOpacity={1}
+        onPress={() => props.onPress()}
         style={{
           width: '100%',
-          backgroundColor:
-            selected == props.id ? VARS.color.orangeLight : VARS.color.white,
+          backgroundColor: props.selected
+            ? VARS.color.orangeLight
+            : VARS.color.white,
           flexDirection: 'row',
           borderRadius: 18,
           alignItems: 'center',
@@ -193,8 +206,8 @@ export const Atividade = props => {
           padding: 8,
           paddingVertical: 12,
         }}>
-        <Text style={{ position: 'absolute', top: 8, left: 12 }}>
-          {vagas} vaga(s)
+        <Text style={{ position: 'absolute', top: 10, left: 12 }}>
+          {props.vaga} vaga(s)
         </Text>
         <Image
           style={{
@@ -206,15 +219,28 @@ export const Atividade = props => {
           source={logo}
         />
         <View style={{ flex: 1, gap: 10 }}>
-          <Text
-            style={{
-              fontFamily: 'Abel',
-              fontSize: 14,
-              color: VARS.color.blue,
-              letterSpacing: 1,
-            }}>
-            {props.time}
-          </Text>
+          <View
+            style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <Text
+              style={{
+                fontFamily: 'Abel',
+                fontSize: 14,
+                color: VARS.color.blue,
+                letterSpacing: 1,
+              }}>
+              {props.time}
+            </Text>
+            <Text
+              style={{
+                fontFamily: 'Abel',
+                fontSize: 14,
+                color: VARS.color.blue,
+                letterSpacing: 1,
+                marginRight: 10,
+              }}>
+              {props.id}
+            </Text>
+          </View>
           <Text
             style={{
               fontFamily: 'Abel',
@@ -243,6 +269,67 @@ export const Atividade = props => {
           </View>
         </View>
       </TouchableOpacity>
+    </View>
+  );
+};
+
+export const Confirmacao = ({ data }) => {
+  const Dados = data => {
+    return (
+      <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+        <Text
+          style={{
+            fontFamily: 'Abel',
+            fontSize: 20,
+            letterSpacing: 1,
+            color: VARS.color.title,
+          }}>
+          {data.label}
+        </Text>
+        <Text
+          style={{
+            fontFamily: 'AbelBold',
+            fontSize: 20,
+            letterSpacing: 1,
+            color: VARS.color.title,
+          }}>
+          {data.value}
+        </Text>
+      </View>
+    );
+  };
+
+  return (
+    <View
+      style={{
+        width: '100%',
+        paddingHorizontal: 15,
+        padding: 10,
+      }}>
+      <View
+        style={{
+          width: '100%',
+          backgroundColor: VARS.color.whiteDark,
+          borderWidth: 1,
+          borderColor: VARS.color.orangeLight,
+          borderRadius: 20,
+          padding: 20,
+          gap: 10,
+          elevation: 8,
+        }}>
+        <Text
+          style={{
+            fontFamily: 'Abel',
+            fontSize: 20,
+            letterSpacing: 1,
+            color: VARS.color.title,
+          }}>
+          CONFIRMAÇÃO
+        </Text>
+        <Dados label="Painel :" value={data.painel} />
+        <Dados label="Oficina dia 13: " value={data.oficina1} />
+        <Dados label="Oficina dia 14: " value={data.oficina2} />
+      </View>
     </View>
   );
 };

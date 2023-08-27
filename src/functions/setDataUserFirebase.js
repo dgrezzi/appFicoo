@@ -21,6 +21,7 @@ export default async function setDataUserFirebase(uid, data) {
       photoURL: data.photoURL,
       isAdmin: false,
       city: data.city,
+      disableView: false,
     })
     .then(() => {})
     .catch(err => {
