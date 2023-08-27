@@ -46,16 +46,18 @@ export default function Credentials() {
         styles.container,
         {
           gap: 0,
-          // paddingVertical: 15,
-          paddingHorizontal: 0,
           justifyContent: 'flex-start',
+          paddingHorizontal: 0,
         },
       ]}>
       <ScrollView
+        style={{ width: '100%' }}
         contentContainerStyle={{
-          padding: 10,
-          paddingVertical: 15,
+          width: '100%',
           alignItems: 'center',
+          justifyContent: 'center',
+          paddingHorizontal: 20,
+          paddingVertical: 20,
         }}>
         <View
           style={{
@@ -66,11 +68,11 @@ export default function Credentials() {
             elevation: 10,
             borderRadius: 32,
             width: '100%',
-            justifyContent: 'space-around',
+            justifyContent: 'center',
             alignItems: 'flex-start',
             padding: 18,
             paddingVertical: 30,
-            gap: 15,
+            gap: 10,
           }}>
           <Text
             style={{
@@ -101,38 +103,31 @@ export default function Credentials() {
             <Dados
               data={{ label: 'e-mail:', value: dataContext.user?.email }}
             />
-            <Dados
-              data={{ label: 'Identificador:', value: dataContext.user?.uid }}
-            />
           </View>
-          {dataContext.storageData?.inscrito && (
-            <View style={{ width: '100%', gap: 10 }}>
-              <Dados
-                data={{
-                  label: 'Painel:',
-                  value: dataContext.storageData?.painel,
-                }}
-              />
-              <Dados
-                data={{
-                  label: 'Oficina dia 13/10:',
-                  value: dataContext.storageData?.oficina1,
-                }}
-              />
-              <Dados
-                data={{
-                  label: 'Oficina dia 14/10:',
-                  value: dataContext.storageData?.oficina2,
-                }}
-              />
-            </View>
-          )}
+          <Dados
+            data={{ label: 'Identificador:', value: dataContext.user?.uid }}
+          />
+          <Dados
+            data={{ label: 'Painel:', value: dataContext.storageData?.painel }}
+          />
+          <Dados
+            data={{
+              label: 'Identificador:',
+              value: dataContext.storageData?.oficina1,
+            }}
+          />
+          <Dados
+            data={{
+              label: 'Identificador:',
+              value: dataContext.storageData?.oficina2,
+            }}
+          />
         </View>
         <View
           style={{
             borderStyle: 'dashed',
             borderWidth: 1,
-            width: '80%',
+            width: '85%',
             borderColor: VARS.color.gray,
           }}
         />

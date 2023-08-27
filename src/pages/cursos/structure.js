@@ -55,6 +55,7 @@ export const Aviso = () => {
   return (
     <View
       style={{
+        flex: 1,
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
@@ -90,7 +91,6 @@ export const Aviso = () => {
 
 export const Botoes = ({ abaChange }) => {
   const [active, setActive] = useState(1);
-
   const handleChange = event => {
     setActive(event);
     abaChange(event);
@@ -109,7 +109,7 @@ export const Botoes = ({ abaChange }) => {
           justifyContent: 'center',
           borderWidth: 1,
           borderColor: VARS.color.orangeLight,
-          padding: 8,
+          padding: 6,
           borderRadius: 100,
           elevation: props.aba == active ? 8 : 0,
         }}>
@@ -128,37 +128,35 @@ export const Botoes = ({ abaChange }) => {
   };
 
   return (
-    <View style={{ paddingHorizontal: 15 }}>
-      <View
-        style={[
-          {
-            width: '100%',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            borderColor: VARS.color.whiteDark,
-            borderRadius: 100,
-            gap: 10,
-            padding: 6,
-            backgroundColor: VARS.color.white,
-            elevation: 8,
-            marginBottom: 15,
-          },
-        ]}>
-        <Aba
-          label="PAINEIS"
-          aba="1"
-          onPress={() => {
-            handleChange(1);
-          }}
-        />
-        <Aba
-          label="OFICINAS"
-          aba="2"
-          onPress={() => {
-            handleChange(2);
-          }}
-        />
-      </View>
+    <View
+      style={[
+        {
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          borderColor: VARS.color.whiteDark,
+          borderRadius: 100,
+          gap: 10,
+          padding: 6,
+          backgroundColor: VARS.color.white,
+          elevation: 8,
+          marginBottom: 15,
+        },
+      ]}>
+      <Aba
+        label="PAINEIS"
+        aba="1"
+        onPress={() => {
+          handleChange(1);
+        }}
+      />
+      <Aba
+        label="OFICINAS"
+        aba="2"
+        onPress={() => {
+          handleChange(2);
+        }}
+      />
     </View>
   );
 };
@@ -311,7 +309,7 @@ export const Confirmacao = ({ data }) => {
           width: '100%',
           backgroundColor: VARS.color.whiteDark,
           borderWidth: 1,
-          borderColor: VARS.color.orangeLight,
+          borderColor: VARS.color.whiteDark,
           borderRadius: 20,
           padding: 20,
           gap: 10,

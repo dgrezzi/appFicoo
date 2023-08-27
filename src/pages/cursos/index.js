@@ -101,8 +101,6 @@ export default function Cursos() {
   }
 
   const handleMeusCursos = () => {
-    console.log(painelSelected);
-    return;
     setFirebase(meusCursos.painel);
     setFirebase(meusCursos.oficina1);
     setFirebase(meusCursos.oficina2);
@@ -171,7 +169,8 @@ export default function Cursos() {
             alignItems: 'center',
             gap: 6,
             paddingBottom: 20,
-            paddingTop: 10,
+            paddingTop: 15,
+            paddingHorizontal: 0,
           }}>
           {dataContext.storageData?.inscrito ? null : <Aviso />}
           <Botoes abaChange={abaChange} />

@@ -139,11 +139,6 @@ export default function Signin() {
                 borderColor: VARS.color.whiteDark,
               }}>
               <TouchableOpacity
-                style={
-                  {
-                    // flex: 1,
-                  }
-                }
                 onPress={() => {
                   navigation.navigate('Signup');
                 }}

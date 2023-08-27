@@ -23,8 +23,6 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
 
   function handleButtonCreate() {
     if (roomName === '') return;
-
-    //Deixar apenas cada usuario criar 4 grupos!.
     firestore()
       .collection('messages')
       .get()

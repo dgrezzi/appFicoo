@@ -16,7 +16,6 @@ export const VARS = {
     orangeLight: '#FF936A',
     subColor: '#747688',
     title: '#120D26',
-    // whiteDark: '#c0c0d0',
     whiteDark: '#d0d0e0',
   },
   size: {

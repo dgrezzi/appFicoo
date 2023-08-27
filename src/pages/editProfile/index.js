@@ -276,12 +276,11 @@ export default function EditProfile() {
           iconColor={VARS.color.white}
           iconSize={VARS.size.icons}
           onPress={() => {
-            const data = {
-              name: name,
-              phone: phone,
-              city: city,
-              aboutme: aboutme,
-            };
+            const data = {};
+            name ? (data.name = name) : null;
+            phone ? (data.phone = phone) : null;
+            city ? (data.city = city) : null;
+            aboutme ? (data.aboutme = aboutme) : null;
             setUpdateUserFirebase(dataContext, data);
             navigation.goBack();
           }}
