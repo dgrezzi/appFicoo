@@ -1,10 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import logo from '../../../assets/icon.png';
 import exclamation from '../../assets/exclamation.png';
 import { VARS } from '../../constants/VARS';
+import { legenda } from './atividades';
 
 export const Title = props => {
   return (
@@ -104,25 +105,37 @@ export const Botoes = ({ abaChange }) => {
         style={{
           backgroundColor:
             props.aba == active ? VARS.color.orangeLight : VARS.color.white,
-          paddingHorizontal: 45,
+          paddingHorizontal: 20,
           alignItems: 'center',
           justifyContent: 'center',
           borderWidth: 1,
           borderColor: VARS.color.orangeLight,
           padding: 6,
-          borderRadius: 100,
+          borderRadius: 20,
           elevation: props.aba == active ? 8 : 0,
         }}>
         <Text
           style={{
             fontFamily: 'AbelBold',
-            fontSize: 18,
+            fontSize: 16,
             letterSpacing: 1,
             color:
               props.aba == active ? VARS.color.white : VARS.color.orangeLight,
           }}>
           {props.label}
         </Text>
+        {props.label2 && (
+          <Text
+            style={{
+              fontFamily: 'AbelBold',
+              fontSize: 16,
+              letterSpacing: 1,
+              color:
+                props.aba == active ? VARS.color.white : VARS.color.orangeLight,
+            }}>
+            {props.label2}
+          </Text>
+        )}
       </TouchableOpacity>
     );
   };
@@ -135,7 +148,7 @@ export const Botoes = ({ abaChange }) => {
           flexDirection: 'row',
           justifyContent: 'space-between',
           borderColor: VARS.color.whiteDark,
-          borderRadius: 100,
+          borderRadius: 25,
           gap: 10,
           padding: 6,
           backgroundColor: VARS.color.white,
@@ -152,43 +165,90 @@ export const Botoes = ({ abaChange }) => {
       />
       <Aba
         label="OFICINAS"
+        label2="13/10"
         aba="2"
         onPress={() => {
           handleChange(2);
+        }}
+      />
+      <Aba
+        label="OFICINAS"
+        label2="14/10"
+        aba="3"
+        onPress={() => {
+          handleChange(3);
         }}
       />
     </View>
   );
 };
 
-const checkVacancy = async vaga => {
-  const vagas = [];
-  await firestore()
-    .collection('checkin')
-    .doc(vaga)
-    .collection('users')
-    .get()
-    .then(result => {
-      result.forEach(doc => {
-        doc.data().uid = doc.id;
-        vagas.push(doc.data());
-      });
-      const info = result._data;
-      const quant = vagas.length;
-      return quant;
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  return vagas.length;
-};
+export const Atividades = ({ atividadeChange, ...props }) => {
+  const [qtdActive, setQtdActive] = useState();
+  const handleChange = event => {
+    atividadeChange(props.id);
+  };
 
-export const Atividade = props => {
+  const checkVacancy = async () => {
+    const inscritos = [];
+    if (props.dia) {
+      await firestore()
+        .collection('checkin')
+        .doc(props.id)
+        .collection(props.dia)
+        .get()
+        .then(result => {
+          result.forEach(doc => {
+            doc.data().uid = doc.id;
+            inscritos.push(doc.data());
+          });
+          const quant = parseInt(inscritos.length);
+          const total = props.vaga - quant;
+          if (props.selected && total <= 0) handleChange();
+          setQtdActive(total);
+          return;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      return;
+    }
+    if (!props.dia) {
+      await firestore()
+        .collection('checkin')
+        .doc(props.id)
+        .collection('users')
+        .get()
+        .then(result => {
+          result.forEach(doc => {
+            doc.data().uid = doc.id;
+            inscritos.push(doc.data());
+          });
+          const quant = parseInt(inscritos.length);
+          const total = props.vaga - quant;
+          if (props.selected && total <= 0) handleChange();
+          setQtdActive(total);
+          return;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      return;
+    }
+  };
+
+  useEffect(() => {
+    if (props.editable) Promise.all(checkVacancy());
+  }, [props]);
+
   return (
     <View style={{ paddingHorizontal: 15 }}>
       <TouchableOpacity
         activeOpacity={1}
-        onPress={() => props.onPress()}
+        onPress={() => {
+          if (qtdActive > 0) props.onPress();
+          if (qtdActive <= 0) alert('Vagas esgotadas');
+        }}
         style={{
           width: '100%',
           backgroundColor: props.selected
@@ -204,9 +264,11 @@ export const Atividade = props => {
           padding: 8,
           paddingVertical: 12,
         }}>
-        <Text style={{ position: 'absolute', top: 10, left: 12 }}>
-          {props.vaga} vaga(s)
-        </Text>
+        {props.editable && (
+          <Text style={{ position: 'absolute', top: 10, left: 12 }}>
+            {qtdActive} vaga(s)
+          </Text>
+        )}
         <Image
           style={{
             width: VARS.size.avatar / 1.8,
@@ -272,27 +334,61 @@ export const Atividade = props => {
 };
 
 export const Confirmacao = ({ data }) => {
+  const { painel, oficina1, oficina2 } = data;
+
   const Dados = data => {
     return (
-      <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}>
+      <View
+        style={{
+          // flexDirection: 'row',
+          gap: 4,
+          alignItems: 'flex-start',
+        }}>
         <Text
           style={{
-            fontFamily: 'Abel',
+            fontFamily: 'AbelBold',
+            flex: 1,
+            width: '100%',
             fontSize: 20,
+            textAlign: 'justify',
             letterSpacing: 1,
             color: VARS.color.title,
           }}>
           {data.label}
+          <Text
+            style={{
+              fontFamily: 'Abel',
+              flex: 1,
+              width: '100%',
+              fontSize: 20,
+              letterSpacing: 1,
+              color: VARS.color.title,
+            }}>
+            {data.value}
+          </Text>
         </Text>
-        <Text
+        <View
           style={{
-            fontFamily: 'AbelBold',
-            fontSize: 20,
-            letterSpacing: 1,
-            color: VARS.color.title,
+            flexDirection: 'row',
+            gap: 8,
+            alignItems: 'center',
+            width: '100%',
           }}>
-          {data.value}
-        </Text>
+          <Ionicons
+            name="location-outline"
+            size={VARS.size.icons * 0.6}
+            color={VARS.color.blue}
+          />
+          <Text
+            style={{
+              fontFamily: 'Abel',
+              fontSize: 20,
+              letterSpacing: 1,
+              color: VARS.color.title,
+            }}>
+            {data.local}
+          </Text>
+        </View>
       </View>
     );
   };
@@ -311,23 +407,47 @@ export const Confirmacao = ({ data }) => {
           borderWidth: 1,
           borderColor: VARS.color.whiteDark,
           borderRadius: 20,
-          padding: 20,
-          gap: 10,
+          padding: 12,
+          paddingVertical: 20,
+          gap: 20,
           elevation: 8,
         }}>
         <Text
           style={{
-            fontFamily: 'Abel',
+            fontFamily: 'AbelBold',
             fontSize: 20,
             letterSpacing: 1,
             color: VARS.color.title,
           }}>
           CONFIRMAÇÃO
         </Text>
-        <Dados label="Painel :" value={data.painel} />
-        <Dados label="Oficina dia 13: " value={data.oficina1} />
-        <Dados label="Oficina dia 14: " value={data.oficina2} />
+        {data.painel ? (
+          <Dados
+            label="Painel: "
+            value={legenda[data.painel].slice(0, 60) + '...'}
+            local="Sala X"
+          />
+        ) : null}
+        {data.painel ? (
+          <Dados
+            label="Oficina 13/10: "
+            value={formatLetter(legenda[data.oficina1].slice(0, 60) + '...')}
+            local="Sala X"
+          />
+        ) : null}
+        {data.painel ? (
+          <Dados
+            label="Oficina 14/10: "
+            value={formatLetter(legenda[data.oficina2].slice(0, 60) + '...')}
+            local="Sala X"
+          />
+        ) : null}
       </View>
     </View>
   );
 };
+
+function formatLetter(str) {
+  const lowerCaseString = str.toLowerCase();
+  return lowerCaseString.replace(/\b\w/g, l => l.toUpperCase());
+}

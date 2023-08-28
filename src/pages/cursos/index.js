@@ -6,114 +6,123 @@ import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import getDataUserFirebase from '../../functions/getDataUserFirebase';
 import styles from '../../styles/styles';
-import { oficinas, painel } from './atividades';
-import { Atividade, Aviso, Botoes, Confirmacao } from './structure';
+import { oficinasD13, oficinasD14, paineis } from './atividades';
+import { Atividades, Aviso, Botoes, Confirmacao } from './structure';
 
 export default function Cursos() {
   const { dataContext } = useContext(AuthContext);
-
   const [activeAba, setActiveAba] = useState(1);
-  const [painelSelected, setPainelSelected] = useState();
-  const [oficinaSelected, setOficinaSelected] = useState([]);
   const [meusCursos, setMeusCursos] = useState({});
-  const [vagas, setVagas] = useState({});
+  const [editable, setEditable] = useState(false);
+  const [vagas, setVagas] = useState();
 
   useEffect(() => {
-    if (!dataContext.storageData?.inscrito) {
-      const cursos = {
-        painel: painelSelected,
-        oficina1: oficinaSelected[0],
-        oficina2: oficinaSelected[1],
-      };
-      setMeusCursos(cursos);
+    if (dataContext.storageData.inscrito) {
+      setEditable(false);
+      const newCursos = {};
+      newCursos['painel'] = dataContext.storageData.painel;
+      newCursos['oficina1'] = dataContext.storageData.oficinaDia13;
+      newCursos['oficina2'] = dataContext.storageData.oficinaDia14;
+      setMeusCursos(newCursos);
     }
-  }, [painelSelected, oficinaSelected]);
-
-  useEffect(() => {
-    if (!dataContext.storageData?.inscrito) {
-      painel.map((value, index) => {
-        checkVacancy('painel', value.id, value.vaga, index);
-      });
-      oficinas.map((value, index) => {
-        checkVacancy('oficina', value.id, value.vaga, index);
-      });
+    if (!dataContext.storageData.inscrito) {
+      setEditable(true);
     }
-  }, [painelSelected, oficinaSelected]);
+  }, [dataContext]);
 
-  useEffect(() => {
-    if (dataContext.storageData?.inscrito) {
-      const cursos = {
-        painel: dataContext.storageData?.painel,
-        oficina1: dataContext.storageData?.oficina1,
-        oficina2: dataContext.storageData?.oficina2,
-      };
-      setPainelSelected(dataContext.storageData?.painel);
-      setOficinaSelected([
-        dataContext.storageData?.oficina1,
-        dataContext.storageData?.oficina2,
-      ]);
-      setMeusCursos(cursos);
-    }
-  }, []);
-
-  const checkVacancy = async (type, id, vaga, index) => {
-    const inscritos = [];
+  const getVagas = async () => {
     await firestore()
-      .collection('checkin')
-      .doc(id)
-      .collection('users')
+      .collection('configs')
+      .doc('vagas')
       .get()
       .then(result => {
-        result.forEach(doc => {
-          doc.data().uid = doc.id;
-          inscritos.push(doc.data());
-        });
-        const quant = inscritos.length;
-        const arr = vagas;
-        arr[id] = vaga * 1 - quant;
-        if (type == 'painel') setVagas(arr);
-        if (type == 'oficina') setVagas(arr);
-        return;
+        setVagas(result._data);
+        return null;
       })
       .catch(err => {
-        console.log(err);
+        console.error('erro no banco:', err);
       });
-    return;
   };
 
-  function addOficina(valueId) {
-    const arr = oficinaSelected;
-    if (arr.includes(valueId)) {
-      const indice = arr.indexOf(valueId);
-      if (indice !== -1) {
-        arr.splice(indice, 1);
-        newArr = arr.slice(-2);
-        setOficinaSelected(newArr);
-        return;
-      }
+  useEffect(() => {
+    getVagas();
+  }, []);
+
+  function AddPainel(valueId) {
+    if (editable) {
+      const newCursos = {};
+      newCursos['uid'] = dataContext.user.uid;
+      newCursos.painel = valueId;
+      meusCursos.oficina1
+        ? (newCursos.oficina1 = meusCursos.oficina1)
+        : undefined;
+      meusCursos.oficina2
+        ? (newCursos.oficina2 = meusCursos.oficina2)
+        : undefined;
+      setMeusCursos(newCursos);
+      return;
     }
-    if (!arr.includes(valueId)) {
-      arr.push(valueId);
-      newArr = arr.slice(-2);
-      setOficinaSelected(newArr);
+  }
+
+  function AddOficina1(valueId) {
+    if (editable) {
+      const newCursos = {};
+      newCursos['uid'] = dataContext.user.uid;
+      meusCursos.painel ? (newCursos['painel'] = meusCursos.painel) : null;
+      if (valueId.slice(0, -4) != meusCursos.oficina2?.slice(0, -4))
+        newCursos['oficina1'] = valueId;
+      if (valueId.slice(0, -4) == meusCursos.oficina2?.slice(0, -4))
+        alert('escolha outra oficina');
+      meusCursos.oficina2
+        ? (newCursos['oficina2'] = meusCursos.oficina2)
+        : null;
+      setMeusCursos(newCursos);
+      return;
+    }
+  }
+  function AddOficina2(valueId) {
+    if (editable) {
+      const newCursos = {};
+      newCursos['uid'] = dataContext.user.uid;
+      meusCursos.painel ? (newCursos['painel'] = meusCursos.painel) : null;
+      if (valueId.slice(0, -4) != meusCursos.oficina1?.slice(0, -4))
+        newCursos['oficina2'] = valueId;
+      if (valueId.slice(0, -4) == meusCursos.oficina1?.slice(0, -4))
+        alert('escolha outra oficina');
+      meusCursos.oficina1
+        ? (newCursos['oficina1'] = meusCursos.oficina1)
+        : null;
+      setMeusCursos(newCursos);
       return;
     }
   }
 
   const handleMeusCursos = () => {
-    setFirebase(meusCursos.painel);
-    setFirebase(meusCursos.oficina1);
-    setFirebase(meusCursos.oficina2);
+    console.log(meusCursos);
+    return;
+    setEditable(false);
+    setFirebase(meusCursos);
   };
 
   const abaChange = state => {
     setActiveAba(state);
   };
 
-  const setFirebase = async doc => {
+  const atividadeChange = state => {
+    const newState = {};
+    newState['painel'] = meusCursos.painel;
+    newState['oficina1'] = meusCursos.oficina1;
+    newState['oficina2'] = meusCursos.oficina2;
+    if (newState.painel == state) newState['painel'] = undefined;
+    if (newState.oficina1 == state) newState['oficina1'] = undefined;
+    if (newState.oficina2 == state) newState['oficina2'] = undefined;
+    setMeusCursos(newState);
+  };
+
+  const setFirebase = async ({ painel, oficina1, oficina2 }) => {
     await firestore()
       .collection('checkin')
-      .doc(doc)
+      .doc(painel)
       .collection('users')
       .doc(dataContext.user?.uid)
       .set({
@@ -127,9 +136,79 @@ export default function Cursos() {
           .doc(dataContext.user?.uid)
           .update({
             inscrito: true,
-            painel: painelSelected,
-            oficina1: oficinaSelected[0],
-            oficina2: oficinaSelected[1],
+            painel: meusCursos.painel,
+            oficinaDia13: meusCursos.oficina1,
+            oficinaDia14: meusCursos.oficina2,
+          })
+          .then(value => {
+            getDataUserFirebase(dataContext);
+          })
+          .catch(err => {
+            console.error('erro no banco:', err);
+          })
+          .then(() => {})
+          .catch(err => {
+            console.error('erro no banco:', err);
+          });
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+
+    await firestore()
+      .collection('checkin')
+      .doc(oficina1)
+      .collection('dia13')
+      .doc(dataContext.user?.uid)
+      .set({
+        createdAt: new Date(),
+        name: dataContext.user?.uid,
+        email: dataContext.storageData?.email,
+      })
+      .then(async () => {
+        await firestore()
+          .collection('user')
+          .doc(dataContext.user?.uid)
+          .update({
+            inscrito: true,
+            painel: meusCursos.painel,
+            oficinaDia13: meusCursos.oficina1,
+            oficinaDia14: meusCursos.oficina2,
+          })
+          .then(value => {
+            getDataUserFirebase(dataContext);
+          })
+          .catch(err => {
+            console.error('erro no banco:', err);
+          })
+          .then(() => {})
+          .catch(err => {
+            console.error('erro no banco:', err);
+          });
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+
+    await firestore()
+      .collection('checkin')
+      .doc(oficina2)
+      .collection('dia14')
+      .doc(dataContext.user?.uid)
+      .set({
+        createdAt: new Date(),
+        name: dataContext.user?.uid,
+        email: dataContext.storageData?.email,
+      })
+      .then(async () => {
+        await firestore()
+          .collection('user')
+          .doc(dataContext.user?.uid)
+          .update({
+            inscrito: true,
+            painel: meusCursos.painel,
+            oficinaDia13: meusCursos.oficina1,
+            oficinaDia14: meusCursos.oficina2,
           })
           .then(value => {
             getDataUserFirebase(dataContext);
@@ -172,49 +251,73 @@ export default function Cursos() {
             paddingTop: 15,
             paddingHorizontal: 0,
           }}>
-          {dataContext.storageData?.inscrito ? null : <Aviso />}
+          {editable && <Aviso />}
           <Botoes abaChange={abaChange} />
           {activeAba == '1' &&
-            painel.map((value, index) => {
+            paineis.map((value, index) => {
               return (
-                <Atividade
+                <Atividades
                   onPress={() => {
-                    if (!dataContext.storageData?.inscrito) {
-                      if (vagas[value.id] > 0) setPainelSelected(value.id);
-                      if (vagas[value.id] <= 0) alert('vagas esgotadas');
-                    }
+                    AddPainel(value.id);
                   }}
                   key={index}
-                  selected={value.id == painelSelected}
+                  atividadeChange={atividadeChange}
+                  selected={value.id == meusCursos.painel}
                   time={value.time}
+                  editable={editable}
                   title={value.title}
+                  local={value.local}
                   owner={value.owner}
                   id={value.id}
-                  vaga={vagas[value.id]}
+                  vaga={vagas ? vagas[value.id] : null}
                 />
               );
             })}
           {activeAba == '2' &&
-            oficinas.map((value, index) => {
+            oficinasD13.map((value, index) => {
               return (
-                <Atividade
+                <Atividades
                   onPress={() => {
-                    if (!dataContext.storageData?.inscrito) {
-                      addOficina(value.id);
-                    }
+                    AddOficina1(value.id);
                   }}
                   key={index}
+                  atividadeChange={atividadeChange}
+                  selected={value.id == meusCursos.oficina1}
                   time={value.time}
-                  selected={oficinaSelected.includes(value.id)}
+                  dia="dia13"
+                  editable={editable}
                   title={value.title}
                   owner={value.owner}
+                  local={value.local}
                   id={value.id}
-                  vaga={vagas[value.id]}
+                  vaga={vagas ? vagas[value.id] : null}
                 />
               );
             })}
+          {activeAba == '3' &&
+            oficinasD14.map((value, index) => {
+              return (
+                <Atividades
+                  onPress={() => {
+                    AddOficina2(value.id);
+                  }}
+                  key={index}
+                  atividadeChange={atividadeChange}
+                  selected={value.id == meusCursos.oficina2}
+                  time={value.time}
+                  dia="dia14"
+                  editable={editable}
+                  title={value.title}
+                  owner={value.owner}
+                  local={value.local}
+                  id={value.id}
+                  vaga={vagas ? vagas[value.id] : null}
+                />
+              );
+            })}
+
           <Confirmacao data={meusCursos} />
-          {!dataContext.storageData?.inscrito && (
+          {editable && (
             <Btn
               label="Salvar"
               color={VARS.color.blue}
