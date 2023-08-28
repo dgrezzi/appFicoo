@@ -424,21 +424,21 @@ export const Confirmacao = ({ data }) => {
         {data.painel ? (
           <Dados
             label="Painel: "
-            value={legenda[data.painel].slice(0, 60) + '...'}
+            value={legenda[data.painel]?.slice(0, 60) + '...'}
             local="Sala X"
           />
         ) : null}
         {data.painel ? (
           <Dados
             label="Oficina 13/10: "
-            value={formatLetter(legenda[data.oficina1].slice(0, 60) + '...')}
+            value={formatLetter(legenda[data.oficina1]?.slice(0, 60) + '...')}
             local="Sala X"
           />
         ) : null}
         {data.painel ? (
           <Dados
             label="Oficina 14/10: "
-            value={formatLetter(legenda[data.oficina2].slice(0, 60) + '...')}
+            value={formatLetter(legenda[data.oficina2]?.slice(0, 60) + '...')}
             local="Sala X"
           />
         ) : null}

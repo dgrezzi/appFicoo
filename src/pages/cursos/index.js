@@ -69,9 +69,9 @@ export default function Cursos() {
       const newCursos = {};
       newCursos['uid'] = dataContext.user.uid;
       meusCursos.painel ? (newCursos['painel'] = meusCursos.painel) : null;
-      if (valueId.slice(0, -4) != meusCursos.oficina2?.slice(0, -4))
+      if (valueId?.slice(0, -4) != meusCursos.oficina2?.slice(0, -4))
         newCursos['oficina1'] = valueId;
-      if (valueId.slice(0, -4) == meusCursos.oficina2?.slice(0, -4))
+      if (valueId?.slice(0, -4) == meusCursos.oficina2?.slice(0, -4))
         alert('escolha outra oficina');
       meusCursos.oficina2
         ? (newCursos['oficina2'] = meusCursos.oficina2)
@@ -85,9 +85,9 @@ export default function Cursos() {
       const newCursos = {};
       newCursos['uid'] = dataContext.user.uid;
       meusCursos.painel ? (newCursos['painel'] = meusCursos.painel) : null;
-      if (valueId.slice(0, -4) != meusCursos.oficina1?.slice(0, -4))
+      if (valueId?.slice(0, -4) != meusCursos.oficina1?.slice(0, -4))
         newCursos['oficina2'] = valueId;
-      if (valueId.slice(0, -4) == meusCursos.oficina1?.slice(0, -4))
+      if (valueId?.slice(0, -4) == meusCursos.oficina1?.slice(0, -4))
         alert('escolha outra oficina');
       meusCursos.oficina1
         ? (newCursos['oficina1'] = meusCursos.oficina1)
@@ -98,8 +98,6 @@ export default function Cursos() {
   }
 
   const handleMeusCursos = () => {
-    console.log(meusCursos);
-    return;
     setEditable(false);
     setFirebase(meusCursos);
   };
