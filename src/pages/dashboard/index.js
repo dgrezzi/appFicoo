@@ -103,6 +103,16 @@ export default function Dashboard() {
           color: VARS.color.title,
         }}
       />
+      <Links
+        onPress={() => {
+          navigation.navigate('Credenciamento');
+        }}
+        data={{
+          label: 'Paineis e Oficinas',
+          bgColor: VARS.color.white,
+          color: VARS.color.title,
+        }}
+      />
 
       {lista &&
         lista.map((item, index) => (

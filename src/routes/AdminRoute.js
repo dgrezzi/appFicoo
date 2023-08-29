@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import Checkin from '../pages/checkin';
+import Credenciamento from '../pages/credenciamento';
 import Dashboard from '../pages/dashboard';
 import ListUser from '../pages/listUser';
 
@@ -30,6 +31,14 @@ export default function AdminRoute() {
         options={({ route }) => ({
           headerShown: true,
           title: 'Participantes',
+        })}
+      />
+      <AppStack.Screen
+        name="Credenciamento"
+        component={Credenciamento}
+        options={({ route }) => ({
+          headerShown: true,
+          title: 'Paineis e Oficinas',
         })}
       />
     </AppStack.Navigator>

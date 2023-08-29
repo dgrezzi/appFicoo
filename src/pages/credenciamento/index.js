@@ -31,7 +31,7 @@ const Dados = ({ data }) => {
   );
 };
 
-export default function Checkin() {
+export default function Credenciamento() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scan, setScan] = useState(false);
   const [scanned, setScanned] = useState(false);

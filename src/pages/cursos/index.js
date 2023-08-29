@@ -98,8 +98,13 @@ export default function Cursos() {
   }
 
   const handleMeusCursos = () => {
-    setEditable(false);
-    setFirebase(meusCursos);
+    if (meusCursos.painel && meusCursos.oficina1 && meusCursos.oficina2) {
+      setEditable(false);
+      setFirebase(meusCursos);
+    }
+    if (!meusCursos.painel || !meusCursos.oficina1 || !meusCursos.oficina2) {
+      alert('Escolha um painel e uma oficina para cada dia');
+    }
   };
 
   const abaChange = state => {
