@@ -1,11 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
+import { Picker } from '@react-native-picker/picker';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import React, { useEffect, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Btn from '../../components/Btn/intex';
 import { VARS } from '../../constants/VARS';
 import styles from '../../styles/styles';
+import { legenda2 } from '../cursos/atividades';
 
 const Dados = ({ data }) => {
   return (
@@ -34,61 +36,71 @@ const Dados = ({ data }) => {
 export default function Credenciamento() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scan, setScan] = useState(false);
-  const [scanned, setScanned] = useState(false);
   const [id, setId] = useState();
   const [check, setCheck] = useState('');
-
-  const dados = {
-    id: '3qiJcWI0TXetSf78zLz7EPuuk372',
-    name: 'Daniel Lima',
-    email: 'teste@email.com',
-  };
-  const credential = JSON.stringify(dados);
+  const [current, setCurrent] = useState('none');
+  const [atividades, setAtividades] = useState([]);
+  const [inscritos, setInscritos] = useState([]);
+  const scanned = false;
 
   useEffect(() => {
     askForCameraPermission();
+    getAtividades();
   }, []);
 
-  const checkinUser = async info => {
+  const getAtividades = async () => {
+    const list = [];
     await firestore()
       .collection('checkin')
-      .doc('evento')
-      .collection('users')
-      .doc(info.id)
       .get()
       .then(result => {
-        const info = result._data;
-        info
-          ? (alert('usuário já realizou checkin'), setId())
-          : setCheckinFirebase(id);
+        result.forEach(doc => {
+          list.push(doc.id);
+        });
         return null;
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  const setCheckinFirebase = async info => {
-    await firestore()
-      .collection('checkin')
-      .doc('evento')
-      .collection('users')
-      .doc(info.id)
-      .set({
-        createdAt: new Date(),
-        name: info.name,
-        email: info.email,
-      })
-      .then(() => {
-        setId();
-        setCheck('Checkin realizado com sucesso');
-        setTimeout(() => {
-          setCheck('');
-        }, 2000);
       })
       .catch(err => {
         console.error('erro no banco:', err);
       });
+    setAtividades(list);
+    return list;
+  };
+
+  const getUsers = async chave => {
+    const users = [];
+    await firestore()
+      .collection('checkin')
+      .doc(chave)
+      .collection('users')
+      .get()
+      .then(result => {
+        result.forEach(doc => {
+          users.push(doc._data?.uid);
+        });
+        setInscritos(users);
+        return;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    return;
+  };
+
+  const checkinUser = ident => {
+    if (inscritos.indexOf(ident.id) == 0) {
+      setCheck(true);
+      setTimeout(() => {
+        setCheck(false);
+        setId();
+      }, 2000);
+    }
+    if (inscritos.indexOf(ident.id) != 0) {
+      setCheck('false');
+      setTimeout(() => {
+        setCheck(false);
+        setId();
+      }, 2000);
+    }
   };
 
   const handleBarCodeScanned = ({ data }) => {
@@ -133,17 +145,122 @@ export default function Credenciamento() {
           justifyContent: 'space-around',
         },
       ]}>
+      {check && (
+        <View
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            backgroundColor: 'transparent',
+            width: '100%',
+            height: '100%',
+            zIndex: 999,
+
+            gap: 50,
+          }}>
+          <View
+            style={{
+              backgroundColor: VARS.color.white,
+              flex: 1,
+              margin: 40,
+              marginVertical: 70,
+              borderRadius: 50,
+              borderWidth: 1,
+              borderColor: VARS.color.blueLight,
+              elevation: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                fontFamily: 'AbelBold',
+                letterSpacing: 1,
+                fontSize: 30,
+                textAlign: 'center',
+                padding: 10,
+              }}>
+              {check == true ? 'Usuário confirmado!' : 'Usuário Não Inscrito!'}
+            </Text>
+            {check == true ? (
+              <Ionicons name="checkmark-outline" size={80} color={'green'} />
+            ) : (
+              <Ionicons name="close-outline" size={80} color={'red'} />
+            )}
+          </View>
+        </View>
+      )}
       <ScrollView
         contentContainerStyle={{
           alignItems: 'center',
           paddingBottom: 50,
           paddingTop: 10,
+          gap: 20,
         }}
         style={{
           width: '100%',
           paddingHorizontal: 20,
           paddingVertical: 15,
         }}>
+        <View style={{ flex: 1, gap: 6, width: '100%', paddingHorizontal: 10 }}>
+          <Text
+            style={{
+              fontFamily: 'Abel',
+              fontSize: 18,
+              letterSpacing: 1,
+              color: VARS.color.gray,
+            }}>
+            Atividade:
+          </Text>
+          <View
+            style={{
+              borderRadius: 15,
+              borderWidth: 1,
+              borderColor: VARS.color.blueLight,
+              paddingHorizontal: 10,
+              elevation: 5,
+              backgroundColor: VARS.color.white,
+              marginBottom: 10,
+            }}>
+            <Picker
+              selectedValue={current}
+              mode="dialog"
+              dropdownIconColor={VARS.color.blue}
+              onValueChange={(itemValue, itemIndex) => {
+                if (itemValue != 'none') {
+                  setCurrent(itemValue);
+
+                  getUsers(itemValue);
+                }
+              }}>
+              <Picker.Item
+                label="None"
+                value="none"
+                style={{
+                  fontFamily: 'Abel',
+                  letterSpacing: 1,
+                  fontSize: 18,
+                  color: VARS.color.blue,
+                }}
+              />
+              {atividades.map((value, index) => {
+                return (
+                  <Picker.Item
+                    key={index}
+                    label={formatLetter(legenda2[value]?.slice(0, 35) + '...')}
+                    value={value}
+                    style={{
+                      fontFamily: 'Abel',
+                      letterSpacing: 1,
+                      fontSize: 18,
+                      color: VARS.color.blue,
+                    }}
+                  />
+                );
+              })}
+            </Picker>
+          </View>
+        </View>
+
         <View
           style={{
             alignItems: 'center',
@@ -204,7 +321,7 @@ export default function Credenciamento() {
           <Dados data={{ label: 'e-mail:', value: id?.email }} />
           <Dados data={{ label: 'Ientificador:', value: id?.id }} />
         </View>
-        {check && (
+        {/* {check && (
           <View
             style={{
               flexDirection: 'row',
@@ -222,8 +339,7 @@ export default function Credenciamento() {
               {check}
             </Text>
           </View>
-        )}
-
+        )} */}
         <Btn
           label="Validação"
           color={VARS.color.blue}
@@ -237,4 +353,9 @@ export default function Credenciamento() {
       </ScrollView>
     </View>
   );
+}
+
+function formatLetter(str) {
+  const lowerCaseString = str.toLowerCase();
+  return lowerCaseString.replace(/\b\w/g, l => l.toUpperCase());
 }

@@ -11,6 +11,7 @@ export const VARS = {
     blue: '#5E338C',
     blueLight: 'rgba(94, 51, 140, 0.15)',
     opacity: 'rgba(94, 51, 140, 0.4)',
+    whiteOpacity: 'rgba(230, 230, 230, 0.75)',
     blueSolid: '#5669FF',
     orange: '#DF633A',
     orangeLight: '#FF936A',

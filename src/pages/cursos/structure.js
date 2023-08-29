@@ -2,7 +2,6 @@ import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
 import { useEffect, useState } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
-import logo from '../../../assets/icon.png';
 import exclamation from '../../assets/exclamation.png';
 import { VARS } from '../../constants/VARS';
 import { legenda } from './atividades';
@@ -195,7 +194,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
       await firestore()
         .collection('checkin')
         .doc(props.id)
-        .collection(props.dia)
+        .collection('user')
         .get()
         .then(result => {
           result.forEach(doc => {
@@ -261,7 +260,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
           borderColor: VARS.color.blueLight,
           elevation: 10,
           marginBottom: 10,
-          padding: 8,
+          padding: 15,
           paddingVertical: 12,
         }}>
         {props.editable && (
@@ -269,7 +268,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
             {qtdActive} vaga(s)
           </Text>
         )}
-        <Image
+        {/* <Image
           style={{
             width: VARS.size.avatar / 1.8,
             height: VARS.size.avatar / 1.8,
@@ -277,7 +276,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
             margin: 8,
           }}
           source={logo}
-        />
+        /> */}
         <View style={{ flex: 1, gap: 10 }}>
           <View
             style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -290,7 +289,28 @@ export const Atividades = ({ atividadeChange, ...props }) => {
               }}>
               {props.time}
             </Text>
-            <Text
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 30,
+                aspectRatio: 1,
+                backgroundColor: props.selected
+                  ? VARS.color.white
+                  : VARS.color.orange,
+                borderRadius: 20,
+                borderWidth: 1,
+                borderColor: 'red',
+              }}>
+              <Text
+                style={{
+                  color: props.selected ? VARS.color.orange : VARS.color.white,
+                  fontSize: 20,
+                }}>
+                1
+              </Text>
+            </View>
+            {/* <Text
               style={{
                 fontFamily: 'Abel',
                 fontSize: 14,
@@ -299,7 +319,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
                 marginRight: 10,
               }}>
               {props.id}
-            </Text>
+            </Text> */}
           </View>
           <Text
             style={{

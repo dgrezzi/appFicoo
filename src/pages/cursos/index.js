@@ -130,7 +130,8 @@ export default function Cursos() {
       .doc(dataContext.user?.uid)
       .set({
         createdAt: new Date(),
-        name: dataContext.user?.uid,
+        uid: dataContext.user?.uid,
+        name: dataContext.storageData?.name,
         email: dataContext.storageData?.email,
       })
       .then(async () => {
@@ -140,8 +141,8 @@ export default function Cursos() {
           .update({
             inscrito: true,
             painel: meusCursos.painel,
-            oficinaDia13: meusCursos.oficina1,
-            oficinaDia14: meusCursos.oficina2,
+            oficina1: meusCursos.oficina1,
+            oficina2: meusCursos.oficina2,
           })
           .then(value => {
             getDataUserFirebase(dataContext);
@@ -157,15 +158,25 @@ export default function Cursos() {
       .catch(err => {
         console.error('erro no banco:', err);
       });
-
+    await firestore()
+      .collection('checkin')
+      .doc(painel)
+      .set({
+        list: true,
+      })
+      .then(() => {})
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
     await firestore()
       .collection('checkin')
       .doc(oficina1)
-      .collection('dia13')
+      .collection('users')
       .doc(dataContext.user?.uid)
       .set({
         createdAt: new Date(),
-        name: dataContext.user?.uid,
+        uid: dataContext.user?.uid,
+        name: dataContext.storageData?.name,
         email: dataContext.storageData?.email,
       })
       .then(async () => {
@@ -175,8 +186,8 @@ export default function Cursos() {
           .update({
             inscrito: true,
             painel: meusCursos.painel,
-            oficinaDia13: meusCursos.oficina1,
-            oficinaDia14: meusCursos.oficina2,
+            oficina1: meusCursos.oficina1,
+            oficina2: meusCursos.oficina2,
           })
           .then(value => {
             getDataUserFirebase(dataContext);
@@ -192,15 +203,25 @@ export default function Cursos() {
       .catch(err => {
         console.error('erro no banco:', err);
       });
-
+    await firestore()
+      .collection('checkin')
+      .doc(oficina1)
+      .set({
+        list: true,
+      })
+      .then(() => {})
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
     await firestore()
       .collection('checkin')
       .doc(oficina2)
-      .collection('dia14')
+      .collection('users')
       .doc(dataContext.user?.uid)
       .set({
         createdAt: new Date(),
-        name: dataContext.user?.uid,
+        uid: dataContext.user?.uid,
+        name: dataContext.storageData?.name,
         email: dataContext.storageData?.email,
       })
       .then(async () => {
@@ -210,8 +231,8 @@ export default function Cursos() {
           .update({
             inscrito: true,
             painel: meusCursos.painel,
-            oficinaDia13: meusCursos.oficina1,
-            oficinaDia14: meusCursos.oficina2,
+            oficina1: meusCursos.oficina1,
+            oficina2: meusCursos.oficina2,
           })
           .then(value => {
             getDataUserFirebase(dataContext);
@@ -224,6 +245,16 @@ export default function Cursos() {
             console.error('erro no banco:', err);
           });
       })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+    await firestore()
+      .collection('checkin')
+      .doc(oficina2)
+      .set({
+        list: true,
+      })
+      .then(() => {})
       .catch(err => {
         console.error('erro no banco:', err);
       });

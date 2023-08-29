@@ -216,7 +216,7 @@ export default function ListUser() {
               }}>
               <Text
                 style={{ fontFamily: 'Abel', fontSize: 13, letterSpacing: 1 }}>
-                Deslise para saber mais
+                Deslize para saber mais
               </Text>
               <Ionicons
                 name="arrow-redo-outline"

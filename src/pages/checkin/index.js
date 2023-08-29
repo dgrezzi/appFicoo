@@ -34,7 +34,7 @@ const Dados = ({ data }) => {
 export default function Checkin() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scan, setScan] = useState(false);
-  const [scanned, setScanned] = useState(false);
+  const scanned = false;
   const [id, setId] = useState();
   const [check, setCheck] = useState('');
 
@@ -66,6 +66,7 @@ export default function Checkin() {
       .catch(err => {
         console.log(err);
       });
+    setId();
   };
 
   const setCheckinFirebase = async info => {
@@ -89,6 +90,7 @@ export default function Checkin() {
       .catch(err => {
         console.error('erro no banco:', err);
       });
+    setId();
   };
 
   const handleBarCodeScanned = ({ data }) => {

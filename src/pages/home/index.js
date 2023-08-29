@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Image, ScrollView, View } from 'react-native';
+import destaque2 from '../../assets/1693319815310.jpg';
 import destaque from '../../assets/exemplo.png';
 import faixa from '../../assets/ficoo_faixas.png';
 import Carrossel from '../../components/Carrossel';
@@ -11,7 +12,7 @@ export default function Home() {
 
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
-  const dados = [destaque, destaque, destaque, destaque];
+  const dados = [destaque2, destaque, destaque, destaque];
 
   return (
     <View

@@ -40,7 +40,7 @@ export default function Profile() {
   }, [dataContext]);
 
   return (
-    <View style={[styles.container, { gap: 8, paddingVertical: 10 }]}>
+    <View style={[styles.container, { gap: 8, paddingTop: 15 }]}>
       <View
         style={{
           flexDirection: 'row',
@@ -80,7 +80,7 @@ export default function Profile() {
             justifyContent: 'center',
             gap: 5,
             paddingRight: 12,
-            paddingVertical: 15,
+            paddingVertical: 25,
           },
         ]}>
         <View

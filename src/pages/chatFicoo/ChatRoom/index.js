@@ -56,7 +56,7 @@ export default function ChatRoom() {
       return () => {
         isActive = false;
       };
-    }, []),
+    }, [modalVisible]),
   );
 
   function deleteRoom(ownerId, idRoom) {
