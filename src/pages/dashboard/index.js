@@ -82,20 +82,20 @@ export default function Dashboard() {
         />
         <Links
           onPress={() => {
-            navigation.navigate('ListUser');
+            navigation.navigate('Credenciamento');
           }}
           data={{
-            label: 'Participantes',
+            label: 'Paineis e Oficinas',
             bgColor: VARS.color.white,
             color: VARS.color.title,
           }}
         />
         <Links
           onPress={() => {
-            navigation.navigate('Credenciamento');
+            navigation.navigate('ListUser');
           }}
           data={{
-            label: 'Paineis e Oficinas',
+            label: 'Lista de Participantes',
             bgColor: VARS.color.white,
             color: VARS.color.title,
           }}

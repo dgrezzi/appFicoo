@@ -38,13 +38,6 @@ export default function MakeAdmin() {
   const [id, setId] = useState();
   const [check, setCheck] = useState('');
 
-  const dados = {
-    id: '3qiJcWI0TXetSf78zLz7EPuuk372',
-    name: 'Daniel Lima',
-    email: 'teste@email.com',
-  };
-  const credential = JSON.stringify(dados);
-
   useEffect(() => {
     askForCameraPermission();
   }, []);
@@ -52,17 +45,17 @@ export default function MakeAdmin() {
   const make = async info => {
     await firestore()
       .collection('user')
-      .doc(info.id)
+      .doc(id.id)
       .update({ isAdmin: true })
-      .then(result => {
-        console.log(result);
-        const info = result._data;
-        return null;
-      })
+      .then(() => {})
       .catch(err => {
         console.log(err);
       });
     setId();
+    setCheck(true);
+    setTimeout(() => {
+      setCheck(false);
+    }, 2000);
   };
 
   const handleBarCodeScanned = ({ data }) => {
@@ -205,7 +198,7 @@ export default function MakeAdmin() {
           iconColor={VARS.color.white}
           iconSize={VARS.size.icons * 0.8}
           onPress={() => {
-            id?.id && make(id.id);
+            id?.id && make();
           }}
         />
       </ScrollView>
