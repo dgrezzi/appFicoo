@@ -56,7 +56,7 @@ export default function ChatRoom() {
       return () => {
         isActive = false;
       };
-    }, [modalVisible]),
+    }, [updateScreen]),
   );
 
   function deleteRoom(ownerId, idRoom) {
@@ -145,7 +145,7 @@ export default function ChatRoom() {
             }}
           />
         </View>
-        <View style={[{ padding: 15 }]}>
+        <View style={[{ padding: 15, paddingVertical: 10 }]}>
           <InputTxt
             icon="search-outline"
             multiline={false}

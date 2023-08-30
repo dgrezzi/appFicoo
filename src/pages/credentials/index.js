@@ -4,6 +4,7 @@ import QRCode from 'react-native-qrcode-svg';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
+import { legenda } from '../cursos/atividades';
 
 export default function Credentials() {
   const { dataContext } = useContext(AuthContext);
@@ -108,18 +109,29 @@ export default function Credentials() {
             data={{ label: 'Identificador:', value: dataContext.user?.uid }}
           />
           <Dados
-            data={{ label: 'Painel:', value: dataContext.storageData?.painel }}
-          />
-          <Dados
             data={{
-              label: 'Identificador:',
-              value: dataContext.storageData?.oficina1,
+              label: 'Painel:',
+              value: formatLetter(
+                legenda[dataContext.storageData?.painel]?.slice(0, 28) + '...',
+              ),
             }}
           />
           <Dados
             data={{
               label: 'Identificador:',
-              value: dataContext.storageData?.oficina2,
+              value: formatLetter(
+                legenda[dataContext.storageData?.oficina1]?.slice(0, 28) +
+                  '...',
+              ),
+            }}
+          />
+          <Dados
+            data={{
+              label: 'Identificador:',
+              value: formatLetter(
+                legenda[dataContext.storageData?.oficina2]?.slice(0, 28) +
+                  '...',
+              ),
             }}
           />
         </View>
@@ -148,4 +160,9 @@ export default function Credentials() {
       </ScrollView>
     </View>
   );
+}
+
+function formatLetter(str) {
+  const lowerCaseString = str.toLowerCase();
+  return lowerCaseString.replace(/\b\w/g, l => l.toUpperCase());
 }

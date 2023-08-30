@@ -17,39 +17,51 @@ export default function Posts() {
   const [loadingRefresh, setLoadingRefresh] = useState(false);
   const [lastItem, setLastItem] = useState('');
   const [emptyList, setEmptyList] = useState(false);
+  const [updateScreen, setUpdateScreen] = useState(false);
+
+  const updateChild = event => {
+    fetchPosts();
+  };
+
+  function fetchPosts() {
+    firestore()
+      .collection('posts')
+      .orderBy('createdAt', 'desc')
+      .limit(4)
+      .get()
+      .then(snapshot => {
+        setPosts([]);
+        const postList = [];
+        snapshot.docs.map(u => {
+          postList.push({
+            ...u.data(),
+            id: u.id,
+          });
+        });
+        setEmptyList(!!snapshot.empty);
+        setPosts(postList);
+        setLastItem(snapshot.docs[snapshot.docs.length - 1]);
+        setLoading(false);
+      });
+  }
 
   useFocusEffect(
     useCallback(() => {
       let isActive = true;
-      function fetchPosts() {
-        firestore()
-          .collection('posts')
-          .orderBy('createdAt', 'desc')
-          .limit(4)
-          .get()
-          .then(snapshot => {
-            if (isActive) {
-              setPosts([]);
-              const postList = [];
-              snapshot.docs.map(u => {
-                postList.push({
-                  ...u.data(),
-                  id: u.id,
-                });
-              });
-              setEmptyList(!!snapshot.empty);
-              setPosts(postList);
-              setLastItem(snapshot.docs[snapshot.docs.length - 1]);
-              setLoading(false);
-            }
-          });
-      }
       fetchPosts();
       return () => {
         isActive = false;
       };
     }, []),
   );
+
+  useEffect(() => {
+    let isActive = true;
+    fetchPosts();
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   useEffect(() => {
     const options = navigation.setOptions({
@@ -145,9 +157,15 @@ export default function Posts() {
         data={posts}
         onEndReached={() => getListPosts()}
         onEndReachedThreshold={0.02}
-        renderItem={({ item }) => (
-          <CardPost data={item} userId={dataContext.user?.uid} />
-        )}
+        renderItem={({ item }) =>
+          item.disable ? null : (
+            <CardPost
+              data={item}
+              userId={dataContext.user?.uid}
+              updateChild={updateChild}
+            />
+          )
+        }
       />
     </View>
   );

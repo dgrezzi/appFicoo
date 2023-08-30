@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
-import React, { useContext, useEffect, useState } from 'react';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Image,
@@ -13,6 +13,7 @@ import Btn from '../../components/Btn/intex';
 import BtnEdit from '../../components/BtnEdit/intex';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
+import getDataUserFirebase from '../../functions/getDataUserFirebase';
 import handleSignOut from '../../functions/handleSignOut';
 import styles from '../../styles/styles';
 
@@ -39,13 +40,21 @@ export default function Profile() {
         );
   }, [dataContext]);
 
+  useFocusEffect(
+    useCallback(() => {
+      getDataUserFirebase(dataContext);
+    }, []),
+  );
+
   return (
-    <View style={[styles.container, { gap: 8, paddingTop: 15 }]}>
+    <View style={[styles.container, { paddingTop: 0, paddingHorizontal: 0 }]}>
       <View
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
           width: '100%',
+          paddingHorizontal: 20,
+          padding: 10,
         }}>
         <BtnEdit
           onPress={async () => {
@@ -81,6 +90,7 @@ export default function Profile() {
             gap: 5,
             paddingRight: 12,
             paddingVertical: 25,
+            paddingHorizontal: 20,
           },
         ]}>
         <View

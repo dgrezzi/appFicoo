@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
@@ -183,6 +184,7 @@ export default function EditProfile() {
                   height: VARS.size.avatar,
                   borderRadius: VARS.size.avatar / 2,
                   elevation: 10,
+                  padding: 0,
                 }}
                 onPress={() => {
                   setImageLoad(true);
@@ -193,10 +195,26 @@ export default function EditProfile() {
                     borderRadius: VARS.size.avatar,
                     width: '100%',
                     height: '100%',
+                    elevation: 10,
                   }}
                   source={{ uri: photoAvatar }}
                 />
-                {/* colocar icone camera AQUI*/}
+                <Ionicons
+                  style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    right: 0,
+                    backgroundColor: VARS.color.blue,
+                    padding: 12,
+                    borderRadius: 100,
+                    zIndex: 99,
+                    borderWidth: 1,
+                    borderColor: VARS.color.whiteOpacity,
+                  }}
+                  name="camera-outline"
+                  size={VARS.size.icons * 0.7}
+                  color={VARS.color.white}
+                />
               </TouchableOpacity>
             )}
           </View>

@@ -1,7 +1,6 @@
-import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { MMKV } from 'react-native-mmkv';
 import ficoo from '../../assets/logoFicoo23.png';
 import { VARS } from '../../constants/VARS';
@@ -43,26 +42,6 @@ const Links = props => {
 
 export default function Dashboard() {
   const navigation = useNavigation();
-  const [lista, setLista] = useState();
-
-  const getDocs = async () => {
-    const markers = [];
-    await firestore()
-      .collection('user')
-      .get()
-      .then(result => {
-        result.forEach(doc => {
-          doc.data().uid = doc.id;
-          markers.push(doc.data());
-        });
-        return null;
-      })
-      .catch(err => {
-        console.error('erro no banco:', err);
-      });
-    setLista(markers);
-    return markers;
-  };
 
   return (
     <View
@@ -70,77 +49,74 @@ export default function Dashboard() {
         styles.container,
         {
           justifyContent: 'flex-start',
-          gap: 20,
+          paddingHorizontal: 0,
         },
       ]}>
-      <Image
-        style={{
-          height: 250,
-          backgroundColor: 'transparent',
-          resizeMode: 'contain',
-          margin: 15,
-        }}
-        source={ficoo}
-      />
+      <ScrollView
+        contentContainerStyle={{
+          paddingHorizontal: 20,
+          justifyContent: 'flex-start',
+          alignItems: 'center',
+          paddingVertical: 30,
+          gap: 20,
+        }}>
+        <Image
+          style={{
+            height: 250,
+            backgroundColor: 'transparent',
+            resizeMode: 'contain',
+            margin: 15,
+          }}
+          source={ficoo}
+        />
 
-      <Links
-        onPress={() => {
-          navigation.navigate('checkin');
-        }}
-        data={{
-          label: 'Check in no evento',
-          bgColor: VARS.color.white,
-          color: VARS.color.title,
-        }}
-      />
-      <Links
-        onPress={() => {
-          navigation.navigate('ListUser');
-        }}
-        data={{
-          label: 'Participantes',
-          bgColor: VARS.color.white,
-          color: VARS.color.title,
-        }}
-      />
-      <Links
-        onPress={() => {
-          navigation.navigate('Credenciamento');
-        }}
-        data={{
-          label: 'Paineis e Oficinas',
-          bgColor: VARS.color.white,
-          color: VARS.color.title,
-        }}
-      />
-
-      {lista &&
-        lista.map((item, index) => (
-          <View
-            key={index}
-            style={{
-              width: '100%',
-              backgroundColor: 'cyan',
-              paddingHorizontal: 20,
-              padding: 5,
-              borderRadius: 12,
-            }}>
-            <Text>
-              Nome: {item?.name} / email: {item?.email}
-            </Text>
-            <Text>
-              Admim? {JSON.stringify(item?.isAdmin)} / PWD:{' '}
-              {JSON.stringify(item?.pwd)}
-            </Text>
-            <Text>UID: {JSON.stringify(item?.uid)}</Text>
-          </View>
-        ))}
-      {/* <TouchableOpacity
+        <Links
+          onPress={() => {
+            navigation.navigate('checkin');
+          }}
+          data={{
+            label: 'Check in no evento',
+            bgColor: VARS.color.white,
+            color: VARS.color.title,
+          }}
+        />
+        <Links
+          onPress={() => {
+            navigation.navigate('ListUser');
+          }}
+          data={{
+            label: 'Participantes',
+            bgColor: VARS.color.white,
+            color: VARS.color.title,
+          }}
+        />
+        <Links
+          onPress={() => {
+            navigation.navigate('Credenciamento');
+          }}
+          data={{
+            label: 'Paineis e Oficinas',
+            bgColor: VARS.color.white,
+            color: VARS.color.title,
+          }}
+        />
+        <Links
+          onPress={() => {
+            navigation.navigate('makeAdmin');
+          }}
+          data={{
+            label: 'Multiplicador de Admins',
+            bgColor: VARS.color.white,
+            color: VARS.color.title,
+          }}
+        />
+        {/* <TouchableOpacity
         onPress={() => {
           storage.clearAll();
         }}>
         <Text>Teste</Text>
       </TouchableOpacity> */}
+      </ScrollView>
     </View>
   );
 }

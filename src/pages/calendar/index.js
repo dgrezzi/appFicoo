@@ -41,7 +41,7 @@ export default function Calendar() {
         styles.container,
         {
           justifyContent: 'flex-start',
-          paddingHorizontal: 10,
+          paddingHorizontal: 0,
           gap: 15,
         },
       ]}>
@@ -99,7 +99,8 @@ export default function Calendar() {
 
 const Atividade = props => {
   return (
-    <ScrollView contentContainerStyle={{ paddingVertical: 12 }}>
+    <ScrollView
+      contentContainerStyle={{ paddingVertical: 12, paddingHorizontal: 8 }}>
       {props.dia?.map((v, i) => {
         return <Dados key={i} data={v} />;
       })}
@@ -157,7 +158,7 @@ const Dados = props => {
         }}>
         {props.data?.title}
       </Text>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+      {/* <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
         <Ionicons
           name="location-outline"
           size={VARS.size.icons * 0.6}
@@ -173,7 +174,7 @@ const Dados = props => {
           }}>
           {props.data?.local}
         </Text>
-      </View>
+      </View> */}
     </View>
   );
 };

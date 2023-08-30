@@ -20,11 +20,14 @@ export default function Home() {
         styles.container,
         {
           alignItems: 'flex-start',
-          paddingHorizontal: 12,
+          paddingHorizontal: 0,
           paddingTop: 20,
         },
       ]}>
-      <Image style={{ width: '100%', resizeMode: 'cover' }} source={faixa} />
+      <Image
+        style={{ width: '100%', resizeMode: 'cover', paddingHorizontal: 20 }}
+        source={faixa}
+      />
       <ScrollView
         contentContainerStyle={{
           paddingVertical: 8,

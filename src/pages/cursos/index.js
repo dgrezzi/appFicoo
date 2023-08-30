@@ -21,8 +21,8 @@ export default function Cursos() {
       setEditable(false);
       const newCursos = {};
       newCursos['painel'] = dataContext.storageData.painel;
-      newCursos['oficina1'] = dataContext.storageData.oficinaDia13;
-      newCursos['oficina2'] = dataContext.storageData.oficinaDia14;
+      newCursos['oficina1'] = dataContext.storageData.oficina1;
+      newCursos['oficina2'] = dataContext.storageData.oficina2;
       setMeusCursos(newCursos);
     }
     if (!dataContext.storageData.inscrito) {
@@ -300,7 +300,7 @@ export default function Cursos() {
                   time={value.time}
                   editable={editable}
                   title={value.title}
-                  local={value.local}
+                  number={value.num}
                   owner={value.owner}
                   id={value.id}
                   vaga={vagas ? vagas[value.id] : null}
@@ -322,7 +322,7 @@ export default function Cursos() {
                   editable={editable}
                   title={value.title}
                   owner={value.owner}
-                  local={value.local}
+                  number={value.num}
                   id={value.id}
                   vaga={vagas ? vagas[value.id] : null}
                 />
@@ -339,11 +339,10 @@ export default function Cursos() {
                   atividadeChange={atividadeChange}
                   selected={value.id == meusCursos.oficina2}
                   time={value.time}
-                  dia="dia14"
                   editable={editable}
                   title={value.title}
                   owner={value.owner}
-                  local={value.local}
+                  number={value.num}
                   id={value.id}
                   vaga={vagas ? vagas[value.id] : null}
                 />

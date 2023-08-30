@@ -4,6 +4,7 @@ import Checkin from '../pages/checkin';
 import Credenciamento from '../pages/credenciamento';
 import Dashboard from '../pages/dashboard';
 import ListUser from '../pages/listUser';
+import MakeAdmin from '../pages/makeAdmin';
 
 const AppStack = createNativeStackNavigator();
 
@@ -39,6 +40,14 @@ export default function AdminRoute() {
         options={({ route }) => ({
           headerShown: true,
           title: 'Paineis e Oficinas',
+        })}
+      />
+      <AppStack.Screen
+        name="makeAdmin"
+        component={MakeAdmin}
+        options={({ route }) => ({
+          headerShown: true,
+          title: 'Gerador de Admins',
         })}
       />
     </AppStack.Navigator>

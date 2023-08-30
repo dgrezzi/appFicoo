@@ -16,6 +16,7 @@ function ChatList({ data, deleteRoom, userStatus }) {
 
   return (
     <TouchableOpacity
+      activeOpacity={0.6}
       style={{
         flex: 1,
         marginHorizontal: 15,

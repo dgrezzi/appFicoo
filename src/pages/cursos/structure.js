@@ -297,7 +297,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
                 aspectRatio: 1,
                 backgroundColor: props.selected
                   ? VARS.color.white
-                  : VARS.color.orange,
+                  : VARS.color.orangeLight,
                 borderRadius: 20,
                 borderWidth: 1,
                 borderColor: 'red',
@@ -307,7 +307,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
                   color: props.selected ? VARS.color.orange : VARS.color.white,
                   fontSize: 20,
                 }}>
-                1
+                {props.number}
               </Text>
             </View>
             {/* <Text

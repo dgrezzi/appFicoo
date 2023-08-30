@@ -11,21 +11,23 @@ function ChatMessage({ data }) {
   const { locale } = useContext(AuthContext);
 
   function formatTime() {
-    const datePost = new Date(data.createdAt.seconds * 1000);
-    if (locale == 'pt') {
-      return formatDistance(new Date(), datePost, {
-        locale: ptBR,
-      });
-    }
-    if (locale == 'en') {
-      return formatDistance(new Date(), datePost, {
-        locale: enUS,
-      });
-    }
-    if (locale == 'es') {
-      return formatDistance(new Date(), datePost, {
-        locale: es,
-      });
+    if (data.createdAt?.seconds) {
+      const datePost = new Date(data.createdAt?.seconds * 1000);
+      if (locale == 'pt') {
+        return formatDistance(new Date(), datePost, {
+          locale: ptBR,
+        });
+      }
+      if (locale == 'en') {
+        return formatDistance(new Date(), datePost, {
+          locale: enUS,
+        });
+      }
+      if (locale == 'es') {
+        return formatDistance(new Date(), datePost, {
+          locale: es,
+        });
+      }
     }
   }
 

@@ -27,7 +27,7 @@ export const paineis = [
     owner: 'HELENA MARUJO, FÁBIO EON e MICHELLE CONFESSOR',
     id: 'painel1',
     qtd: 20,
-    local: 'Sala X',
+    num: '1',
   },
   {
     time: '13/10 • 09h00 – 10h30',
@@ -35,7 +35,7 @@ export const paineis = [
     owner: 'CAÇADORES DE BONS EXEMPLOS e WiLSON NOBRE',
     id: 'painel2',
     qtd: 20,
-    local: 'Sala X',
+    num: '2',
   },
 ];
 
@@ -45,7 +45,7 @@ export const oficinasD13 = [
     title: 'SER-HUMANO, EIS A QUESTÃO: A EDUCAÇÃO E O DESAFIO DA REGENERAÇÃO',
     owner: 'Isabela Crema',
     id: 'oficina1-d13',
-    local: 'Sala X',
+    num: '1',
   },
 
   {
@@ -54,21 +54,21 @@ export const oficinasD13 = [
       'SEMENTES DA CONFIANÇA: COCRIANDO PONTES SOBRE OS ABISMOS QUE NOS SEPARAM',
     owner: 'Ita Gabert',
     id: 'oficina2-d13',
-    local: 'Sala X',
+    num: '2',
   },
   {
     time: '14h30 – 18h30',
     title: 'PROCESSOS SOCIOCRÁTICOS E TOMADAS DE DECISÕES REGENERATIVAS',
     owner: 'André Korsakas',
     id: 'oficina3-d13',
-    local: 'Sala X',
+    num: '3',
   },
   {
     time: '14h30 – 18h30',
     title: 'A ARTE DE RECICLAR PESSOAS',
     owner: 'Fred Magalhães',
     id: 'oficina4-d13',
-    local: 'Sala X',
+    num: '4',
   },
   {
     time: '14h30 – 18h30',
@@ -76,7 +76,7 @@ export const oficinasD13 = [
       'IMERSÃO EM COLABORAÇÃO REGENERATIVA: UM CAMINHO PARA A TRANSFORMAÇÃO MULTINÍVEL',
     owner: 'Marcelo Ferreira de Castilho',
     id: 'oficina5-d13',
-    local: 'Sala X',
+    num: '5',
   },
   {
     time: '14h30 – 18h30',
@@ -84,7 +84,7 @@ export const oficinasD13 = [
       'MOBILIZAÇÃO COMUNITÁRIA E O DESENVOLVIMENTO DE BRIGADAS ESCOLARES PARA ATUAÇÃO EM EMERGÊNCIAS HUMANITÁRIAS',
     owner: 'Rodrigo Xavier D’Almeida',
     id: 'oficina6-d13',
-    local: 'Sala X',
+    num: '6',
   },
   {
     time: '14h30 – 18h30',
@@ -92,7 +92,7 @@ export const oficinasD13 = [
       'POR UMA SOCIEDADE ANTIRRACISTA, DIVERSA E POLIFÔNICA: O BEM VIVER E OS VALORES CIVILIZATÓRIOS AFRO-BRASILEIROS COMO POTÊNCIAS DE VIDA',
     owner: 'Renata Nogueira da Silva',
     id: 'oficina7-d13',
-    local: 'Sala X',
+    num: '7',
   },
   {
     time: '14h30 – 18h30',
@@ -100,14 +100,14 @@ export const oficinasD13 = [
       'ESCUTANDO A VOZ DA TERRA: ECOPSICOLOGIA E A SINTONIA ENTRE A PESSOA E O PLANETA.',
     owner: 'Marco Aurélio Bilibio',
     id: 'oficina8-d13',
-    local: 'Sala X',
+    num: '8',
   },
   {
     time: '14h30 – 18h30',
     title: 'GAME JAM EXPERIENCE: LIBERE SEU POTENCIAL COCRIATIVO',
     owner: 'Magda Vila, Felipe Vila, Letícia Resck',
     id: 'oficina9-d13',
-    local: 'Sala X',
+    num: '9',
   },
   {
     time: '14h30 – 18h30',
@@ -115,7 +115,7 @@ export const oficinasD13 = [
       'FACILITADORES DE DIÁLOGO: TRANSFORMANDO CONFLITOS EM OPORTUNIDADES DE COEVOLUÇÃO',
     owner: 'Roberto Gonçalves Martini',
     id: 'oficina10-d13',
-    local: 'Sala X',
+    num: '10',
   },
 ];
 
@@ -125,7 +125,7 @@ export const oficinasD14 = [
     title: 'SER-HUMANO, EIS A QUESTÃO: A EDUCAÇÃO E O DESAFIO DA REGENERAÇÃO',
     owner: 'Isabela Crema',
     id: 'oficina1-d14',
-    local: 'Sala X',
+    num: '1',
   },
 
   {
@@ -134,21 +134,21 @@ export const oficinasD14 = [
       'SEMENTES DA CONFIANÇA: COCRIANDO PONTES SOBRE OS ABISMOS QUE NOS SEPARAM',
     owner: 'Ita Gabert',
     id: 'oficina2-d14',
-    local: 'Sala X',
+    num: '2',
   },
   {
     time: '14h30 – 18h30',
     title: 'PROCESSOS SOCIOCRÁTICOS E TOMADAS DE DECISÕES REGENERATIVAS',
     owner: 'André Korsakas',
     id: 'oficina3-d14',
-    local: 'Sala X',
+    num: '3',
   },
   {
     time: '14h30 – 18h30',
     title: 'A ARTE DE RECICLAR PESSOAS',
     owner: 'Fred Magalhães',
     id: 'oficina4-d14',
-    local: 'Sala X',
+    num: '4',
   },
   {
     time: '14h30 – 18h30',
@@ -156,7 +156,7 @@ export const oficinasD14 = [
       'IMERSÃO EM COLABORAÇÃO REGENERATIVA: UM CAMINHO PARA A TRANSFORMAÇÃO MULTINÍVEL',
     owner: 'Marcelo Ferreira de Castilho',
     id: 'oficina5-d14',
-    local: 'Sala X',
+    num: '5',
   },
   {
     time: '14h30 – 18h30',
@@ -164,7 +164,7 @@ export const oficinasD14 = [
       'MOBILIZAÇÃO COMUNITÁRIA E O DESENVOLVIMENTO DE BRIGADAS ESCOLARES PARA ATUAÇÃO EM EMERGÊNCIAS HUMANITÁRIAS',
     owner: 'Rodrigo Xavier D’Almeida',
     id: 'oficina6-d14',
-    local: 'Sala X',
+    num: '6',
   },
   {
     time: '14h30 – 18h30',
@@ -172,7 +172,7 @@ export const oficinasD14 = [
       'POR UMA SOCIEDADE ANTIRRACISTA, DIVERSA E POLIFÔNICA: O BEM VIVER E OS VALORES CIVILIZATÓRIOS AFRO-BRASILEIROS COMO POTÊNCIAS DE VIDA',
     owner: 'Renata Nogueira da Silva',
     id: 'oficina7-d14',
-    local: 'Sala X',
+    num: '7',
   },
   {
     time: '14h30 – 18h30',
@@ -180,14 +180,14 @@ export const oficinasD14 = [
       'ESCUTANDO A VOZ DA TERRA: ECOPSICOLOGIA E A SINTONIA ENTRE A PESSOA E O PLANETA.',
     owner: 'Marco Aurélio Bilibio',
     id: 'oficina8-d14',
-    local: 'Sala X',
+    num: '8',
   },
   {
     time: '14h30 – 18h30',
     title: 'GAME JAM EXPERIENCE: LIBERE SEU POTENCIAL COCRIATIVO',
     owner: 'Magda Vila, Felipe Vila, Letícia Resck',
     id: 'oficina9-d14',
-    local: 'Sala X',
+    num: '9',
   },
   {
     time: '14h30 – 18h30',
@@ -195,7 +195,7 @@ export const oficinasD14 = [
       'FACILITADORES DE DIÁLOGO: TRANSFORMANDO CONFLITOS EM OPORTUNIDADES DE COEVOLUÇÃO',
     owner: 'Roberto Gonçalves Martini',
     id: 'oficina10-d14',
-    local: 'Sala X',
+    num: '10',
   },
 ];
 
