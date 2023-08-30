@@ -1,45 +1,145 @@
-import React, { useContext } from 'react';
+import firestore from '@react-native-firebase/firestore';
+import { useFocusEffect } from '@react-navigation/native';
+import React, { useCallback, useContext, useState } from 'react';
 import { Image, ScrollView, View } from 'react-native';
-import destaque2 from '../../assets/1693319815310.jpg';
-import destaque from '../../assets/exemplo.png';
-import faixa from '../../assets/ficoo_faixas.png';
 import Carrossel from '../../components/Carrossel';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 
 export default function Home() {
+  const [header, setHeader] = useState();
+  const [aspectHeader, setAspectHeader] = useState();
+  const [oficoo, setOficoo] = useState();
+  const [conferencia, setConferencia] = useState();
+  const [paineis, setPaineis] = useState();
+  const [oficinas, setOficinas] = useState();
+  const [diver, setDiver] = useState();
+  const [parceiros, setParceiros] = useState();
   const { locale } = useContext(AuthContext);
+
+  const list = [
+    'header',
+    'oficoo',
+    'conferencia',
+    'paineis',
+    'oficinas',
+    'diver',
+    'parceiros',
+  ];
+
+  useFocusEffect(
+    useCallback(() => {
+      updatePage();
+      header &&
+        Image.getSize(header, (w, h) => {
+          setAspectHeader(w / h);
+        });
+    }, []),
+  );
+
+  const updatePage = () => {
+    const allProm = [];
+    list.map(item => {
+      allProm.push(getDados(item));
+    });
+    Promise.all(allProm);
+  };
+
+  const getDados = async doc => {
+    const check = [];
+    await firestore()
+      .collection('configs')
+      .doc(doc)
+      .collection('images')
+      .orderBy('createdAt', 'asc')
+      .get()
+      .then(result => {
+        result.forEach(doc => {
+          doc.data().uid = doc.id;
+          check.push(doc.data());
+        });
+        return null;
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+    doc == 'oficoo' ? setOficoo(check) : null;
+    doc == 'conferencia' ? setConferencia(check) : null;
+    doc == 'paineis' ? setPaineis(check) : null;
+    doc == 'oficinas' ? setOficinas(check) : null;
+    doc == 'diver' ? setDiver(check) : null;
+    doc == 'parceiros' ? setParceiros(check) : null;
+    doc == 'header' ? setHeader(check['0'].photoURL) : null;
+    return check;
+  };
 
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
-  const dados = [destaque2, destaque, destaque, destaque];
 
   return (
     <View
       style={[
         styles.container,
         {
-          alignItems: 'flex-start',
+          alignItems: 'center',
           paddingHorizontal: 0,
-          paddingTop: 20,
         },
       ]}>
-      <Image
-        style={{ width: '100%', resizeMode: 'cover', paddingHorizontal: 20 }}
-        source={faixa}
-      />
+      {header && (
+        <View style={{ padding: 15 }}>
+          <Image
+            style={{
+              width: '100%',
+              aspectRatio: aspectHeader,
+              resizeMode: 'contain',
+              paddingHorizontal: 20,
+            }}
+            source={{ uri: header }}
+          />
+        </View>
+      )}
       <ScrollView
         contentContainerStyle={{
+          width: '100%',
           paddingVertical: 8,
           gap: 10,
         }}>
-        <Carrossel label="O FICOO" data={dados} />
-        <Carrossel label="Conferências" data={dados} />
-        <Carrossel label="Painéis Colaborativos" data={dados} />
-        <Carrossel label="Oficinas de cooperação" data={dados} />
-        <Carrossel label="Festa DIVER e desafio FICOO" data={dados} />
-        <Carrossel label="Parceiros" data={dados} />
-        <Carrossel label="Loja FICOO" data={dados} />
+        <Carrossel
+          id="oficoo"
+          label="O FICOO"
+          data={oficoo}
+          updatePage={updatePage}
+        />
+        <Carrossel
+          id="conferencia"
+          label="Conferências"
+          data={conferencia}
+          updatePage={updatePage}
+        />
+        <Carrossel
+          id="paineis"
+          label="Painéis Colaborativos"
+          data={paineis}
+          updatePage={updatePage}
+        />
+        <Carrossel
+          id="oficinas"
+          label="Oficinas de Cooperação"
+          data={oficinas}
+          updatePage={updatePage}
+        />
+        <Carrossel
+          id="diver"
+          label="Desafio Ficoo e Festa Diver"
+          data={diver}
+          updatePage={updatePage}
+        />
+        <Carrossel
+          id="parceiros"
+          label="Comunidade"
+          data={parceiros}
+          updatePage={updatePage}
+        />
       </ScrollView>
     </View>
   );

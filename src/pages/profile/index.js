@@ -60,7 +60,7 @@ export default function Profile() {
           onPress={async () => {
             navigation.navigate('Cursos');
           }}
-          label="Inscrição"
+          label="Inscrições"
           labelColor={VARS.color.white}
           color={VARS.color.orange}
           icon="alert-outline"

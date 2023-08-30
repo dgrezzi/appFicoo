@@ -1,32 +1,86 @@
-import { Image, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useEffect, useState } from 'react';
+import { Image, Linking, Text, TouchableOpacity, View } from 'react-native';
 import { VARS } from '../../constants/VARS';
 
-export default function Card(props) {
+export default function Card({ info }) {
+  const [image, setImage] = useState();
+  const [aspect, setAspect] = useState();
+
+  useEffect(() => {
+    setImage(info?.photoURL);
+    Image.getSize(info?.photoURL, (w, h) => {
+      setAspect(w / h);
+    });
+  }, [info]);
+
   return (
-    <View
-      style={{
-        backgroundColor: VARS.color.white,
-        borderRadius: 18,
-        alignItems: 'center',
-        width: 400,
-        height: 250,
-        borderWidth: 1,
-        borderColor: VARS.color.whiteDark,
-        elevation: 10,
-        padding: 10,
-        marginBottom: 15,
-        margin: 5,
+    <TouchableOpacity
+      activeOpacity={1}
+      onLongPress={() => {
+        console.log(info.uid);
+      }}
+      onPress={() => {
+        info.linkURL ? Linking.openURL(info.linkURL) : null;
       }}>
-      <Image
+      <View
         style={{
-          width: '100%',
-          height: '100%',
+          backgroundColor: VARS.color.white,
+          borderRadius: 18,
+          alignItems: 'center',
+          height: 230,
           borderWidth: 1,
-          borderRadius: 10,
-          resizeMode: 'contain',
-        }}
-        source={props.image}
-      />
-    </View>
+          borderColor: VARS.color.whiteDark,
+          elevation: 10,
+          padding: 10,
+          marginBottom: 15,
+          margin: 5,
+        }}>
+        {info.linkURL && (
+          <View
+            style={{
+              position: 'absolute',
+              zIndex: 99,
+              padding: 5,
+              backgroundColor: VARS.color.blue,
+              borderRadius: 30,
+              paddingHorizontal: 10,
+              bottom: 10,
+              right: 10,
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 10,
+            }}>
+            <Text
+              style={{
+                color: VARS.color.white,
+                fontFamily: 'Abel',
+                fontSize: 14,
+                letterSpacing: 1,
+              }}>
+              Saiba Mais
+            </Text>
+            <Ionicons
+              name="arrow-forward-circle"
+              size={VARS.size.icons * 0.6}
+              color={VARS.color.orange}
+            />
+          </View>
+        )}
+        {image && (
+          <Image
+            style={{
+              height: '100%',
+              aspectRatio: aspect,
+              borderWidth: 1,
+              borderRadius: 10,
+              resizeMode: 'cover',
+            }}
+            source={{ uri: image }}
+          />
+        )}
+      </View>
+    </TouchableOpacity>
   );
 }
