@@ -1,3 +1,4 @@
+import firestore from '@react-native-firebase/firestore';
 import React, { createContext, useEffect, useState } from 'react';
 export const AuthContext = createContext({});
 
@@ -9,10 +10,10 @@ export default function AuthProvider({ children }) {
   const [dataContext, setDataContext] = useState({});
   const [locale, setLocale] = useState('pt');
   const [active, setActive] = useState(false);
-
-  const activationPass = 'lc5816qd2';
+  const [activationPass, setActivationPass] = useState('lc5816qd2');
 
   useEffect(() => {
+    getActivationCode();
     let dataUser = storage.getString('user');
     dataUser ? setDataContext(JSON.parse(dataUser)) : setDataContext({});
     let dataLocale = storage.getString('locale');
@@ -45,6 +46,19 @@ export default function AuthProvider({ children }) {
       listner.remove();
     };
   }, []);
+
+  async function getActivationCode() {
+    await firestore()
+      .collection('configs')
+      .doc('Ativacao')
+      .get()
+      .then(result => {
+        setActivationPass(result._data?.value);
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+  }
 
   return (
     <AuthContext.Provider

@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useContext, useEffect, useState } from 'react';
 import {
+  Alert,
   Image,
   Keyboard,
   KeyboardAvoidingView,
@@ -10,6 +11,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import { MMKV } from 'react-native-mmkv';
 import logo from '../../../src/assets/logo.png';
 import Btn from '../../components/Btn/intex';
 import InputTxt from '../../components/InputTxt';
@@ -19,6 +21,8 @@ import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import handleSignIn from '../../functions/handleSignIn';
 import styles from '../../styles/styles';
+
+const storage = new MMKV({ id: 'appFicoo' });
 
 export default function Signin() {
   const navigation = useNavigation();
@@ -61,7 +65,24 @@ export default function Signin() {
               styles.container,
               { paddingVertical: 25, justifyContent: 'space-between', gap: 20 },
             ]}>
-            <Image style={[styles.logo]} source={logo} />
+            <TouchableOpacity
+              onLongPress={() => {
+                Alert.alert('Atenção!', 'Resetar o aplicativo?', [
+                  {
+                    text: 'Cancel',
+                    onPress: () => {},
+                    style: 'cancel',
+                  },
+                  {
+                    text: 'OK',
+                    onPress: () => storage.clearAll(),
+                  },
+                ]);
+              }}
+              activeOpacity={1}>
+              <Image style={[styles.logo]} source={logo} />
+            </TouchableOpacity>
+
             <View
               style={{
                 width: '100%',

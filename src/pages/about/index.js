@@ -25,7 +25,7 @@ export default function About() {
   const { locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
-  const [passActivate, setPassActivate] = useState('lc5816qd2');
+  const [passActivate, setPassActivate] = useState('');
 
   return (
     <KeyboardAvoidingView

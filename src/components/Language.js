@@ -5,6 +5,7 @@ import { MMKV } from 'react-native-mmkv';
 import { VARS } from '../constants/VARS';
 import { AuthContext } from '../contexts/auth';
 import handleLocale from '../functions/handleLocale';
+
 const storage = new MMKV({ id: 'appFicoo' });
 
 export default function Language() {
@@ -15,7 +16,7 @@ export default function Language() {
   const [selectedLanguage, setSelectedLanguage] = useState('pt');
   useEffect(() => {
     const lang = storage.getString('locale');
-    setSelectedLanguage(lang?.slice(1, 3));
+    lang ? setSelectedLanguage(lang?.slice(1, 3)) : setSelectedLanguage('pt');
   }, []);
 
   return (
