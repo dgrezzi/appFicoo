@@ -152,7 +152,7 @@ export default function ListUser() {
         <View
           style={{
             width: window.width - 40,
-            aspectRatio: 1.6,
+            aspectRatio: 1.45,
             backgroundColor: ficoo ? '#eef' : VARS.color.white,
             borderWidth: 1,
             borderColor: VARS.color.blueLight,
@@ -193,7 +193,7 @@ export default function ListUser() {
                 <Image
                   style={{
                     borderRadius: VARS.size.avatar,
-                    width: VARS.size.avatar / 1.8,
+                    width: VARS.size.avatar / 1.85,
                     aspectRatio: 1,
                   }}
                   source={{ uri: item?.photoURL }}
@@ -214,8 +214,9 @@ export default function ListUser() {
               flex: 1,
               height: '100%',
               width: '100%',
-              justifyContent: 'space-around',
+              justifyContent: 'flex-start',
               paddingHorizontal: 8,
+              gap: 6,
             }}>
             <Label icon="mail-outline" label="" value={item?.email} />
             {item.instagram ? (
@@ -259,7 +260,7 @@ export default function ListUser() {
         <View
           style={{
             width: window.width - 40,
-            aspectRatio: 1.6,
+            aspectRatio: 1.45,
             backgroundColor: ficoo ? '#eef' : VARS.color.white,
             borderWidth: 1,
             borderColor: VARS.color.blueLight,
@@ -311,7 +312,7 @@ export default function ListUser() {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <GestureFlipView width={window.width} height={window.width / 1.65}>
+        <GestureFlipView width={window.width} height={window.width / 1.5}>
           <RenderFront />
           {item?.aboutme ? <RenderBack /> : <RenderFront />}
         </GestureFlipView>
