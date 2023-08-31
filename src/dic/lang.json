@@ -1,11 +1,3 @@
-/*
-
- const { locale } = useContext(AuthContext);
- let dic = require('../../dic/lang.json');
- let lang = dic[locale];
-
- */
-
 {
   "pt": {
     "skip": "Pular",
