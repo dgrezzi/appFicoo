@@ -29,10 +29,10 @@ export default function NewPost() {
       headerRight: () => (
         <BtnEdit
           onPress={async () => {
-            if (title && post) {
+            if (post) {
               data = {
                 user: dataContext.user,
-                title: title,
+                title: title ? title : null,
                 post: post,
                 storageData: dataContext.storageData,
               };

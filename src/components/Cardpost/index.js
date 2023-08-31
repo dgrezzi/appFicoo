@@ -1,7 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
 import { formatDistance } from 'date-fns';
 import { enUS, es, ptBR } from 'date-fns/locale';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
 import { MMKV } from 'react-native-mmkv';
 import { VARS } from '../../constants/VARS';
@@ -15,7 +15,6 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
   const getDataUser = storage.getString('user');
   let dataUser = '';
   getDataUser ? (dataUser = JSON.parse(getDataUser)) : (dataUser = '');
-  const [updateScreen, setUpdateScreen] = useState(false);
 
   const changeState = () => {
     updateChild();
@@ -106,16 +105,18 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
             gap: 10,
             padding: 5,
           }}>
-          <Text
-            numberOfLines={1}
-            style={{
-              fontFamily: 'AbelBold',
-              fontSize: 24,
-              letterSpacing: 1,
-            }}
-            multiline={false}>
-            {data.title}
-          </Text>
+          {data.title && (
+            <Text
+              numberOfLines={1}
+              style={{
+                fontFamily: 'AbelBold',
+                fontSize: 24,
+                letterSpacing: 1,
+              }}
+              multiline={false}>
+              {data.title}
+            </Text>
+          )}
           <Text
             style={{
               fontFamily: 'Abel',
@@ -141,6 +142,7 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'flex-start',
+                gap: 10,
               }}>
               {data.avatarURL && (
                 <Image
@@ -148,7 +150,6 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
                     width: VARS.size.avatar / 3.8,
                     aspectRatio: 1,
                     borderRadius: VARS.size.avatar / 2,
-                    marginRight: 12,
                   }}
                   source={{ uri: data.avatarURL }}
                 />
@@ -159,7 +160,6 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
                     width: VARS.size.avatar / 2.3,
                     aspectRatio: 1,
                     borderRadius: VARS.size.avatar / 2,
-                    marginRight: 12,
                   }}
                   source={{ uri: avatar }}
                 />

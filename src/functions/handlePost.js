@@ -5,7 +5,7 @@ export default async function handlePost(data) {
     .collection('posts')
     .doc()
     .set({
-      title: data.title,
+      title: data.title ? data.title : null,
       post: data.post,
       uid: data.user.uid,
       autor: data.storageData?.name,
