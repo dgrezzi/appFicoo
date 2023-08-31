@@ -33,9 +33,9 @@ export default function Calendar() {
       locale == 'pt'
         ? dia14pt
         : locale == 'en'
-        ? dia14en
+        ? dia14pt
         : locale == 'es'
-        ? dia14es
+        ? dia14pt
         : null,
   };
 

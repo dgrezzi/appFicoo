@@ -12,7 +12,7 @@ export default function Language() {
   let dic = require('../dic/lang.json');
   let lang = dic[locale];
 
-  const [selectedLanguage, setSelectedLanguage] = useState();
+  const [selectedLanguage, setSelectedLanguage] = useState('pt');
   useEffect(() => {
     const lang = storage.getString('locale');
     setSelectedLanguage(lang?.slice(1, 3));
