@@ -52,7 +52,7 @@ export default function About() {
           <View style={{ alignItems: 'center', gap: 10 }}>
             <InputTxt
               icon="key-outline"
-              placeholder="Código de ativação"
+              placeholder={lang.activateCode}
               value={passActivate}
               security={false}
               onChangeText={txt => {

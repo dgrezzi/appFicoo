@@ -172,9 +172,9 @@ export default function MakeAdmin() {
             gap: 8,
             marginVertical: 20,
           }}>
-          <Dados data={{ label: 'Nome:', value: id?.name }} />
-          <Dados data={{ label: 'e-mail:', value: id?.email }} />
-          <Dados data={{ label: 'Ientificador:', value: id?.id }} />
+          <Dados data={{ label: lang.labelName, value: id?.name }} />
+          <Dados data={{ label: lang.labelEmail, value: id?.email }} />
+          <Dados data={{ label: lang.identify, value: id?.id }} />
         </View>
         {check && (
           <View

@@ -101,18 +101,21 @@ export default function Credentials() {
           </Text>
           <View style={{ width: '100%', gap: 10 }}>
             <Dados
-              data={{ label: 'Nome:', value: dataContext.storageData?.name }}
+              data={{
+                label: lang.labelName,
+                value: dataContext.storageData?.name,
+              }}
             />
             <Dados
-              data={{ label: 'e-mail:', value: dataContext.user?.email }}
+              data={{ label: lang.labelEmail, value: dataContext.user?.email }}
             />
           </View>
           <Dados
-            data={{ label: 'Identificador:', value: dataContext.user?.uid }}
+            data={{ label: lang.identify, value: dataContext.user?.uid }}
           />
           <Dados
             data={{
-              label: 'Painel:',
+              label: lang.confPainel,
               value: formatLetter(
                 legenda[dataContext.storageData?.painel]?.slice(0, 28) + '...',
               ),
@@ -120,7 +123,7 @@ export default function Credentials() {
           />
           <Dados
             data={{
-              label: 'Identificador:',
+              label: lang.oficina1,
               value: formatLetter(
                 legenda[dataContext.storageData?.oficina1]?.slice(0, 28) +
                   '...',
@@ -129,7 +132,7 @@ export default function Credentials() {
           />
           <Dados
             data={{
-              label: 'Identificador:',
+              label: lang.oficina2,
               value: formatLetter(
                 legenda[dataContext.storageData?.oficina2]?.slice(0, 28) +
                   '...',

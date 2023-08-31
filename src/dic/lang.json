@@ -103,7 +103,11 @@
     "send": "ENVIAR",
     "alertPass": "Seu chamado foi aberto",
     "lostPassInstruction": "Insira seu email para receber informações sobre criar NOVA SENHA",
-    "minPass": "(Mínimo 6 caracteres)"
+    "minPass": "(Mínimo 6 caracteres)",
+    "Link": "Link",
+    "identify": "Identificador",
+    "oficina1": "Oficina 13/10: ",
+    "oficina2": "Oficina 14/10: "
   },
 
   "en": {
@@ -149,7 +153,7 @@
     "post": "Post",
     "newPostLabelTitle": "Title",
     "newPostLabelContent": "Content",
-    "batePapo": "BATE PAPO",
+    "batePapo": "CHAT",
     "newGroup": "Create Group",
     "groupName": "Group name",
     "yourMessage": "Your Message",
@@ -210,7 +214,11 @@
     "send": "SEND",
     "alertPass": "Your call has been opened",
     "lostPassInstruction": "Enter your email to receive information about creating a NEW PASSWORD",
-    "minPass": "(Minimum 6 characters)"
+    "minPass": "(Minimum 6 characters)",
+    "Link": "Link",
+    "identify": "identifier",
+    "oficina1": "Oficina 13/10: ",
+    "oficina2": "Oficina 14/10: "
   },
 
   "es": {
@@ -317,6 +325,10 @@
     "send": "ENVIAR",
     "alertPass": "Tu llamada ha sido abierta",
     "lostPassInstruction": "Ingresa tu correo electrónico para recibir información sobre cómo crear una NUEVA CONTRASEÑA",
-    "minPass": "(Mínimo 6 caracteres)"
+    "minPass": "(Mínimo 6 caracteres)",
+    "Link": "Link",
+    "identify": "Identificador",
+    "oficina1": "Oficina 13/10: ",
+    "oficina2": "Oficina 14/10: "
   }
 }

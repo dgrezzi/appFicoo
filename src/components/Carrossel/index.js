@@ -13,7 +13,9 @@ export default function Carrossel({ id, data, label, updatePage }) {
   const [edit, setEdit] = useState();
   const [disable, setDisable] = useState(false);
 
-  const { dataContext } = useContext(AuthContext);
+  const { dataContext, locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
 
   const handleGetFile = async () => {
     const options = {
@@ -115,7 +117,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
           <InputTxt
             icon=""
             multiline={false}
-            placeholder="link"
+            placeholder={lang.link}
             security={false}
             editable={true}
             value={input}
