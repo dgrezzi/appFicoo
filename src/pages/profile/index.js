@@ -182,6 +182,52 @@ export default function Profile() {
               </View>
             ) : null}
 
+            {dataContext.storageData?.instagram ? (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  alignItems: 'center',
+                  gap: 5,
+                  paddingHorizontal: 10,
+                }}>
+                <Ionicons name="logo-instagram" size={20} color="red" />
+
+                <Text
+                  style={{
+                    fontFamily: 'Abel',
+                    fontSize: 20,
+                    letterSpacing: 1,
+                    color: VARS.color.title,
+                  }}>
+                  {dataContext.storageData?.instagram}
+                </Text>
+              </View>
+            ) : null}
+
+            {dataContext.storageData?.linkedin ? (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                  alignItems: 'center',
+                  gap: 5,
+                  paddingHorizontal: 10,
+                }}>
+                <Ionicons name="logo-linkedin" size={20} color="red" />
+
+                <Text
+                  style={{
+                    fontFamily: 'Abel',
+                    fontSize: 20,
+                    letterSpacing: 1,
+                    color: VARS.color.title,
+                  }}>
+                  {dataContext.storageData?.linkedin}
+                </Text>
+              </View>
+            ) : null}
+
             {dataContext.storageData?.city ? (
               <View
                 style={{

@@ -119,9 +119,10 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
           <Text
             style={{
               fontFamily: 'Abel',
-              fontSize: 18,
+              fontSize: 20,
               letterSpacing: 1,
               textAlign: 'justify',
+              color: VARS.color.black,
             }}
             multiline={true}>
             {data.post}

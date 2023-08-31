@@ -38,7 +38,7 @@ export default function EditInputTxt(props) {
             borderColor: VARS.color.whiteDark,
             borderWidth: 1,
             borderRadius: 12,
-            paddingHorizontal: 12,
+            paddingHorizontal: 10,
             backgroundColor: VARS.color.white,
             elevation: 5,
             shadowColor: VARS.color.blue,

@@ -220,7 +220,9 @@
     "Link": "Link",
     "identify": "identifier",
     "oficina1": "Oficina 13/10: ",
-    "oficina2": "Oficina 14/10: "
+    "oficina2": "Oficina 14/10: ",
+    "inscritos": "Registration List",
+    "close": "Close"
   },
 
   "es": {
@@ -331,6 +333,8 @@
     "Link": "Link",
     "identify": "Identificador",
     "oficina1": "Oficina 13/10: ",
-    "oficina2": "Oficina 14/10: "
+    "oficina2": "Oficina 14/10: ",
+    "inscritos": "Lista de Inscritos",
+    "close": "Cerrar"
   }
 }

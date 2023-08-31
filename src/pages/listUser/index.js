@@ -218,7 +218,15 @@ export default function ListUser() {
               paddingHorizontal: 8,
             }}>
             <Label icon="mail-outline" label="" value={item?.email} />
-            <Label icon="location-outline" label="" value={item?.city} />
+            {item.instagram ? (
+              <Label icon="logo-instagram" label="" value={item?.instagram} />
+            ) : null}
+            {item.linkedin ? (
+              <Label icon="logo-linkedin" label="" value={item?.linkedin} />
+            ) : null}
+            {item.city ? (
+              <Label icon="location-outline" label="" value={item?.city} />
+            ) : null}
             <View />
           </View>
           {ficoo && (

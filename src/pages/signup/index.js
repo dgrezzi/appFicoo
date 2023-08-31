@@ -41,6 +41,7 @@ export default function Signup() {
       checkBox2
     ) {
       handleSignUp(name, email, city, pwd);
+      navigation.goBack();
       return;
     }
     if (!name || !email || city || checkBox1 || checkBox2) {
@@ -154,7 +155,6 @@ export default function Signup() {
             iconSize={VARS.size.icons}
             onPress={() => {
               validInputSign();
-              navigation.goBack();
             }}
           />
         </View>

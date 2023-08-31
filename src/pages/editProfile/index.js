@@ -35,6 +35,10 @@ export default function EditProfile() {
   const [phone, setPhone] = useState(dataContext.storageData?.phone);
   const [city, setCity] = useState(dataContext.storageData?.city);
   const [aboutme, setAboutme] = useState(dataContext.storageData?.aboutme);
+  const [instagram, setInstagram] = useState(
+    dataContext.storageData?.instagram,
+  );
+  const [linkedin, setLinkedin] = useState(dataContext.storageData?.linkedin);
 
   const [photoAvatar, setPhotoAvatar] = useState(
     'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/avatarM.jpg?alt=media&token=a494693c-611f-435a-b34a-d54fcc38461d',
@@ -228,7 +232,6 @@ export default function EditProfile() {
                 setName(txt);
               }}
             />
-
             <EditInputText
               label={lang.labelEmail}
               placeholder=""
@@ -239,7 +242,28 @@ export default function EditProfile() {
                 setEmail(txt);
               }}
             />
-
+            <EditInputText
+              label="instagram"
+              placeholder=""
+              value={instagram}
+              icon="logo-instagram"
+              security={false}
+              editable={true}
+              onChangeText={txt => {
+                setInstagram(txt);
+              }}
+            />
+            <EditInputText
+              label="linkedIn"
+              placeholder=""
+              value={linkedin}
+              icon="logo-linkedin"
+              security={false}
+              editable={true}
+              onChangeText={txt => {
+                setLinkedin(txt);
+              }}
+            />
             <EditInputText
               label={lang.labelPhone}
               placeholder=""
@@ -262,7 +286,6 @@ export default function EditProfile() {
                 setCity(txt);
               }}
             />
-
             <EditInputText
               label={lang.labelAboutme}
               placeholder=""
@@ -297,6 +320,8 @@ export default function EditProfile() {
             name ? (data.name = name) : null;
             phone ? (data.phone = phone) : null;
             city ? (data.city = city) : null;
+            instagram ? (data.instagram = instagram) : null;
+            linkedin ? (data.linkedin = linkedin) : null;
             aboutme ? (data.aboutme = aboutme) : null;
             setUpdateUserFirebase(dataContext, data);
             navigation.goBack();

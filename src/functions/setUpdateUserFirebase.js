@@ -8,6 +8,8 @@ export default async function setUpdateUserFirebase(dataContext, data) {
   data.phone ? (update.phone = data.phone) : null;
   data.city ? (update.city = data.city) : null;
   data.aboutme ? (update.aboutme = data.aboutme) : null;
+  data.instagram ? (update.instagram = data.instagram) : null;
+  data.linkedin ? (update.linkedin = data.linkedin) : null;
   await firestore()
     .collection('user')
     .doc(uid)
