@@ -38,7 +38,7 @@ export default function PerfilRoute() {
         name="LostPass"
         component={LostPass}
         options={({ route }) => ({
-          title: lang.titleLostPass,
+          title: lang.titlLostPass,
         })}
       />
       <AppStack.Screen

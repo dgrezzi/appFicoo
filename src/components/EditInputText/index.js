@@ -1,10 +1,12 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useContext } from 'react';
-import { Text, TextInput, View } from 'react-native';
+import { useContext, useState } from 'react';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 
 export default function EditInputTxt(props) {
+  const [passVisible, setPassVisible] = useState(!props.security);
+
   const { locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
@@ -62,8 +64,8 @@ export default function EditInputTxt(props) {
             },
           ]}
           autoCorrect={!props.security}
-          placeholder={props.placeholder}
-          secureTextEntry={props.security}
+          placeholder={passVisible ? props.placeholder : '*****'}
+          secureTextEntry={!passVisible}
           value={props.value}
           maxLength={props.maxLength}
           textAlignVertical={props.textAlignVertical}
@@ -74,6 +76,20 @@ export default function EditInputTxt(props) {
             props.onChangeText(data);
           }}
         />
+        {props.security && (
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => {
+              setPassVisible(!passVisible);
+            }}>
+            <Ionicons
+              style={{ marginRight: 6, opacity: 0.8 }}
+              name={passVisible ? 'eye-outline' : 'eye-off-outline'}
+              size={VARS.size.icons * 0.8}
+              color={VARS.color.subColor}
+            />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );

@@ -3,6 +3,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Image, ScrollView, View } from 'react-native';
 import Carrossel from '../../components/Carrossel';
+import Loading from '../../components/Loading';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 
@@ -15,6 +16,7 @@ export default function Home() {
   const [oficinas, setOficinas] = useState();
   const [diver, setDiver] = useState();
   const [parceiros, setParceiros] = useState();
+  const [loading, setLoading] = useState(true);
 
   const { locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
@@ -80,8 +82,13 @@ export default function Home() {
     doc == 'diver' ? setDiver(check) : null;
     doc == 'parceiros' ? setParceiros(check) : null;
     doc == 'header' ? setHeader(check['0'].photoURL) : null;
+    setLoading(false);
     return check;
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <View
