@@ -239,7 +239,7 @@ export const legenda = {
 };
 
 export const legenda2 = {
-  painel1: 'Painel - FAlta de Cultura de Paz e Saúde Integral na Educação',
+  painel1: 'Painel - Cultura de Paz e Saúde Integral na Educação',
   painel2: 'Painel - Boas Práticas de Inovação Social e Gestão Organizacional',
   'oficina1-d13':
     'Dia 13 - SER-HUMANO, EIS A QUESTÃO: A EDUCAÇÃO E O DESAFIO DA REGENERAÇÃO',

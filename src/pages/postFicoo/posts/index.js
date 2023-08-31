@@ -68,7 +68,7 @@ export default function Posts() {
   useEffect(() => {
     const options = navigation.setOptions({
       headerRight: () =>
-        dataContext.storageData?.isAdmin ? (
+        dataContext.storageData?.superAdm ? (
           <BtnEdit
             onPress={async () => {
               navigation.navigate('newPost');

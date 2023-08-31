@@ -19,6 +19,9 @@ export default function ListUser() {
   const [checkinList, setCheckinList] = useState([]);
   const [input, setInput] = useState('');
   const [list, setList] = useState([]);
+  const [avatarFicoo, setAvatarFicoo] = useState(
+    'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/logo-white.png?alt=media&token=1d972f3e-339f-4c37-bafe-9431051de805',
+  );
 
   const { locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
@@ -32,6 +35,7 @@ export default function ListUser() {
     city: 'Brasil',
     aboutme: lang.abouFicoo,
     checked: true,
+    photoURL: avatarFicoo,
   };
 
   useEffect(() => {
@@ -60,7 +64,9 @@ export default function ListUser() {
       .then(result => {
         result.forEach(doc => {
           doc.data().uid = doc.id;
-          markers.push(doc.data());
+          doc.data().ficoo
+            ? markers.unshift(doc.data())
+            : markers.push(doc.data());
         });
         return null;
       })
@@ -178,14 +184,21 @@ export default function ListUser() {
               paddingHorizontal: 8,
             }}>
             {item?.photoURL && (
-              <Image
+              <View
                 style={{
-                  borderRadius: VARS.size.avatar,
-                  width: VARS.size.avatar / 1.8,
-                  aspectRatio: 1,
-                }}
-                source={{ uri: item?.photoURL }}
-              />
+                  backgroundColor: 'white',
+                  borderRadius: 50,
+                  elevation: 10,
+                }}>
+                <Image
+                  style={{
+                    borderRadius: VARS.size.avatar,
+                    width: VARS.size.avatar / 1.8,
+                    aspectRatio: 1,
+                  }}
+                  source={{ uri: item?.photoURL }}
+                />
+              </View>
             )}
             <Text
               style={{
@@ -315,7 +328,6 @@ export default function ListUser() {
         />
       </View>
       <ScrollView contentContainerStyle={{ paddingBottom: 25 }}>
-        <FlipCard index={1} item={ficoo} ficoo={true} />
         {list.map((value, index) => {
           return (
             !value.disableView && (
@@ -323,6 +335,7 @@ export default function ListUser() {
                 key={index}
                 index={index}
                 item={value}
+                ficoo={value.ficoo}
                 checkin={checkinList}
               />
             )

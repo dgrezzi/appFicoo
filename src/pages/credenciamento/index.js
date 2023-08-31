@@ -38,10 +38,12 @@ export default function Credenciamento() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scan, setScan] = useState(false);
   const [id, setId] = useState();
-  const [check, setCheck] = useState('');
+  const [check, setCheck] = useState(false);
   const [current, setCurrent] = useState('none');
   const [atividades, setAtividades] = useState([]);
   const [inscritos, setInscritos] = useState([]);
+  const [names, setNames] = useState([]);
+  const [showList, setShowList] = useState(false);
   const scanned = false;
 
   const { locale } = useContext(AuthContext);
@@ -73,6 +75,7 @@ export default function Credenciamento() {
 
   const getUsers = async chave => {
     const users = [];
+    const userName = [];
     await firestore()
       .collection('checkin')
       .doc(chave)
@@ -81,7 +84,9 @@ export default function Credenciamento() {
       .then(result => {
         result.forEach(doc => {
           users.push(doc._data?.uid);
+          userName.push(doc._data.name);
         });
+        setNames(userName);
         setInscritos(users);
         return;
       })
@@ -150,50 +155,6 @@ export default function Credenciamento() {
           justifyContent: 'space-around',
         },
       ]}>
-      {check && (
-        <View
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            backgroundColor: 'transparent',
-            width: '100%',
-            height: '100%',
-            zIndex: 999,
-
-            gap: 50,
-          }}>
-          <View
-            style={{
-              backgroundColor: VARS.color.white,
-              flex: 1,
-              margin: 40,
-              marginVertical: 70,
-              borderRadius: 50,
-              borderWidth: 1,
-              borderColor: VARS.color.blueLight,
-              elevation: 10,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text
-              style={{
-                fontFamily: 'AbelBold',
-                letterSpacing: 1,
-                fontSize: 30,
-                textAlign: 'center',
-                padding: 10,
-              }}>
-              {check == true ? lang.confirmUser : lang.noConfirmUser}
-            </Text>
-            {check == true ? (
-              <Ionicons name="checkmark-outline" size={80} color={'green'} />
-            ) : (
-              <Ionicons name="close-outline" size={80} color={'red'} />
-            )}
-          </View>
-        </View>
-      )}
       <ScrollView
         contentContainerStyle={{
           alignItems: 'center',
@@ -264,7 +225,6 @@ export default function Credenciamento() {
             </Picker>
           </View>
         </View>
-
         <View
           style={{
             alignItems: 'center',
@@ -321,10 +281,29 @@ export default function Credenciamento() {
             gap: 8,
             marginVertical: 20,
           }}>
-          <Dados data={{ label: 'Nome:', value: id?.name }} />
-          <Dados data={{ label: 'e-mail:', value: id?.email }} />
-          <Dados data={{ label: 'Ientificador:', value: id?.id }} />
+          <Dados data={{ label: lang.labelName, value: id?.name }} />
+          <Dados data={{ label: lang.labelEmail, value: id?.email }} />
+          <Dados data={{ label: lang.identify, value: id?.id }} />
         </View>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={{
+            padding: 8,
+            backgroundColor: VARS.color.white,
+            elevation: 5,
+            paddingHorizontal: 20,
+            borderRadius: 10,
+            borderWidth: 1,
+            borderColor: VARS.color.grayLight,
+          }}
+          onPress={() => {
+            setShowList(!showList);
+          }}>
+          <Text
+            style={{ fontFamily: 'AbelBold', fontSize: 16, letterSpacing: 1 }}>
+            {lang.inscritos}
+          </Text>
+        </TouchableOpacity>
         <Btn
           label={lang.validation}
           color={VARS.color.blue}
@@ -336,6 +315,148 @@ export default function Credenciamento() {
           }}
         />
       </ScrollView>
+      {check && (
+        <View
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            backgroundColor: 'transparent',
+            width: '100%',
+            height: '100%',
+            zIndex: 999,
+
+            gap: 50,
+          }}>
+          <View
+            style={{
+              backgroundColor: VARS.color.white,
+              flex: 1,
+              margin: 40,
+              marginVertical: 70,
+              borderRadius: 50,
+              borderWidth: 1,
+              borderColor: VARS.color.blueLight,
+              elevation: 10,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text
+              style={{
+                fontFamily: 'AbelBold',
+                letterSpacing: 1,
+                fontSize: 30,
+                textAlign: 'center',
+                padding: 10,
+              }}>
+              {check == true ? lang.confirmUser : lang.noConfirmUser}
+            </Text>
+            {check == true ? (
+              <Ionicons name="checkmark-outline" size={80} color={'green'} />
+            ) : (
+              <Ionicons name="close-outline" size={80} color={'red'} />
+            )}
+          </View>
+        </View>
+      )}
+
+      {showList && current != 'none' && (
+        <View
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            backgroundColor: 'transparent',
+            width: '100%',
+            height: '100%',
+            zIndex: 999,
+            gap: 50,
+          }}>
+          <View
+            style={{
+              backgroundColor: VARS.color.white,
+              flex: 1,
+              margin: 20,
+              marginVertical: 20,
+              borderRadius: 30,
+              borderWidth: 1,
+              borderColor: VARS.color.blueLight,
+              elevation: 10,
+              padding: 20,
+              paddingVertical: 20,
+              alignItems: 'center',
+              gap: 12,
+            }}>
+            <Text
+              style={{
+                width: '100%',
+                textAlign: 'center',
+                fontFamily: 'AbelBold',
+                fontSize: 22,
+                letterSpacing: 1,
+                color: VARS.color.blue,
+              }}>
+              {formatLetter(legenda2[current]?.slice(0, 35) + '...')}
+            </Text>
+            <ScrollView
+              style={{ width: '100%' }}
+              contentContainerStyle={{
+                gap: 8,
+                paddingTop: 10,
+              }}>
+              {names.map((value, index) => {
+                return (
+                  <View
+                    key={index}
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: 5,
+                    }}>
+                    <Ionicons
+                      name="checkmark-outline"
+                      size={20}
+                      color={'green'}
+                    />
+                    <Text
+                      style={{
+                        fontFamily: 'Abel',
+                        fontSize: 20,
+                        letterSpacing: 1,
+                      }}>
+                      {value}
+                    </Text>
+                  </View>
+                );
+              })}
+            </ScrollView>
+
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={{
+                padding: 8,
+                backgroundColor: VARS.color.white,
+                elevation: 5,
+                paddingHorizontal: 20,
+                borderRadius: 10,
+                borderWidth: 1,
+                borderColor: VARS.color.grayLight,
+              }}
+              onPress={() => {
+                current != 'none' ? setShowList(!showList) : null;
+              }}>
+              <Text
+                style={{
+                  fontFamily: 'AbelBold',
+                  fontSize: 16,
+                  letterSpacing: 1,
+                }}>
+                {lang.close}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      )}
     </View>
   );
 }

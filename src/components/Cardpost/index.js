@@ -24,7 +24,7 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
   function deleteRoom({ ownerId, idRoom }) {
     if (
       ownerId == dataContext?.user?.uid ||
-      dataContext.storageData?.isAdmin == true
+      dataContext.storageData?.superAdm == true
     ) {
       Alert.alert(
         'Atenção!',

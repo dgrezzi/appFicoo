@@ -90,7 +90,7 @@ export default function NewPost() {
               security={false}
               multiline={true}
               minHeight={150}
-              maxLength={500}
+              maxLength={1000}
               onChangeText={txt => {
                 setPost(txt);
               }}

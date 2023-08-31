@@ -276,11 +276,6 @@ export const Atividades = ({ atividadeChange, ...props }) => {
           padding: 15,
           paddingVertical: 12,
         }}>
-        {props.editable && (
-          <Text style={{ position: 'absolute', top: 10, left: 12 }}>
-            {qtdActive} {lang.vacancy}
-          </Text>
-        )}
         <View style={{ flex: 1, gap: 10 }}>
           <View
             style={{
@@ -297,6 +292,11 @@ export const Atividades = ({ atividadeChange, ...props }) => {
               }}>
               {props.time}
             </Text>
+            {props.editable && (
+              <Text style={{}}>
+                {qtdActive} {lang.vacancy}
+              </Text>
+            )}
             <View
               style={{
                 alignItems: 'center',
