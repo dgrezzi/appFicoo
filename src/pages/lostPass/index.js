@@ -40,7 +40,7 @@ export default function LostPass() {
         newPwd: toBase64(newPwd),
       })
       .then(() => {
-        alert('Seu chamado foi aberto');
+        alert(lang.alertPass);
         setEmail();
         setNewPwd();
       })
@@ -74,7 +74,7 @@ export default function LostPass() {
                 marginTop: 28,
               },
             ]}>
-            Esqueceu a sua senha?
+            {lang.lostPass}
           </Text>
           <Text
             style={[
@@ -87,13 +87,12 @@ export default function LostPass() {
                 letterSpacing: 1,
               },
             ]}>
-            Insira seu email para receber informações sobre criar NOVA SENHA
-            {'\n'}
-            (Mínimo 6 caracteres)
+            {lang.lostPassInstruction} {'\n'}
+            {lang.minPass}
           </Text>
           <View style={{ width: '100%', gap: 12 }}>
             <EditInputText
-              label="e-mail"
+              label={lang.labelEmail}
               placeholder=""
               value={email}
               editable={true}
@@ -104,7 +103,7 @@ export default function LostPass() {
               }}
             />
             <EditInputText
-              label="Nova Senha"
+              label={lang.newPass}
               placeholder=""
               value={newPwd}
               editable={true}
@@ -116,15 +115,14 @@ export default function LostPass() {
             />
           </View>
           <Btn
-            label="ENVIAR"
+            label={lang.send}
             color={VARS.color.blue}
             icon="arrow-forward-circle"
             iconColor={VARS.color.orange}
             iconSize={VARS.size.icons}
             onPress={() => {
               email && newPwd?.length >= 6 && setFirebaseLostPass();
-              (!newPwd || !email || newPwd?.length < 6) &&
-                alert('Preencha os campos corretamente');
+              (!newPwd || !email || newPwd?.length < 6) && alert(lang.allForm);
             }}
           />
         </View>

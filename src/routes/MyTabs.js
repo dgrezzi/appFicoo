@@ -14,7 +14,10 @@ import PostRoutes from './PostRoutes';
 const Tab = createBottomTabNavigator();
 
 export default function MyTabs() {
-  const { dataContext, active } = useContext(AuthContext);
+  const { dataContext, active, locale } = useContext(AuthContext);
+  let dic = require('../dic/lang.json');
+  let lang = dic[locale];
+
   return !active ? (
     <About />
   ) : (
@@ -26,7 +29,7 @@ export default function MyTabs() {
         tabBarHideOnKeyboard: true,
         tabBarStyle: {
           backgroundColor: VARS.color.blue,
-          height: 56,
+          height: 54,
         },
 
         tabBarShowLabel: false,
@@ -41,7 +44,7 @@ export default function MyTabs() {
           tabBarIcon: ({ color }) => (
             <Ionicons
               name="home-outline"
-              size={VARS.size.icons}
+              size={VARS.size.icons * 0.85}
               color={color}
             />
           ),
@@ -51,14 +54,14 @@ export default function MyTabs() {
         name="Calendar"
         component={Calendar}
         options={{
-          headerTitle: 'Programação',
+          headerTitle: lang.titleProgram,
           gestureEnabled: true,
           animationTypeForReplace: 'push',
           animation: 'slide_from_right',
           tabBarIcon: ({ color }) => (
             <Ionicons
               name="calendar-outline"
-              size={VARS.size.icons}
+              size={VARS.size.icons * 0.85}
               color={color}
             />
           ),
@@ -68,7 +71,6 @@ export default function MyTabs() {
         name="Posts"
         component={PostRoutes}
         options={{
-          headerTitle: 'Posts',
           headerShown: false,
           gestureEnabled: true,
           animationTypeForReplace: 'push',
@@ -76,7 +78,7 @@ export default function MyTabs() {
           tabBarIcon: ({ color }) => (
             <Ionicons
               name="reader-outline"
-              size={VARS.size.icons}
+              size={VARS.size.icons * 0.85}
               color={color}
             />
           ),
@@ -86,7 +88,6 @@ export default function MyTabs() {
         name="Messages"
         component={ChatRoutes}
         options={{
-          headerTitle: 'Messages',
           headerShown: false,
           gestureEnabled: true,
           animationTypeForReplace: 'push',
@@ -94,7 +95,7 @@ export default function MyTabs() {
           tabBarIcon: ({ color }) => (
             <Ionicons
               name="chatbox-ellipses-outline"
-              size={VARS.size.icons}
+              size={VARS.size.icons * 0.85}
               color={color}
             />
           ),
@@ -104,12 +105,11 @@ export default function MyTabs() {
         name="PerfilRoute"
         component={PerfilRoute}
         options={{
-          headerTitle: 'Perfil',
           headerShown: false,
           tabBarIcon: ({ color }) => (
             <Ionicons
               name="person-outline"
-              size={VARS.size.icons}
+              size={VARS.size.icons * 0.85}
               color={color}
             />
           ),
@@ -120,12 +120,11 @@ export default function MyTabs() {
           name="adminRoute"
           component={AdminRoute}
           options={({ route }) => ({
-            headerTitle: 'FICOO',
             headerShown: false,
             tabBarIcon: ({ color }) => (
               <Ionicons
                 name="settings-outline"
-                size={VARS.size.icons}
+                size={VARS.size.icons * 0.85}
                 color={color}
               />
             ),

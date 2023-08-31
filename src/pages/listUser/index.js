@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Image,
   ScrollView,
@@ -11,6 +11,7 @@ import {
 import GestureFlipView from 'react-native-gesture-flip-card';
 import InputTxt from '../../components/InputTxt';
 import { VARS } from '../../constants/VARS';
+import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 
 export default function ListUser() {
@@ -19,14 +20,17 @@ export default function ListUser() {
   const [input, setInput] = useState('');
   const [list, setList] = useState([]);
 
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
+
   const window = useWindowDimensions();
 
   const ficoo = {
     name: 'Ficoo',
     email: 'ficoo@email.com',
     city: 'Brasil',
-    aboutme:
-      'O FICOO é inspirado pela necessidade de reunir as diversas redes e organizações dedicadas ao desenvolvimento humano sustentável, pacífico e colaborativo.',
+    aboutme: lang.abouFicoo,
     checked: true,
   };
 
@@ -216,7 +220,7 @@ export default function ListUser() {
               }}>
               <Text
                 style={{ fontFamily: 'Abel', fontSize: 13, letterSpacing: 1 }}>
-                Deslize para saber mais
+                {lang.slideMore}
               </Text>
               <Ionicons
                 name="arrow-redo-outline"
@@ -300,7 +304,7 @@ export default function ListUser() {
         <InputTxt
           icon="search-outline"
           multiline={false}
-          placeholder="Nome do participante"
+          placeholder={lang.listNameUser}
           security={false}
           editable={true}
           value={input}

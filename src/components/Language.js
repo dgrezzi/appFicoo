@@ -1,12 +1,17 @@
 import { Picker } from '@react-native-picker/picker';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { MMKV } from 'react-native-mmkv';
 import { VARS } from '../constants/VARS';
+import { AuthContext } from '../contexts/auth';
 import handleLocale from '../functions/handleLocale';
 const storage = new MMKV({ id: 'appFicoo' });
 
 export default function Language() {
+  const { locale } = useContext(AuthContext);
+  let dic = require('../dic/lang.json');
+  let lang = dic[locale];
+
   const [selectedLanguage, setSelectedLanguage] = useState();
   useEffect(() => {
     const lang = storage.getString('locale');
@@ -22,17 +27,18 @@ export default function Language() {
           letterSpacing: 1,
           color: VARS.color.gray,
         }}>
-        Idioma:
+        {lang.idioma}
       </Text>
       <View
         style={{
           borderRadius: 15,
           borderWidth: 1,
-          borderColor: VARS.color.blueLight,
-          paddingHorizontal: 20,
+          borderColor: VARS.color.whiteOpacity,
+          paddingHorizontal: 10,
           elevation: 5,
+          shadowColor: VARS.color.gray,
           backgroundColor: VARS.color.white,
-          marginBottom: 10,
+          marginBottom: 15,
         }}>
         <Picker
           selectedValue={selectedLanguage}
@@ -43,7 +49,7 @@ export default function Language() {
             handleLocale(itemValue);
           }}>
           <Picker.Item
-            label="Inglês"
+            label={lang.english}
             value={'en'}
             style={{
               fontFamily: 'Abel',
@@ -53,7 +59,7 @@ export default function Language() {
             }}
           />
           <Picker.Item
-            label="Português"
+            label={lang.portugues}
             value="pt"
             style={{
               fontFamily: 'Abel',
@@ -63,7 +69,7 @@ export default function Language() {
             }}
           />
           <Picker.Item
-            label="Espanhol"
+            label={lang.spanish}
             value="es"
             style={{
               fontFamily: 'Abel',

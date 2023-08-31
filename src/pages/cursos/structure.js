@@ -1,57 +1,62 @@
 import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import exclamation from '../../assets/exclamation.png';
 import { VARS } from '../../constants/VARS';
+import { AuthContext } from '../../contexts/auth';
 import { legenda } from './atividades';
 
-export const Title = props => {
-  return (
-    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-      <Text
-        style={{
-          fontFamily: 'AbelBold',
-          width: '100%',
-          color: VARS.color.white,
-          textAlign: 'center',
-          fontSize: 24,
-          letterSpacing: 1,
-        }}>
-        {props.label}
-      </Text>
+export const Aviso = () => {
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
+
+  const Title = props => {
+    return (
+      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Text
+          style={{
+            fontFamily: 'AbelBold',
+            width: '100%',
+            color: VARS.color.white,
+            textAlign: 'center',
+            fontSize: 24,
+            letterSpacing: 1,
+          }}>
+          {props.label}
+        </Text>
+        <Text
+          style={{
+            fontFamily: 'Abel',
+            color: VARS.color.white,
+            fontSize: 18,
+            width: '100%',
+            textAlign: 'center',
+            letterSpacing: 1,
+          }}>
+          {props.legend}
+        </Text>
+      </View>
+    );
+  };
+
+  const SubTitle = props => {
+    return (
       <Text
         style={{
           fontFamily: 'Abel',
           color: VARS.color.white,
-          fontSize: 18,
+          fontSize: 20,
           width: '100%',
           textAlign: 'center',
           letterSpacing: 1,
         }}>
-        {props.legend}
+        {props.label}
       </Text>
-    </View>
-  );
-};
+    );
+  };
 
-export const SubTitle = props => {
-  return (
-    <Text
-      style={{
-        fontFamily: 'Abel',
-        color: VARS.color.white,
-        fontSize: 20,
-        width: '100%',
-        textAlign: 'center',
-        letterSpacing: 1,
-      }}>
-      {props.label}
-    </Text>
-  );
-};
-
-export const Aviso = () => {
   return (
     <View
       style={{
@@ -67,10 +72,9 @@ export const Aviso = () => {
         borderBottomLeftRadius: 48,
         gap: 8,
       }}>
-      <Title label="INSCRIÇÃO OBRIGATÓRIA" legend="(vagas limitadas)" />
-      <SubTitle label="01 Painel Colaborativo" />
-      <SubTitle label="02 Oficinas" />
-      {/* <SubTitle label="(Dia 23 e Dia 14)" /> */}
+      <Title label={lang.inscLabel} legend={lang.inscLegend} />
+      <SubTitle label={lang.inscSubT1} />
+      <SubTitle label={lang.inscSubT2} />
       <Image
         style={{
           width: VARS.size.avatar / 3,
@@ -90,6 +94,10 @@ export const Aviso = () => {
 };
 
 export const Botoes = ({ abaChange }) => {
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
+
   const [active, setActive] = useState(1);
   const handleChange = event => {
     setActive(event);
@@ -156,14 +164,14 @@ export const Botoes = ({ abaChange }) => {
         },
       ]}>
       <Aba
-        label="PAINEIS"
+        label={lang.inscAbaLabel}
         aba="1"
         onPress={() => {
           handleChange(1);
         }}
       />
       <Aba
-        label="OFICINAS"
+        label={lang.inscAbaLabel2}
         label2="13/10"
         aba="2"
         onPress={() => {
@@ -171,7 +179,7 @@ export const Botoes = ({ abaChange }) => {
         }}
       />
       <Aba
-        label="OFICINAS"
+        label={lang.inscAbaLabel2}
         label2="14/10"
         aba="3"
         onPress={() => {
@@ -184,6 +192,11 @@ export const Botoes = ({ abaChange }) => {
 
 export const Atividades = ({ atividadeChange, ...props }) => {
   const [qtdActive, setQtdActive] = useState();
+
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
+
   const handleChange = event => {
     atividadeChange(props.id);
   };
@@ -246,7 +259,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
         activeOpacity={1}
         onPress={() => {
           if (qtdActive > 0) props.onPress();
-          if (qtdActive <= 0) alert('Vagas esgotadas');
+          if (qtdActive <= 0) alert(lang.soldOut);
         }}
         style={{
           width: '100%',
@@ -265,21 +278,16 @@ export const Atividades = ({ atividadeChange, ...props }) => {
         }}>
         {props.editable && (
           <Text style={{ position: 'absolute', top: 10, left: 12 }}>
-            {qtdActive} vaga(s)
+            {qtdActive} {lang.vacancy}
           </Text>
         )}
-        {/* <Image
-          style={{
-            width: VARS.size.avatar / 1.8,
-            height: VARS.size.avatar / 1.8,
-            borderRadius: VARS.size.avatar,
-            margin: 8,
-          }}
-          source={logo}
-        /> */}
         <View style={{ flex: 1, gap: 10 }}>
           <View
-            style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
             <Text
               style={{
                 fontFamily: 'Abel',
@@ -293,7 +301,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
               style={{
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: 30,
+                width: 28,
                 aspectRatio: 1,
                 backgroundColor: props.selected
                   ? VARS.color.white
@@ -305,21 +313,11 @@ export const Atividades = ({ atividadeChange, ...props }) => {
               <Text
                 style={{
                   color: props.selected ? VARS.color.orange : VARS.color.white,
-                  fontSize: 20,
+                  fontSize: 18,
                 }}>
                 {props.number}
               </Text>
             </View>
-            {/* <Text
-              style={{
-                fontFamily: 'Abel',
-                fontSize: 14,
-                color: VARS.color.blue,
-                letterSpacing: 1,
-                marginRight: 10,
-              }}>
-              {props.id}
-            </Text> */}
           </View>
           <Text
             style={{
@@ -354,13 +352,14 @@ export const Atividades = ({ atividadeChange, ...props }) => {
 };
 
 export const Confirmacao = ({ data }) => {
-  const { painel, oficina1, oficina2 } = data;
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
 
   const Dados = data => {
     return (
       <View
         style={{
-          // flexDirection: 'row',
           gap: 4,
           alignItems: 'flex-start',
         }}>
@@ -387,28 +386,6 @@ export const Confirmacao = ({ data }) => {
             {data.value}
           </Text>
         </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            gap: 8,
-            alignItems: 'center',
-            width: '100%',
-          }}>
-          <Ionicons
-            name="location-outline"
-            size={VARS.size.icons * 0.6}
-            color={VARS.color.blue}
-          />
-          <Text
-            style={{
-              fontFamily: 'Abel',
-              fontSize: 20,
-              letterSpacing: 1,
-              color: VARS.color.title,
-            }}>
-            {data.local}
-          </Text>
-        </View>
       </View>
     );
   };
@@ -439,27 +416,24 @@ export const Confirmacao = ({ data }) => {
             letterSpacing: 1,
             color: VARS.color.title,
           }}>
-          CONFIRMAÇÃO
+          {lang.confirm}
         </Text>
         {data.painel ? (
           <Dados
-            label="Painel: "
+            label={lang.confPainel}
             value={legenda[data.painel]?.slice(0, 60) + '...'}
-            local="Sala X"
           />
         ) : null}
         {data.painel ? (
           <Dados
-            label="Oficina 13/10: "
+            label={lang.confOficina1}
             value={formatLetter(legenda[data.oficina1]?.slice(0, 60) + '...')}
-            local="Sala X"
           />
         ) : null}
         {data.painel ? (
           <Dados
-            label="Oficina 14/10: "
+            label={lang.confOficina2}
             value={formatLetter(legenda[data.oficina2]?.slice(0, 60) + '...')}
-            local="Sala X"
           />
         ) : null}
       </View>

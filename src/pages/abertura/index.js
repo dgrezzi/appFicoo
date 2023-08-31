@@ -1,20 +1,25 @@
 import { useNavigation } from '@react-navigation/native';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { MMKV } from 'react-native-mmkv';
 import logoFicoo from '../../../src/assets/logoFicoo23.png';
+import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 
-import { MMKV } from 'react-native-mmkv';
 const storage = new MMKV({ id: 'appFicoo' });
 
 export default function Abertura() {
   const navigation = useNavigation();
   const active = storage.getString('active');
 
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
+
   useEffect(() => {
     setTimeout(() => {
       active ? navigation.navigate('MyTabs') : navigation.navigate('Activate');
-    }, 100);
+    }, 1000);
   }, []);
 
   return (
@@ -46,7 +51,7 @@ export default function Abertura() {
             fontSize: 16,
             letterSpacing: 1,
           }}>
-          Pular
+          {lang.skip}
         </Text>
       </TouchableOpacity>
     </View>

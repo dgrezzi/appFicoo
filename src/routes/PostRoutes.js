@@ -18,7 +18,7 @@ export default function PostRoutes() {
         name="Post"
         component={Posts}
         options={{
-          title: 'NOVIDADES FICOO',
+          title: lang.titlePost,
           headerShown: true,
         }}
       />
@@ -26,14 +26,14 @@ export default function PostRoutes() {
         name="newPost"
         component={NewPost}
         options={{
-          title: lang.pageNewPostTitle,
+          title: lang.titleNewPost,
         }}
       />
       <AppStack.Screen
         name="Profile"
         component={Profile}
         options={{
-          title: lang.pageProfileTitle,
+          title: lang.titleProfile,
         }}
       />
     </AppStack.Navigator>

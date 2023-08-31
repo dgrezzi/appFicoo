@@ -1,10 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Btn from '../../components/Btn/intex';
 import { VARS } from '../../constants/VARS';
+import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 
 const Dados = ({ data }) => {
@@ -37,6 +38,10 @@ export default function MakeAdmin() {
   const scanned = false;
   const [id, setId] = useState();
   const [check, setCheck] = useState('');
+
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
 
   useEffect(() => {
     askForCameraPermission();
@@ -155,7 +160,7 @@ export default function MakeAdmin() {
               activeOpacity={0.8}>
               <Text
                 style={{ fontSize: 22, fontFamily: 'Abel', letterSpacing: 2 }}>
-                Press for Scan
+                {lang.scan}
               </Text>
             </TouchableOpacity>
           )}
@@ -192,7 +197,7 @@ export default function MakeAdmin() {
         )}
 
         <Btn
-          label="Gerar Admin"
+          label={lang.makeAdm}
           color={VARS.color.blue}
           icon="checkmark-circle-outline"
           iconColor={VARS.color.white}

@@ -183,7 +183,7 @@ export default function EditProfile() {
                   width: VARS.size.avatar,
                   height: VARS.size.avatar,
                   borderRadius: VARS.size.avatar / 2,
-                  elevation: 10,
+                  elevation: 15,
                   padding: 0,
                 }}
                 onPress={() => {
@@ -195,7 +195,6 @@ export default function EditProfile() {
                     borderRadius: VARS.size.avatar,
                     width: '100%',
                     height: '100%',
-                    elevation: 10,
                   }}
                   source={{ uri: photoAvatar }}
                 />
@@ -220,7 +219,7 @@ export default function EditProfile() {
           </View>
           <View style={{ alignItems: 'flex-start', gap: 5, width: '100%' }}>
             <EditInputText
-              label="Nome"
+              label={lang.labelName}
               placeholder=""
               value={name}
               editable={true}
@@ -231,7 +230,7 @@ export default function EditProfile() {
             />
 
             <EditInputText
-              label="e-mail"
+              label={lang.labelEmail}
               placeholder=""
               value={email}
               security={false}
@@ -242,7 +241,7 @@ export default function EditProfile() {
             />
 
             <EditInputText
-              label="Telefone"
+              label={lang.labelPhone}
               placeholder=""
               value={phone}
               security={false}
@@ -254,7 +253,7 @@ export default function EditProfile() {
               }}
             />
             <EditInputText
-              label="Cidade"
+              label={lang.labelCity}
               placeholder=""
               value={city}
               security={false}
@@ -265,7 +264,7 @@ export default function EditProfile() {
             />
 
             <EditInputText
-              label="Sobre mim"
+              label={lang.labelAboutme}
               placeholder=""
               value={aboutme}
               security={false}
@@ -288,7 +287,7 @@ export default function EditProfile() {
           alignItems: 'center',
         }}>
         <Btn
-          label="Salvar"
+          label={lang.save}
           color={VARS.color.blue}
           icon="checkmark-circle-outline"
           iconColor={VARS.color.white}

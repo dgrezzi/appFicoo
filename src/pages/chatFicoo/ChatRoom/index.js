@@ -24,8 +24,11 @@ export default function ChatRoom() {
   const [threads, setThreads] = useState([]);
   const [list, setList] = useState([]);
   const [updateScreen, setUpdateScreen] = useState(false);
-  const { dataContext, loading, setLoading } = useContext(AuthContext);
   const [input, setInput] = useState('');
+
+  const { dataContext, loading, setLoading, locale } = useContext(AuthContext);
+  let dic = require('../../../dic/lang.json');
+  let lang = dic[locale];
 
   useFocusEffect(
     useCallback(() => {
@@ -130,26 +133,33 @@ export default function ChatRoom() {
             paddingHorizontal: 15,
           }}>
           <Text
-            style={{ fontFamily: 'AbelBold', letterSpacing: 1, fontSize: 22 }}>
-            Bate Papo
+            style={{
+              fontSize: 20,
+              color: 'black',
+              fontWeight: '500',
+            }}>
+            {lang.batePapo}
           </Text>
-          <BtnEdit
-            label="Criar Grupo"
-            color={VARS.color.whiteDark}
-            icon=""
-            labelColor={VARS.color.blue}
-            iconColor={VARS.color.white}
-            iconSize={VARS.size.icons * 0.8}
-            onPress={() => {
-              setModalVisible(true);
-            }}
-          />
+
+          {dataContext.user?.uid && (
+            <BtnEdit
+              label={lang.newGroup}
+              color={VARS.color.whiteDark}
+              icon=""
+              labelColor={VARS.color.blue}
+              iconColor={VARS.color.white}
+              iconSize={VARS.size.icons * 0.8}
+              onPress={() => {
+                setModalVisible(true);
+              }}
+            />
+          )}
         </View>
         <View style={[{ padding: 15, paddingVertical: 10 }]}>
           <InputTxt
             icon="search-outline"
             multiline={false}
-            placeholder="Nome do grupo"
+            placeholder={lang.groupName}
             security={false}
             editable={true}
             value={input}

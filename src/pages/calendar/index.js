@@ -1,11 +1,43 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { VARS } from '../../constants/VARS';
+import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 
 export default function Calendar() {
   const [aba, setAba] = useState(0);
+
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
+
+  const prog = {
+    dia12:
+      locale == 'pt'
+        ? dia12pt
+        : locale == 'en'
+        ? dia12pt
+        : locale == 'es'
+        ? dia12pt
+        : null,
+    dia13:
+      locale == 'pt'
+        ? dia13pt
+        : locale == 'en'
+        ? dia13pt
+        : locale == 'es'
+        ? dia13pt
+        : null,
+    dia14:
+      locale == 'pt'
+        ? dia14pt
+        : locale == 'en'
+        ? dia14en
+        : locale == 'es'
+        ? dia14es
+        : null,
+  };
 
   const Aba = props => {
     return (
@@ -60,7 +92,7 @@ export default function Calendar() {
           },
         ]}>
         <Aba
-          label={'12/Out'}
+          label={'12/' + lang.month}
           aba="0"
           active="0"
           onPress={() => {
@@ -68,7 +100,7 @@ export default function Calendar() {
           }}
         />
         <Aba
-          label={'13/Out'}
+          label={'13/' + lang.month}
           aba="1"
           active="1"
           onPress={() => {
@@ -76,7 +108,7 @@ export default function Calendar() {
           }}
         />
         <Aba
-          label={'14/Out'}
+          label={'14/' + lang.month}
           aba="2"
           active="2"
           onPress={() => {
@@ -89,9 +121,9 @@ export default function Calendar() {
           width: '100%',
           flex: 1,
         }}>
-        {aba == 0 ? <Atividade dia={dia12} /> : null}
-        {aba == 1 ? <Atividade dia={dia13} /> : null}
-        {aba == 2 ? <Atividade dia={dia14} /> : null}
+        {aba == 0 ? <Atividade dia={prog.dia12} /> : null}
+        {aba == 1 ? <Atividade dia={prog.dia13} /> : null}
+        {aba == 2 ? <Atividade dia={prog.dia14} /> : null}
       </View>
     </View>
   );
@@ -158,28 +190,11 @@ const Dados = props => {
         }}>
         {props.data?.title}
       </Text>
-      {/* <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-        <Ionicons
-          name="location-outline"
-          size={VARS.size.icons * 0.6}
-          color={VARS.color.blue}
-        />
-        <Text
-          style={{
-            fontFamily: 'Abel',
-            fontSize: 20,
-            color: VARS.color.title,
-            letterSpacing: 1,
-            flex: 1,
-          }}>
-          {props.data?.local}
-        </Text>
-      </View> */}
     </View>
   );
 };
 
-const dia12 = [
+const dia12pt = [
   {
     id: 1,
     start: '14h00',
@@ -224,7 +239,8 @@ const dia12 = [
     group: 1,
   },
 ];
-const dia13 = [
+
+const dia13pt = [
   {
     id: 1,
     start: '08h30',
@@ -297,7 +313,8 @@ const dia13 = [
     group: 1,
   },
 ];
-const dia14 = [
+
+const dia14pt = [
   {
     id: 1,
     start: '08h30',

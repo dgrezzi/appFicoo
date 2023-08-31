@@ -38,12 +38,9 @@ export default function Checkin() {
   const [id, setId] = useState();
   const [check, setCheck] = useState('');
 
-  const dados = {
-    id: '3qiJcWI0TXetSf78zLz7EPuuk372',
-    name: 'Daniel Lima',
-    email: 'teste@email.com',
-  };
-  const credential = JSON.stringify(dados);
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
 
   useEffect(() => {
     askForCameraPermission();
@@ -190,7 +187,7 @@ export default function Checkin() {
               activeOpacity={0.8}>
               <Text
                 style={{ fontSize: 22, fontFamily: 'Abel', letterSpacing: 2 }}>
-                Press for Scan
+                {lang.scan}
               </Text>
             </TouchableOpacity>
           )}
@@ -227,7 +224,7 @@ export default function Checkin() {
         )}
 
         <Btn
-          label="Validação"
+          label={lang.validation}
           color={VARS.color.blue}
           icon="checkmark-circle-outline"
           iconColor={VARS.color.white}

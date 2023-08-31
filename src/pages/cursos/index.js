@@ -10,15 +10,18 @@ import { oficinasD13, oficinasD14, paineis } from './atividades';
 import { Atividades, Aviso, Botoes, Confirmacao } from './structure';
 
 export default function Cursos() {
-  const { dataContext } = useContext(AuthContext);
   const [activeAba, setActiveAba] = useState(1);
   const [meusCursos, setMeusCursos] = useState({});
   const [editable, setEditable] = useState(false);
   const [vagas, setVagas] = useState();
 
+  const { dataContext, locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
+
   useEffect(() => {
     if (dataContext.storageData.inscrito) {
-      setEditable(false);
+      setEditable(false); //libera e esconde aviso
       const newCursos = {};
       newCursos['painel'] = dataContext.storageData.painel;
       newCursos['oficina1'] = dataContext.storageData.oficina1;
@@ -282,7 +285,7 @@ export default function Cursos() {
             alignItems: 'center',
             gap: 6,
             paddingBottom: 20,
-            paddingTop: 15,
+            paddingTop: editable ? 0 : 15,
             paddingHorizontal: 0,
           }}>
           {editable && <Aviso />}
@@ -352,7 +355,7 @@ export default function Cursos() {
           <Confirmacao data={meusCursos} />
           {editable && (
             <Btn
-              label="Salvar"
+              label={lang.save}
               color={VARS.color.blue}
               icon="checkmark-circle-outline"
               iconSize={VARS.size.icons * 0.8}

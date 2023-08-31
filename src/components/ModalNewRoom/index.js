@@ -91,13 +91,13 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
         }}>
         <Text
           style={{ fontFamily: 'AbelBold', fontSize: 24, letterSpacing: 1 }}>
-          {lang.createGroupAsk}
+          {lang.modalTitle}
         </Text>
 
         <InputTxt
           icon=""
           multiline={false}
-          placeholder="Nome para nova sala"
+          placeholder={lang.modalLabel}
           security={false}
           editable={true}
           value={roomName}
@@ -107,7 +107,7 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
           }}
         />
         <Btn
-          label="Criar sala"
+          label={lang.modalButton}
           color={VARS.color.blue}
           icon=""
           iconSize={20}

@@ -1,6 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
 import { useFocusEffect } from '@react-navigation/native';
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Image, ScrollView, View } from 'react-native';
 import Carrossel from '../../components/Carrossel';
 import { AuthContext } from '../../contexts/auth';
@@ -15,7 +15,10 @@ export default function Home() {
   const [oficinas, setOficinas] = useState();
   const [diver, setDiver] = useState();
   const [parceiros, setParceiros] = useState();
+
   const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
 
   const list = [
     'header',
@@ -36,6 +39,13 @@ export default function Home() {
         });
     }, []),
   );
+
+  useEffect(() => {
+    header &&
+      Image.getSize(header, (w, h) => {
+        setAspectHeader(w / h);
+      });
+  }, [header]);
 
   const updatePage = () => {
     const allProm = [];
@@ -73,9 +83,6 @@ export default function Home() {
     return check;
   };
 
-  let dic = require('../../dic/lang.json');
-  let lang = dic[locale];
-
   return (
     <View
       style={[
@@ -106,37 +113,37 @@ export default function Home() {
         }}>
         <Carrossel
           id="oficoo"
-          label="O FICOO"
+          label={lang.homeOficoo}
           data={oficoo}
           updatePage={updatePage}
         />
         <Carrossel
           id="conferencia"
-          label="Conferências"
+          label={lang.homeConf}
           data={conferencia}
           updatePage={updatePage}
         />
         <Carrossel
           id="paineis"
-          label="Painéis Colaborativos"
+          label={lang.homePaineis}
           data={paineis}
           updatePage={updatePage}
         />
         <Carrossel
           id="oficinas"
-          label="Oficinas de Cooperação"
+          label={lang.homeOficinas}
           data={oficinas}
           updatePage={updatePage}
         />
         <Carrossel
           id="diver"
-          label="Desafio Ficoo e Festa Diver"
+          label={lang.homeDesafio}
           data={diver}
           updatePage={updatePage}
         />
         <Carrossel
           id="parceiros"
-          label="Comunidade"
+          label={lang.homeComunidade}
           data={parceiros}
           updatePage={updatePage}
         />

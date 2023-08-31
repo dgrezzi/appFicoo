@@ -11,13 +11,15 @@ import styles from '../../../styles/styles';
 
 export default function Posts() {
   const navigation = useNavigation();
-  const { dataContext } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingRefresh, setLoadingRefresh] = useState(false);
   const [lastItem, setLastItem] = useState('');
   const [emptyList, setEmptyList] = useState(false);
-  const [updateScreen, setUpdateScreen] = useState(false);
+
+  const { dataContext, locale } = useContext(AuthContext);
+  let dic = require('../../../dic/lang.json');
+  let lang = dic[locale];
 
   const updateChild = event => {
     fetchPosts();
@@ -71,7 +73,7 @@ export default function Posts() {
             onPress={async () => {
               navigation.navigate('newPost');
             }}
-            label="Novo"
+            label={lang.new}
             labelColor={VARS.color.blue}
             color={VARS.color.whiteDark}
             icon="pencil"

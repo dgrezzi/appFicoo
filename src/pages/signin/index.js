@@ -70,7 +70,7 @@ export default function Signin() {
               }}>
               <InputTxt
                 icon="mail-outline"
-                placeholder="e-mail"
+                placeholder={lang.labelEmail}
                 value={email}
                 security={false}
                 onChangeText={txt => {
@@ -79,7 +79,7 @@ export default function Signin() {
               />
               <InputTxt
                 icon="lock-closed-outline"
-                placeholder="Senha"
+                placeholder={lang.pass}
                 value={pwd}
                 security={true}
                 onChangeText={txt => {
@@ -107,13 +107,13 @@ export default function Signin() {
                       fontSize: 18,
                       letterSpacing: 1,
                     }}>
-                    Esqueceu a senha?
+                    {lang.lostPass}
                   </Text>
                 </TouchableOpacity>
               </View>
             </View>
             <Btn
-              label="ENTRAR"
+              label={lang.enter}
               color={VARS.color.blue}
               icon="arrow-forward-circle"
               iconColor={VARS.color.orange}
@@ -123,11 +123,10 @@ export default function Signin() {
                   handleSignIn(email, pwd);
                   return;
                 } else {
-                  alert('Preencha corretamente todos os campos');
+                  alert(lang.completForm);
                 }
               }}
             />
-            <Language />
             <View
               style={{
                 backgroundColor: 'white',
@@ -148,14 +147,15 @@ export default function Signin() {
                     {
                       fontFamily: 'Abel',
                       color: VARS.color.title,
-                      fontSize: 22,
+                      fontSize: 18,
                       letterSpacing: 1,
                     },
                   ]}>
-                  INSCREVA-SE
+                  {lang.subscribe}
                 </Text>
               </TouchableOpacity>
             </View>
+            <Language />
           </View>
         </ScrollView>
       </TouchableWithoutFeedback>

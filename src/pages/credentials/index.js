@@ -7,7 +7,9 @@ import styles from '../../styles/styles';
 import { legenda } from '../cursos/atividades';
 
 export default function Credentials() {
-  const { dataContext } = useContext(AuthContext);
+  const { dataContext, locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
 
   const dados = {
     id: dataContext.user.uid,
@@ -84,7 +86,7 @@ export default function Credentials() {
               textAlign: 'center',
               width: '100%',
             }}>
-            FICOO 2023
+            {lang.labelFicoo}
           </Text>
           <Text
             style={{

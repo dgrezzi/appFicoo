@@ -23,7 +23,7 @@ export default function PerfilRoute() {
         name="Perfil"
         component={SigninPerfil}
         options={{
-          title: 'Perfil',
+          title: lang.titleProfile,
           headerShown: true,
         }}
       />
@@ -31,42 +31,42 @@ export default function PerfilRoute() {
         name="Signup"
         component={SignupPerfil}
         options={({ route }) => ({
-          title: 'INSCREVA - SE',
+          title: lang.titleInsc,
         })}
       />
       <AppStack.Screen
         name="LostPass"
         component={LostPass}
         options={({ route }) => ({
-          title: 'RECUPERAÇÃO DE SENHA',
+          title: lang.titleLostPass,
         })}
       />
       <AppStack.Screen
         name="EditProfile"
         component={EditProfileRoute}
         options={({ route }) => ({
-          title: 'Edição do perfil',
+          title: lang.titleEditProfile,
         })}
       />
       <AppStack.Screen
         name="Credentials"
         component={Credentials}
         options={({ route }) => ({
-          title: 'Credencial',
+          title: lang.titleCredential,
         })}
       />
       <AppStack.Screen
         name="ListUser"
         component={ListUser}
         options={({ route }) => ({
-          title: 'Participantes',
+          title: lang.listUser,
         })}
       />
       <AppStack.Screen
         name="Cursos"
         component={Cursos}
         options={({ route }) => ({
-          title: 'Inscrições',
+          title: lang.perfilInsc,
         })}
       />
     </AppStack.Navigator>

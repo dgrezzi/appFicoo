@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../contexts/auth';
 import Checkin from '../pages/checkin';
 import Credenciamento from '../pages/credenciamento';
 import Dashboard from '../pages/dashboard';
@@ -9,6 +10,10 @@ import MakeAdmin from '../pages/makeAdmin';
 const AppStack = createNativeStackNavigator();
 
 export default function AdminRoute() {
+  const { locale } = useContext(AuthContext);
+  let dic = require('../dic/lang.json');
+  let lang = dic[locale];
+
   return (
     <AppStack.Navigator initialRouteName="dashboard">
       <AppStack.Screen
@@ -16,14 +21,14 @@ export default function AdminRoute() {
         component={Dashboard}
         options={({ route }) => ({
           headerShown: true,
-          title: 'FICOO',
+          title: lang.titleDashboard,
         })}
       />
       <AppStack.Screen
         name="checkin"
         component={Checkin}
         options={({ route }) => ({
-          title: 'Check in',
+          title: lang.titleCheckin,
         })}
       />
       <AppStack.Screen
@@ -31,7 +36,7 @@ export default function AdminRoute() {
         component={ListUser}
         options={({ route }) => ({
           headerShown: true,
-          title: 'Participantes',
+          title: lang.listUser,
         })}
       />
       <AppStack.Screen
@@ -39,7 +44,7 @@ export default function AdminRoute() {
         component={Credenciamento}
         options={({ route }) => ({
           headerShown: true,
-          title: 'Paineis e Oficinas',
+          title: lang.titleCredenciamento,
         })}
       />
       <AppStack.Screen
@@ -47,7 +52,7 @@ export default function AdminRoute() {
         component={MakeAdmin}
         options={({ route }) => ({
           headerShown: true,
-          title: 'Gerador de Admins',
+          title: lang.titleMakeAdmin,
         })}
       />
     </AppStack.Navigator>

@@ -44,11 +44,11 @@ export default function Signup() {
       return;
     }
     if (!name || !email || city || checkBox1 || checkBox2) {
-      alert('Todos os campos são Obrigatórios');
+      alert(lang.allForm);
       return;
     }
     if (pwd.length <= 6) {
-      alert('A senha deve ter pelo menos 6 caracteres');
+      alert(lang.pass6);
       return;
     }
   };
@@ -69,7 +69,7 @@ export default function Signup() {
           <View style={{ width: '100%', gap: 12, marginTop: 18 }}>
             <InputTxt
               icon="person-outline"
-              placeholder="Nome Completo"
+              placeholder={lang.completName}
               value={name}
               security={false}
               onChangeText={txt => {
@@ -78,7 +78,7 @@ export default function Signup() {
             />
             <InputTxt
               icon="mail-outline"
-              placeholder="e-mail"
+              placeholder={lang.labelEmail}
               value={email}
               security={false}
               onChangeText={txt => {
@@ -88,7 +88,7 @@ export default function Signup() {
 
             <InputTxt
               icon="location-outline"
-              placeholder="Cidade onde mora"
+              placeholder={lang.cityLive}
               value={city}
               security={false}
               onChangeText={txt => {
@@ -99,7 +99,7 @@ export default function Signup() {
           <View style={{ width: '100%', gap: 12 }}>
             <InputTxt
               icon="lock-closed-outline"
-              placeholder="Senha"
+              placeholder={lang.pass}
               value={pwd}
               security={true}
               onChangeText={txt => {
@@ -108,7 +108,7 @@ export default function Signup() {
             />
             <InputTxt
               icon="lock-closed-outline"
-              placeholder="Confirme sua Senha"
+              placeholder={lang.confirmPass}
               value={pwd2}
               security={true}
               onChangeText={txt => {
@@ -129,7 +129,7 @@ export default function Signup() {
                 tintColors={{ true: VARS.color.blue, false: VARS.color.gray }}
                 onValueChange={newValue => setCheckBox1(newValue)}
               />
-              <Text>Li e aceito os Termos de uso </Text>
+              <Text>{lang.term1}</Text>
             </View>
             <View
               style={{
@@ -143,11 +143,11 @@ export default function Signup() {
                 tintColors={{ true: VARS.color.blue, false: VARS.color.gray }}
                 onValueChange={newValue => setCheckBox2(newValue)}
               />
-              <Text>Li e aceito os Termos de uso de Imagem (LGPD) </Text>
+              <Text>{lang.term2}</Text>
             </View>
           </View>
           <Btn
-            label="ENTRAR"
+            label={lang.enter}
             color={VARS.color.blue}
             icon="arrow-forward-circle"
             iconColor={VARS.color.orange}

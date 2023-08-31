@@ -20,7 +20,10 @@ export default function Messages({ route }) {
   const { thread } = route.params;
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const { dataContext } = useContext(AuthContext);
+
+  const { dataContext, locale } = useContext(AuthContext);
+  let dic = require('../../../dic/lang.json');
+  let lang = dic[locale];
 
   useEffect(() => {
     const unsubscribeListener = firestore()
@@ -92,7 +95,7 @@ export default function Messages({ route }) {
             <InputTxt
               icon=""
               multiline={false}
-              placeholder="Sua mensagem"
+              placeholder={lang.yourMessage}
               security={false}
               editable={true}
               value={input}

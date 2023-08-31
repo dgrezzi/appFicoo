@@ -60,7 +60,7 @@ export default function About() {
               }}
             />
             <Btn
-              label="ENTRAR"
+              label={lang.enter}
               color={VARS.color.blue}
               icon="log-in-outline"
               iconColor={VARS.color.white}

@@ -2,10 +2,11 @@ import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
 import { Picker } from '@react-native-picker/picker';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Btn from '../../components/Btn/intex';
 import { VARS } from '../../constants/VARS';
+import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 import { legenda2 } from '../cursos/atividades';
 
@@ -42,6 +43,10 @@ export default function Credenciamento() {
   const [atividades, setAtividades] = useState([]);
   const [inscritos, setInscritos] = useState([]);
   const scanned = false;
+
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
 
   useEffect(() => {
     askForCameraPermission();
@@ -179,7 +184,7 @@ export default function Credenciamento() {
                 textAlign: 'center',
                 padding: 10,
               }}>
-              {check == true ? 'Usuário confirmado!' : 'Usuário Não Inscrito!'}
+              {check == true ? lang.confirmUser : lang.noConfirmUser}
             </Text>
             {check == true ? (
               <Ionicons name="checkmark-outline" size={80} color={'green'} />
@@ -209,7 +214,7 @@ export default function Credenciamento() {
               letterSpacing: 1,
               color: VARS.color.gray,
             }}>
-            Atividade:
+            {lang.activity}
           </Text>
           <View
             style={{
@@ -228,12 +233,11 @@ export default function Credenciamento() {
               onValueChange={(itemValue, itemIndex) => {
                 if (itemValue != 'none') {
                   setCurrent(itemValue);
-
                   getUsers(itemValue);
                 }
               }}>
               <Picker.Item
-                label="None"
+                label={lang.none}
                 value="none"
                 style={{
                   fontFamily: 'Abel',
@@ -305,7 +309,7 @@ export default function Credenciamento() {
               activeOpacity={0.8}>
               <Text
                 style={{ fontSize: 22, fontFamily: 'Abel', letterSpacing: 2 }}>
-                Press for Scan
+                {lang.scan}
               </Text>
             </TouchableOpacity>
           )}
@@ -321,27 +325,8 @@ export default function Credenciamento() {
           <Dados data={{ label: 'e-mail:', value: id?.email }} />
           <Dados data={{ label: 'Ientificador:', value: id?.id }} />
         </View>
-        {/* {check && (
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-            <Ionicons name="checkmark-done-outline" size={22} color={'green'} />
-            <Text
-              style={{
-                fontSize: 22,
-                fontFamily: 'Abel',
-                letterSpacing: 1,
-                marginHorizontal: 10,
-              }}>
-              {check}
-            </Text>
-          </View>
-        )} */}
         <Btn
-          label="Validação"
+          label={lang.validation}
           color={VARS.color.blue}
           icon="checkmark-circle-outline"
           iconColor={VARS.color.white}

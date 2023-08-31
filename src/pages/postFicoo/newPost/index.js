@@ -42,7 +42,7 @@ export default function NewPost() {
               navigation.goBack();
             }
           }}
-          label="Postar"
+          label={lang.post}
           labelColor={VARS.color.blue}
           color={VARS.color.whiteDark}
           icon="pencil"
@@ -76,7 +76,7 @@ export default function NewPost() {
               { justifyContent: 'flex-start', paddingVertical: 20, gap: 15 },
             ]}>
             <InputTxt
-              placeholder="Título"
+              placeholder={lang.newPostLabelTitle}
               value={title}
               maxLength={50}
               security={false}
@@ -85,7 +85,7 @@ export default function NewPost() {
               }}
             />
             <InputTxt
-              placeholder="Conteúdo"
+              placeholder={lang.newPostLabelContent}
               value={post}
               security={false}
               multiline={true}

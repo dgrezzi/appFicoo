@@ -1,9 +1,17 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import React, { useContext } from 'react';
+import {
+  Alert,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { MMKV } from 'react-native-mmkv';
 import ficoo from '../../assets/logoFicoo23.png';
 import { VARS } from '../../constants/VARS';
+import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 
 const storage = new MMKV({ id: 'appFicoo' });
@@ -43,6 +51,10 @@ const Links = props => {
 export default function Dashboard() {
   const navigation = useNavigation();
 
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
+
   return (
     <View
       style={[
@@ -60,22 +72,38 @@ export default function Dashboard() {
           paddingVertical: 30,
           gap: 20,
         }}>
-        <Image
-          style={{
-            height: 250,
-            backgroundColor: 'transparent',
-            resizeMode: 'contain',
-            margin: 15,
+        <TouchableOpacity
+          onLongPress={() => {
+            Alert.alert('Atenção!', 'Resetar o aplicativo?', [
+              {
+                text: 'Cancel',
+                onPress: () => {},
+                style: 'cancel',
+              },
+              {
+                text: 'OK',
+                onPress: () => storage.clearAll(),
+              },
+            ]);
           }}
-          source={ficoo}
-        />
+          activeOpacity={1}>
+          <Image
+            style={{
+              height: 250,
+              backgroundColor: 'transparent',
+              resizeMode: 'contain',
+              margin: 15,
+            }}
+            source={ficoo}
+          />
+        </TouchableOpacity>
 
         <Links
           onPress={() => {
             navigation.navigate('checkin');
           }}
           data={{
-            label: 'Check in no evento',
+            label: lang.dashCheckin,
             bgColor: VARS.color.white,
             color: VARS.color.title,
           }}
@@ -85,7 +113,7 @@ export default function Dashboard() {
             navigation.navigate('Credenciamento');
           }}
           data={{
-            label: 'Paineis e Oficinas',
+            label: lang.dashPaineisOfic,
             bgColor: VARS.color.white,
             color: VARS.color.title,
           }}
@@ -95,7 +123,7 @@ export default function Dashboard() {
             navigation.navigate('ListUser');
           }}
           data={{
-            label: 'Lista de Participantes',
+            label: lang.dashListUserLabel,
             bgColor: VARS.color.white,
             color: VARS.color.title,
           }}
@@ -105,17 +133,11 @@ export default function Dashboard() {
             navigation.navigate('makeAdmin');
           }}
           data={{
-            label: 'Multiplicador de Admins',
+            label: lang.dashMulti,
             bgColor: VARS.color.white,
             color: VARS.color.title,
           }}
         />
-        {/* <TouchableOpacity
-        onPress={() => {
-          storage.clearAll();
-        }}>
-        <Text>Teste</Text>
-      </TouchableOpacity> */}
       </ScrollView>
     </View>
   );

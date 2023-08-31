@@ -1,11 +1,16 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Image, Linking, Text, TouchableOpacity, View } from 'react-native';
 import { VARS } from '../../constants/VARS';
+import { AuthContext } from '../../contexts/auth';
 
 export default function Card({ info }) {
   const [image, setImage] = useState();
   const [aspect, setAspect] = useState();
+
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
 
   useEffect(() => {
     setImage(info?.photoURL);
@@ -59,7 +64,7 @@ export default function Card({ info }) {
                 fontSize: 14,
                 letterSpacing: 1,
               }}>
-              Saiba Mais
+              {lang.more}
             </Text>
             <Ionicons
               name="arrow-forward-circle"

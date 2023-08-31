@@ -18,14 +18,13 @@ import handleSignOut from '../../functions/handleSignOut';
 import styles from '../../styles/styles';
 
 export default function Profile() {
-  const { locale } = useContext(AuthContext);
   const navigation = useNavigation();
-
-  let dic = require('../../dic/lang.json');
-  let lang = dic[locale];
-
   const { dataContext, setLoading } = useContext(AuthContext);
   const [imageLoad, setImageLoad] = useState(false);
+
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
 
   const [photoAvatar, setPhotoAvatar] = useState(
     'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/avatarM.jpg?alt=media&token=a494693c-611f-435a-b34a-d54fcc38461d',
@@ -60,7 +59,7 @@ export default function Profile() {
           onPress={async () => {
             navigation.navigate('Cursos');
           }}
-          label="Inscrições"
+          label={lang.perfilInsc}
           labelColor={VARS.color.white}
           color={VARS.color.orange}
           icon="alert-outline"
@@ -72,7 +71,7 @@ export default function Profile() {
           onPress={() => {
             navigation.navigate('EditProfile');
           }}
-          label="Editar"
+          label={lang.edit}
           labelColor={VARS.color.blue}
           color={VARS.color.whiteDark}
           icon="pencil"
@@ -223,7 +222,7 @@ export default function Profile() {
                 fontSize: 20,
                 letterSpacing: 1,
               }}>
-              Sobre mim:
+              {lang.aboutme}
             </Text>
           ) : null}
           <Text
@@ -262,7 +261,7 @@ export default function Profile() {
                 fontSize: 20,
                 letterSpacing: 1,
               }}>
-              LISTA DE PARTICIPANTES
+              {lang.listUser}
             </Text>
           </TouchableOpacity>
 
@@ -284,13 +283,13 @@ export default function Profile() {
                 fontSize: 20,
                 letterSpacing: 1,
               }}>
-              CREDENCIAIS FICOO 2023
+              {lang.credentials}
             </Text>
           </TouchableOpacity>
         </View>
 
         <Btn
-          label="Sair"
+          label={lang.exit}
           color={VARS.color.blue}
           icon="exit-outline"
           iconColor={VARS.color.white}
