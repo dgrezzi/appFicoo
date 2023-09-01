@@ -36,6 +36,7 @@ export default function Credentials() {
             fontFamily: 'AbelBold',
             fontSize: 20,
             letterSpacing: 1,
+            color: VARS.color.black,
           }}>
           {data.value}
         </Text>
@@ -61,6 +62,7 @@ export default function Credentials() {
           justifyContent: 'center',
           paddingHorizontal: 20,
           paddingVertical: 20,
+          gap: 2,
         }}>
         <View
           style={{
@@ -75,30 +77,38 @@ export default function Credentials() {
             alignItems: 'flex-start',
             padding: 18,
             paddingVertical: 30,
-            gap: 10,
+            gap: 30,
           }}>
-          <Text
+          <View
             style={{
-              fontFamily: 'AbelBold',
-              fontSize: 24,
-              letterSpacing: 1,
-              alignSelf: 'center',
-              textAlign: 'center',
               width: '100%',
+              justifyContent: 'center',
+              alignItems: 'center',
             }}>
-            {lang.labelFicoo}
-          </Text>
-          <Text
-            style={{
-              fontFamily: 'AbelBold',
-              fontSize: 20,
-              letterSpacing: 1,
-              alignSelf: 'center',
-              textAlign: 'center',
-              width: '100%',
-            }}>
-            Credencial + Painel + Oficina
-          </Text>
+            <Text
+              style={{
+                fontFamily: 'AbelBold',
+                fontSize: 24,
+                letterSpacing: 1,
+                alignSelf: 'center',
+                textAlign: 'center',
+                width: '100%',
+                color: VARS.color.black,
+              }}>
+              {lang.labelFicoo}
+            </Text>
+            <Text
+              style={{
+                fontFamily: 'AbelBold',
+                fontSize: 20,
+                letterSpacing: 1,
+                alignSelf: 'center',
+                textAlign: 'center',
+                width: '100%',
+              }}>
+              {lang.credOficina}
+            </Text>
+          </View>
           <View style={{ width: '100%', gap: 10 }}>
             <Dados
               data={{
@@ -109,36 +119,30 @@ export default function Credentials() {
             <Dados
               data={{ label: lang.labelEmail, value: dataContext.user?.email }}
             />
+            <Dados
+              data={{ label: lang.identify, value: dataContext.user?.uid }}
+            />
           </View>
-          <Dados
-            data={{ label: lang.identify, value: dataContext.user?.uid }}
-          />
-          <Dados
-            data={{
-              label: lang.confPainel,
-              value: formatLetter(
-                legenda[dataContext.storageData?.painel]?.slice(0, 28) + '...',
-              ),
-            }}
-          />
-          <Dados
-            data={{
-              label: lang.oficina1,
-              value: formatLetter(
-                legenda[dataContext.storageData?.oficina1]?.slice(0, 28) +
-                  '...',
-              ),
-            }}
-          />
-          <Dados
-            data={{
-              label: lang.oficina2,
-              value: formatLetter(
-                legenda[dataContext.storageData?.oficina2]?.slice(0, 28) +
-                  '...',
-              ),
-            }}
-          />
+          <View style={{ gap: 10 }}>
+            <Dados
+              data={{
+                label: lang.oficina1,
+                value: formatLetter(
+                  legenda[dataContext.storageData?.oficina1]?.slice(0, 28) +
+                    '...',
+                ),
+              }}
+            />
+            <Dados
+              data={{
+                label: lang.oficina2,
+                value: formatLetter(
+                  legenda[dataContext.storageData?.oficina2]?.slice(0, 28) +
+                    '...',
+                ),
+              }}
+            />
+          </View>
         </View>
         <View
           style={{

@@ -32,15 +32,6 @@ export default function ListUser() {
 
   const window = useWindowDimensions();
 
-  const ficoo = {
-    name: 'Ficoo',
-    email: 'ficoo@email.com',
-    city: 'Brasil',
-    aboutme: lang.abouFicoo,
-    checked: true,
-    photoURL: avatarFicoo,
-  };
-
   useEffect(() => {
     getDocs();
     getCheckin();

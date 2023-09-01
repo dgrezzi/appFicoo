@@ -4,7 +4,29 @@ import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
+import {
+  dia12en,
+  dia12es,
+  dia12pt,
+  dia13en,
+  dia13es,
+  dia13pt,
+  dia14en,
+  dia14es,
+  dia14pt,
+} from '../cursos/atividades';
 
+const todos = [
+  dia12en,
+  dia12es,
+  dia12pt,
+  dia13en,
+  dia13es,
+  dia13pt,
+  dia14en,
+  dia14es,
+  dia14pt,
+];
 export default function Calendar() {
   const [aba, setAba] = useState(0);
 
@@ -17,25 +39,25 @@ export default function Calendar() {
       locale == 'pt'
         ? dia12pt
         : locale == 'en'
-        ? dia12pt
+        ? dia12en
         : locale == 'es'
-        ? dia12pt
+        ? dia12es
         : null,
     dia13:
       locale == 'pt'
         ? dia13pt
         : locale == 'en'
-        ? dia13pt
+        ? dia13en
         : locale == 'es'
-        ? dia13pt
+        ? dia13es
         : null,
     dia14:
       locale == 'pt'
         ? dia14pt
         : locale == 'en'
-        ? dia14pt
+        ? dia14en
         : locale == 'es'
-        ? dia14pt
+        ? dia14es
         : null,
   };
 
@@ -67,6 +89,30 @@ export default function Calendar() {
     );
   };
 
+  const setProgramFirebase = async ({ colectionId, data }) => {
+    console.log('colectionId:', colectionId);
+    console.log('data:', data);
+    console.log('objectKey:', Object.keys(data));
+    return;
+    await firestore()
+      .collection('configs')
+      .doc('languages')
+      .collection(colectionId)
+      .doc()
+      .set(data)
+      .then(() => {
+        setId();
+        setCheck('Checkin realizado com sucesso');
+        setTimeout(() => {
+          setCheck('');
+        }, 2000);
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+    setId();
+  };
+
   return (
     <View
       style={[
@@ -77,6 +123,27 @@ export default function Calendar() {
           gap: 15,
         },
       ]}>
+      {/* <TouchableOpacity
+        onPress={() => {
+          todos.map((item, index) => {
+            console.log('objectKey:', todos['objectKey']);
+
+            return;
+            console.log(item); //item a ser cadastrado
+            item.map((value, indice) => {
+              console.log(value); //item a ser cadastrado
+            });
+          });
+          return;
+          const prog = {
+            colectionId: 'teste',
+            data: dia12en,
+          };
+          setProgramFirebase(prog);
+        }}
+        style={{ padding: 5, paddingHorizontal: 20, borderWidth: 1 }}>
+        <Text>Cadastrar</Text>
+      </TouchableOpacity> */}
       <View
         style={[
           {
@@ -193,196 +260,3 @@ const Dados = props => {
     </View>
   );
 };
-
-const dia12pt = [
-  {
-    id: 1,
-    start: '14h00',
-    finish: '18h00',
-    title: 'Recepção, credenciamento e atividades de conexão',
-    group: 1,
-    local: 'Sala 2',
-  },
-  {
-    id: 2,
-    start: '18h00',
-    finish: '19h00',
-    title: 'Abertura do FICOO 2023',
-    group: 1,
-  },
-  {
-    id: 3,
-    start: '19h00',
-    finish: '20h30',
-    title: 'Conferência 1',
-    group: 1,
-  },
-  {
-    id: 4,
-    start: '20h30',
-    finish: '21h00',
-    title: 'Tempo Livre e Mercado Colaborativo',
-    group: 1,
-  },
-  {
-    id: 5,
-    start: '21h00',
-    finish: '21h30',
-    title: 'O Encontro das Tribos',
-    group: 1,
-  },
-  {
-    id: 6,
-    start: '21h30',
-    finish: '22h00',
-    title: 'Atividade de Celebração',
-    group: 1,
-  },
-];
-
-const dia13pt = [
-  {
-    id: 1,
-    start: '08h30',
-    finish: '09h00',
-    title: 'Atividades de conexão',
-    group: 1,
-  },
-  {
-    id: 2,
-    start: '09h00',
-    finish: '10h30',
-    title: 'Painel Colaborativo',
-    group: 1,
-  },
-
-  {
-    id: 3,
-    start: '10h30',
-    finish: '11h00',
-    title: 'Tempo livre e Mercado Colaborativo',
-    group: 1,
-  },
-  {
-    id: 4,
-    start: '11h00',
-    finish: '13h00',
-    title: 'Rodas de ConversAção',
-    group: 1,
-  },
-  {
-    id: 5,
-    start: '11h00',
-    finish: '13h00',
-    title: 'Laboratório de Com-Vivências',
-    group: 1,
-  },
-  {
-    id: 6,
-    start: '14h30',
-    finish: '18h30',
-    title: 'Oficinas de Cooperação',
-    group: 1,
-  },
-  {
-    id: 7,
-    start: '18h30',
-    finish: '19h00',
-    title: 'Tempo livre e Mercado Colaborativo',
-    group: 1,
-  },
-  {
-    id: 8,
-    start: '13h00',
-    finish: '14h30',
-    title: 'Tempo livre e Mercado Colaborativo',
-    group: 1,
-  },
-  {
-    id: 9,
-    start: '19h00',
-    finish: '20h30',
-    title: 'O Desafio da Regeneração',
-    group: 1,
-  },
-  {
-    id: 10,
-    start: '20h30',
-    finish: '21h00',
-    title: 'Atividade de Celebração',
-    group: 1,
-  },
-];
-
-const dia14pt = [
-  {
-    id: 1,
-    start: '08h30',
-    finish: '09h00',
-    title: 'Atividades de conexão',
-    group: 1,
-  },
-  {
-    id: 2,
-    start: '09h00',
-    finish: '10h30',
-    title: 'Conferência 2',
-    group: 1,
-  },
-  {
-    id: 3,
-    start: '10h30',
-    finish: '11h00',
-    title: 'Tempo livre e Mercado Colaborativo',
-    group: 1,
-  },
-  {
-    id: 4,
-    start: '11h00',
-    finish: '13h00',
-    title: 'Rodas de ConversAção',
-    group: 1,
-  },
-  {
-    id: 5,
-    start: '11h00',
-    finish: '13h00',
-    title: 'Laboratório de Com-Vivências',
-    group: 1,
-  },
-  {
-    id: 6,
-    start: '13h00',
-    finish: '14h30',
-    title: 'Tempo livre e Mercado Colaborativo',
-    group: 1,
-  },
-  {
-    id: 7,
-    start: '14h30',
-    finish: '18h30',
-    title: 'Oficinas de Cooperação',
-    group: 1,
-  },
-  {
-    id: 8,
-    start: '18h30',
-    finish: '19h00',
-    title: 'Tempo livre e Mercado Colaborativo',
-    group: 1,
-  },
-  {
-    id: 9,
-    start: '19h00',
-    finish: '20h30',
-    title: 'A Grande Síntese',
-    group: 1,
-  },
-  {
-    id: 10,
-    start: '20h30',
-    finish: '22h00',
-    title: 'Festa DIVER e Encerramento do Festival',
-    group: 1,
-  },
-];

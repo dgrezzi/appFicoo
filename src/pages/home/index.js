@@ -30,6 +30,7 @@ export default function Home() {
     'oficinas',
     'diver',
     'parceiros',
+    'ativo',
   ];
 
   useFocusEffect(
@@ -55,7 +56,6 @@ export default function Home() {
       getDados(item);
     });
   };
-
   const getDados = async doc => {
     const check = [];
     await firestore()

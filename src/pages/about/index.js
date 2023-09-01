@@ -67,9 +67,8 @@ export default function About() {
               iconSize={VARS.size.icons * 0.8}
               onPress={() => {
                 navigation.navigate('T1');
-                setTimeout(() => {
-                  storage.set('active', passActivate);
-                }, 1000);
+                storage.set('active', passActivate);
+                setTimeout(() => {}, 1000);
               }}
             />
           </View>
