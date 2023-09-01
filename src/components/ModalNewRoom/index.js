@@ -76,7 +76,7 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: VARS.color.opacity }}>
+    <View style={{ flex: 1, backgroundColor: VARS.color.whiteOpacity }}>
       <TouchableWithoutFeedback onPress={setVisible}>
         <View style={{ flex: 1 }}></View>
       </TouchableWithoutFeedback>

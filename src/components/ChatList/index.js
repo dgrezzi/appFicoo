@@ -32,7 +32,12 @@ function ChatList({ data, deleteRoom, userStatus }) {
       onPress={openChat}
       onLongPress={() => deleteRoom && deleteRoom()}>
       <Text
-        style={{ fontFamily: 'AbelBold', fontSize: 24, letterSpacing: 1 }}
+        style={{
+          fontFamily: 'AbelBold',
+          fontSize: 24,
+          letterSpacing: 1,
+          color: VARS.color.black,
+        }}
         numberOfLines={1}>
         {data.name}
       </Text>

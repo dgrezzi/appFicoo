@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import GestureFlipView from 'react-native-gesture-flip-card';
 import InputTxt from '../../components/InputTxt';
+import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
@@ -19,6 +20,8 @@ export default function ListUser() {
   const [checkinList, setCheckinList] = useState([]);
   const [input, setInput] = useState('');
   const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const [avatarFicoo, setAvatarFicoo] = useState(
     'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/logo-white.png?alt=media&token=1d972f3e-339f-4c37-bafe-9431051de805',
   );
@@ -75,6 +78,7 @@ export default function ListUser() {
       });
     setLista(markers);
     setList(markers);
+    setLoading(false);
     return markers;
   };
 
@@ -322,6 +326,8 @@ export default function ListUser() {
 
   return (
     <View style={[styles.container, { paddingHorizontal: 0 }]}>
+      {loading && <Loading />}
+
       <View style={[{ paddingHorizontal: 20, padding: 8 }]}>
         <InputTxt
           icon="search-outline"

@@ -3,6 +3,7 @@ import firestore from '@react-native-firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import exclamation from '../../assets/exclamation.png';
+import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import { legenda } from './atividades';
@@ -112,7 +113,7 @@ export const Botoes = ({ abaChange }) => {
         style={{
           backgroundColor:
             props.aba == active ? VARS.color.orangeLight : VARS.color.white,
-          paddingHorizontal: 20,
+          paddingHorizontal: 30,
           alignItems: 'center',
           justifyContent: 'center',
           borderWidth: 1,
@@ -163,13 +164,13 @@ export const Botoes = ({ abaChange }) => {
           marginBottom: 15,
         },
       ]}>
-      <Aba
+      {/* <Aba
         label={lang.inscAbaLabel}
         aba="1"
         onPress={() => {
           handleChange(1);
         }}
-      />
+      /> */}
       <Aba
         label={lang.inscAbaLabel2}
         label2="13/10"
@@ -192,6 +193,7 @@ export const Botoes = ({ abaChange }) => {
 
 export const Atividades = ({ atividadeChange, ...props }) => {
   const [qtdActive, setQtdActive] = useState();
+  const [loading, setLoading] = useState(true);
 
   const { locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
@@ -203,7 +205,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
 
   const checkVacancy = async () => {
     const inscritos = [];
-    if (props.dia) {
+    if (props.vaga) {
       await firestore()
         .collection('checkin')
         .doc(props.id)
@@ -223,9 +225,10 @@ export const Atividades = ({ atividadeChange, ...props }) => {
         .catch(err => {
           console.log(err);
         });
+      setLoading(false);
       return;
     }
-    if (!props.dia) {
+    if (!props.vaga) {
       await firestore()
         .collection('checkin')
         .doc(props.id)
@@ -255,6 +258,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
 
   return (
     <View style={{ paddingHorizontal: 15 }}>
+      {loading && <Loading />}
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {
@@ -267,7 +271,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
             ? VARS.color.orangeLight
             : VARS.color.white,
           flexDirection: 'row',
-          borderRadius: 18,
+          borderRadius: 20,
           alignItems: 'center',
           borderWidth: 1,
           borderColor: VARS.color.blueLight,
@@ -424,13 +428,13 @@ export const Confirmacao = ({ data }) => {
             value={legenda[data.painel]?.slice(0, 60) + '...'}
           />
         ) : null}
-        {data.painel ? (
+        {data.oficina1 ? (
           <Dados
             label={lang.confOficina1}
             value={formatLetter(legenda[data.oficina1]?.slice(0, 60) + '...')}
           />
         ) : null}
-        {data.painel ? (
+        {data.oficina2 ? (
           <Dados
             label={lang.confOficina2}
             value={formatLetter(legenda[data.oficina2]?.slice(0, 60) + '...')}

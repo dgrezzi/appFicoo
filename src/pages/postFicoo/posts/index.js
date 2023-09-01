@@ -86,7 +86,6 @@ export default function Posts() {
 
   async function handleRefreshPosts() {
     setLoadingRefresh(true);
-
     firestore()
       .collection('posts')
       .orderBy('createdAt', 'desc')
@@ -142,12 +141,9 @@ export default function Posts() {
       });
   }
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
     <View style={[styles.container, { paddingHorizontal: 0 }]}>
+      {loading && <Loading />}
       <FlatList
         showsVerticalScrollIndicator={false}
         refreshing={loadingRefresh}

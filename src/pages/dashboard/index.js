@@ -97,7 +97,6 @@ export default function Dashboard() {
             source={ficoo}
           />
         </TouchableOpacity>
-
         <Links
           onPress={() => {
             navigation.navigate('checkin');

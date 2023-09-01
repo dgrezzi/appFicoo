@@ -3,6 +3,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   Image,
   ScrollView,
   Text,
@@ -11,6 +12,7 @@ import {
 } from 'react-native';
 import Btn from '../../components/Btn/intex';
 import BtnEdit from '../../components/BtnEdit/intex';
+import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import getDataUserFirebase from '../../functions/getDataUserFirebase';
@@ -19,8 +21,9 @@ import styles from '../../styles/styles';
 
 export default function Profile() {
   const navigation = useNavigation();
-  const { dataContext, setLoading } = useContext(AuthContext);
-  const [imageLoad, setImageLoad] = useState(false);
+  const { dataContext } = useContext(AuthContext);
+  const [imageLoad, setImageLoad] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const { locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
@@ -31,22 +34,25 @@ export default function Profile() {
   );
 
   useEffect(() => {
-    setLoading(false);
     dataContext.storageData?.photoURL
       ? setPhotoAvatar(dataContext.storageData.photoURL)
       : setPhotoAvatar(
           'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/avatarM.jpg?alt=media&token=a494693c-611f-435a-b34a-d54fcc38461d',
         );
+    setImageLoad(false);
+    setLoading(false);
   }, [dataContext]);
 
   useFocusEffect(
     useCallback(() => {
       getDataUserFirebase(dataContext);
+      setLoading(false);
     }, []),
   );
 
   return (
     <View style={[styles.container, { paddingTop: 0, paddingHorizontal: 0 }]}>
+      {loading && <Loading />}
       <View
         style={{
           flexDirection: 'row',
@@ -117,16 +123,32 @@ export default function Profile() {
                 borderRadius: VARS.size.avatar / 2,
                 elevation: 15,
               }}>
-              <Image
-                style={{
-                  borderRadius: VARS.size.avatar,
-                  marginBottom: 10,
-                  width: '100%',
-                  height: '100%',
+              <TouchableOpacity
+                style={{ borderRadius: 100, width: '100%', aspectRatio: 1 }}
+                onLongPress={() => {
+                  Alert.alert('Atenção!', 'Resetar o aplicativo?', [
+                    {
+                      text: 'Cancel',
+                      onPress: () => {},
+                      style: 'cancel',
+                    },
+                    {
+                      text: 'OK',
+                      onPress: () => storage.clearAll(),
+                    },
+                  ]);
                 }}
-                source={{ uri: photoAvatar }}
-              />
-              {/* colocar icone camera AQUI*/}
+                activeOpacity={1}>
+                <Image
+                  style={{
+                    borderRadius: VARS.size.avatar,
+                    marginBottom: 10,
+                    width: '100%',
+                    height: '100%',
+                  }}
+                  source={{ uri: photoAvatar }}
+                />
+              </TouchableOpacity>
             </View>
           )}
           <View style={{ alignItems: 'center', gap: 5 }}>

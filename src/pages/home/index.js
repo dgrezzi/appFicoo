@@ -50,11 +50,10 @@ export default function Home() {
   }, [header]);
 
   const updatePage = () => {
-    const allProm = [];
+    setLoading(true);
     list.map(item => {
-      allProm.push(getDados(item));
+      getDados(item);
     });
-    Promise.all(allProm);
   };
 
   const getDados = async doc => {
@@ -70,6 +69,7 @@ export default function Home() {
           doc.data().uid = doc.id;
           check.push(doc.data());
         });
+
         return null;
       })
       .catch(err => {
@@ -86,10 +86,6 @@ export default function Home() {
     return check;
   };
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
     <View
       style={[
@@ -99,6 +95,7 @@ export default function Home() {
           paddingHorizontal: 0,
         },
       ]}>
+      {loading && <Loading />}
       {header && (
         <View style={{ padding: 15 }}>
           <Image

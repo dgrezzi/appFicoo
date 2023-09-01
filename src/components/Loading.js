@@ -4,12 +4,22 @@ export default function Loading() {
   return (
     <View
       style={{
+        zIndex: 999,
+        position: 'absolute',
+        alignSelf: 'center',
+        width: '100%',
+        height: '100%',
         flex: 1,
         alignItems: 'center',
+        borderRadius: 20,
         justifyContent: 'center',
-        backgroundColor: VARS.color.white,
+        backgroundColor: VARS.color.opacity,
       }}>
-      <ActivityIndicator size={VARS.size.load} color={VARS.color.blue} />
+      <ActivityIndicator
+        styl={{}}
+        size={VARS.size.load}
+        color={VARS.color.blue}
+      />
     </View>
   );
 }

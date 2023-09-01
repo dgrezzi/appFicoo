@@ -15,6 +15,7 @@ import {
 import Btn from '../../components/Btn/intex';
 import EditInputText from '../../components/EditInputText';
 import Language from '../../components/Language';
+import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import setAuthContext from '../../functions/setAuthContext';
@@ -28,29 +29,29 @@ export default function EditProfile() {
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
-  const { dataContext, setLoading } = useContext(AuthContext);
+  const { dataContext } = useContext(AuthContext);
   const [imageLoad, setImageLoad] = useState(false);
   const [name, setName] = useState(dataContext.storageData?.name);
   const [email, setEmail] = useState(dataContext.user.email);
   const [phone, setPhone] = useState(dataContext.storageData?.phone);
   const [city, setCity] = useState(dataContext.storageData?.city);
   const [aboutme, setAboutme] = useState(dataContext.storageData?.aboutme);
+  const [loading, setLoading] = useState(true);
   const [instagram, setInstagram] = useState(
     dataContext.storageData?.instagram,
   );
   const [linkedin, setLinkedin] = useState(dataContext.storageData?.linkedin);
-
   const [photoAvatar, setPhotoAvatar] = useState(
     'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/avatarM.jpg?alt=media&token=a494693c-611f-435a-b34a-d54fcc38461d',
   );
 
   useEffect(() => {
-    setLoading(false);
     dataContext.storageData.photoURL
       ? setPhotoAvatar(dataContext.storageData.photoURL)
       : setPhotoAvatar(
           'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/avatarM.jpg?alt=media&token=a494693c-611f-435a-b34a-d54fcc38461d',
         );
+    setLoading(false);
   }, []);
 
   const handleGetFile = async () => {
@@ -157,6 +158,7 @@ export default function EditProfile() {
           backgroundColor: VARS.color.white,
         },
       ]}>
+      {loading && <Loading />}
       <ScrollView
         contentContainerStyle={{
           alignItems: 'center',
@@ -315,7 +317,7 @@ export default function EditProfile() {
           icon="checkmark-circle-outline"
           iconColor={VARS.color.white}
           iconSize={VARS.size.icons}
-          onPress={() => {
+          onPress={async () => {
             const data = {};
             name ? (data.name = name) : null;
             phone ? (data.phone = phone) : null;
@@ -323,7 +325,9 @@ export default function EditProfile() {
             instagram ? (data.instagram = instagram) : null;
             linkedin ? (data.linkedin = linkedin) : null;
             aboutme ? (data.aboutme = aboutme) : null;
-            setUpdateUserFirebase(dataContext, data);
+            setLoading(true);
+            await setUpdateUserFirebase(dataContext, data);
+            setLoading(false);
             navigation.goBack();
           }}
         />

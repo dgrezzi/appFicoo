@@ -25,13 +25,19 @@ export default function ChatRoom() {
   const [list, setList] = useState([]);
   const [updateScreen, setUpdateScreen] = useState(false);
   const [input, setInput] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [loadingRefresh, setLoadingRefresh] = useState(false);
 
-  const { dataContext, loading, setLoading, locale } = useContext(AuthContext);
+  const { dataContext, locale } = useContext(AuthContext);
   let dic = require('../../../dic/lang.json');
   let lang = dic[locale];
 
   useFocusEffect(
     useCallback(() => {
+      if (loadingRefresh) {
+        setLoadingRefresh(false);
+        return;
+      }
       let isActive = true;
       function getChats() {
         firestore()
@@ -51,15 +57,16 @@ export default function ChatRoom() {
             if (isActive) {
               setThreads(threads);
               setList(threads);
-              setLoading(false);
             }
+            setLoading(false);
           });
       }
       getChats();
+      setLoadingRefresh(false);
       return () => {
         isActive = false;
       };
-    }, [updateScreen]),
+    }, [updateScreen, loadingRefresh]),
   );
 
   function deleteRoom(ownerId, idRoom) {
@@ -103,10 +110,6 @@ export default function ChatRoom() {
     setList(newChats);
   }
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
     <SafeAreaView
       style={[
@@ -123,6 +126,7 @@ export default function ChatRoom() {
             backgroundColor: 'transparent',
           },
         ]}>
+        {loading && <Loading />}
         <View
           style={{
             width: '100%',
@@ -175,6 +179,10 @@ export default function ChatRoom() {
           data={list}
           keyExtractor={item => item._id}
           showsVerticalScrollIndicator={false}
+          refreshing={loadingRefresh}
+          onRefresh={() => {
+            setLoadingRefresh(true);
+          }}
           renderItem={({ item }) => (
             <ChatList
               data={item}
