@@ -254,6 +254,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
 
   useEffect(() => {
     if (props.editable) Promise.all(checkVacancy());
+    if (!props.editable) setLoading(false);
   }, [props]);
 
   return (

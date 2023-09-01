@@ -173,6 +173,7 @@ export default function ChatRoom() {
           />
         </View>
         <FlatList
+          contentContainerStyle={{ paddingBottom: 20 }}
           style={{
             width: '100%',
           }}
