@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { MMKV } from 'react-native-mmkv';
 import Btn from '../../components/Btn/intex';
 import BtnEdit from '../../components/BtnEdit/intex';
 import Loading from '../../components/Loading';
@@ -19,13 +20,15 @@ import getDataUserFirebase from '../../functions/getDataUserFirebase';
 import handleSignOut from '../../functions/handleSignOut';
 import styles from '../../styles/styles';
 
+const storage = new MMKV({ id: 'appFicoo' });
+
 export default function Profile() {
   const navigation = useNavigation();
   const { dataContext } = useContext(AuthContext);
   const [imageLoad, setImageLoad] = useState(true);
   const [loading, setLoading] = useState(true);
 
-  const { locale } = useContext(AuthContext);
+  const { locale, getActivationCode } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
@@ -45,6 +48,7 @@ export default function Profile() {
 
   useFocusEffect(
     useCallback(() => {
+      getActivationCode();
       getDataUserFirebase(dataContext);
       setLoading(false);
     }, []),

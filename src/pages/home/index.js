@@ -18,7 +18,7 @@ export default function Home() {
   const [parceiros, setParceiros] = useState();
   const [loading, setLoading] = useState(true);
 
-  const { locale } = useContext(AuthContext);
+  const { locale, getActivationCode } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
@@ -35,6 +35,7 @@ export default function Home() {
 
   useFocusEffect(
     useCallback(() => {
+      getActivationCode();
       updatePage();
       header &&
         Image.getSize(header, (w, h) => {

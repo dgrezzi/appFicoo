@@ -28,12 +28,13 @@ export default function ChatRoom() {
   const [loading, setLoading] = useState(true);
   const [loadingRefresh, setLoadingRefresh] = useState(false);
 
-  const { dataContext, locale } = useContext(AuthContext);
+  const { dataContext, locale, getActivationCode } = useContext(AuthContext);
   let dic = require('../../../dic/lang.json');
   let lang = dic[locale];
 
   useFocusEffect(
     useCallback(() => {
+      getActivationCode();
       if (loadingRefresh) {
         setLoadingRefresh(false);
         return;

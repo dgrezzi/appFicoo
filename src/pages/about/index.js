@@ -22,7 +22,7 @@ const storage = new MMKV({ id: 'appFicoo' });
 export default function About() {
   const navigation = useNavigation();
 
-  const { locale } = useContext(AuthContext);
+  const { activationPass, locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
   const [passActivate, setPassActivate] = useState('');
@@ -66,9 +66,13 @@ export default function About() {
               iconColor={VARS.color.white}
               iconSize={VARS.size.icons * 0.8}
               onPress={() => {
-                navigation.navigate('T1');
-                storage.set('active', passActivate);
-                setTimeout(() => {}, 1000);
+                if (passActivate == activationPass) {
+                  storage.set('active', passActivate);
+                  navigation.navigate('T1');
+                }
+                if (passActivate != activationPass) {
+                  alert('Código incorreto');
+                }
               }}
             />
           </View>

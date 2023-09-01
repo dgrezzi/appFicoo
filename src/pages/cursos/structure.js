@@ -99,7 +99,7 @@ export const Botoes = ({ abaChange }) => {
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(2);
   const handleChange = event => {
     setActive(event);
     abaChange(event);
@@ -254,7 +254,6 @@ export const Atividades = ({ atividadeChange, ...props }) => {
 
   useEffect(() => {
     if (props.editable) Promise.all(checkVacancy());
-    if (!props.editable) setLoading(false);
   }, [props]);
 
   return (

@@ -1,15 +1,16 @@
 import firestore from '@react-native-firebase/firestore';
 import React, { createContext, useEffect, useState } from 'react';
-export const AuthContext = createContext({});
-
 import { MMKV } from 'react-native-mmkv';
 const storage = new MMKV({ id: 'appFicoo' });
+
+export const AuthContext = createContext({});
 
 export default function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [dataContext, setDataContext] = useState({});
   const [locale, setLocale] = useState('pt');
   const [active, setActive] = useState(false);
+  const [disable, setDisable] = useState(false);
   const [activationPass, setActivationPass] = useState('lc5816qd2');
 
   useEffect(() => {
@@ -42,18 +43,20 @@ export default function AuthProvider({ children }) {
         }
       }
     });
+    if (disable == true) storage.clearAll();
     return () => {
       listner.remove();
     };
-  }, []);
+  }, [disable]);
 
   async function getActivationCode() {
     await firestore()
       .collection('configs')
-      .doc('Ativacao')
+      .doc('ativacao')
       .get()
       .then(result => {
         setActivationPass(result._data?.value);
+        setDisable(result._data?.disable);
       })
       .catch(err => {
         console.error('erro no banco:', err);
@@ -69,6 +72,8 @@ export default function AuthProvider({ children }) {
         loading,
         locale,
         active,
+        activationPass,
+        getActivationCode,
       }}>
       {children}
     </AuthContext.Provider>
