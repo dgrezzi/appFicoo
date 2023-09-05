@@ -294,7 +294,7 @@ export default function EditProfile() {
               value={aboutme}
               security={false}
               multiline={true}
-              maxLength={400}
+              maxLength={250}
               textAlignVertical="top"
               editable={true}
               onChangeText={txt => {

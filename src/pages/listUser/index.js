@@ -147,7 +147,7 @@ export default function ListUser() {
         <View
           style={{
             width: window.width - 40,
-            aspectRatio: 1.45,
+            aspectRatio: 1.15,
             backgroundColor: ficoo ? '#eef' : VARS.color.white,
             borderWidth: 1,
             borderColor: VARS.color.blueLight,
@@ -155,6 +155,7 @@ export default function ListUser() {
             padding: 10,
             borderRadius: 12,
             alignItems: 'center',
+            gap: 4,
           }}>
           {checked && (
             <Ionicons
@@ -200,6 +201,7 @@ export default function ListUser() {
                 fontFamily: 'AbelBold',
                 fontSize: 24,
                 letterSpacing: 1,
+                color: 'black',
               }}>
               {item?.name}
             </Text>
@@ -209,7 +211,7 @@ export default function ListUser() {
               flex: 1,
               height: '100%',
               width: '100%',
-              justifyContent: 'flex-start',
+              justifyContent: 'space-around',
               paddingHorizontal: 8,
               gap: 6,
             }}>
@@ -255,7 +257,7 @@ export default function ListUser() {
         <View
           style={{
             width: window.width - 40,
-            aspectRatio: 1.45,
+            aspectRatio: 1.15,
             backgroundColor: ficoo ? '#eef' : VARS.color.white,
             borderWidth: 1,
             borderColor: VARS.color.blueLight,
@@ -278,13 +280,14 @@ export default function ListUser() {
                 fontFamily: 'AbelBold',
                 fontSize: 22,
                 letterSpacing: 1,
+                color: 'black',
               }}>
               {item?.name}
             </Text>
           </View>
 
           <Text
-            numberOfLines={7}
+            numberOfLines={10}
             ellipsizeMode="tail"
             style={{
               width: '100%',
@@ -293,6 +296,7 @@ export default function ListUser() {
               color: VARS.color.title,
               letterSpacing: 1,
               textAlign: 'justify',
+              lineHeight: 28,
             }}>
             {item?.aboutme}
           </Text>
@@ -307,7 +311,7 @@ export default function ListUser() {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <GestureFlipView width={window.width} height={window.width / 1.5}>
+        <GestureFlipView width={window.width} height={window.width / 1.25}>
           <RenderFront />
           {item?.aboutme ? <RenderBack /> : <RenderFront />}
         </GestureFlipView>

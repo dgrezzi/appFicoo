@@ -62,7 +62,7 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
             createdAt: firestore.FieldValue.serverTimestamp(),
             system: true,
             user: {
-              displayName: 'System',
+              displayName: 'FICOO',
             },
           })
           .then(() => {

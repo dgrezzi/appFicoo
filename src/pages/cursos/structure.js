@@ -209,7 +209,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
       await firestore()
         .collection('checkin')
         .doc(props.id)
-        .collection('user')
+        .collection('users')
         .get()
         .then(result => {
           result.forEach(doc => {
@@ -228,32 +228,11 @@ export const Atividades = ({ atividadeChange, ...props }) => {
       setLoading(false);
       return;
     }
-    if (!props.vaga) {
-      await firestore()
-        .collection('checkin')
-        .doc(props.id)
-        .collection('users')
-        .get()
-        .then(result => {
-          result.forEach(doc => {
-            doc.data().uid = doc.id;
-            inscritos.push(doc.data());
-          });
-          const quant = parseInt(inscritos.length);
-          const total = props.vaga - quant;
-          if (props.selected && total <= 0) handleChange();
-          setQtdActive(total);
-          return;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-      return;
-    }
   };
 
   useEffect(() => {
-    if (props.editable) Promise.all(checkVacancy());
+    if (props.editable && props.vaga != null) Promise.all(checkVacancy());
+    if (props.editable == false) setLoading(false);
   }, [props]);
 
   return (

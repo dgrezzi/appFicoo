@@ -30,6 +30,7 @@ export default function Cursos() {
     }
     if (!dataContext.storageData.inscrito) {
       setEditable(true);
+      getVagas();
     }
   }, [dataContext]);
 
@@ -46,10 +47,6 @@ export default function Cursos() {
         console.error('erro no banco:', err);
       });
   };
-
-  useEffect(() => {
-    getVagas();
-  }, []);
 
   // function AddPainel(valueId) {
   //   if (editable) {
