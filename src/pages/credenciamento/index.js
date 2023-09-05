@@ -42,7 +42,7 @@ export default function Credenciamento() {
   const [current, setCurrent] = useState('none');
   const [atividades, setAtividades] = useState([]);
   const [inscritos, setInscritos] = useState([]);
-  const [names, setNames] = useState([]);
+  const [fullUsers, setFullUsers] = useState([]);
   const [showList, setShowList] = useState(false);
   const scanned = false;
 
@@ -75,6 +75,7 @@ export default function Credenciamento() {
 
   const getUsers = async chave => {
     const users = [];
+    const fullUsers = [];
     const userName = [];
     await firestore()
       .collection('checkin')
@@ -84,9 +85,10 @@ export default function Credenciamento() {
       .then(result => {
         result.forEach(doc => {
           users.push(doc._data?.uid);
+          fullUsers.push(doc._data);
           userName.push(doc._data.name);
         });
-        setNames(userName);
+        setFullUsers(fullUsers);
         setInscritos(users);
         return;
       })
@@ -96,15 +98,32 @@ export default function Credenciamento() {
     return;
   };
 
-  const checkinUser = ident => {
-    if (inscritos.indexOf(ident.id) == 0) {
-      setCheck(true);
-      setTimeout(() => {
-        setCheck(false);
-        setId();
-      }, 2000);
+  const checkinUser = async info => {
+    if (inscritos.indexOf(info.id) != -1) {
+      await firestore()
+        .collection('checkin')
+        .doc(current)
+        .collection('users')
+        .doc(info.id)
+        .set({
+          createdAt: new Date(),
+          name: info.name,
+          email: info.email,
+        })
+        .then(() => {
+          setCheck(true);
+          setShowList(false);
+          setTimeout(() => {
+            setCheck(false);
+            setId();
+          }, 2000);
+        })
+        .catch(err => {
+          console.error('erro no banco:', err);
+        });
+      setId();
     }
-    if (inscritos.indexOf(ident.id) != 0) {
+    if (inscritos.indexOf(info.id) == -1) {
       setCheck('false');
       setTimeout(() => {
         setCheck(false);
@@ -325,7 +344,6 @@ export default function Credenciamento() {
             width: '100%',
             height: '100%',
             zIndex: 999,
-
             gap: 50,
           }}>
           <View
@@ -359,7 +377,6 @@ export default function Credenciamento() {
           </View>
         </View>
       )}
-
       {showList && current != 'none' && (
         <View
           style={{
@@ -404,7 +421,7 @@ export default function Credenciamento() {
                 gap: 8,
                 paddingTop: 10,
               }}>
-              {names.map((value, index) => {
+              {fullUsers.map((value, index) => {
                 return (
                   <View
                     key={index}
@@ -418,19 +435,28 @@ export default function Credenciamento() {
                       size={20}
                       color={'green'}
                     />
-                    <Text
-                      style={{
-                        fontFamily: 'Abel',
-                        fontSize: 20,
-                        letterSpacing: 1,
+                    <TouchableOpacity
+                      activeOpacity={1}
+                      onLongPress={() => {
+                        const newId = {};
+                        newId['name'] = value.name;
+                        newId['id'] = value.uid;
+                        newId['email'] = value.email;
+                        checkinUser(newId);
                       }}>
-                      {value}
-                    </Text>
+                      <Text
+                        style={{
+                          fontFamily: 'Abel',
+                          fontSize: 20,
+                          letterSpacing: 1,
+                        }}>
+                        {value.name}
+                      </Text>
+                    </TouchableOpacity>
                   </View>
                 );
               })}
             </ScrollView>
-
             <TouchableOpacity
               activeOpacity={0.8}
               style={{
