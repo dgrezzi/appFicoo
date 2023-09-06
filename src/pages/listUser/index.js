@@ -40,24 +40,83 @@ export default function ListUser() {
   }, []);
 
   const handleReset = async user => {
+    await firestore()
+      .collection('checkin')
+      .doc(user.oficina1)
+      .collection('users')
+      .doc(user.uid)
+      .delete()
+      .then(() => {
+        console.log(user.uid);
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+    await firestore()
+      .collection('checkin')
+      .doc(user.oficina1)
+      .collection('presence')
+      .doc(user.uid)
+      .delete()
+      .then(() => {})
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+    await firestore()
+      .collection('checkin')
+      .doc(user.oficina2)
+      .collection('users')
+      .doc(user.uid)
+      .delete()
+      .then(() => {})
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+    await firestore()
+      .collection('checkin')
+      .doc(user.oficina2)
+      .collection('presence')
+      .doc(user.uid)
+      .delete()
+      .then(() => {})
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
     const reset = user;
     delete reset.isAdmin;
     delete reset.oficina1;
     delete reset.oficina2;
     delete reset.inscrito;
-
     await firestore()
       .collection('user')
       .doc(user.uid)
       .set(reset)
+      .then(() => {})
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+    getDocs();
+  };
+
+  const handleCheckin = async info => {
+    await firestore()
+      .collection('checkin')
+      .doc('evento')
+      .collection('users')
+      .doc(info.uid)
+      .set({
+        createdAt: new Date(),
+        name: info.name,
+        email: info.email,
+        uid: info.uid,
+        manual: true,
+      })
       .then(() => {
-        getDocs();
+        getCheckin();
       })
       .catch(err => {
         console.error('erro no banco:', err);
       });
-
-    console.log(reset);
   };
 
   async function handleSearch(txt) {
@@ -181,28 +240,74 @@ export default function ListUser() {
             gap: 4,
           }}>
           {checked && item.inscrito && (
-            <Ionicons
+            <TouchableOpacity
               style={{
                 position: 'absolute',
                 top: 10,
                 right: 15,
               }}
-              name="checkmark-done-outline"
-              size={VARS.size.icons * 0.8}
-              color={VARS.color.green}
-            />
+              activeOpacity={1}
+              onLongPress={() => {
+                dataContext.storageData?.isAdmin &&
+                  Alert.alert(
+                    'Atenção!',
+                    'Tem certeza que deseja fazer o reset do usuário?',
+                    [
+                      {
+                        text: 'Cancel',
+                        onPress: () => {},
+                        style: 'cancel',
+                      },
+                      {
+                        text: 'OK',
+                        onPress: () => {
+                          handleReset(item);
+                        },
+                      },
+                    ],
+                  );
+              }}>
+              <Ionicons
+                name="checkmark-done-outline"
+                size={VARS.size.icons * 0.8}
+                color={VARS.color.green}
+              />
+            </TouchableOpacity>
           )}
           {checked && !item.inscrito && (
-            <Ionicons
+            <TouchableOpacity
               style={{
                 position: 'absolute',
                 top: 10,
                 right: 15,
               }}
-              name="checkmark-outline"
-              size={VARS.size.icons * 0.8}
-              color={VARS.color.green}
-            />
+              activeOpacity={1}
+              onLongPress={() => {
+                dataContext.storageData?.isAdmin &&
+                  Alert.alert(
+                    'Atenção!',
+                    'Tem certeza que deseja fazer o reset do usuário?',
+                    [
+                      {
+                        text: 'Cancel',
+                        onPress: () => {},
+                        style: 'cancel',
+                      },
+                      {
+                        text: 'OK',
+                        onPress: () => {
+                          handleReset(item);
+                        },
+                      },
+                    ],
+                  );
+              }}>
+              <Ionicons
+                name="checkmark-outline"
+                size={VARS.size.icons * 0.8}
+                color={VARS.color.green}
+              />
+            </TouchableOpacity>
           )}
           <View
             style={{
@@ -218,10 +323,10 @@ export default function ListUser() {
               <TouchableOpacity
                 activeOpacity={1}
                 onLongPress={() => {
-                  dataContext.storageData?.superAdm &&
+                  dataContext.storageData?.isAdmin &&
                     Alert.alert(
                       'Atenção!',
-                      'Tem certeza que deseja resetar o usuário?',
+                      'Tem certeza que deseja fazer o checkin do usuário?',
                       [
                         {
                           text: 'Cancel',
@@ -231,7 +336,7 @@ export default function ListUser() {
                         {
                           text: 'OK',
                           onPress: () => {
-                            handleReset(item);
+                            handleCheckin(item);
                           },
                         },
                       ],
