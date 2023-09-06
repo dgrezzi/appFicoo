@@ -77,6 +77,7 @@ export default function AuthProvider({ children }) {
         activationPass,
         getActivationCode,
         mpe,
+        setMpe,
       }}>
       {children}
     </AuthContext.Provider>

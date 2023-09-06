@@ -78,14 +78,13 @@ export default function LostPass() {
               {
                 fontFamily: 'Abel',
                 width: '100%',
-                textAlign: 'left',
+                textAlign: 'center',
                 color: VARS.color.title,
                 fontSize: 18,
                 letterSpacing: 1,
               },
             ]}>
-            {lang.lostPassInstruction} {'\n'}
-            {lang.minPass}
+            {lang.lostPassInstruction}
           </Text>
           <View style={{ width: '100%', gap: 12 }}>
             <EditInputText
@@ -108,7 +107,7 @@ export default function LostPass() {
             iconSize={VARS.size.icons}
             onPress={() => {
               email && sendPasswordResetEmail();
-              !email && alert(lang.allForm);
+              !email && alert(lang.completeEmail);
             }}
           />
         </View>

@@ -96,7 +96,7 @@ export default function Profile() {
             width: '100%',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: 5,
+            gap: 35,
             paddingRight: 12,
             paddingVertical: 25,
             paddingHorizontal: 20,
@@ -155,7 +155,7 @@ export default function Profile() {
               </TouchableOpacity>
             </View>
           )}
-          <View style={{ alignItems: 'center', gap: 5 }}>
+          <View style={{ alignItems: 'center', gap: 10 }}>
             <Text
               style={{
                 fontFamily: 'AbelBold',
@@ -308,69 +308,38 @@ export default function Profile() {
           </Text>
         </View>
 
-        <View
-          style={{
-            width: '100%',
-            alignItems: 'center',
-            marginBottom: 10,
-            gap: 10,
-          }}>
-          <TouchableOpacity
-            activeOpacity={0.5}
+        <View style={{ gap: 10, paddingBottom: 20 }}>
+          <Btn
+            label={lang.listUser}
+            color={VARS.color.blue}
+            iconColor={VARS.color.white}
+            iconSize={VARS.size.icons}
             onPress={() => {
               navigation.navigate('ListUser');
             }}
-            style={{
-              padding: 4,
-              justifyContent: 'center',
-            }}>
-            <Text
-              style={{
-                fontFamily: 'Abel',
-                color: VARS.color.blue,
-                textDecorationLine: 'underline',
-
-                fontSize: 20,
-                letterSpacing: 1,
-              }}>
-              {lang.listUser}
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            activeOpacity={0.5}
+          />
+          <Btn
+            label={lang.credentials}
+            color={VARS.color.blue}
+            iconColor={VARS.color.white}
+            iconSize={VARS.size.icons}
             onPress={() => {
               navigation.navigate('Credentials');
             }}
-            style={{
-              padding: 4,
-              justifyContent: 'center',
-            }}>
-            <Text
-              style={{
-                fontFamily: 'Abel',
-                color: VARS.color.blue,
-                textDecorationLine: 'underline',
-
-                fontSize: 20,
-                letterSpacing: 1,
-              }}>
-              {lang.credentials}
-            </Text>
-          </TouchableOpacity>
+          />
+          <Btn
+            label={lang.exit}
+            color={VARS.color.white}
+            icon="exit-outline"
+            colorLabel={VARS.color.subColor}
+            iconColor={VARS.color.white}
+            iconSize={VARS.size.icons}
+            onPress={() => {
+              setLoading(true);
+              handleSignOut();
+            }}
+          />
         </View>
-
-        <Btn
-          label={lang.exit}
-          color={VARS.color.blue}
-          icon="exit-outline"
-          iconColor={VARS.color.white}
-          iconSize={VARS.size.icons}
-          onPress={() => {
-            setLoading(true);
-            handleSignOut();
-          }}
-        />
       </ScrollView>
     </View>
   );

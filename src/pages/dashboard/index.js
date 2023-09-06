@@ -1,9 +1,12 @@
+import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import React, { useContext } from 'react';
+
 import {
   Alert,
   Image,
   ScrollView,
+  Switch,
   Text,
   TouchableOpacity,
   View,
@@ -51,9 +54,22 @@ const Links = props => {
 export default function Dashboard() {
   const navigation = useNavigation();
 
-  const { locale } = useContext(AuthContext);
+  const { locale, mpe, setMpe, dataContext } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
+
+  const setFirebaseMpe = async value => {
+    await firestore()
+      .collection('configs')
+      .doc('ativacao')
+      .update({ mpe: !mpe })
+      .then(() => {
+        setMpe(!mpe);
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+  };
 
   return (
     <View
@@ -137,6 +153,43 @@ export default function Dashboard() {
             color: VARS.color.title,
           }}
         />
+        {dataContext.storageData?.superAdm && (
+          <View
+            style={{ flexDirection: 'row', width: '100%', marginVertical: 10 }}>
+            <Switch
+              style={{ marginHorizontal: 8 }}
+              onValueChange={() => {
+                Alert.alert(
+                  'Atenção!',
+                  mpe == false
+                    ? 'Você irá habilitar a página MPE'
+                    : 'Você irá desabilitar a página MPE',
+                  [
+                    {
+                      text: 'Cancel',
+                      onPress: () => {},
+                      style: 'cancel',
+                    },
+                    {
+                      text: 'OK',
+                      onPress: () => setFirebaseMpe(!mpe),
+                    },
+                  ],
+                );
+              }}
+              value={mpe}
+            />
+            <Text
+              style={{
+                fontFamily: 'Abel',
+                fontSize: 20,
+                letterSpacing: 1,
+                color: 'black',
+              }}>
+              Pagina Minimo Passe Elegante
+            </Text>
+          </View>
+        )}
       </ScrollView>
     </View>
   );

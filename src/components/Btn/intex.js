@@ -18,6 +18,8 @@ export default function Btn(props) {
           marginVertical: 8,
           justifyContent: 'center',
           alignItems: 'center',
+          borderWidth: 1,
+          borderColor: VARS.color.grayUltraLight,
         },
       ]}>
       <Text
@@ -25,7 +27,7 @@ export default function Btn(props) {
           fontFamily: 'Abel',
           fontSize: 20,
           letterSpacing: 1,
-          color: VARS.color.white,
+          color: props.colorLabel ? props.colorLabel : VARS.color.white,
         }}>
         {props.label}
       </Text>
