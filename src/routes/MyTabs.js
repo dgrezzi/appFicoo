@@ -8,13 +8,14 @@ import Calendar from '../pages/calendar';
 import Home from '../pages/home';
 import AdminRoute from './AdminRoute';
 import ChatRoutes from './ChatRoutes';
+import MpeRoutes from './MpeRoutes';
 import PerfilRoute from './PerfilRoute';
 import PostRoutes from './PostRoutes';
 
 const Tab = createBottomTabNavigator();
 
 export default function MyTabs() {
-  const { dataContext, active, locale } = useContext(AuthContext);
+  const { dataContext, active, locale, mpe } = useContext(AuthContext);
   let dic = require('../dic/lang.json');
   let lang = dic[locale];
 
@@ -24,14 +25,13 @@ export default function MyTabs() {
     <Tab.Navigator
       initialRouteName="messages"
       screenOptions={{
-        tabBarActiveTintColor: VARS.color.white,
+        tabBarActiveTintColor: VARS.color.orange,
         tabBarInactiveTintColor: VARS.color.grayLight,
         tabBarHideOnKeyboard: true,
         tabBarStyle: {
           backgroundColor: VARS.color.blue,
           height: 54,
         },
-
         tabBarShowLabel: false,
       }}>
       <Tab.Screen
@@ -84,6 +84,25 @@ export default function MyTabs() {
           ),
         }}
       />
+      {mpe && (
+        <Tab.Screen
+          name="MpeRoute"
+          component={MpeRoutes}
+          options={{
+            headerShown: false,
+            gestureEnabled: true,
+            animationTypeForReplace: 'push',
+            animation: 'slide_from_right',
+            tabBarIcon: ({ color }) => (
+              <Ionicons
+                name="mail-open-outline"
+                size={VARS.size.icons * 0.85}
+                color={color == VARS.color.grayLight ? 'white' : color}
+              />
+            ),
+          }}
+        />
+      )}
       <Tab.Screen
         name="Messages"
         component={ChatRoutes}

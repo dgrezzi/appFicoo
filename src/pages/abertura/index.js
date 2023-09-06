@@ -18,7 +18,9 @@ export default function Abertura() {
 
   useEffect(() => {
     setTimeout(() => {
-      active ? navigation.navigate('MyTabs') : navigation.navigate('Activate');
+      active == true
+        ? navigation.navigate('MyTabs')
+        : navigation.navigate('Activate');
     }, 1000);
   }, []);
 

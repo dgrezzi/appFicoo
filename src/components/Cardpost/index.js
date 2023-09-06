@@ -130,9 +130,9 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
           </Text>
           <View
             style={{
-              flexDirection: 'row',
+              // flexDirection: 'row',
               justifyContent: 'space-between',
-              alignItems: 'center',
+              alignItems: 'flex-start',
               marginTop: 8,
               width: '100%',
             }}>
@@ -177,6 +177,7 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
                 fontFamily: 'Abel',
                 fontSize: 16,
                 letterSpacing: 1,
+                alignSelf: 'flex-end',
               }}
               multiline={false}>
               {formatTimePost()}

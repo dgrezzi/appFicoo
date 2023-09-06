@@ -11,6 +11,7 @@ export default function AuthProvider({ children }) {
   const [locale, setLocale] = useState('pt');
   const [active, setActive] = useState(false);
   const [disable, setDisable] = useState(false);
+  const [mpe, setMpe] = useState(false);
   const [activationPass, setActivationPass] = useState('lc5816qd3');
 
   useEffect(() => {
@@ -37,20 +38,19 @@ export default function AuthProvider({ children }) {
         dataChanged ? setLocale(JSON.parse(dataChanged)) : setLocale('pt');
       }
       if (key == 'active') {
-        setActive(false);
         if (dataChanged == activationPass) {
           setActive(true);
         }
       }
     });
-    // if (disable == true) storage.clearAll();
+    if (disable == true) storage.delete('active');
     return () => {
       listner.remove();
     };
-  }, [disable]);
+  }, [disable, activationPass]);
 
   async function getActivationCode() {
-    return;
+    // return;
     await firestore()
       .collection('configs')
       .doc('ativacao')
@@ -58,6 +58,7 @@ export default function AuthProvider({ children }) {
       .then(result => {
         setActivationPass(result._data?.value);
         setDisable(result._data?.disable);
+        setMpe(result._data?.mpe);
       })
       .catch(err => {
         console.error('erro no banco:', err);
@@ -75,6 +76,7 @@ export default function AuthProvider({ children }) {
         active,
         activationPass,
         getActivationCode,
+        mpe,
       }}>
       {children}
     </AuthContext.Provider>

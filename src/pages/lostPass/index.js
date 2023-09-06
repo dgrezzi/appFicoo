@@ -1,4 +1,4 @@
-import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 import { Buffer } from 'buffer';
 import React, { useContext, useState } from 'react';
 import {
@@ -15,12 +15,26 @@ import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 
 export default function LostPass() {
+  const [email, setEmail] = useState();
+  const [newPwd, setNewPwd] = useState();
+
   const { locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
-  const [email, setEmail] = useState();
-  const [newPwd, setNewPwd] = useState();
+  const sendPasswordResetEmail = async () => {
+    await auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        // Email de redefinição de senha enviado com sucesso
+        console.log('Email de redefinição de senha enviado com sucesso');
+      })
+      .catch(error => {
+        // Ocorreu um erro ao enviar o email de redefinição de senha
+        console.error(error.message);
+      });
+    console.log(email);
+  };
 
   function toBase64(input) {
     return Buffer.from(input, 'utf-8').toString('base64');
@@ -30,24 +44,7 @@ export default function LostPass() {
     return Buffer.from(encoded, 'base64').toString('utf8');
   }
 
-  async function setFirebaseLostPass() {
-    await firestore()
-      .collection('chamado')
-      .doc()
-      .set({
-        createdAt: new Date(),
-        email: email,
-        newPwd: toBase64(newPwd),
-      })
-      .then(() => {
-        alert(lang.alertPass);
-        setEmail();
-        setNewPwd();
-      })
-      .catch(err => {
-        console.error('erro no banco:', err);
-      });
-  }
+  const resetPass = async mail => {};
 
   return (
     <KeyboardAvoidingView
@@ -102,17 +99,6 @@ export default function LostPass() {
                 setEmail(txt.toLowerCase());
               }}
             />
-            <EditInputText
-              label={lang.newPass}
-              placeholder=""
-              value={newPwd}
-              editable={true}
-              security={true}
-              icon="lock-closed-outline"
-              onChangeText={txt => {
-                setNewPwd(txt);
-              }}
-            />
           </View>
           <Btn
             label={lang.send}
@@ -121,8 +107,8 @@ export default function LostPass() {
             iconColor={VARS.color.orange}
             iconSize={VARS.size.icons}
             onPress={() => {
-              email && newPwd?.length >= 6 && setFirebaseLostPass();
-              (!newPwd || !email || newPwd?.length < 6) && alert(lang.allForm);
+              email && sendPasswordResetEmail();
+              !email && alert(lang.allForm);
             }}
           />
         </View>

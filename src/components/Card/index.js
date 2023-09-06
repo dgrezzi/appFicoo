@@ -1,6 +1,13 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useContext, useEffect, useState } from 'react';
-import { Image, Linking, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Alert,
+  Image,
+  Linking,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 
@@ -22,11 +29,24 @@ export default function Card({ info }) {
   return (
     <TouchableOpacity
       activeOpacity={1}
-      onLongPress={() => {
-        console.log(info.uid);
-      }}
+      onLongPress={() => {}}
       onPress={() => {
-        info.linkURL ? Linking.openURL(info.linkURL) : null;
+        info.linkURL &&
+          Alert.alert(
+            'Atenção!',
+            'Você será redirecionado para um site externo',
+            [
+              {
+                text: 'Cancel',
+                onPress: () => {},
+                style: 'cancel',
+              },
+              {
+                text: 'OK',
+                onPress: () => Linking.openURL(info.linkURL),
+              },
+            ],
+          );
       }}>
       <View
         style={{
