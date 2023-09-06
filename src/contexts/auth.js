@@ -11,7 +11,7 @@ export default function AuthProvider({ children }) {
   const [locale, setLocale] = useState('pt');
   const [active, setActive] = useState(false);
   const [disable, setDisable] = useState(false);
-  const [activationPass, setActivationPass] = useState('lc5816qd2');
+  const [activationPass, setActivationPass] = useState('lc5816qd3');
 
   useEffect(() => {
     getActivationCode();
@@ -43,13 +43,14 @@ export default function AuthProvider({ children }) {
         }
       }
     });
-    if (disable == true) storage.clearAll();
+    // if (disable == true) storage.clearAll();
     return () => {
       listner.remove();
     };
   }, [disable]);
 
   async function getActivationCode() {
+    return;
     await firestore()
       .collection('configs')
       .doc('ativacao')

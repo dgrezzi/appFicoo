@@ -3,7 +3,7 @@ import firestore from '@react-native-firebase/firestore';
 import { Picker } from '@react-native-picker/picker';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import React, { useContext, useEffect, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Btn from '../../components/Btn/intex';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
@@ -44,6 +44,8 @@ export default function Credenciamento() {
   const [inscritos, setInscritos] = useState([]);
   const [fullUsers, setFullUsers] = useState([]);
   const [showList, setShowList] = useState(false);
+  const [presence, setPresence] = useState([]);
+
   const scanned = false;
 
   const { locale } = useContext(AuthContext);
@@ -77,6 +79,7 @@ export default function Credenciamento() {
     const users = [];
     const fullUsers = [];
     const userName = [];
+    const newPresence = [];
     await firestore()
       .collection('checkin')
       .doc(chave)
@@ -95,6 +98,25 @@ export default function Credenciamento() {
       .catch(err => {
         console.log(err);
       });
+    await firestore()
+      .collection('checkin')
+      .doc(chave)
+      .collection('presence')
+      .get()
+      .then(result => {
+        result.forEach(doc => {
+          newPresence.push(doc._data);
+        });
+        const listPresence = [];
+        newPresence.map(value => {
+          listPresence.push(value.uid);
+        });
+        setPresence(listPresence);
+        return;
+      })
+      .catch(err => {
+        console.log(err);
+      });
     return;
   };
 
@@ -103,14 +125,16 @@ export default function Credenciamento() {
       await firestore()
         .collection('checkin')
         .doc(current)
-        .collection('users')
+        .collection('presence')
         .doc(info.id)
         .set({
           createdAt: new Date(),
           name: info.name,
           email: info.email,
+          uid: info.id,
         })
         .then(() => {
+          getUsers(current);
           setCheck(true);
           setShowList(false);
           setTimeout(() => {
@@ -331,6 +355,8 @@ export default function Credenciamento() {
           iconSize={VARS.size.icons * 0.8}
           onPress={() => {
             id?.id && checkinUser(id);
+            return;
+            console.log(presence);
           }}
         />
       </ScrollView>
@@ -430,19 +456,41 @@ export default function Credenciamento() {
                       alignItems: 'center',
                       gap: 5,
                     }}>
-                    <Ionicons
-                      name="checkmark-outline"
-                      size={20}
-                      color={'green'}
-                    />
+                    {presence.includes(value.uid) && (
+                      <Ionicons
+                        name="checkmark-outline"
+                        size={20}
+                        color={'green'}
+                      />
+                    )}
+                    {!presence.includes(value.uid) && (
+                      <Ionicons name="help-outline" size={20} color={'green'} />
+                    )}
                     <TouchableOpacity
                       activeOpacity={1}
                       onLongPress={() => {
-                        const newId = {};
-                        newId['name'] = value.name;
-                        newId['id'] = value.uid;
-                        newId['email'] = value.email;
-                        checkinUser(newId);
+                        Alert.alert(
+                          'Atenção!',
+                          'Você tem certeza que deseja validar presença?\n\nnome: ' +
+                            value.name,
+                          [
+                            {
+                              text: 'Cancel',
+                              onPress: () => {},
+                              style: 'cancel',
+                            },
+                            {
+                              text: 'OK',
+                              onPress: () => {
+                                const newId = {};
+                                newId['name'] = value.name;
+                                newId['id'] = value.uid;
+                                newId['email'] = value.email;
+                                checkinUser(newId);
+                              },
+                            },
+                          ],
+                        );
                       }}>
                       <Text
                         style={{

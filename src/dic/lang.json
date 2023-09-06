@@ -25,6 +25,9 @@
     "homeOficinas": "Oficinas de Cooperação",
     "homeDesafio": "Desafio FICOO e Festa Diver",
     "homeComunidade": "Comunidade",
+    "homeCoracao": "Time do Coração",
+    "homeCooperacao": "Time da Cooperação",
+    "homeVoluntario": "Voluntários",
     "more": "Saiba mais",
     "month": "Out",
     "titleProgram": "Programação",
@@ -223,7 +226,10 @@
     "oficina1": "Oficina 13/10: ",
     "oficina2": "Oficina 14/10: ",
     "inscritos": "Registration List",
-    "close": "Close"
+    "close": "Close",
+    "homeCoracao": "Heart Team",
+    "homeCooperacao": "Cooperation Team",
+    "homeVoluntario": "Volunteers"
   },
 
   "es": {
@@ -336,6 +342,9 @@
     "oficina1": "Oficina 13/10: ",
     "oficina2": "Oficina 14/10: ",
     "inscritos": "Lista de Inscritos",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "homeCoracao": "Equipo del corazón",
+    "homeCooperacao": "Equipo de cooperación",
+    "homeVoluntario": "Voluntarios"
   }
 }

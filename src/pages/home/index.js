@@ -16,6 +16,9 @@ export default function Home() {
   const [oficinas, setOficinas] = useState();
   const [diver, setDiver] = useState();
   const [parceiros, setParceiros] = useState();
+  const [coracao, setCoracao] = useState();
+  const [cooperacao, setCooperacao] = useState();
+  const [voluntario, setVoluntario] = useState();
   const [loading, setLoading] = useState(true);
 
   const { locale, getActivationCode } = useContext(AuthContext);
@@ -30,6 +33,9 @@ export default function Home() {
     'oficinas',
     'diver',
     'parceiros',
+    'coracao',
+    'cooperacao',
+    'voluntario',
     'ativo',
   ];
 
@@ -82,6 +88,9 @@ export default function Home() {
     doc == 'oficinas' ? setOficinas(check) : null;
     doc == 'diver' ? setDiver(check) : null;
     doc == 'parceiros' ? setParceiros(check) : null;
+    doc == 'coracao' ? setCoracao(check) : null;
+    doc == 'cooperacao' ? setCooperacao(check) : null;
+    doc == 'voluntario' ? setVoluntario(check) : null;
     doc == 'header' ? setHeader(check['0'].photoURL) : null;
     setLoading(false);
     return check;
@@ -150,6 +159,24 @@ export default function Home() {
           id="parceiros"
           label={lang.homeComunidade}
           data={parceiros}
+          updatePage={updatePage}
+        />
+        <Carrossel
+          id="coracao"
+          label={lang.homeCoracao}
+          data={coracao}
+          updatePage={updatePage}
+        />
+        <Carrossel
+          id="cooperacao"
+          label={lang.homeCooperacao}
+          data={cooperacao}
+          updatePage={updatePage}
+        />
+        <Carrossel
+          id="voluntario"
+          label={lang.homeVoluntario}
+          data={voluntario}
           updatePage={updatePage}
         />
       </ScrollView>

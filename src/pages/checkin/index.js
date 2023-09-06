@@ -77,6 +77,7 @@ export default function Checkin() {
         createdAt: new Date(),
         name: info.name,
         email: info.email,
+        uid: info.id,
       })
       .then(() => {
         setId();
