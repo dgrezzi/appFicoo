@@ -114,7 +114,8 @@
     "inscritos": "Lista de Inscritos",
     "close": "Fechar",
     "credOficina": "Credencial + Oficina",
-    "mpe": "Mínimo Passo Elegante"
+    "mpe": "Mínimo Passo Elegante",
+    "inscrevase": "Inscreva-se"
   },
 
   "en": {
@@ -230,7 +231,10 @@
     "close": "Close",
     "homeCoracao": "Heart Team",
     "homeCooperacao": "Cooperation Team",
-    "homeVoluntario": "Volunteers"
+    "homeVoluntario": "Volunteers",
+    "credOficina": "Credential + Workshop",
+    "mpe": "Minimal Elegant Step",
+    "inscrevase": "Sign Up"
   },
 
   "es": {
@@ -346,6 +350,9 @@
     "close": "Cerrar",
     "homeCoracao": "Equipo del corazón",
     "homeCooperacao": "Equipo de cooperación",
-    "homeVoluntario": "Voluntarios"
+    "homeVoluntario": "Voluntarios",
+    "credOficina": "Credencial + Taller",
+    "mpe": "Paso minimalista y elegante",
+    "inscrevase": "Suscribirse"
   }
 }

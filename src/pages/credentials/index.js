@@ -127,19 +127,23 @@ export default function Credentials() {
             <Dados
               data={{
                 label: lang.oficina1,
-                value: formatLetter(
-                  legenda[dataContext.storageData?.oficina1]?.slice(0, 28) +
-                    '...',
-                ),
+                value: dataContext.storageData?.oficina1
+                  ? formatLetter(
+                      legenda[dataContext.storageData?.oficina1]?.slice(0, 28) +
+                        '...',
+                    )
+                  : lang.inscrevase,
               }}
             />
             <Dados
               data={{
                 label: lang.oficina2,
-                value: formatLetter(
-                  legenda[dataContext.storageData?.oficina2]?.slice(0, 28) +
-                    '...',
-                ),
+                value: dataContext.storageData?.oficina2
+                  ? formatLetter(
+                      legenda[dataContext.storageData?.oficina2]?.slice(0, 28) +
+                        '...',
+                    )
+                  : lang.inscrevase,
               }}
             />
           </View>
