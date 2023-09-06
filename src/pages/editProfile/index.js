@@ -272,10 +272,11 @@ export default function EditProfile() {
               value={phone}
               security={false}
               keyboardType="numeric"
-              maxLength={15}
+              maxLength={18}
               editable={true}
               onChangeText={txt => {
-                setPhone(formatPhoneNumber(txt));
+                setPhone(txt);
+                // setPhone(formatPhoneNumber(txt));
               }}
             />
             <EditInputText

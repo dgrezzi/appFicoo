@@ -72,7 +72,7 @@ export default function Cursos() {
       if (valueId?.slice(0, -4) != meusCursos.oficina2?.slice(0, -4))
         newCursos['oficina1'] = valueId;
       if (valueId?.slice(0, -4) == meusCursos.oficina2?.slice(0, -4))
-        alert('escolha outra oficina');
+        alert('Escolha outra oficina, esta já foi selecionada outro dia');
       meusCursos.oficina2
         ? (newCursos['oficina2'] = meusCursos.oficina2)
         : null;
@@ -88,7 +88,7 @@ export default function Cursos() {
       if (valueId?.slice(0, -4) != meusCursos.oficina1?.slice(0, -4))
         newCursos['oficina2'] = valueId;
       if (valueId?.slice(0, -4) == meusCursos.oficina1?.slice(0, -4))
-        alert('escolha outra oficina');
+        alert('Escolha outra oficina, esta já foi selecionada outro dia');
       meusCursos.oficina1
         ? (newCursos['oficina1'] = meusCursos.oficina1)
         : null;

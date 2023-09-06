@@ -50,7 +50,7 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
         name: roomName,
         owner: user.uid,
         lastMessage: {
-          text: `Grupo ${roomName} criado. Bem vindo(a)!`,
+          text: `Tema ${roomName} criado. Bem vindo(a)!`,
           createdAt: firestore.FieldValue.serverTimestamp(),
         },
       })
@@ -58,7 +58,7 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
         docRef
           .collection('MESSAGES')
           .add({
-            text: `Grupo ${roomName} criado. Bem vindo(a)!`,
+            text: `Tema ${roomName} criado. Bem vindo(a)!`,
             createdAt: firestore.FieldValue.serverTimestamp(),
             system: true,
             user: {

@@ -2,9 +2,11 @@ import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import {
+  Alert,
   Image,
   ScrollView,
   Text,
+  TouchableOpacity,
   View,
   useWindowDimensions,
 } from 'react-native';
@@ -26,7 +28,7 @@ export default function ListUser() {
     'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/logo-white.png?alt=media&token=1d972f3e-339f-4c37-bafe-9431051de805',
   );
 
-  const { locale } = useContext(AuthContext);
+  const { locale, dataContext } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
@@ -36,6 +38,27 @@ export default function ListUser() {
     getDocs();
     getCheckin();
   }, []);
+
+  const handleReset = async user => {
+    const reset = user;
+    delete reset.isAdmin;
+    delete reset.oficina1;
+    delete reset.oficina2;
+    delete reset.inscrito;
+
+    await firestore()
+      .collection('user')
+      .doc(user.uid)
+      .set(reset)
+      .then(() => {
+        getDocs();
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+
+    console.log(reset);
+  };
 
   async function handleSearch(txt) {
     setInput(txt);
@@ -157,7 +180,19 @@ export default function ListUser() {
             alignItems: 'center',
             gap: 4,
           }}>
-          {checked && (
+          {checked && item.inscrito && (
+            <Ionicons
+              style={{
+                position: 'absolute',
+                top: 10,
+                right: 15,
+              }}
+              name="checkmark-done-outline"
+              size={VARS.size.icons * 0.8}
+              color={VARS.color.green}
+            />
+          )}
+          {checked && !item.inscrito && (
             <Ionicons
               style={{
                 position: 'absolute',
@@ -180,7 +215,28 @@ export default function ListUser() {
               paddingHorizontal: 8,
             }}>
             {item?.photoURL && (
-              <View
+              <TouchableOpacity
+                activeOpacity={1}
+                onLongPress={() => {
+                  dataContext.storageData?.superAdm &&
+                    Alert.alert(
+                      'Atenção!',
+                      'Tem certeza que deseja resetar o usuário?',
+                      [
+                        {
+                          text: 'Cancel',
+                          onPress: () => {},
+                          style: 'cancel',
+                        },
+                        {
+                          text: 'OK',
+                          onPress: () => {
+                            handleReset(item);
+                          },
+                        },
+                      ],
+                    );
+                }}
                 style={{
                   backgroundColor: 'white',
                   borderRadius: 50,
@@ -189,12 +245,12 @@ export default function ListUser() {
                 <Image
                   style={{
                     borderRadius: VARS.size.avatar,
-                    width: VARS.size.avatar / 1.85,
+                    width: VARS.size.avatar / 1.75,
                     aspectRatio: 1,
                   }}
                   source={{ uri: item?.photoURL }}
                 />
-              </View>
+              </TouchableOpacity>
             )}
             <Text
               style={{
