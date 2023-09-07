@@ -106,6 +106,8 @@ export default function MakeAdmin() {
         },
       ]}>
       <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           alignItems: 'center',
           paddingBottom: 50,

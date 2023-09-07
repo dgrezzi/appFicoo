@@ -66,6 +66,8 @@ export default function NewMpe() {
         style={{ flex: 1, backgroundColor: 'red' }}
         onPress={() => Keyboard.dismiss()}>
         <ScrollView
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
           contentContainerStyle={{
             alignItems: 'center',
           }}>

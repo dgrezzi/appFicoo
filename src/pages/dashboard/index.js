@@ -81,6 +81,8 @@ export default function Dashboard() {
         },
       ]}>
       <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingHorizontal: 20,
           justifyContent: 'flex-start',

@@ -3,6 +3,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Image, ScrollView, View } from 'react-native';
 import Carrossel from '../../components/Carrossel';
+import CarrosselCitacao from '../../components/CarrosselCitacao';
 import Loading from '../../components/Loading';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
@@ -63,6 +64,7 @@ export default function Home() {
       getDados(item);
     });
   };
+
   const getDados = async doc => {
     const check = [];
     await firestore()
@@ -120,6 +122,8 @@ export default function Home() {
         </View>
       )}
       <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           width: '100%',
           paddingVertical: 8,
@@ -161,19 +165,19 @@ export default function Home() {
           data={parceiros}
           updatePage={updatePage}
         />
-        <Carrossel
+        <CarrosselCitacao
           id="coracao"
           label={lang.homeCoracao}
           data={coracao}
           updatePage={updatePage}
         />
-        <Carrossel
+        <CarrosselCitacao
           id="cooperacao"
           label={lang.homeCooperacao}
           data={cooperacao}
           updatePage={updatePage}
         />
-        <Carrossel
+        <CarrosselCitacao
           id="voluntario"
           label={lang.homeVoluntario}
           data={voluntario}

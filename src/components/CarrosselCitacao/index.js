@@ -1,14 +1,12 @@
 import firestore from '@react-native-firebase/firestore';
-import storage from '@react-native-firebase/storage';
-import * as imagePiker from 'expo-image-picker';
 import { useContext, useState } from 'react';
 import { ScrollView, Switch, Text, TouchableOpacity, View } from 'react-native';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
-import Card from '../Card';
+import Citacao from '../Citacao';
 import InputTxt from '../InputTxt';
 
-export default function Carrossel({ id, data, label, updatePage }) {
+export default function CarrosselCitacao({ id, data, label, updatePage }) {
   const [input, setInput] = useState();
   const [edit, setEdit] = useState();
   const [disable, setDisable] = useState(false);
@@ -17,55 +15,23 @@ export default function Carrossel({ id, data, label, updatePage }) {
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
-  const handleGetFile = async () => {
-    const options = {
-      noData: true,
-      mediaType: 'photo',
-      aspect: [1, 1],
-    };
-    const result = await imagePiker.launchImageLibraryAsync(options);
-    if (!result.canceled) {
-      uploadImage(result.assets[0].uri).then(res => {
-        updateImage(res.metadata.fullPath);
-      });
-    }
-    if (result.canceled) {
-    }
-  };
-
-  const uploadImage = async response => {
-    const subfolderName = id;
-    const uniqueFileName = `${Date.now()}`;
-    const filePath = `${subfolderName}/${uniqueFileName}`;
-    const storegaRef = storage().ref('configs').child(filePath);
-    return await storegaRef.putFile(response);
-  };
-
-  const updateImage = async path => {
-    const storageRef = storage().ref().child(path);
-    const url = await storageRef
-      .getDownloadURL()
-      .then(async image => {
-        const dados = {};
-        image ? (dados['photoURL'] = image) : null;
-        input ? (dados['linkURL'] = input) : null;
-        dados['createdAt'] = firestore.FieldValue.serverTimestamp();
-        await firestore()
-          .collection('configs')
-          .doc(id)
-          .collection('images')
-          .doc()
-          .set(dados)
-          .then(() => {})
-          .catch(err => {
-            console.error('erro no banco:', err);
-          });
+  const handleSetName = async () => {
+    const createdAt = firestore.FieldValue.serverTimestamp();
+    await firestore()
+      .collection('configs')
+      .doc(id)
+      .collection('images')
+      .doc()
+      .set({
+        name: input,
+        createdAt: createdAt,
       })
-      .catch(error => {
-        console.log('ERROR AO ATUALIZAR FOTO DOS POSTS ', error);
+      .then(() => {})
+      .catch(err => {
+        console.error('erro no banco:', err);
       });
+
     update();
-    setInput('');
     setDisable(false);
   };
 
@@ -93,6 +59,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
               fontSize: 20,
               letterSpacing: 1,
               marginHorizontal: 15,
+              color: VARS.color.black,
             }}>
             {label}
           </Text>
@@ -117,19 +84,22 @@ export default function Carrossel({ id, data, label, updatePage }) {
           <InputTxt
             icon=""
             multiline={false}
-            placeholder={lang.link}
+            placeholder="Nome do integrante"
             security={false}
             editable={true}
             value={input}
             onChangeText={txt => {
-              txt ? setInput(txt.toLowerCase()) : setInput(txt);
+              txt ? setInput(txt) : setInput(txt);
             }}
           />
           <TouchableOpacity
             onPress={() => {
-              setDisable(true);
-              setEdit(false);
-              handleGetFile();
+              if (input) {
+                setDisable(true);
+                setEdit(false);
+                setInput('');
+                handleSetName();
+              }
             }}
             activeOpacity={0.8}
             style={{
@@ -151,7 +121,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
                 letterSpacing: 1,
                 color: 'black',
               }}>
-              Add image
+              Add Name
             </Text>
           </TouchableOpacity>
         </View>
@@ -166,7 +136,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
         }}
         horizontal={true}>
         {data?.map((info, index) => (
-          <Card key={index} info={info} />
+          <Citacao key={index} info={info} />
         ))}
         {!data ? null : (
           <View

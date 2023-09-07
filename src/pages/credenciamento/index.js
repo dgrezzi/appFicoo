@@ -199,6 +199,8 @@ export default function Credenciamento() {
         },
       ]}>
       <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           alignItems: 'center',
           paddingBottom: 50,
@@ -440,6 +442,8 @@ export default function Credenciamento() {
               {formatLetter(legenda2[current]?.slice(0, 35) + '...')}
             </Text>
             <ScrollView
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
               style={{ width: '100%' }}
               contentContainerStyle={{
                 gap: 8,

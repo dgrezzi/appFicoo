@@ -90,6 +90,8 @@ export default function Profile() {
         />
       </View>
       <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={[
           {
             backgroundColor: VARS.color.white,

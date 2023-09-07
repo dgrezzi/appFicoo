@@ -55,6 +55,8 @@ export default function Credentials() {
         },
       ]}>
       <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         style={{ width: '100%' }}
         contentContainerStyle={{
           width: '100%',

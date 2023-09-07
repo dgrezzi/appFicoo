@@ -199,6 +199,8 @@ export default function Calendar() {
 const Atividade = props => {
   return (
     <ScrollView
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
       contentContainerStyle={{ paddingVertical: 12, paddingHorizontal: 8 }}>
       {props.dia?.map((v, i) => {
         return <Dados key={i} data={v} />;

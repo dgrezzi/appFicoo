@@ -496,7 +496,10 @@ export default function ListUser() {
           }}
         />
       </View>
-      <ScrollView contentContainerStyle={{ paddingBottom: 25 }}>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 25 }}>
         {list.map((value, index) => {
           return (
             !value.disableView && (

@@ -56,6 +56,8 @@ export default function Signin() {
         style={{ width: '100%' }}
         onPress={() => Keyboard.dismiss()}>
         <ScrollView
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
           contentContainerStyle={{
             backgroundColor: 'red',
             alignItems: 'center',

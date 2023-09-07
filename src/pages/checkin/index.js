@@ -135,6 +135,8 @@ export default function Checkin() {
         },
       ]}>
       <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           alignItems: 'center',
           paddingBottom: 50,

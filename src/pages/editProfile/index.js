@@ -160,6 +160,8 @@ export default function EditProfile() {
       ]}>
       {loading && <Loading />}
       <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           alignItems: 'center',
         }}>

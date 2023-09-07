@@ -277,6 +277,8 @@ export default function Cursos() {
           },
         ]}>
         <ScrollView
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
           style={{ width: '100%' }}
           contentContainerStyle={{
             alignItems: 'center',
