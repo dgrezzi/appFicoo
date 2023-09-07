@@ -1,10 +1,11 @@
 import firestore from '@react-native-firebase/firestore';
 import { useFocusEffect } from '@react-navigation/native';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { Image, ScrollView, View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 import Carrossel from '../../components/Carrossel';
 import CarrosselCitacao from '../../components/CarrosselCitacao';
 import Loading from '../../components/Loading';
+import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 
@@ -183,6 +184,52 @@ export default function Home() {
           data={voluntario}
           updatePage={updatePage}
         />
+        <Text
+          style={{
+            fontFamily: 'Abel',
+            fontSize: 20,
+            letterSpacing: 1,
+            marginHorizontal: 15,
+            color: VARS.color.black,
+          }}>
+          Créditos app FICOO 2023:
+        </Text>
+        <View style={{ paddingHorizontal: 10 }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              backgroundColor: VARS.color.white,
+              borderRadius: 18,
+              alignItems: 'center',
+              justifyContent: 'space-around',
+              borderWidth: 1,
+              height: 80,
+              borderColor: VARS.color.whiteDark,
+              elevation: 10,
+              padding: 10,
+              paddingHorizontal: 25,
+              marginBottom: 15,
+              margin: 5,
+              color: VARS.color.black,
+            }}>
+            <Text
+              style={{
+                fontFamily: 'Abel',
+                fontSize: 22,
+                letterSpacing: 1,
+              }}>
+              DG System
+            </Text>
+            <Text
+              style={{
+                fontFamily: 'Abel',
+                fontSize: 22,
+                letterSpacing: 1,
+              }}>
+              DG System
+            </Text>
+          </View>
+        </View>
       </ScrollView>
     </View>
   );
