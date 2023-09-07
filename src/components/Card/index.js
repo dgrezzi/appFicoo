@@ -57,7 +57,7 @@ export default function Card({ info }) {
           borderWidth: 1,
           borderColor: VARS.color.whiteDark,
           elevation: 10,
-          padding: 10,
+          padding: 12,
           marginBottom: 15,
           margin: 5,
         }}>

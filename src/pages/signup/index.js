@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Btn from '../../components/Btn/intex';
 import InputTxt from '../../components/InputTxt';
+import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import handleSignUp from '../../functions/handleSignUp';
@@ -22,6 +23,7 @@ export default function Signup() {
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [city, setCity] = useState();
@@ -65,6 +67,7 @@ export default function Signup() {
         },
       ]}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        {loading && <Loading />}
         <View
           style={[styles.container, { justifyContent: 'flex-start', gap: 30 }]}>
           <View style={{ width: '100%', gap: 12, marginTop: 18 }}>
@@ -82,6 +85,7 @@ export default function Signup() {
               placeholder={lang.labelEmail}
               value={email}
               security={false}
+              keyboardType="email-address"
               onChangeText={txt => {
                 setEmail(txt.toLowerCase());
               }}
@@ -154,7 +158,9 @@ export default function Signup() {
             iconColor={VARS.color.orange}
             iconSize={VARS.size.icons}
             onPress={() => {
+              setLoading(true);
               validInputSign();
+              setLoading(false);
             }}
           />
         </View>

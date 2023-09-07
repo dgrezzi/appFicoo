@@ -51,6 +51,7 @@ export default function InputTxt(props) {
         secureTextEntry={!passVisible}
         editable={props.editable}
         value={props.value}
+        keyboardType={props.keyboardType}
         maxLength={props.maxLength}
         onChangeText={data => {
           props.onChangeText(data);

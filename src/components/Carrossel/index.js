@@ -162,7 +162,8 @@ export default function Carrossel({ id, data, label, updatePage }) {
         contentContainerStyle={{
           columnGap: 5,
           minWidth: '100%',
-          paddingHorizontal: 15,
+          paddingHorizontal: 8,
+          paddingBottom: 10,
         }}
         horizontal={true}>
         {data?.map((info, index) => (

@@ -4,7 +4,7 @@ export const VARS = {
     white: '#FFFFFF',
     gray: '#747688',
     grayDark: '#444658',
-    grayLight: '#C4C6D8',
+    grayLight: '#b4b6c8',
     grayUltraLight: '#d0d0e0',
     green: '#99C455',
     yellow: '#999900',

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Alert,
   Image,
@@ -26,21 +26,13 @@ const storage = new MMKV({ id: 'appFicoo' });
 
 export default function Signin() {
   const navigation = useNavigation();
-
-  const { loading, setLoading, locale } = useContext(AuthContext);
-  let dic = require('../../dic/lang.json');
-  let lang = dic[locale];
-
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
 
-  useEffect(() => {
-    setLoading(false);
-  }, []);
-
-  if (loading) {
-    return <Loading />;
-  }
+  const { locale } = useContext(AuthContext);
+  let dic = require('../../dic/lang.json');
+  let lang = dic[locale];
 
   return (
     <KeyboardAvoidingView
@@ -52,6 +44,7 @@ export default function Signin() {
           backgroundColor: VARS.color.white,
         },
       ]}>
+      {loading && <Loading />}
       <TouchableWithoutFeedback
         style={{ width: '100%' }}
         onPress={() => Keyboard.dismiss()}>
@@ -141,13 +134,15 @@ export default function Signin() {
               icon="arrow-forward-circle"
               iconColor={VARS.color.orange}
               iconSize={VARS.size.icons}
-              onPress={() => {
+              onPress={async () => {
+                setLoading(true);
                 if (email && pwd.length >= 6) {
-                  handleSignIn(email, pwd);
+                  await handleSignIn(email, pwd);
                   return;
                 } else {
                   alert(lang.completForm);
                 }
+                setLoading(false);
               }}
             />
             <View

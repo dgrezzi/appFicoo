@@ -60,7 +60,8 @@ export default function EditInputTxt(props) {
               flex: 1,
               height: '100%',
               letterSpacing: 1,
-              color: VARS.color.blue,
+              color:
+                props.editable == true ? VARS.color.blue : VARS.color.grayLight,
             },
           ]}
           autoCorrect={!props.security}

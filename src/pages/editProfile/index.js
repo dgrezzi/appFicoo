@@ -242,10 +242,7 @@ export default function EditProfile() {
               value={email}
               security={false}
               editable={false}
-              onChangeText={txt => {
-                setEmail(txt);
-              }}
-            />
+                    />
             <EditInputText
               label="instagram"
               placeholder=""
@@ -254,7 +251,7 @@ export default function EditProfile() {
               security={false}
               editable={true}
               onChangeText={txt => {
-                setInstagram(txt);
+                setInstagram(txt.toLowerCase());
               }}
             />
             <EditInputText
@@ -265,7 +262,7 @@ export default function EditProfile() {
               security={false}
               editable={true}
               onChangeText={txt => {
-                setLinkedin(txt);
+                setLinkedin(txt.toLowerCase());
               }}
             />
             <EditInputText
@@ -273,7 +270,7 @@ export default function EditProfile() {
               placeholder=""
               value={phone}
               security={false}
-              keyboardType="numeric"
+              keyboardType="phone-pad"
               maxLength={18}
               editable={true}
               onChangeText={txt => {

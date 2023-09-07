@@ -349,6 +349,7 @@ export default function Profile() {
             onPress={() => {
               setLoading(true);
               handleSignOut();
+              setLoading(false);
             }}>
             <Text
               style={{ fontFamily: 'Abel', fontSize: 18, letterSpacing: 1 }}>
