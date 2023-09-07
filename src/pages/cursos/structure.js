@@ -113,7 +113,7 @@ export const Botoes = ({ abaChange }) => {
         style={{
           backgroundColor:
             props.aba == active ? VARS.color.orangeLight : VARS.color.white,
-          paddingHorizontal: 30,
+          paddingHorizontal: 40,
           alignItems: 'center',
           justifyContent: 'center',
           borderWidth: 1,
@@ -220,19 +220,18 @@ export const Atividades = ({ atividadeChange, ...props }) => {
           const total = props.vaga - quant;
           if (props.selected && total <= 0) handleChange();
           setQtdActive(total);
+          setLoading(false);
           return;
         })
         .catch(err => {
           console.log(err);
         });
-      setLoading(false);
       return;
     }
   };
 
   useEffect(() => {
     if (props.editable && props.vaga != null) Promise.all(checkVacancy());
-    if (props.editable == false) setLoading(false);
   }, [props]);
 
   return (
