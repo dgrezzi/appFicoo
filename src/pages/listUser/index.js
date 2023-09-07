@@ -246,7 +246,7 @@ export default function ListUser() {
               }}
               activeOpacity={1}
               onLongPress={() => {
-                dataContext.storageData?.isAdmin &&
+                dataContext.storageData?.superAdm &&
                   Alert.alert(
                     'Atenção!',
                     'Tem certeza que deseja fazer o reset do usuário?',
@@ -281,7 +281,7 @@ export default function ListUser() {
               }}
               activeOpacity={1}
               onLongPress={() => {
-                dataContext.storageData?.isAdmin &&
+                dataContext.storageData?.superAdm &&
                   Alert.alert(
                     'Atenção!',
                     'Tem certeza que deseja fazer o reset do usuário?',

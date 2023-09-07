@@ -310,7 +310,7 @@ export default function Profile() {
           </Text>
         </View>
 
-        <View style={{ gap: 10, paddingBottom: 20 }}>
+        <View style={{ gap: 10, paddingBottom: 20, alignItems: 'center' }}>
           <Btn
             label={lang.listUser}
             color={VARS.color.blue}
@@ -329,18 +329,32 @@ export default function Profile() {
               navigation.navigate('Credentials');
             }}
           />
-          <Btn
-            label={lang.exit}
-            color={VARS.color.white}
-            icon="exit-outline"
-            colorLabel={VARS.color.subColor}
-            iconColor={VARS.color.white}
-            iconSize={VARS.size.icons}
+          <TouchableOpacity
+            style={{
+              flexDirection: 'row',
+              backgroundColor: VARS.color.white,
+              borderRadius: 18,
+              alignItems: 'center',
+              justifyContent: 'space-around',
+              borderWidth: 1,
+              borderColor: VARS.color.whiteDark,
+              elevation: 10,
+              padding: 8,
+              paddingHorizontal: 25,
+              marginVertical: 15,
+              marginTop: 40,
+              margin: 5,
+              color: VARS.color.black,
+            }}
             onPress={() => {
               setLoading(true);
               handleSignOut();
-            }}
-          />
+            }}>
+            <Text
+              style={{ fontFamily: 'Abel', fontSize: 18, letterSpacing: 1 }}>
+              {lang.exit}
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
