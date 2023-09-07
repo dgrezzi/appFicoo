@@ -27,13 +27,11 @@ export default function LostPass() {
       .sendPasswordResetEmail(email)
       .then(() => {
         // Email de redefinição de senha enviado com sucesso
-        console.log('Email de redefinição de senha enviado com sucesso');
       })
       .catch(error => {
         // Ocorreu um erro ao enviar o email de redefinição de senha
         console.error(error.message);
       });
-    console.log(email);
   };
 
   function toBase64(input) {

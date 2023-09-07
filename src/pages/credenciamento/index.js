@@ -355,8 +355,6 @@ export default function Credenciamento() {
           iconSize={VARS.size.icons * 0.8}
           onPress={() => {
             id?.id && checkinUser(id);
-            return;
-            console.log(presence);
           }}
         />
       </ScrollView>

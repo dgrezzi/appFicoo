@@ -21,9 +21,7 @@ export default function AuthProvider({ children }) {
     let dataLocale = storage.getString('locale');
     dataLocale ? setLocale(JSON.parse(dataLocale)) : setLocale('pt');
     let dataActive = storage.getString('active');
-    if (dataActive == activationPass) {
-      setActive(true);
-    }
+    dataActive == activationPass ? setActive(true) : setActive(false);
     const listner = storage.addOnValueChangedListener(key => {
       const dataChanged = storage.getString(key);
       if (key == 'user') {
@@ -38,16 +36,14 @@ export default function AuthProvider({ children }) {
         dataChanged ? setLocale(JSON.parse(dataChanged)) : setLocale('pt');
       }
       if (key == 'active') {
-        if (dataChanged == activationPass) {
-          setActive(true);
-        }
+        dataChanged == activationPass ? setActive(true) : setActive(false);
       }
     });
     if (disable == true) storage.delete('active');
     return () => {
       listner.remove();
     };
-  }, [disable, activationPass]);
+  }, [disable, activationPass, active]);
 
   async function getActivationCode() {
     // return;

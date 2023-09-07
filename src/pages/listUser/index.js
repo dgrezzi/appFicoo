@@ -46,9 +46,7 @@ export default function ListUser() {
       .collection('users')
       .doc(user.uid)
       .delete()
-      .then(() => {
-        console.log(user.uid);
-      })
+      .then(() => {})
       .catch(err => {
         console.error('erro no banco:', err);
       });
