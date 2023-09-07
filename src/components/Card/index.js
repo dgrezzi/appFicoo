@@ -53,7 +53,7 @@ export default function Card({ info }) {
           backgroundColor: VARS.color.white,
           borderRadius: 18,
           alignItems: 'center',
-          height: 230,
+          height: 200,
           borderWidth: 1,
           borderColor: VARS.color.whiteDark,
           elevation: 10,
