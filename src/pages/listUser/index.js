@@ -397,7 +397,12 @@ export default function ListUser() {
                 alignItems: 'center',
               }}>
               <Text
-                style={{ fontFamily: 'Abel', fontSize: 13, letterSpacing: 1 }}>
+                style={{
+                  fontFamily: 'AbelBold',
+                  fontSize: 14,
+                  letterSpacing: 1,
+                  color: VARS.color.orange,
+                }}>
                 {lang.slideMore}
               </Text>
               <Ionicons
