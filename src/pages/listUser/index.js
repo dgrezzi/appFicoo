@@ -483,7 +483,7 @@ export default function ListUser() {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <GestureFlipView width={window.width} height={window.width / 1.25}>
+        <GestureFlipView width={window.width} height={window.width / 1.22}>
           <RenderFront />
           {item?.aboutme ? <RenderBack /> : <RenderFront />}
         </GestureFlipView>
