@@ -36,7 +36,7 @@ export default function BtnFacebook(props) {
         />
         <Text
           style={{
-            fontFamily: 'Abel',
+            fontFamily: 'fontRegular',
             fontSize: 20,
             letterSpacing: 1,
             color: VARS.color.title,

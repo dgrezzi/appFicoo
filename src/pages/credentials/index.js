@@ -23,7 +23,7 @@ export default function Credentials() {
       <View>
         <Text
           style={{
-            fontFamily: 'Abel',
+            fontFamily: 'fontRegular',
             fontSize: 16,
             letterSpacing: 1,
             color: VARS.color.gray,
@@ -33,7 +33,7 @@ export default function Credentials() {
 
         <Text
           style={{
-            fontFamily: 'AbelBold',
+            fontFamily: 'fontBold',
             fontSize: 20,
             letterSpacing: 1,
             color: VARS.color.black,
@@ -89,8 +89,8 @@ export default function Credentials() {
             }}>
             <Text
               style={{
-                fontFamily: 'AbelBold',
-                fontSize: 24,
+                fontFamily: 'fontBold',
+                fontSize: 22,
                 letterSpacing: 1,
                 alignSelf: 'center',
                 textAlign: 'center',
@@ -101,8 +101,8 @@ export default function Credentials() {
             </Text>
             <Text
               style={{
-                fontFamily: 'AbelBold',
-                fontSize: 20,
+                fontFamily: 'fontBold',
+                fontSize: 18,
                 letterSpacing: 1,
                 alignSelf: 'center',
                 textAlign: 'center',

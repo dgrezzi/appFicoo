@@ -39,8 +39,8 @@ const Links = props => {
       <Text
         style={[
           {
-            fontFamily: 'Abel',
-            fontSize: 22,
+            fontFamily: 'fontRegular',
+            fontSize: 20,
             letterSpacing: 1,
             color: data.color,
           },
@@ -183,12 +183,12 @@ export default function Dashboard() {
             />
             <Text
               style={{
-                fontFamily: 'Abel',
-                fontSize: 20,
+                fontFamily: 'fontRegular',
+                fontSize: 18,
                 letterSpacing: 1,
                 color: 'black',
               }}>
-              Pagina Minimo Passe Elegante
+              Pagina MPE
             </Text>
           </View>
         )}

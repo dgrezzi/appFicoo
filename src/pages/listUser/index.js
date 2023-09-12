@@ -180,7 +180,7 @@ export default function ListUser() {
         {props.label && (
           <Text
             style={{
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: 18,
               color: VARS.color.title,
               letterSpacing: 1,
@@ -200,7 +200,7 @@ export default function ListUser() {
             numberOfLines={8}
             ellipsizeMode="tail"
             style={{
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: props.size ? props.size : 20,
               color: VARS.color.title,
               letterSpacing: 1,
@@ -357,8 +357,8 @@ export default function ListUser() {
             )}
             <Text
               style={{
-                fontFamily: 'AbelBold',
-                fontSize: 24,
+                fontFamily: 'fontBold',
+                fontSize: 22,
                 letterSpacing: 1,
                 color: 'black',
               }}>
@@ -398,7 +398,7 @@ export default function ListUser() {
               }}>
               <Text
                 style={{
-                  fontFamily: 'AbelBold',
+                  fontFamily: 'fontBold',
                   fontSize: 14,
                   letterSpacing: 1,
                   color: VARS.color.orange,
@@ -441,8 +441,8 @@ export default function ListUser() {
             <Text
               style={{
                 width: '100%',
-                fontFamily: 'AbelBold',
-                fontSize: 22,
+                fontFamily: 'fontBold',
+                fontSize: 20,
                 letterSpacing: 1,
                 color: 'black',
               }}>
@@ -455,7 +455,7 @@ export default function ListUser() {
             ellipsizeMode="tail"
             style={{
               width: '100%',
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: 18,
               color: VARS.color.title,
               letterSpacing: 1,

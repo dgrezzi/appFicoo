@@ -23,7 +23,7 @@ export default function Language() {
     <View style={{ flex: 1, gap: 6, width: '100%' }}>
       <Text
         style={{
-          fontFamily: 'Abel',
+          fontFamily: 'fontRegular',
           fontSize: 18,
           letterSpacing: 1,
           color: VARS.color.gray,
@@ -53,7 +53,7 @@ export default function Language() {
             label={lang.english}
             value={'en'}
             style={{
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               letterSpacing: 1,
               fontSize: 18,
               color: VARS.color.blue,
@@ -63,7 +63,7 @@ export default function Language() {
             label={lang.portugues}
             value="pt"
             style={{
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               letterSpacing: 1,
               fontSize: 18,
               color: VARS.color.blue,
@@ -73,7 +73,7 @@ export default function Language() {
             label={lang.spanish}
             value="es"
             style={{
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               letterSpacing: 1,
               fontSize: 18,
               color: VARS.color.blue,

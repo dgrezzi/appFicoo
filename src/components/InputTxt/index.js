@@ -24,7 +24,7 @@ export default function InputTxt(props) {
           backgroundColor: VARS.color.white,
           elevation: 5,
           shadowColor: VARS.color.blue,
-          fontSize: 22,
+          fontSize: 20,
         },
       ]}>
       <Ionicons
@@ -36,7 +36,7 @@ export default function InputTxt(props) {
       <TextInput
         style={[
           {
-            fontFamily: 'Abel',
+            fontFamily: 'fontRegular',
             fontSize: 20,
             flex: 1,
             height: '100%',

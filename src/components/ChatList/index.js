@@ -33,8 +33,8 @@ function ChatList({ data, deleteRoom, userStatus }) {
       onLongPress={() => deleteRoom && deleteRoom()}>
       <Text
         style={{
-          fontFamily: 'AbelBold',
-          fontSize: 24,
+          fontFamily: 'fontBold',
+          fontSize: 22,
           letterSpacing: 1,
           color: VARS.color.black,
         }}
@@ -43,7 +43,7 @@ function ChatList({ data, deleteRoom, userStatus }) {
       </Text>
 
       <Text
-        style={{ fontFamily: 'Abel', fontSize: 20, letterSpacing: 1 }}
+        style={{ fontFamily: 'fontRegular', fontSize: 20, letterSpacing: 1 }}
         numberOfLines={1}>
         {data.lastMessage.text}
       </Text>

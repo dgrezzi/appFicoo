@@ -9,10 +9,10 @@ import Start from './src/routes/Start';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    Abel: require('./assets/abel.ttf'),
+    fontRegular: require('./assets/Nunito.ttf'),
   });
   const [fontsBoldLoaded] = useFonts({
-    AbelBold: require('./assets/abelBold.ttf'),
+    fontBold: require('./assets/NunitoBold.ttf'),
   });
 
   const teste = Routes;

@@ -49,7 +49,7 @@ export default function Abertura() {
         <Text
           style={{
             color: 'gray',
-            fontFamily: 'Abel',
+            fontFamily: 'fontRegular',
             fontSize: 16,
             letterSpacing: 1,
           }}>

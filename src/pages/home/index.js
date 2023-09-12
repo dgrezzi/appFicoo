@@ -186,7 +186,7 @@ export default function Home() {
         />
         <Text
           style={{
-            fontFamily: 'Abel',
+            fontFamily: 'fontRegular',
             fontSize: 20,
             letterSpacing: 1,
             marginHorizontal: 15,
@@ -214,16 +214,16 @@ export default function Home() {
             }}>
             <Text
               style={{
-                fontFamily: 'Abel',
-                fontSize: 22,
+                fontFamily: 'fontRegular',
+                fontSize: 20,
                 letterSpacing: 1,
               }}>
               DG System
             </Text>
             <Text
               style={{
-                fontFamily: 'Abel',
-                fontSize: 22,
+                fontFamily: 'fontRegular',
+                fontSize: 20,
                 letterSpacing: 1,
               }}>
               DG System

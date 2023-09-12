@@ -23,7 +23,7 @@ export default function T1() {
         <Text
           style={[
             {
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               lineHeight: 34,
               color: VARS.color.white,
               textAlign: 'center',
@@ -44,8 +44,8 @@ export default function T1() {
               lineHeight: 34,
               letterSpacing: 0.5,
 
-              fontSize: 22,
-              fontFamily: 'Abel',
+              fontSize: 20,
+              fontFamily: 'fontRegular',
               opacity: 0.8,
             },
           ]}>
@@ -66,7 +66,7 @@ export default function T1() {
             <Text
               style={[
                 {
-                  fontFamily: 'Abel',
+                  fontFamily: 'fontRegular',
                   lineHeight: 34,
                   color: VARS.color.white,
                   fontSize: 18,
@@ -89,7 +89,7 @@ export default function T1() {
             <Text
               style={[
                 {
-                  fontFamily: 'Abel',
+                  fontFamily: 'fontRegular',
                   lineHeight: 34,
                   color: VARS.color.white,
                   fontSize: 18,

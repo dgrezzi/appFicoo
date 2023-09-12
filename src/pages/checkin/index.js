@@ -13,7 +13,7 @@ const Dados = ({ data }) => {
     <View>
       <Text
         style={{
-          fontFamily: 'Abel',
+          fontFamily: 'fontRegular',
           fontSize: 16,
           letterSpacing: 1,
           color: VARS.color.gray,
@@ -22,7 +22,7 @@ const Dados = ({ data }) => {
       </Text>
       <Text
         style={{
-          fontFamily: 'AbelBold',
+          fontFamily: 'fontBold',
           fontSize: 20,
           letterSpacing: 1,
         }}>
@@ -190,7 +190,11 @@ export default function Checkin() {
               }}
               activeOpacity={0.8}>
               <Text
-                style={{ fontSize: 22, fontFamily: 'Abel', letterSpacing: 2 }}>
+                style={{
+                  fontSize: 20,
+                  fontFamily: 'fontRegular',
+                  letterSpacing: 2,
+                }}>
                 {lang.scan}
               </Text>
             </TouchableOpacity>
@@ -217,8 +221,8 @@ export default function Checkin() {
             <Ionicons name="checkmark-done-outline" size={22} color={'green'} />
             <Text
               style={{
-                fontSize: 22,
-                fontFamily: 'Abel',
+                fontSize: 20,
+                fontFamily: 'fontRegular',
                 letterSpacing: 1,
                 marginHorizontal: 10,
               }}>

@@ -109,8 +109,8 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
             <Text
               numberOfLines={1}
               style={{
-                fontFamily: 'AbelBold',
-                fontSize: 24,
+                fontFamily: 'fontBold',
+                fontSize: 22,
                 letterSpacing: 1,
               }}
               multiline={false}>
@@ -119,7 +119,7 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
           )}
           <Text
             style={{
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: 20,
               letterSpacing: 1,
               textAlign: 'justify',
@@ -166,7 +166,11 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
               )}
               <Text
                 numberOfLines={1}
-                style={{ fontFamily: 'Abel', fontSize: 18, letterSpacing: 1 }}
+                style={{
+                  fontFamily: 'fontRegular',
+                  fontSize: 18,
+                  letterSpacing: 1,
+                }}
                 multiline={false}>
                 {data.autor}
               </Text>
@@ -174,7 +178,7 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
             <Text
               numberOfLines={1}
               style={{
-                fontFamily: 'Abel',
+                fontFamily: 'fontRegular',
                 fontSize: 16,
                 letterSpacing: 1,
                 alignSelf: 'flex-end',

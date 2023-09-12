@@ -28,7 +28,7 @@ export default function BtnEdit(props) {
       />
       <Text
         style={{
-          fontFamily: props.fontFamily ? props.fontFamily : 'Abel',
+          fontFamily: props.fontFamily ? props.fontFamily : 'fontRegular',
           fontSize: 20,
           letterSpacing: 1,
           color: props.labelColor,

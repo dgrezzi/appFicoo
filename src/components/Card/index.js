@@ -80,7 +80,7 @@ export default function Card({ info }) {
             <Text
               style={{
                 color: VARS.color.white,
-                fontFamily: 'Abel',
+                fontFamily: 'fontRegular',
                 fontSize: 14,
                 letterSpacing: 1,
               }}>

@@ -74,7 +74,7 @@ export default function Profile() {
           color={VARS.color.orange}
           icon="alert-outline"
           iconColor={VARS.color.white}
-          fontFamily="AbelBold"
+          fontFamily="fontBold"
           iconSize={VARS.size.icons * 0.8}
         />
         <BtnEdit
@@ -160,8 +160,8 @@ export default function Profile() {
           <View style={{ alignItems: 'center', gap: 10 }}>
             <Text
               style={{
-                fontFamily: 'AbelBold',
-                fontSize: 22,
+                fontFamily: 'fontBold',
+                fontSize: 20,
                 letterSpacing: 1,
                 color: VARS.color.title,
               }}>
@@ -178,8 +178,8 @@ export default function Profile() {
               <Ionicons name="mail-outline" size={20} color="red" />
               <Text
                 style={{
-                  fontFamily: 'Abel',
-                  fontSize: 20,
+                  fontFamily: 'fontRegular',
+                  fontSize: 18,
                   letterSpacing: 1,
                   color: VARS.color.title,
                 }}>
@@ -200,7 +200,7 @@ export default function Profile() {
 
                 <Text
                   style={{
-                    fontFamily: 'Abel',
+                    fontFamily: 'fontRegular',
                     fontSize: 18,
                     letterSpacing: 1,
                     color: VARS.color.title,
@@ -223,8 +223,8 @@ export default function Profile() {
 
                 <Text
                   style={{
-                    fontFamily: 'Abel',
-                    fontSize: 20,
+                    fontFamily: 'fontRegular',
+                    fontSize: 18,
                     letterSpacing: 1,
                     color: VARS.color.title,
                   }}>
@@ -246,8 +246,8 @@ export default function Profile() {
 
                 <Text
                   style={{
-                    fontFamily: 'Abel',
-                    fontSize: 20,
+                    fontFamily: 'fontRegular',
+                    fontSize: 18,
                     letterSpacing: 1,
                     color: VARS.color.title,
                   }}>
@@ -269,8 +269,8 @@ export default function Profile() {
 
                 <Text
                   style={{
-                    fontFamily: 'Abel',
-                    fontSize: 20,
+                    fontFamily: 'fontRegular',
+                    fontSize: 18,
                     letterSpacing: 1,
                     color: VARS.color.title,
                   }}>
@@ -292,7 +292,7 @@ export default function Profile() {
               style={{
                 width: '100%',
                 textAlign: 'justify',
-                fontFamily: 'AbelBold',
+                fontFamily: 'fontBold',
                 fontSize: 20,
                 letterSpacing: 1,
               }}>
@@ -302,7 +302,7 @@ export default function Profile() {
           <Text
             style={{
               textAlign: 'justify',
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: 18,
               letterSpacing: 1,
             }}>
@@ -352,7 +352,11 @@ export default function Profile() {
               setLoading(false);
             }}>
             <Text
-              style={{ fontFamily: 'Abel', fontSize: 18, letterSpacing: 1 }}>
+              style={{
+                fontFamily: 'fontRegular',
+                fontSize: 18,
+                letterSpacing: 1,
+              }}>
               {lang.exit}
             </Text>
           </TouchableOpacity>

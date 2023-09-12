@@ -15,7 +15,7 @@ const Dados = ({ data }) => {
     <View>
       <Text
         style={{
-          fontFamily: 'Abel',
+          fontFamily: 'fontRegular',
           fontSize: 16,
           letterSpacing: 1,
           color: VARS.color.gray,
@@ -24,7 +24,7 @@ const Dados = ({ data }) => {
       </Text>
       <Text
         style={{
-          fontFamily: 'AbelBold',
+          fontFamily: 'fontBold',
           fontSize: 20,
           letterSpacing: 1,
         }}>
@@ -215,7 +215,7 @@ export default function Credenciamento() {
         <View style={{ flex: 1, gap: 6, width: '100%', paddingHorizontal: 10 }}>
           <Text
             style={{
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: 18,
               letterSpacing: 1,
               color: VARS.color.gray,
@@ -246,7 +246,7 @@ export default function Credenciamento() {
                 label={lang.none}
                 value="none"
                 style={{
-                  fontFamily: 'Abel',
+                  fontFamily: 'fontRegular',
                   letterSpacing: 1,
                   fontSize: 18,
                   color: VARS.color.blue,
@@ -259,7 +259,7 @@ export default function Credenciamento() {
                     label={formatLetter(legenda2[value]?.slice(0, 35) + '...')}
                     value={value}
                     style={{
-                      fontFamily: 'Abel',
+                      fontFamily: 'fontRegular',
                       letterSpacing: 1,
                       fontSize: 18,
                       color: VARS.color.blue,
@@ -313,7 +313,11 @@ export default function Credenciamento() {
               }}
               activeOpacity={0.8}>
               <Text
-                style={{ fontSize: 22, fontFamily: 'Abel', letterSpacing: 2 }}>
+                style={{
+                  fontSize: 20,
+                  fontFamily: 'fontRegular',
+                  letterSpacing: 2,
+                }}>
                 {lang.scan}
               </Text>
             </TouchableOpacity>
@@ -345,7 +349,7 @@ export default function Credenciamento() {
             setShowList(!showList);
           }}>
           <Text
-            style={{ fontFamily: 'AbelBold', fontSize: 16, letterSpacing: 1 }}>
+            style={{ fontFamily: 'fontBold', fontSize: 16, letterSpacing: 1 }}>
             {lang.inscritos}
           </Text>
         </TouchableOpacity>
@@ -387,7 +391,7 @@ export default function Credenciamento() {
             }}>
             <Text
               style={{
-                fontFamily: 'AbelBold',
+                fontFamily: 'fontBold',
                 letterSpacing: 1,
                 fontSize: 30,
                 textAlign: 'center',
@@ -434,8 +438,8 @@ export default function Credenciamento() {
               style={{
                 width: '100%',
                 textAlign: 'center',
-                fontFamily: 'AbelBold',
-                fontSize: 22,
+                fontFamily: 'fontBold',
+                fontSize: 20,
                 letterSpacing: 1,
                 color: VARS.color.blue,
               }}>
@@ -496,8 +500,8 @@ export default function Credenciamento() {
                       }}>
                       <Text
                         style={{
-                          fontFamily: 'Abel',
-                          fontSize: 20,
+                          fontFamily: 'fontRegular',
+                          fontSize: 18,
                           letterSpacing: 1,
                         }}>
                         {value.name}
@@ -523,7 +527,7 @@ export default function Credenciamento() {
               }}>
               <Text
                 style={{
-                  fontFamily: 'AbelBold',
+                  fontFamily: 'fontBold',
                   fontSize: 16,
                   letterSpacing: 1,
                 }}>

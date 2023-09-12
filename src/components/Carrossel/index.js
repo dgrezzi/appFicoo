@@ -89,7 +89,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
         {label && (
           <Text
             style={{
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: 20,
               letterSpacing: 1,
               marginHorizontal: 15,
@@ -146,7 +146,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
             }}>
             <Text
               style={{
-                fontFamily: 'Abel',
+                fontFamily: 'fontRegular',
                 fontSize: 16,
                 letterSpacing: 1,
                 color: 'black',

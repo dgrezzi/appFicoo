@@ -78,7 +78,7 @@ export default function Calendar() {
         }}>
         <Text
           style={{
-            fontFamily: 'AbelBold',
+            fontFamily: 'fontBold',
             fontSize: 18,
             letterSpacing: 1,
             color: props.active == aba ? VARS.color.white : VARS.color.gray,
@@ -238,8 +238,8 @@ const Dados = props => {
         />
         <Text
           style={{
-            fontFamily: 'Abel',
-            fontSize: 20,
+            fontFamily: 'fontBold',
+            fontSize: 18,
             color: VARS.color.title,
             letterSpacing: 1,
             flex: 1,
@@ -250,7 +250,7 @@ const Dados = props => {
 
       <Text
         style={{
-          fontFamily: 'AbelBold',
+          fontFamily: 'fontRegular',
           fontSize: 20,
           color: VARS.color.title,
           textAlign: 'justify',

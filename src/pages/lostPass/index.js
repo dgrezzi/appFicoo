@@ -60,11 +60,11 @@ export default function LostPass() {
           <Text
             style={[
               {
-                fontFamily: 'Abel',
+                fontFamily: 'fontRegular',
                 width: '100%',
                 textAlign: 'left',
                 color: VARS.color.title,
-                fontSize: 24,
+                fontSize: 22,
                 letterSpacing: 1,
                 marginTop: 28,
               },
@@ -74,7 +74,7 @@ export default function LostPass() {
           <Text
             style={[
               {
-                fontFamily: 'Abel',
+                fontFamily: 'fontRegular',
                 width: '100%',
                 textAlign: 'center',
                 color: VARS.color.title,

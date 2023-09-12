@@ -22,7 +22,7 @@ export default function Day(props) {
         <Text
           style={{
             color: VARS.color.title,
-            fontFamily: 'Abel',
+            fontFamily: 'fontRegular',
             fontSize: 16,
           }}>
           Out
@@ -30,13 +30,13 @@ export default function Day(props) {
         <Text
           style={{
             color: VARS.color.blueSolid,
-            fontFamily: 'Abel',
-            fontSize: 22,
+            fontFamily: 'fontRegular',
+            fontSize: 20,
           }}>
           {props.label}
         </Text>
       </View>
-      <Text style={{ fontFamily: 'Abel', fontSize: 20 }}>
+      <Text style={{ fontFamily: 'fontRegular', fontSize: 20 }}>
         {dia[props.label]}, {props.label} de Outubro de 2023
       </Text>
     </View>

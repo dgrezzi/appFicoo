@@ -34,7 +34,7 @@ export default function BtnGoogle(props) {
         />
         <Text
           style={{
-            fontFamily: 'Abel',
+            fontFamily: 'fontRegular',
             fontSize: 20,
             letterSpacing: 1,
             color: VARS.color.title,

@@ -90,7 +90,7 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
           alignItems: 'center',
         }}>
         <Text
-          style={{ fontFamily: 'AbelBold', fontSize: 24, letterSpacing: 1 }}>
+          style={{ fontFamily: 'fontBold', fontSize: 22, letterSpacing: 1 }}>
           {lang.modalTitle}
         </Text>
 
@@ -133,7 +133,7 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
           <Text
             style={{
               width: '100%',
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: 18,
               letterSpacing: 1,
             }}>

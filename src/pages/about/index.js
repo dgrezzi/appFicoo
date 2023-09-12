@@ -43,8 +43,8 @@ export default function About() {
           <Image style={[styles.logo, { marginTop: 50 }]} source={logo} />
           <Text
             style={{
-              fontFamily: 'Abel',
-              fontSize: 22,
+              fontFamily: 'fontRegular',
+              fontSize: 20,
               letterSpacing: 1,
             }}>
             {lang.activate}

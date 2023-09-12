@@ -18,18 +18,18 @@ export const Aviso = () => {
       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
         <Text
           style={{
-            fontFamily: 'AbelBold',
+            fontFamily: 'fontBold',
             width: '100%',
             color: VARS.color.white,
             textAlign: 'center',
-            fontSize: 24,
+            fontSize: 22,
             letterSpacing: 1,
           }}>
           {props.label}
         </Text>
         <Text
           style={{
-            fontFamily: 'Abel',
+            fontFamily: 'fontRegular',
             color: VARS.color.white,
             fontSize: 18,
             width: '100%',
@@ -46,7 +46,7 @@ export const Aviso = () => {
     return (
       <Text
         style={{
-          fontFamily: 'Abel',
+          fontFamily: 'fontRegular',
           color: VARS.color.white,
           fontSize: 20,
           width: '100%',
@@ -124,7 +124,7 @@ export const Botoes = ({ abaChange }) => {
         }}>
         <Text
           style={{
-            fontFamily: 'AbelBold',
+            fontFamily: 'fontBold',
             fontSize: 16,
             letterSpacing: 1,
             color:
@@ -135,7 +135,7 @@ export const Botoes = ({ abaChange }) => {
         {props.label2 && (
           <Text
             style={{
-              fontFamily: 'AbelBold',
+              fontFamily: 'fontBold',
               fontSize: 16,
               letterSpacing: 1,
               color:
@@ -267,7 +267,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
             }}>
             <Text
               style={{
-                fontFamily: 'Abel',
+                fontFamily: 'fontRegular',
                 fontSize: 14,
                 color: VARS.color.blue,
                 letterSpacing: 1,
@@ -303,7 +303,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
           </View>
           <Text
             style={{
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: 20,
               color: VARS.color.title,
               letterSpacing: 1,
@@ -318,7 +318,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
             />
             <Text
               style={{
-                fontFamily: 'Abel',
+                fontFamily: 'fontRegular',
                 fontSize: 14,
                 color: VARS.color.title,
                 letterSpacing: 1,
@@ -347,7 +347,7 @@ export const Confirmacao = ({ data }) => {
         }}>
         <Text
           style={{
-            fontFamily: 'AbelBold',
+            fontFamily: 'fontBold',
             flex: 1,
             width: '100%',
             fontSize: 20,
@@ -358,7 +358,7 @@ export const Confirmacao = ({ data }) => {
           {data.label}
           <Text
             style={{
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               flex: 1,
               width: '100%',
               fontSize: 20,
@@ -393,7 +393,7 @@ export const Confirmacao = ({ data }) => {
         }}>
         <Text
           style={{
-            fontFamily: 'AbelBold',
+            fontFamily: 'fontBold',
             fontSize: 20,
             letterSpacing: 1,
             color: VARS.color.title,

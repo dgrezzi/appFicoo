@@ -118,7 +118,7 @@ export default function Signin() {
                   }}>
                   <Text
                     style={{
-                      fontFamily: 'Abel',
+                      fontFamily: 'fontRegular',
                       color: VARS.color.title,
                       fontSize: 18,
                       letterSpacing: 1,
@@ -163,7 +163,7 @@ export default function Signin() {
                 <Text
                   style={[
                     {
-                      fontFamily: 'Abel',
+                      fontFamily: 'fontRegular',
                       color: VARS.color.title,
                       fontSize: 18,
                       letterSpacing: 1,

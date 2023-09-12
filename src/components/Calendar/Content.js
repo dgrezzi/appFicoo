@@ -53,7 +53,7 @@ export default function Content(props) {
           <Text
             style={{
               color: VARS.color.white,
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: 18,
               opacity: 0.85,
             }}>
@@ -62,7 +62,7 @@ export default function Content(props) {
           <Text
             style={{
               color: VARS.color.white,
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: 18,
               opacity: 0.85,
             }}>
@@ -73,8 +73,8 @@ export default function Content(props) {
         <Text
           style={{
             color: VARS.color.white,
-            fontFamily: 'Abel',
-            fontSize: 22,
+            fontFamily: 'fontRegular',
+            fontSize: 20,
           }}>
           {props.data.title}
         </Text>

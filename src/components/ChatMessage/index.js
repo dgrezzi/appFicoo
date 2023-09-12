@@ -61,7 +61,7 @@ function ChatMessage({ data }) {
           <Text
             style={[
               {
-                fontFamily: 'AbelBold',
+                fontFamily: 'fontBold',
                 fontSize: 18,
                 letterSpacing: 1,
                 color: VARS.color.blue,
@@ -73,7 +73,7 @@ function ChatMessage({ data }) {
         <Text
           style={[
             {
-              fontFamily: 'Abel',
+              fontFamily: 'fontRegular',
               fontSize: 18,
               letterSpacing: 1,
               color: isMyMessage ? VARS.color.white : VARS.color.blue,
@@ -85,7 +85,7 @@ function ChatMessage({ data }) {
           style={{
             width: '100%',
             textAlign: 'right',
-            fontFamily: 'Abel',
+            fontFamily: 'fontRegular',
             fontSize: 13,
             color: isMyMessage ? VARS.color.white : VARS.color.blue,
           }}>
