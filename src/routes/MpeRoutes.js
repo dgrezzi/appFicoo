@@ -26,7 +26,7 @@ export default function MpeRoutes() {
         name="newMpe"
         component={NewMpe}
         options={{
-          title: 'MPE',
+          title: lang.mpe,
         }}
       />
       <AppStack.Screen

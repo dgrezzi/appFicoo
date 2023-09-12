@@ -42,7 +42,7 @@ export default function EditInputTxt(props) {
             backgroundColor: VARS.color.white,
             elevation: 5,
             shadowColor: VARS.color.blue,
-            fontSize: 20,
+            fontSize: 18,
           },
         ]}>
         <Ionicons
@@ -56,7 +56,7 @@ export default function EditInputTxt(props) {
             props.textAlignVertical ? { paddingVertical: 10 } : null,
             {
               fontFamily: 'fontRegular',
-              fontSize: 20,
+              fontSize: 18,
               flex: 1,
               height: '100%',
               letterSpacing: 1,

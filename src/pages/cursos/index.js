@@ -1,7 +1,13 @@
 import firestore from '@react-native-firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
-import { KeyboardAvoidingView, SafeAreaView, ScrollView } from 'react-native';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  SafeAreaView,
+  ScrollView,
+} from 'react-native';
 import Btn from '../../components/Btn/intex';
+import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import getDataUserFirebase from '../../functions/getDataUserFirebase';
@@ -14,6 +20,7 @@ export default function Cursos() {
   const [meusCursos, setMeusCursos] = useState({});
   const [editable, setEditable] = useState(false);
   const [vagas, setVagas] = useState();
+  const [loading, setLoading] = useState(false);
 
   const { dataContext, locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
@@ -72,7 +79,10 @@ export default function Cursos() {
       if (valueId?.slice(0, -4) != meusCursos.oficina2?.slice(0, -4))
         newCursos['oficina1'] = valueId;
       if (valueId?.slice(0, -4) == meusCursos.oficina2?.slice(0, -4))
-        alert('Escolha outra oficina, esta já foi selecionada outro dia');
+        Alert.alert(
+          'Atenção',
+          'Escolha outra oficina, esta já foi selecionada outro dia',
+        );
       meusCursos.oficina2
         ? (newCursos['oficina2'] = meusCursos.oficina2)
         : null;
@@ -88,7 +98,10 @@ export default function Cursos() {
       if (valueId?.slice(0, -4) != meusCursos.oficina1?.slice(0, -4))
         newCursos['oficina2'] = valueId;
       if (valueId?.slice(0, -4) == meusCursos.oficina1?.slice(0, -4))
-        alert('Escolha outra oficina, esta já foi selecionada outro dia');
+        Alert.alert(
+          'Atenção',
+          'Escolha outra oficina, esta já foi selecionada outro dia',
+        );
       meusCursos.oficina1
         ? (newCursos['oficina1'] = meusCursos.oficina1)
         : null;
@@ -100,10 +113,17 @@ export default function Cursos() {
   const handleMeusCursos = () => {
     if (meusCursos.oficina1 && meusCursos.oficina2) {
       setEditable(false);
-      setFirebase(meusCursos);
+      setFirebase(meusCursos).then(() => {
+        Alert.alert(lang.congrats, lang.inscSucess, [
+          {
+            text: 'OK',
+            onPress: () => setLoading(false),
+          },
+        ]);
+      });
     }
     if (!meusCursos.oficina1 || !meusCursos.oficina2) {
-      alert('Escolha uma oficina para cada dia');
+      Alert.alert('Atenção', 'Escolha uma oficina para cada dia');
     }
   };
 
@@ -276,6 +296,8 @@ export default function Cursos() {
             backgroundColor: 'transparent',
           },
         ]}>
+        {loading && <Loading />}
+
         <ScrollView
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
@@ -361,6 +383,7 @@ export default function Cursos() {
               iconColor={VARS.color.white}
               disable={false}
               onPress={async () => {
+                setLoading(true);
                 handleMeusCursos();
               }}
             />

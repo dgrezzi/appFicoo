@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+import { Alert } from 'react-native';
 import getDataUserFirebase from './getDataUserFirebase';
 
 export default async function handleSignIn(email, pwd) {
@@ -10,7 +11,7 @@ export default async function handleSignIn(email, pwd) {
     })
     .catch(err => {
       console.log('erro', err);
-      alert('usuario ou senha iválidos');
+      Alert.alert('Atenção', 'usuario ou senha iválidos');
       return false;
     });
 }

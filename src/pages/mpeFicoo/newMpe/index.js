@@ -86,7 +86,7 @@ export default function NewMpe() {
               }}
             /> */}
             <InputTxt
-              placeholder={lang.newPostLabelContent}
+              placeholder={lang.newMPELabelContent}
               value={post}
               security={false}
               multiline={true}

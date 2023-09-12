@@ -1,4 +1,5 @@
 import auth from '@react-native-firebase/auth';
+import { Alert } from 'react-native';
 import handleSignIn from './handleSignIn';
 import setDataFirebase from './setDataUserFirebase';
 
@@ -29,10 +30,10 @@ export default async function handleSignUp(name, email, city, pwd) {
     })
     .catch(error => {
       if (error.code === 'auth/email-already-in-use') {
-        alert('e-mail em uso');
+        Alert.alert('Atenção', 'e-mail em uso');
       }
       if (error.code === 'auth/invalid-email') {
-        alert('e-mail inválido');
+        Alert.alert('Atenção', 'e-mail inválido');
       }
     });
 }

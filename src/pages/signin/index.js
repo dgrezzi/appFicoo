@@ -140,7 +140,7 @@ export default function Signin() {
                   await handleSignIn(email, pwd);
                   return;
                 } else {
-                  alert(lang.completForm);
+                  Alert.alert('Atenção', lang.completForm);
                 }
                 setLoading(false);
               }}
@@ -165,7 +165,7 @@ export default function Signin() {
                     {
                       fontFamily: 'fontRegular',
                       color: VARS.color.title,
-                      fontSize: 18,
+                      fontSize: 16,
                       letterSpacing: 1,
                     },
                   ]}>

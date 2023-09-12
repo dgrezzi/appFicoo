@@ -109,7 +109,7 @@ export default function Profile() {
             justifyContent: 'space-between',
             alignItems: 'center',
             width: '100%',
-            gap: 22,
+            gap: 20,
             marginVertical: 10,
           }}>
           {imageLoad && (
@@ -342,7 +342,7 @@ export default function Profile() {
               padding: 8,
               paddingHorizontal: 25,
               marginVertical: 15,
-              marginTop: 40,
+              marginTop: 20,
               margin: 5,
               color: VARS.color.black,
             }}

@@ -127,6 +127,7 @@ export default function ListUser() {
         busca.push(v);
       }
     });
+    busca?.sort();
     setList(busca);
   }
 
@@ -147,6 +148,12 @@ export default function ListUser() {
       .catch(err => {
         console.error('erro no banco:', err);
       });
+    markers.sort((a, b) => {
+      if (b.ficoo) return 1;
+      if (a.name > b.name) return 1;
+      if (a.name < b.name) return -1;
+      return 0;
+    });
     setLista(markers);
     setList(markers);
     setLoading(false);
@@ -181,7 +188,7 @@ export default function ListUser() {
           <Text
             style={{
               fontFamily: 'fontRegular',
-              fontSize: 18,
+              fontSize: 16,
               color: VARS.color.title,
               letterSpacing: 1,
             }}>
@@ -200,8 +207,9 @@ export default function ListUser() {
             numberOfLines={8}
             ellipsizeMode="tail"
             style={{
+              flex: 1,
               fontFamily: 'fontRegular',
-              fontSize: props.size ? props.size : 20,
+              fontSize: props.size ? props.size : 16,
               color: VARS.color.title,
               letterSpacing: 1,
               textAlign: 'justify',
@@ -314,8 +322,7 @@ export default function ListUser() {
               justifyContent: 'flex-start',
               alignItems: 'center',
               gap: 15,
-              paddingVertical: 8,
-              paddingHorizontal: 8,
+              padding: 6,
             }}>
             {item?.photoURL && (
               <TouchableOpacity
@@ -357,8 +364,9 @@ export default function ListUser() {
             )}
             <Text
               style={{
+                flex: 1,
                 fontFamily: 'fontBold',
-                fontSize: 22,
+                fontSize: 20,
                 letterSpacing: 1,
                 color: 'black',
               }}>
@@ -371,7 +379,7 @@ export default function ListUser() {
               height: '100%',
               width: '100%',
               justifyContent: 'space-around',
-              paddingHorizontal: 8,
+              paddingHorizontal: 6,
               gap: 6,
             }}>
             <Label icon="mail-outline" label="" value={item?.email} />

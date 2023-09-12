@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useContext, useState } from 'react';
 import {
+  Alert,
   Image,
   Keyboard,
   KeyboardAvoidingView,
@@ -71,7 +72,7 @@ export default function About() {
                   navigation.navigate('T1');
                 }
                 if (passActivate != activationPass) {
-                  alert('Código incorreto');
+                  Alert.alert('Atenção', 'Código incorreto');
                 }
               }}
             />

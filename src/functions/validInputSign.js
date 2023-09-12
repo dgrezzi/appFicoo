@@ -1,3 +1,4 @@
+import { Alert } from 'react-native';
 import handleSignIn from '../functions/handleSignIn';
 import handleSignUp from '../functions/handleSignUp';
 
@@ -11,11 +12,11 @@ export default function validInputSign(login, email, pwd, name) {
     return;
   }
   if (!login && (!name || !email)) {
-    alert('Preencha todos os campos');
+    Alert.alert('Atenção', 'Preencha todos os campos');
     return;
   }
   if (pwd.length <= 6) {
-    alert('A senha deve ter pelo menos 6 caracteres');
+    Alert.alert('Atenção', 'A senha deve ter pelo menos 6 caracteres');
     return;
   }
 }

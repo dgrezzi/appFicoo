@@ -71,6 +71,7 @@ export default function Credenciamento() {
       .catch(err => {
         console.error('erro no banco:', err);
       });
+    list?.sort();
     setAtividades(list);
     return list;
   };
@@ -91,6 +92,8 @@ export default function Credenciamento() {
           fullUsers.push(doc._data);
           userName.push(doc._data.name);
         });
+        fullUsers?.sort();
+        users?.sort();
         setFullUsers(fullUsers);
         setInscritos(users);
         return;
@@ -111,6 +114,7 @@ export default function Credenciamento() {
         newPresence.map(value => {
           listPresence.push(value.uid);
         });
+        listPresence?.sort();
         setPresence(listPresence);
         return;
       })

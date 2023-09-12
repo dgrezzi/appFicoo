@@ -115,7 +115,14 @@
     "close": "Fechar",
     "credOficina": "Credencial + Oficinas",
     "mpe": "Mínimo Passo Elegante",
-    "inscrevase": "Inscreva-se"
+    "inscrevase": "Inscreva-se",
+    "development": "Desenvolvimento APP FICOO",
+    "dgSystem": "Dois primos criativos e curiosos que amam brincar de trabalhar",
+    "dgNames": "Daniel Grezzi Lima \nFernando Lima Conte",
+    "dgContato": "fernandolconte@gmail.com",
+    "inscSucess": "Sua inscrição foi realizada com sucesso",
+    "congrats": "Parabéns",
+    "newMPELabelContent": "Qual o seu mínimo passo elegante?"
   },
 
   "en": {

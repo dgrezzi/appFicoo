@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import {
+  Alert,
   Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
@@ -36,7 +37,10 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
         });
 
         if (myThreads >= 99) {
-          alert('Você já atingiu o limite de grupos por usuario.');
+          Alert.alert(
+            'Atenção',
+            'Você já atingiu o limite de grupos por usuario.',
+          );
         } else {
           createRoom();
         }

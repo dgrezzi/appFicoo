@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import React, { useContext, useEffect, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Btn from '../../components/Btn/intex';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
@@ -57,7 +57,7 @@ export default function Checkin() {
       .then(result => {
         const info = result._data;
         info
-          ? (alert('usuário já realizou checkin'), setId())
+          ? (Alert.alert('Atenção', 'usuário já realizou checkin'), setId())
           : setCheckinFirebase(id);
         return null;
       })

@@ -2,6 +2,7 @@ import auth from '@react-native-firebase/auth';
 import { Buffer } from 'buffer';
 import React, { useContext, useState } from 'react';
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Text,
@@ -16,18 +17,17 @@ import styles from '../../styles/styles';
 
 export default function LostPass() {
   const [email, setEmail] = useState();
-  const [newPwd, setNewPwd] = useState();
 
   const { locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
   const sendPasswordResetEmail = async () => {
+    Alert.alert('Atenção', 'Verifique seu e-mail para recuperar sua senha');
+    return;
     await auth()
       .sendPasswordResetEmail(email)
-      .then(() => {
-        // Email de redefinição de senha enviado com sucesso
-      })
+      .then(() => {})
       .catch(error => {
         // Ocorreu um erro ao enviar o email de redefinição de senha
         console.error(error.message);
@@ -105,7 +105,7 @@ export default function LostPass() {
             iconSize={VARS.size.icons}
             onPress={() => {
               email && sendPasswordResetEmail();
-              !email && alert(lang.completeEmail);
+              !email && Alert.alert('Atenção', lang.completeEmail);
             }}
           />
         </View>

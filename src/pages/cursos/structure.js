@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
 import exclamation from '../../assets/exclamation.png';
 import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
@@ -230,6 +230,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
   };
 
   useEffect(() => {
+    if (props.editable == false) setLoading(false);
     if (props.editable && props.vaga != null) Promise.all(checkVacancy());
   }, [props]);
 
@@ -240,12 +241,12 @@ export const Atividades = ({ atividadeChange, ...props }) => {
         activeOpacity={1}
         onPress={() => {
           if (qtdActive > 0) props.onPress();
-          if (qtdActive <= 0) alert(lang.soldOut);
+          if (qtdActive <= 0) Alert.alert('Atenção', lang.soldOut);
         }}
         style={{
           width: '100%',
           backgroundColor: props.selected
-            ? VARS.color.orange
+            ? VARS.color.orangeLight
             : VARS.color.white,
           flexDirection: 'row',
           borderRadius: 20,

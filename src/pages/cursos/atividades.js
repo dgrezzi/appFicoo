@@ -105,7 +105,7 @@ export const oficinasD13 = [
   {
     time: '14h30 – 18h30',
     title: 'GAME JAM EXPERIENCE: LIBERE SEU POTENCIAL COCRIATIVO',
-    owner: 'Magda Vila, Felipe Vila, Letícia Resck',
+    owner: 'Felipe Vila, Letícia Resck, Magda Vila',
     id: 'oficina9-d13',
     num: '9',
   },
@@ -185,7 +185,7 @@ export const oficinasD14 = [
   {
     time: '14h30 – 18h30',
     title: 'GAME JAM EXPERIENCE: LIBERE SEU POTENCIAL COCRIATIVO',
-    owner: 'Magda Vila, Felipe Vila, Letícia Resck',
+    owner: 'Felipe Vila, Letícia Resck, Magda Vila',
     id: 'oficina9-d14',
     num: '9',
   },

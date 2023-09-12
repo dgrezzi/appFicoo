@@ -2,6 +2,7 @@ import CheckBox from '@react-native-community/checkbox';
 import { useNavigation } from '@react-navigation/native';
 import React, { useContext, useState } from 'react';
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Text,
@@ -42,16 +43,24 @@ export default function Signup() {
       checkBox1 &&
       checkBox2
     ) {
-      handleSignUp(name, email, city, pwd);
-      navigation.goBack();
+      handleSignUp(name, email, city, pwd)
+        .then(() => {
+          setLoading(false);
+          navigation.goBack();
+        })
+        .catch(() => {
+          setLoading(false);
+        });
       return;
     }
     if (!name || !email || city || checkBox1 || checkBox2) {
-      alert(lang.allForm);
+      Alert.alert('Atenção', lang.allForm);
+      setLoading(false);
       return;
     }
     if (pwd.length <= 6) {
-      alert(lang.pass6);
+      Alert.alert('Atenção', lang.pass6);
+      setLoading(false);
       return;
     }
   };
@@ -66,8 +75,8 @@ export default function Signup() {
           backgroundColor: VARS.color.white,
         },
       ]}>
+      {loading && <Loading />}
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        {loading && <Loading />}
         <View
           style={[styles.container, { justifyContent: 'flex-start', gap: 30 }]}>
           <View style={{ width: '100%', gap: 12, marginTop: 18 }}>
@@ -160,7 +169,6 @@ export default function Signup() {
             onPress={() => {
               setLoading(true);
               validInputSign();
-              setLoading(false);
             }}
           />
         </View>

@@ -85,6 +85,7 @@ export default function Home() {
       .catch(err => {
         console.error('erro no banco:', err);
       });
+    check.sort();
     doc == 'oficoo' ? setOficoo(check) : null;
     doc == 'conferencia' ? setConferencia(check) : null;
     doc == 'paineis' ? setPaineis(check) : null;
@@ -192,41 +193,52 @@ export default function Home() {
             marginHorizontal: 15,
             color: VARS.color.black,
           }}>
-          Créditos app FICOO 2023:
+          {lang.development}
         </Text>
         <View style={{ paddingHorizontal: 10 }}>
           <View
             style={{
-              flexDirection: 'row',
+              // flexDirection: 'row',
               backgroundColor: VARS.color.white,
               borderRadius: 18,
-              alignItems: 'center',
+              alignItems: 'flex-start',
               justifyContent: 'space-around',
               borderWidth: 1,
-              height: 80,
+              // height: 80,
               borderColor: VARS.color.whiteDark,
               elevation: 10,
-              padding: 10,
-              paddingHorizontal: 25,
+              padding: 18,
               marginBottom: 15,
               margin: 5,
               color: VARS.color.black,
+              gap: 12,
             }}>
             <Text
               style={{
-                fontFamily: 'fontRegular',
+                fontFamily: 'fontBold',
                 fontSize: 20,
                 letterSpacing: 1,
+                textAlign: 'center',
               }}>
-              DG System
+              {lang.dgSystem}
             </Text>
             <Text
               style={{
                 fontFamily: 'fontRegular',
                 fontSize: 20,
                 letterSpacing: 1,
+                textAlign: 'justify',
               }}>
-              DG System
+              {lang.dgNames}
+            </Text>
+            <Text
+              style={{
+                fontFamily: 'fontRegular',
+                fontSize: 20,
+                letterSpacing: 1,
+                textAlign: 'justify',
+              }}>
+              {lang.dgContato}
             </Text>
           </View>
         </View>
