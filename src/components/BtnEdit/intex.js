@@ -11,7 +11,7 @@ export default function BtnEdit(props) {
         {
           gap: 8,
           paddingHorizontal: 15,
-          padding: 4,
+          padding: 6,
           shadowColor: VARS.color.blue,
           backgroundColor: props?.color ? props?.color : 'white',
           borderRadius: 15,
@@ -29,7 +29,7 @@ export default function BtnEdit(props) {
       <Text
         style={{
           fontFamily: props.fontFamily ? props.fontFamily : 'fontRegular',
-          fontSize: 20,
+          fontSize: 18,
           letterSpacing: 1,
           color: props.labelColor,
         }}>

@@ -15,7 +15,7 @@ export const Aviso = () => {
 
   const Title = props => {
     return (
-      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ justifyContent: 'center', alignItems: 'center', gap: 10 }}>
         <Text
           style={{
             fontFamily: 'fontBold',
@@ -32,9 +32,10 @@ export const Aviso = () => {
             fontFamily: 'fontRegular',
             color: VARS.color.white,
             fontSize: 18,
-            width: '100%',
+            maxWidth: '100%',
             textAlign: 'center',
             letterSpacing: 1,
+            flexWrap: 'wrap',
           }}>
           {props.legend}
         </Text>
@@ -71,11 +72,11 @@ export const Aviso = () => {
         backgroundColor: VARS.color.orange,
         borderBottomRightRadius: 48,
         borderBottomLeftRadius: 48,
-        gap: 8,
+        gap: 12,
       }}>
       <Title label={lang.inscLabel} legend={lang.inscLegend} />
       <SubTitle label={lang.inscSubT1} />
-      <SubTitle label={lang.inscSubT2} />
+      {/* <SubTitle label={lang.inscSubT2} /> */}
       <Image
         style={{
           width: VARS.size.avatar / 3,
@@ -112,12 +113,12 @@ export const Botoes = ({ abaChange }) => {
         activeOpacity={0.6}
         style={{
           backgroundColor:
-            props.aba == active ? VARS.color.orangeLight : VARS.color.white,
+            props.aba == active ? VARS.color.orange : VARS.color.white,
           paddingHorizontal: 40,
           alignItems: 'center',
           justifyContent: 'center',
           borderWidth: 1,
-          borderColor: VARS.color.orangeLight,
+          borderColor: VARS.color.orange,
           padding: 6,
           borderRadius: 20,
           elevation: props.aba == active ? 8 : 0,
@@ -127,8 +128,7 @@ export const Botoes = ({ abaChange }) => {
             fontFamily: 'fontBold',
             fontSize: 16,
             letterSpacing: 1,
-            color:
-              props.aba == active ? VARS.color.white : VARS.color.orangeLight,
+            color: props.aba == active ? VARS.color.white : VARS.color.orange,
           }}>
           {props.label}
         </Text>
@@ -138,8 +138,7 @@ export const Botoes = ({ abaChange }) => {
               fontFamily: 'fontBold',
               fontSize: 16,
               letterSpacing: 1,
-              color:
-                props.aba == active ? VARS.color.white : VARS.color.orangeLight,
+              color: props.aba == active ? VARS.color.white : VARS.color.orange,
             }}>
             {props.label2}
           </Text>
@@ -246,7 +245,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
         style={{
           width: '100%',
           backgroundColor: props.selected
-            ? VARS.color.orangeLight
+            ? VARS.color.orange
             : VARS.color.white,
           flexDirection: 'row',
           borderRadius: 20,
@@ -287,7 +286,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
                 aspectRatio: 1,
                 backgroundColor: props.selected
                   ? VARS.color.white
-                  : VARS.color.orangeLight,
+                  : VARS.color.orange,
                 borderRadius: 20,
                 borderWidth: 1,
                 borderColor: 'red',

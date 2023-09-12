@@ -34,7 +34,7 @@ export default function Credentials() {
         <Text
           style={{
             fontFamily: 'fontBold',
-            fontSize: 20,
+            fontSize: 18,
             letterSpacing: 1,
             color: VARS.color.black,
           }}>
@@ -79,7 +79,7 @@ export default function Credentials() {
             alignItems: 'flex-start',
             padding: 18,
             paddingVertical: 30,
-            gap: 30,
+            gap: 20,
           }}>
           <View
             style={{
@@ -90,7 +90,7 @@ export default function Credentials() {
             <Text
               style={{
                 fontFamily: 'fontBold',
-                fontSize: 22,
+                fontSize: 24,
                 letterSpacing: 1,
                 alignSelf: 'center',
                 textAlign: 'center',
