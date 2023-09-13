@@ -1,64 +1,86 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useContext, useState } from 'react';
+import firestore from '@react-native-firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
-import {
-  dia12en,
-  dia12es,
-  dia12pt,
-  dia13en,
-  dia13es,
-  dia13pt,
-  dia14en,
-  dia14es,
-  dia14pt,
-} from '../cursos/atividades';
 
-const todos = [
-  dia12en,
-  dia12es,
-  dia12pt,
-  dia13en,
-  dia13es,
-  dia13pt,
-  dia14en,
-  dia14es,
-  dia14pt,
-];
 export default function Calendar() {
   const [aba, setAba] = useState(0);
+  const [dia12, setDia12] = useState();
+  const [dia13, setDia13] = useState();
+  const [dia14, setDia14] = useState();
+  const [loading, setLoading] = useState(true);
 
   const { locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
-  const prog = {
-    dia12:
-      locale == 'pt'
-        ? dia12pt
-        : locale == 'en'
-        ? dia12en
-        : locale == 'es'
-        ? dia12es
-        : null,
-    dia13:
-      locale == 'pt'
-        ? dia13pt
-        : locale == 'en'
-        ? dia13en
-        : locale == 'es'
-        ? dia13es
-        : null,
-    dia14:
-      locale == 'pt'
-        ? dia14pt
-        : locale == 'en'
-        ? dia14en
-        : locale == 'es'
-        ? dia14es
-        : null,
+  useEffect(() => {
+    getProgram();
+  }, [locale]);
+
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     getProgram();
+  //   }, [locale]),
+  // );
+
+  const getProgram = async () => {
+    const prog12 = [];
+    const prog13 = [];
+    const prog14 = [];
+    await firestore()
+      .collection('configs')
+      .doc('programacao')
+      .collection('dia12' + locale)
+      .orderBy('start', 'asc')
+      .get()
+      .then(result => {
+        result.forEach(doc => {
+          prog12.push(doc.data());
+        });
+        return null;
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+    await firestore()
+      .collection('configs')
+      .doc('programacao')
+      .collection('dia13' + locale)
+      .orderBy('start', 'asc')
+      .get()
+      .then(result => {
+        result.forEach(doc => {
+          prog13.push(doc.data());
+        });
+        return null;
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+    await firestore()
+      .collection('configs')
+      .doc('programacao')
+      .collection('dia14' + locale)
+      .orderBy('start', 'asc')
+      .get()
+      .then(result => {
+        result.forEach(doc => {
+          prog14.push(doc.data());
+        });
+        return null;
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+    setDia12(prog12);
+    setDia13(prog13);
+    setDia14(prog14);
+    setLoading(false);
   };
 
   const Aba = props => {
@@ -89,29 +111,23 @@ export default function Calendar() {
     );
   };
 
-  const setProgramFirebase = async ({ colectionId, data }) => {
-    console.log('colectionId:', colectionId);
-    console.log('data:', data);
-    console.log('objectKey:', Object.keys(data));
-    return;
-    await firestore()
-      .collection('configs')
-      .doc('languages')
-      .collection(colectionId)
-      .doc()
-      .set(data)
-      .then(() => {
-        setId();
-        setCheck('Checkin realizado com sucesso');
-        setTimeout(() => {
-          setCheck('');
-        }, 2000);
-      })
-      .catch(err => {
-        console.error('erro no banco:', err);
-      });
-    setId();
-  };
+  // const setProgramFirebase = () => {
+  //   dia14en.map(async (value, index) => {
+  //     await firestore()
+  //       .collection('configs')
+  //       .doc('programacao')
+  //       .collection('dia14en')
+  //       .doc()
+  //       .set(value)
+  //       .then(() => {
+  //         console.log('value', index, ':', value);
+  //       })
+  //       .catch(err => {
+  //         console.error('erro no banco:', err);
+  //       });
+  //   });
+  //   return;
+  // };
 
   return (
     <View
@@ -123,27 +139,8 @@ export default function Calendar() {
           gap: 15,
         },
       ]}>
-      {/* <TouchableOpacity
-        onPress={() => {
-          todos.map((item, index) => {
-            console.log('objectKey:', todos['objectKey']);
+      {loading && <Loading />}
 
-            return;
-            console.log(item); //item a ser cadastrado
-            item.map((value, indice) => {
-              console.log(value); //item a ser cadastrado
-            });
-          });
-          return;
-          const prog = {
-            colectionId: 'teste',
-            data: dia12en,
-          };
-          setProgramFirebase(prog);
-        }}
-        style={{ padding: 5, paddingHorizontal: 20, borderWidth: 1 }}>
-        <Text>Cadastrar</Text>
-      </TouchableOpacity> */}
       <View
         style={[
           {
@@ -188,9 +185,9 @@ export default function Calendar() {
           width: '100%',
           flex: 1,
         }}>
-        {aba == 0 ? <Atividade dia={prog.dia12} /> : null}
-        {aba == 1 ? <Atividade dia={prog.dia13} /> : null}
-        {aba == 2 ? <Atividade dia={prog.dia14} /> : null}
+        {aba == 0 ? <Atividade dia={dia12} /> : null}
+        {aba == 1 ? <Atividade dia={dia13} /> : null}
+        {aba == 2 ? <Atividade dia={dia14} /> : null}
       </View>
     </View>
   );

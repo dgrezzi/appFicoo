@@ -76,7 +76,6 @@ export const Aviso = () => {
       }}>
       <Title label={lang.inscLabel} legend={lang.inscLegend} />
       <SubTitle label={lang.inscSubT1} />
-      {/* <SubTitle label={lang.inscSubT2} /> */}
       <Image
         style={{
           width: VARS.size.avatar / 3,
@@ -163,13 +162,6 @@ export const Botoes = ({ abaChange }) => {
           marginBottom: 15,
         },
       ]}>
-      {/* <Aba
-        label={lang.inscAbaLabel}
-        aba="1"
-        onPress={() => {
-          handleChange(1);
-        }}
-      /> */}
       <Aba
         label={lang.inscAbaLabel2}
         label2="13/10"
