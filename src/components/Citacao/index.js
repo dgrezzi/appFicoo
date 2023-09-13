@@ -27,7 +27,7 @@ export default function Citacao({ info }) {
         color: VARS.color.black,
       }}>
       <Text
-        style={{ fontFamily: 'fontRegular', letterSpacing: 1, fontSize: 16 }}>
+        style={{ fontFamily: 'fontRegular', letterSpacing: 1, fontSize: 18 }}>
         {info.name}
       </Text>
     </View>

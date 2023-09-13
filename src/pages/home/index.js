@@ -198,23 +198,22 @@ export default function Home() {
         <View style={{ paddingHorizontal: 10 }}>
           <View
             style={{
-              // flexDirection: 'row',
               backgroundColor: VARS.color.white,
               borderRadius: 18,
               alignItems: 'flex-start',
               justifyContent: 'space-around',
               borderWidth: 1,
-              // height: 80,
               borderColor: VARS.color.whiteDark,
               elevation: 10,
               padding: 18,
               marginBottom: 15,
               margin: 5,
               color: VARS.color.black,
-              gap: 12,
+              gap: 10,
             }}>
             <Text
               style={{
+                width: '100%',
                 fontFamily: 'fontBold',
                 fontSize: 20,
                 letterSpacing: 1,
@@ -225,7 +224,7 @@ export default function Home() {
             <Text
               style={{
                 fontFamily: 'fontRegular',
-                fontSize: 20,
+                fontSize: 18,
                 letterSpacing: 1,
                 textAlign: 'justify',
               }}>
@@ -234,7 +233,7 @@ export default function Home() {
             <Text
               style={{
                 fontFamily: 'fontRegular',
-                fontSize: 20,
+                fontSize: 18,
                 letterSpacing: 1,
                 textAlign: 'justify',
               }}>

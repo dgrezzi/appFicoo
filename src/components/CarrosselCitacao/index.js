@@ -103,7 +103,7 @@ export default function CarrosselCitacao({ id, data, label, updatePage }) {
             }}
             activeOpacity={0.8}
             style={{
-              width: 100,
+              width: 150,
               justifyContent: 'center',
               alignItems: 'center',
               padding: 10,

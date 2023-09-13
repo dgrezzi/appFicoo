@@ -117,7 +117,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
           <InputTxt
             icon=""
             multiline={false}
-            placeholder={lang.link}
+            placeholder={lang.Link}
             security={false}
             editable={true}
             value={input}
@@ -133,7 +133,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
             }}
             activeOpacity={0.8}
             style={{
-              width: 100,
+              width: 150,
               justifyContent: 'center',
               alignItems: 'center',
               padding: 10,
