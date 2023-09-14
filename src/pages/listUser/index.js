@@ -81,7 +81,7 @@ export default function ListUser() {
         console.error('erro no banco:', err);
       });
     const reset = user;
-    delete reset.isAdmin;
+    // delete reset.isAdmin;
     delete reset.oficina1;
     delete reset.oficina2;
     delete reset.inscrito;
