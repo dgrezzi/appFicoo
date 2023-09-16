@@ -44,10 +44,19 @@
           "cameraPermission": "Allow $(PRODUCT_NAME) to access camera."
         }
       ],
+      ["./firebasePlugin", "custom"],
       [
         "expo-image-picker",
         {
           "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
         }
       ],
       "@react-native-firebase/app",

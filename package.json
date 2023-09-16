@@ -7,7 +7,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "eas-build-pre-install": "echo $IOS_FILE_SECRET | base64 --decode > ./GoogleService-Info.plist && echo $ANDROID_FILE_SECRET | base64 --decode > ./google-services.json"
+    "eas-build-pre-install": "echo $IOS_GOOGLE_FILE > ./GoogleService-Info.plist && echo $ANDROID_GOOGLE_FILE > ./google-services.json"
   },
   "dependencies": {
     "@expo/config-plugins": "^7.2.5",
@@ -35,7 +35,8 @@
     "react-native-qrcode-svg": "^6.2.0",
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",
-    "react-native-svg": "13.9.0"
+    "react-native-svg": "13.9.0",
+    "expo-build-properties": "~0.8.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
