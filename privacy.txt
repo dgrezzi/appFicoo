@@ -1,0 +1,189 @@
+POLÍTICA DE PRIVACIDADE
+
+Ultima atualização16 de setembro de 2023
+
+
+
+Este aviso de privacidade paraD Grezzi(' nós ', ' nós ' ou ' nosso '), descreve como e por que podemos coletar, armazenar, usar e/ou compartilhar (' processo ') suas informações quando você usa nossos serviços (' Serviços '), como quando você:
+Baixe e usenosso aplicativo móvel(FICOO),ou qualquer outro aplicativo nosso que tenha um link para este aviso de privacidade
+Envolva-se conosco de outras maneiras relacionadas, incluindo vendas, marketing ou eventos
+Perguntas ou preocupações? A leitura deste aviso de privacidade irá ajudá-lo a compreender os seus direitos e escolhas de privacidade. Se você não concorda com nossas políticas e práticas, não utilize nossos Serviços. Se você ainda tiver alguma dúvida ou preocupação, entre em contato conosco emdev.grezzi@gmail.com.
+
+
+RESUMO DOS PONTOS-CHAVE
+
+Este resumo fornece pontos-chave do nosso aviso de privacidade, mas você pode encontrar mais detalhes sobre qualquer um desses tópicos clicando no link após cada ponto-chave ou usando nosso  índice  abaixo para encontrar a seção que procura.
+
+Que informações pessoais processamos? Quando você visita, usa ou navega em nossos Serviços, podemos processar informações pessoais dependendo de como você interage conosco e com os Serviços, as escolhas que você faz e os produtos e recursos que você usa. Saiba mais sobre  as informações pessoais que você nos divulga .
+
+Processamos alguma informação pessoal sensível? Não processamos informações pessoais confidenciais.
+
+Recebemos alguma informação de terceiros? Não recebemos nenhuma informação de terceiros.
+
+Como processamos suas informações? Processamos suas informações para fornecer, melhorar e administrar nossos Serviços, nos comunicarmos com você, para segurança e prevenção de fraudes e para cumprir a lei. Também poderemos processar suas informações para outros fins com o seu consentimento. Processamos suas informações somente quando temos uma razão legal válida para fazê-lo. Saiba mais sobre  como processamos suas informações .
+
+Em que situações e com quepartes compartilhamos informações pessoais? Poderemos compartilhar informações em situações específicas e comterceiros. Saiba mais sobre  quando e com quem compartilhamos suas informações pessoais .
+
+Como mantemos suas informações seguras? Nós temosorganizacionale processos e procedimentos técnicos em vigor para proteger suas informações pessoais. No entanto, nenhuma transmissão electrónica através da Internet ou tecnologia de armazenamento de informação pode ser garantida como 100% segura, pelo que não podemos prometer ou garantir que hackers, cibercriminosos ou outrosnão autorizadoterceiros não serão capazes de derrotar nossa segurança e coletar, acessar, roubar ou modificar indevidamente suas informações. Saiba mais sobre  como mantemos suas informações seguras .
+
+Quais são os seus direitos? Dependendo de onde você está localizado geograficamente, a lei de privacidade aplicável pode significar que você tem certos direitos em relação às suas informações pessoais. Saiba mais sobre  seus direitos de privacidade .
+
+Como você exerce seus direitos? A forma mais fácil de exercer os seus direitos é atravésenviando um solicitação de acesso do titular dos dados, ou entrando em contato conosco. Consideraremos e agiremos de acordo com qualquer solicitação de acordo com as leis de proteção de dados aplicáveis.
+
+Quer saber mais sobre o que fazemos com as informações que coletamos? Revise o aviso de privacidade na íntegra .
+
+
+ÍNDICE
+
+1. QUE INFORMAÇÕES COLETAMOS?
+2. COMO PROCESSAMOS SUAS INFORMAÇÕES?
+3. EM QUE BASES LEGAIS NOS BALAMOS PARA PROCESSAR SUAS INFORMAÇÕES PESSOAIS?
+4. QUANDO E COM QUEM COMPARTILHAMOS SUAS INFORMAÇÕES PESSOAIS?
+5. COMO TRATAMOS SEUS LOGINS SOCIAIS?
+6. POR QUANTO TEMPO MANTEMOS SUAS INFORMAÇÕES?
+7. COMO MANTEMOS SUAS INFORMAÇÕES SEGURAS?
+8. QUAIS SÃO OS SEUS DIREITOS DE PRIVACIDADE?
+9. CONTROLES PARA RECURSOS DO-NOT-TRACK
+10. OS RESIDENTES DA CALIFÓRNIA TÊM DIREITOS ESPECÍFICOS DE PRIVACIDADE?
+11. FAZEMOS ATUALIZAÇÕES NESTE AVISO?
+12. COMO VOCÊ PODE ENTRAR EM CONTATO CONOSCO SOBRE ESTE AVISO?
+13. COMO VOCÊ PODE REVISAR, ATUALIZAR OU EXCLUIR OS DADOS QUE COLETAMOS DE VOCÊ?
+
+
+1. QUE INFORMAÇÕES COLETAMOS?
+
+Informações pessoais que você nos divulga
+
+Resumindo: Coletamos informações pessoais que você nos fornece.
+
+Coletamos informações pessoais que você nos fornece voluntariamente quandoregistrar-se nos Serviços, manifestar interesse em obter informações sobre nós ou nossos produtos e Serviços, quando você participa de atividades nos Serviços, ou de outra forma, quando nos contata.
+
+Informações pessoais fornecidas por você. As informações pessoais que coletamos dependem do contexto de suas interações conosco e com os Serviços, das escolhas que você faz e dos produtos e recursos que você usa. As informações pessoais que coletamos podem incluir o seguinte:
+nomes
+números de telefone
+endereço de e-mail
+endereços de correspondência
+nomes de usuário
+senhas
+dados de contato ou autenticação
+Informação sensível. Não processamos informações confidenciais.
+
+Dados de login em mídias sociais. Podemos oferecer a você a opção de se registrar conosco usando os detalhes de sua conta de mídia social existente, como Facebook, Twitter ou outra conta de mídia social. Caso opte por se cadastrar desta forma, coletaremos as informações descritas na seção denominada'COMO TRATAMOS SEUS LOGINS SOCIAIS?'abaixo.
+
+Todas as informações pessoais que você nos fornece devem ser verdadeiras, completas e precisas, e você deve nos notificar sobre quaisquer alterações nessas informações pessoais.
+
+Informações coletadas automaticamente
+
+Resumindo: Algumas informações – como seu endereço de Protocolo de Internet (IP) e/ou características do navegador e do dispositivo – são coletadas automaticamente quando você visita nossos Serviços.
+
+Coletamos automaticamente certas informações quando você visita, usa ou navega nos Serviços. Essas informações não revelam sua identidade específica (como seu nome ou informações de contato), mas podem incluir informações de uso e dispositivo, como endereço IP, características do navegador e do dispositivo, sistema operacional, preferências de idioma, URLs de referência, nome do dispositivo, país, localização , informações sobre como e quando você usa nossos Serviços e outras informações técnicas. Estas informações são necessárias principalmente para manter a segurança e a operação dos nossos Serviços e para fins de análise interna e relatórios.
+
+As informações que coletamos incluem:
+Dados de registro e uso. Os dados de registro e uso são informações relacionadas ao serviço, diagnóstico, uso e desempenho que nossos servidores coletam automaticamente quando você acessa ou usa nossos Serviços e que registramos em arquivos de registro. Dependendo de como você interage conosco, esses dados de registro podem incluir seu endereço IP, informações do dispositivo, tipo de navegador e configurações e informações sobre sua atividade nos Serviços (como carimbos de data/hora associados ao seu uso, páginas e arquivos  visualizados , pesquisas e outras ações realizadas, como quais recursos você usa), informações de eventos do dispositivo (como atividade do sistema, relatórios de erros (às vezes chamados'despejos de memória') e configurações de hardware).
+2. COMO PROCESSAMOS SUAS INFORMAÇÕES?
+
+Resumindo:  Processamos suas informações para fornecer, melhorar e administrar nossos Serviços, nos comunicarmos com você, para segurança e prevenção de fraudes e para cumprir a lei. Também poderemos processar suas informações para outros fins com o seu consentimento.
+
+Processamos suas informações pessoais por diversos motivos, dependendo de como você interage com nossos Serviços, incluindo:
+Para facilitar a criação e autenticação de contas e gerenciar contas de usuários. Podemos processar suas informações para que você possa criar e fazer login em sua conta, bem como mantê-la em funcionamento.
+
+
+
+
+Para salvar ou proteger o interesse vital de um indivíduo. Podemos processar suas informações quando necessário para salvar ou proteger os interesses vitais de um indivíduo, como para evitar danos.
+
+3. EM QUE BASES LEGAIS NOS BALAMOS PARA PROCESSAR SUAS INFORMAÇÕES?
+
+Resumindo:  Apenas processamos as suas informações pessoais quando acreditamos que é necessário e temos um motivo legal válido (ou seja,base legal) para fazê-lo de acordo com a lei aplicável, como com o seu consentimento, para cumprir as leis, para lhe fornecer serviços para celebrar oucompletarnossas obrigações contratuais, para proteger seus direitos ou paracompletarnossos interesses comerciais legítimos.
+
+O Regulamento Geral de Proteção de Dados (GDPR) e o GDPR do Reino Unido exigem que expliquemos as bases jurídicas válidas nas quais nos baseamos para processar suas informações pessoais. Como tal, podemos contar com as seguintes bases legais para processar as suas informações pessoais:
+Consentimento. Poderemos processar suas informações se você nos der permissão (ou seja,consentimento) para usar suas informações pessoais para uma finalidade específica. Você pode retirar seu consentimento a qualquer momento. Saiba mais sobre como  retirar seu consentimento .
+Obrigações legais. Poderemos processar as suas informações quando acreditarmos que é necessário para o cumprimento das nossas obrigações legais, como cooperar com um órgão de aplicação da lei ou agência reguladora, exercer ou defender os nossos direitos legais, ou divulgar as suas informações como prova em litígios em que somos envolvido.
+Interesses vitais. Poderemos processar suas informações quando acreditarmos que seja necessário para proteger seus interesses vitais ou os interesses vitais de terceiros, como situações que envolvam ameaças potenciais à segurança de qualquer pessoa.
+
+4. QUANDO E COM QUEM COMPARTILHAMOS SUAS INFORMAÇÕES PESSOAIS?
+
+Resumindo:  Poderemos compartilhar informações em situações específicas descritas nesta seção e/ou com os seguintesterceiros.
+
+Nóspode precisar compartilhar suas informações pessoais nas seguintes situações:
+Transferências Empresariais. Poderemos compartilhar ou transferir suas informações em conexão com ou durante negociações de qualquer fusão, venda de ativos da empresa, financiamento ou aquisição de todo ou parte de nossos negócios para outra empresa.
+
+5. COMO TRATAMOS SEUS LOGINS SOCIAIS?
+
+Resumindo:  Se você optar por se registrar ou fazer login em nossos Serviços usando uma conta de mídia social, poderemos ter acesso a determinadas informações sobre você.
+
+Nossos Serviços oferecem a você a capacidade de se registrar e fazer login usando os detalhes de sua conta de mídia social de terceiros (como seus logins do Facebook ou Twitter). Quando você decidir fazer isso, receberemos certas informações de perfil sobre você do seu provedor de mídia social. As informações de perfil que recebemos podem variar dependendo do provedor de mídia social em questão, mas geralmente incluem seu nome, endereço de e-mail, lista de amigos e foto do perfil, bem como outras informações que você decidir tornar públicas nessa plataforma de mídia social.
+
+Usaremos as informações que recebermos apenas para os fins descritos neste aviso de privacidade ou que de outra forma forem esclarecidos para você nos Serviços relevantes. Observe que não controlamos e não somos responsáveis ​​por outros usos de suas informações pessoais por parte de seu provedor de mídia social terceirizado. Recomendamos que você revise o aviso de privacidade para entender como eles coletam, usam e compartilham suas informações pessoais e como você pode definir suas preferências de privacidade em seus sites e aplicativos.
+
+6. POR QUANTO TEMPO MANTEMOS SUAS INFORMAÇÕES?
+
+Resumindo:  Mantemos suas informações pelo tempo necessário paracompletaras finalidades descritas neste aviso de privacidade, a menos que exigido de outra forma por lei.
+
+Manteremos as suas informações pessoais apenas durante o tempo necessário para os fins estabelecidos neste aviso de privacidade, a menos que um período de retenção mais longo seja exigido ou permitido por lei (como impostos, contabilidade ou outros requisitos legais).Nenhum propósito neste aviso exigirá que mantenhamos suas informações pessoais por mais tempo do quetrês (3)meses após o início do período ocioso da conta do usuário.
+
+Quando não tivermos necessidade comercial legítima de processar suas informações pessoais, excluiremos ouanonimizartais informações, ou, se isso não for possível (por exemplo, porque suas informações pessoais foram armazenadas em arquivos de backup), armazenaremos suas informações pessoais com segurança e as isolaremos de qualquer processamento posterior até que a exclusão seja possível.
+
+7. COMO MANTEMOS SUAS INFORMAÇÕES SEGURAS?
+
+Resumindo:  Nosso objetivo é proteger suas informações pessoais por meio de um sistema deorganizacionale medidas técnicas de segurança.
+
+Implementamos soluções técnicas e técnicas apropriadas e razoáveisorganizacionalmedidas de segurança projetadas para proteger a segurança de quaisquer informações pessoais que processamos. No entanto, apesar das nossas salvaguardas e esforços para proteger as suas informações, nenhuma transmissão eletrónica através da Internet ou tecnologia de armazenamento de informações pode ser garantida como 100% segura, pelo que não podemos prometer ou garantir que hackers, cibercriminosos ou outrosnão autorizadoterceiros não serão capazes de derrotar nossa segurança e coletar, acessar, roubar ou modificar indevidamente suas informações. Embora façamos o nosso melhor para proteger as suas informações pessoais, a transmissão de informações pessoais de e para os nossos Serviços é por sua conta e risco. Você só deve acessar os Serviços em um ambiente seguro.
+
+8. QUAIS SÃO OS SEUS DIREITOS DE PRIVACIDADE?
+
+Resumidamente: Em algumas regiões, comoo Espaço Económico Europeu (EEE), Reino Unido (UK) e Suíça, você tem direitos que lhe permitem maior acesso e controle sobre suas informações pessoais. Você pode revisar, alterar ou encerrar sua conta a qualquer momento.
+
+Em algumas regiões (comoEEE, Reino Unido e Suíça), você tem certos direitos sob as leis de proteção de dados aplicáveis. Estes podem incluir o direito (i) de solicitar acesso e obter uma cópia das suas informações pessoais, (ii) de solicitar retificação ou apagamento; (iii) restringir o processamento de suas informações pessoais; (vi) se for o caso, à portabilidade dos dados; e (vii) não estar sujeito a decisões automatizadas. Em determinadas circunstâncias, você também poderá ter o direito de se opor ao processamento de suas informações pessoais. Você pode fazer tal solicitação entrando em contato conosco usando os dados de contato fornecidos na seção'COMO VOCÊ PODE ENTRAR EM CONTATO CONOSCO SOBRE ESTE AVISO?'abaixo.
+
+Consideraremos e agiremos de acordo com qualquer solicitação de acordo com as leis de proteção de dados aplicáveis.
+
+Se você estiver localizado no EEE ou no Reino Unido e acreditar que estamos processando ilegalmente suas informações pessoais, você também tem o direito de reclamar junto à autoridade de proteção de dados do seu Estado-Membro ou  à autoridade de proteção de dados do Reino Unido .
+
+Se você estiver na Suíça, poderá entrar em contato com o Comissário Federal de Proteção de Dados e Informação .
+
+Retirar o seu consentimento: Se dependermos do seu consentimento para processar as suas informações pessoais,você tem o direito de retirar seu consentimento a qualquer momento. Você pode retirar seu consentimento a qualquer momento entrando em contato conosco através dos dados de contato fornecidos na seção'COMO VOCÊ PODE ENTRAR EM CONTATO CONOSCO SOBRE ESTE AVISO?'abaixoou atualizando suas preferências.
+
+No entanto, tenha em atenção que isto não afetará a legalidade do processamento antes da sua retirada nem,isso afetará o processamento de suas informações pessoais conduzido com base em motivos de processamento legais que não sejam o consentimento.
+
+Informação da conta
+
+Se desejar, a qualquer momento, revisar ou alterar as informações da sua conta ou encerrar sua conta, você pode:
+Contate-nos usando as informações de contato fornecidas.
+dev.grezzi@gmail.com
+Mediante sua solicitação para encerrar sua conta, desativaremos ou excluiremos sua conta e informações de nossos bancos de dados ativos. No entanto, podemos reter algumas informações em nossos arquivos para evitar fraudes, solucionar problemas, ajudar em quaisquer investigações, fazer cumprir nossos termos legais e/ou cumprir os requisitos legais aplicáveis.
+
+Se você tiver dúvidas ou comentários sobre seus direitos de privacidade, envie-nos um e-mail paradev.grezzi@gmail.com.
+
+9. CONTROLES PARA RECURSOS DO-NOT-TRACK
+
+A maioria dos navegadores da web e alguns sistemas operacionais e aplicativos móveis incluem uma opção Do-Not-Track ('DNT') recurso ou configuração que você pode ativar para sinalizar sua preferência de privacidade para não ter dados sobre suas atividades de navegação online monitorados e coletados. Nesta fase, não existe uma norma tecnológica uniforme parareconhecendoe a implementação de sinais DNT tem sidofinalizado. Como tal, atualmente não respondemos aos sinais do navegador DNT ou a qualquer outro mecanismo que comunique automaticamente a sua escolha de não ser rastreado online. Se for adotado um padrão de rastreamento on-line que devemos seguir no futuro, informaremos você sobre essa prática em uma versão revisada deste aviso de privacidade.
+
+10. OS RESIDENTES DA CALIFÓRNIA TÊM DIREITOS ESPECÍFICOS DE PRIVACIDADE?
+
+Resumindo:  Sim, se você residir na Califórnia, terá direitos específicos relativos ao acesso às suas informações pessoais.
+
+Seção 1798.83 do Código Civil da Califórnia, também conhecida como'Brilha a luz'lei, permite que nossos usuários residentes na Califórnia solicitem e obtenham de nós, uma vez por ano e gratuitamente, informações sobre categorias de informações pessoais (se houver) que divulgamos a terceiros para fins de marketing direto e os nomes e endereços de todos terceiros com os quais compartilhamos informações pessoais no ano civil imediatamente anterior. Se você reside na Califórnia e deseja fazer tal solicitação, envie-nos sua solicitação por escrito usando as informações de contato fornecidas abaixo.
+
+Se você tem menos de 18 anos de idade, reside na Califórnia e possui uma conta registrada nos Serviços, você tem o direito de solicitar a remoção de dados indesejados que você publica publicamente nos Serviços. Para solicitar a remoção de tais dados, entre em contato conosco usando as informações de contato fornecidas abaixo e inclua o endereço de e-mail associado à sua conta e uma declaração de que você reside na Califórnia. Garantiremos que os dados não sejam exibidos publicamente nos Serviços, mas esteja ciente de que os dados podem não ser removidos completa ou exaustivamente de todos os nossos sistemas (por exemplo,cópias de segurança, etc.).
+
+11. FAZEMOS ATUALIZAÇÕES NESTE AVISO?
+
+Resumindo:  Sim, atualizaremos este aviso conforme necessário para permanecermos em conformidade com as leis relevantes.
+
+Poderemos atualizar este aviso de privacidade de tempos em tempos. A versão atualizada será indicada por um ícone atualizado'Revisado'data e a versão atualizada entrará em vigor assim que estiver acessível. Se fizermos alterações materiais neste aviso de privacidade, poderemos notificá-lo publicando de forma destacada um aviso sobre tais alterações ou enviando-lhe diretamente uma notificação. Encorajamos você a revisar este aviso de privacidade com frequência para estar informado sobre como estamos protegendo suas informações.
+
+12. COMO VOCÊ PODE ENTRAR EM CONTATO CONOSCO SOBRE ESTE AVISO?
+
+Se você tiver dúvidas ou comentários sobre este aviso, você podeenvie-nos um e-mail paradev.grezzi@gmail.com ou entre em contato conosco por correio em:
+
+D Grezzi
+4, Jardim de São Jorge
+dev.grezzi@gmail.com
+Bognor Regis,Sussex Ocidental PO21 5SN
+Brasil
+
+13. COMO VOCÊ PODE REVISAR, ATUALIZAR OU EXCLUIR OS DADOS QUE COLETAMOS DE VOCÊ?
+
+Você tem o direito de solicitar acesso às informações pessoais que coletamos de você, alterar essas informações ou excluí-las.Para solicitar a revisão, atualização ou exclusão de suas informações pessoais, por favorpreencher e enviar uma  solicitação de acesso do titular dos dados.
+Esta política de privacidade foi criada usando o Gerador de Política de Privacidade da Termly .
