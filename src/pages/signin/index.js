@@ -138,7 +138,6 @@ export default function Signin() {
                 setLoading(true);
                 if (email && pwd.length >= 6) {
                   await handleSignIn(email, pwd);
-                  return;
                 } else {
                   Alert.alert('Atenção', lang.completForm);
                 }
