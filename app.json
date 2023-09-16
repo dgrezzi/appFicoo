@@ -3,7 +3,7 @@
     "name": "FICOO",
     "owner": "dgrezzi",
     "slug": "appficoo",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -14,12 +14,14 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "buildNumber": "2",
       "googleServicesFile": "./GoogleService-Info.plist",
       "userInterfaceStyle": "light",
       "supportsTablet": true,
       "bundleIdentifier": "com.appficoo"
     },
     "android": {
+      "versionCode": "2",
       "googleServicesFile": "./google-services.json",
       "userInterfaceStyle": "light",
       "adaptiveIcon": {
