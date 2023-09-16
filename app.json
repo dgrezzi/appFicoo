@@ -21,7 +21,7 @@
       "bundleIdentifier": "com.appficoo"
     },
     "android": {
-      "versionCode": "2",
+      "versionCode": 2,
       "googleServicesFile": "./google-services.json",
       "userInterfaceStyle": "light",
       "adaptiveIcon": {
