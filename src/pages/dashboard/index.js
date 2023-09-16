@@ -130,7 +130,7 @@ export default function Dashboard() {
             navigation.navigate('Credenciamento');
           }}
           data={{
-            label: lang.dashPaineisOfic,
+            label: lang.dashOficinas,
             bgColor: VARS.color.white,
             color: VARS.color.title,
           }}
