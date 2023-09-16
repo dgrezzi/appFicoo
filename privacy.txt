@@ -3,11 +3,10 @@ POLÍTICA DE PRIVACIDADE
 Ultima atualização16 de setembro de 2023
 
 
-
 Este aviso de privacidade paraD Grezzi(' nós ', ' nós ' ou ' nosso '), descreve como e por que podemos coletar, armazenar, usar e/ou compartilhar (' processo ') suas informações quando você usa nossos serviços (' Serviços '), como quando você:
 Baixe e usenosso aplicativo móvel(FICOO),ou qualquer outro aplicativo nosso que tenha um link para este aviso de privacidade
 Envolva-se conosco de outras maneiras relacionadas, incluindo vendas, marketing ou eventos
-Perguntas ou preocupações? A leitura deste aviso de privacidade irá ajudá-lo a compreender os seus direitos e escolhas de privacidade. Se você não concorda com nossas políticas e práticas, não utilize nossos Serviços. Se você ainda tiver alguma dúvida ou preocupação, entre em contato conosco emdev.grezzi@gmail.com.
+Perguntas ou preocupações? A leitura deste aviso de privacidade irá ajudá-lo a compreender os seus direitos e escolhas de privacidade. Se você não concorda com nossas políticas e práticas, não utilize nossos Serviços. Se você ainda tiver alguma dúvida ou preocupação, entre em contato conosco em dev.grezzi@gmail.com.
 
 
 RESUMO DOS PONTOS-CHAVE
@@ -89,7 +88,6 @@ Para facilitar a criação e autenticação de contas e gerenciar contas de usu�
 
 
 
-
 Para salvar ou proteger o interesse vital de um indivíduo. Podemos processar suas informações quando necessário para salvar ou proteger os interesses vitais de um indivíduo, como para evitar danos.
 
 3. EM QUE BASES LEGAIS NOS BALAMOS PARA PROCESSAR SUAS INFORMAÇÕES?
@@ -153,7 +151,7 @@ Contate-nos usando as informações de contato fornecidas.
 dev.grezzi@gmail.com
 Mediante sua solicitação para encerrar sua conta, desativaremos ou excluiremos sua conta e informações de nossos bancos de dados ativos. No entanto, podemos reter algumas informações em nossos arquivos para evitar fraudes, solucionar problemas, ajudar em quaisquer investigações, fazer cumprir nossos termos legais e/ou cumprir os requisitos legais aplicáveis.
 
-Se você tiver dúvidas ou comentários sobre seus direitos de privacidade, envie-nos um e-mail paradev.grezzi@gmail.com.
+Se você tiver dúvidas ou comentários sobre seus direitos de privacidade, envie-nos um e-mail para dev.grezzi@gmail.com.
 
 9. CONTROLES PARA RECURSOS DO-NOT-TRACK
 
@@ -175,7 +173,7 @@ Poderemos atualizar este aviso de privacidade de tempos em tempos. A versão atu
 
 12. COMO VOCÊ PODE ENTRAR EM CONTATO CONOSCO SOBRE ESTE AVISO?
 
-Se você tiver dúvidas ou comentários sobre este aviso, você podeenvie-nos um e-mail paradev.grezzi@gmail.com ou entre em contato conosco por correio em:
+Se você tiver dúvidas ou comentários sobre este aviso, você podeenvie-nos um e-mail para dev.grezzi@gmail.com ou entre em contato conosco por correio em:
 
 D Grezzi
 4, Jardim de São Jorge
