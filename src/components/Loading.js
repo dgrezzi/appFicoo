@@ -4,7 +4,7 @@ export default function Loading() {
   return (
     <View
       style={{
-        zIndex: 999,
+        zIndex: 99,
         position: 'absolute',
         alignSelf: 'center',
         width: '100%',

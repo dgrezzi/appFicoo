@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
+import Loading from '../Loading';
 
 export default function Card({ info }) {
   const [image, setImage] = useState();
@@ -59,6 +60,7 @@ const handleDelete = ()=>{
           borderRadius: 18,
           alignItems: 'center',
           height: 200,
+          minWidth:200,
           borderWidth: 1,
           borderColor: VARS.color.whiteDark,
           elevation: 10,
@@ -69,6 +71,7 @@ const handleDelete = ()=>{
         {info.linkURL && (
           <View
             style={{
+              flex:1,
               position: 'absolute',
               zIndex: 99,
               padding: 5,
@@ -102,14 +105,16 @@ const handleDelete = ()=>{
           <Image
             style={{
               height: '100%',
+              width:'100%',
               aspectRatio: aspect,
               borderWidth: 1,
               borderColor:VARS.color.whiteOpacity,
               borderRadius: 10,
               resizeMode: 'cover',
+              zIndex:999
             }}
             source={{ uri: image }}
-          />
+            />
         )}
       </View>
     </TouchableOpacity>

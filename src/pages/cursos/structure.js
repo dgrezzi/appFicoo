@@ -342,7 +342,7 @@ export const Confirmacao = ({ data }) => {
             fontFamily: 'fontBold',
             flex: 1,
             width: '100%',
-            fontSize: 20,
+            fontSize: 18,
             textAlign: 'justify',
             letterSpacing: 1,
             color: VARS.color.title,
@@ -353,7 +353,7 @@ export const Confirmacao = ({ data }) => {
               fontFamily: 'fontRegular',
               flex: 1,
               width: '100%',
-              fontSize: 20,
+              fontSize: 18,
               letterSpacing: 1,
               color: VARS.color.title,
             }}>
@@ -386,7 +386,7 @@ export const Confirmacao = ({ data }) => {
         <Text
           style={{
             fontFamily: 'fontBold',
-            fontSize: 20,
+            fontSize: 18,
             letterSpacing: 1,
             color: VARS.color.title,
           }}>

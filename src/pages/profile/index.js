@@ -102,6 +102,7 @@ export default function Profile() {
             paddingRight: 12,
             paddingVertical: 25,
             paddingHorizontal: 20,
+            paddingBottom:80
           },
         ]}>
         <View

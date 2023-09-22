@@ -151,7 +151,7 @@ export default function EditProfile() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 180 : 0}
       style={[
         styles.keyboardAvoidingView,
         {

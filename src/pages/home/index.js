@@ -79,22 +79,21 @@ export default function Home() {
           doc.data().uid = doc.id;
           check.push(doc.data());
         });
-
         return null;
       })
       .catch(err => {
         console.error('erro no banco:', err);
       });
-    check.sort();
+    //check.sort();
     doc == 'oficoo' ? setOficoo(check) : null;
     doc == 'conferencia' ? setConferencia(check) : null;
     doc == 'paineis' ? setPaineis(check) : null;
     doc == 'oficinas' ? setOficinas(check) : null;
     doc == 'diver' ? setDiver(check) : null;
     doc == 'parceiros' ? setParceiros(check) : null;
-    doc == 'coracao' ? setCoracao(check) : null;
-    doc == 'cooperacao' ? setCooperacao(check) : null;
-    doc == 'voluntario' ? setVoluntario(check) : null;
+    doc == 'coracao' ? setCoracao(check.reverse()) : null;
+    doc == 'cooperacao' ? setCooperacao(check.reverse()) : null;
+    doc == 'voluntario' ? setVoluntario(check.reverse()) : null;
     doc == 'header' ? setHeader(check['0'].photoURL) : null;
     setLoading(false);
     return check;

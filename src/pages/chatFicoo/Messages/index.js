@@ -61,7 +61,7 @@ export default function Messages({ route }) {
       ]}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : null}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 140 : 0}
         style={[
           styles.keyboardAvoidingView,
           {

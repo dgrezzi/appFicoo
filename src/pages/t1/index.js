@@ -28,7 +28,7 @@ export default function T1() {
               color: VARS.color.white,
               textAlign: 'center',
               width: '100%',
-              fontSize: 30,
+              fontSize: 24,
               letterSpacing: 0.6,
             },
           ]}>
@@ -43,8 +43,7 @@ export default function T1() {
               width: '100%',
               lineHeight: 34,
               letterSpacing: 0.5,
-
-              fontSize: 20,
+              fontSize: 18,
               fontFamily: 'fontRegular',
               opacity: 0.8,
             },
@@ -69,7 +68,7 @@ export default function T1() {
                   fontFamily: 'fontRegular',
                   lineHeight: 34,
                   color: VARS.color.white,
-                  fontSize: 18,
+                  fontSize: 16,
                   opacity: 0.5,
                   letterSpacing: 1,
                 },
@@ -78,9 +77,9 @@ export default function T1() {
             </Text>
           </TouchableOpacity>
           <View style={{ flexDirection: 'row', gap: 12, alignItems: 'center' }}>
-            <Text style={{ fontSize: 14, color: 'white' }}>{'\u2B24'}</Text>
-            <Text style={{ fontSize: 14, color: 'gray' }}>{'\u2B24'}</Text>
-            <Text style={{ fontSize: 14, color: 'gray' }}>{'\u2B24'}</Text>
+            <Text style={{ fontSize: 10, color: 'white' }}>{'\u2B24'}</Text>
+            <Text style={{ fontSize: 10, color: 'gray' }}>{'\u2B24'}</Text>
+            <Text style={{ fontSize: 10, color: 'gray' }}>{'\u2B24'}</Text>
           </View>
           <TouchableOpacity
             onPress={() => {
@@ -92,7 +91,7 @@ export default function T1() {
                   fontFamily: 'fontRegular',
                   lineHeight: 34,
                   color: VARS.color.white,
-                  fontSize: 18,
+                  fontSize: 16,
                   letterSpacing: 1,
                 },
               ]}>
