@@ -163,7 +163,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
           columnGap: 5,
           minWidth: '100%',
           paddingHorizontal: 8,
-          paddingBottom: 10,
+          paddingBottom: 4,
         }}
         horizontal={true}>
         {data?.map((info, index) => (

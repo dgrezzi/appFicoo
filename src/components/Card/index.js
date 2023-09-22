@@ -26,10 +26,15 @@ export default function Card({ info }) {
     });
   }, [info]);
 
+const handleDelete = ()=>{
+//implementacao del card
+  return
+}
+
   return (
     <TouchableOpacity
       activeOpacity={1}
-      onLongPress={() => {}}
+      onLongPress={() => {handleDelete()}}
       onPress={() => {
         info.linkURL &&
           Alert.alert(
@@ -57,7 +62,7 @@ export default function Card({ info }) {
           borderWidth: 1,
           borderColor: VARS.color.whiteDark,
           elevation: 10,
-          padding: 12,
+          padding: 8,
           marginBottom: 15,
           margin: 5,
         }}>
@@ -70,8 +75,8 @@ export default function Card({ info }) {
               backgroundColor: VARS.color.blue,
               borderRadius: 30,
               paddingHorizontal: 10,
-              bottom: 10,
-              right: 10,
+              bottom: 12,
+              right: 12,
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
@@ -99,6 +104,7 @@ export default function Card({ info }) {
               height: '100%',
               aspectRatio: aspect,
               borderWidth: 1,
+              borderColor:VARS.color.whiteOpacity,
               borderRadius: 10,
               resizeMode: 'cover',
             }}

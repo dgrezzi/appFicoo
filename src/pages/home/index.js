@@ -72,7 +72,7 @@ export default function Home() {
       .collection('configs')
       .doc(doc)
       .collection('images')
-      .orderBy('createdAt', 'asc')
+      .orderBy('createdAt', 'desc')
       .get()
       .then(result => {
         result.forEach(doc => {
@@ -99,25 +99,25 @@ export default function Home() {
     setLoading(false);
     return check;
   };
-
   return (
     <View
-      style={[
+    style={[
         styles.container,
         {
           alignItems: 'center',
           paddingHorizontal: 0,
         },
+        Platform.OS === 'ios' ? styles.ios : null
       ]}>
       {loading && <Loading />}
       {header && (
         <View style={{ padding: 15 }}>
           <Image
             style={{
-              width: '100%',
+              width: '85%',
               aspectRatio: aspectHeader,
               resizeMode: 'contain',
-              paddingHorizontal: 20,
+              //paddingHorizontal: 20,
             }}
             source={{ uri: header }}
           />
@@ -129,7 +129,7 @@ export default function Home() {
         contentContainerStyle={{
           width: '100%',
           paddingVertical: 8,
-          gap: 10,
+          gap: 4,
         }}>
         <Carrossel
           id="oficoo"
