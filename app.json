@@ -18,7 +18,8 @@
       "googleServicesFile": "./GoogleService-Info.plist",
       "userInterfaceStyle": "light",
       "supportsTablet": true,
-      "bundleIdentifier": "com.appficoo"
+      "bundleIdentifier": "com.appficoo",
+      "simulator": true
     },
     "android": {
       "versionCode": 3,
