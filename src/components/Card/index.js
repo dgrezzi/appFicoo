@@ -15,6 +15,7 @@ import Loading from '../Loading';
 export default function Card({ info }) {
   const [image, setImage] = useState();
   const [aspect, setAspect] = useState();
+  const [imageLoad, setImageLoad] = useState(true)
 
   const { locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
@@ -68,12 +69,13 @@ const handleDelete = ()=>{
           marginBottom: 15,
           margin: 5,
         }}>
-        {info.linkURL && (
+        {imageLoad && <Loading/>}
+        {info.linkURL && !imageLoad && (
           <View
             style={{
               flex:1,
               position: 'absolute',
-              zIndex: 99,
+              zIndex: 999,
               padding: 5,
               backgroundColor: VARS.color.blue,
               borderRadius: 30,
@@ -111,8 +113,11 @@ const handleDelete = ()=>{
               borderColor:VARS.color.whiteOpacity,
               borderRadius: 10,
               resizeMode: 'cover',
-              zIndex:999
+              zIndex:990
             }}
+            onLoad={()=>{
+              setImageLoad(false)}
+            } 
             source={{ uri: image }}
             />
         )}

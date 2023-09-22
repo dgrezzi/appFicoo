@@ -159,7 +159,7 @@ export default function Dashboard() {
           <View
             style={{ flexDirection: 'row', width: '100%', marginVertical: 10 }}>
             <Switch
-              style={{ marginHorizontal: 8 }}
+              style={{ marginHorizontal: 8, transform:[{scaleX:0.7},{scaleY:0.7}] }}
               onValueChange={() => {
                 Alert.alert(
                   'Atenção!',
