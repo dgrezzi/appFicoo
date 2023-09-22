@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import {
   Alert,
+  KeyboardAvoidingView,
+  Platform,
   Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
@@ -29,13 +31,11 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
       .get()
       .then(snapshot => {
         let myThreads = 0;
-
         snapshot.docs.map(docItem => {
           if (docItem.data().owner === user.uid) {
             myThreads += 1;
           }
         });
-
         if (myThreads >= 99) {
           Alert.alert(
             'Atenção',
@@ -80,72 +80,83 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: VARS.color.whiteOpacity }}>
-      <TouchableWithoutFeedback onPress={setVisible}>
-        <View style={{ flex: 1 }}></View>
-      </TouchableWithoutFeedback>
-
-      <View
-        style={{
-          backgroundColor: VARS.color.white,
-          padding: 20,
-          justifyContent: 'space-around',
-          gap: 12,
-          alignItems: 'center',
-        }}>
-        <Text
-          style={{ fontFamily: 'fontBold', fontSize: 22, letterSpacing: 1 }}>
-          {lang.modalTitle}
-        </Text>
-
-        <InputTxt
-          icon=""
-          multiline={false}
-          placeholder={lang.modalLabel}
-          security={false}
-          editable={true}
-          value={roomName}
-          maxLength={25}
-          onChangeText={txt => {
-            setRoomName(txt);
-          }}
-        />
-        <Btn
-          label={lang.modalButton}
-          color={VARS.color.blue}
-          icon=""
-          iconSize={20}
-          iconColor={VARS.color.white}
-          onPress={() => {
-            handleButtonCreate();
-          }}
-        />
-
-        <TouchableOpacity
+    <View style={[{ flex: 1, backgroundColor: VARS.color.whiteOpacity }, Platform.OS === "ios" ? {paddingTop:38}: null]}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : null}
+        style={[
+          styles.keyboardAvoidingView,
+          {
+            width: '100%',
+            backgroundColor: 'transparent',
+          },
+        ]}>
+        <TouchableWithoutFeedback onPress={setVisible}>
+          <View style={{ 
+            flex: 1, 
+            }}></View>
+        </TouchableWithoutFeedback>
+        <View
           style={{
             backgroundColor: VARS.color.white,
-            height: 52,
-            paddingHorizontal: 35,
-            marginBottom: 12,
-            justifyContent: 'center',
+            padding: 20,
+            justifyContent: 'space-around',
+            gap: 12,
             alignItems: 'center',
-            borderRadius: 15,
-            shadowColor: VARS.color.blue,
-            borderColor: VARS.color.blueLight,
-          }}
-          onPress={setVisible}>
+          }}>
           <Text
-            style={{
-              width: '100%',
-              fontFamily: 'fontRegular',
-              fontSize: 18,
-              letterSpacing: 1,
-            }}>
-            {lang.back}
+            style={{ fontFamily: 'fontBold', fontSize: 22, letterSpacing: 1 }}>
+            {lang.modalTitle}
           </Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+          <InputTxt
+            icon=""
+            multiline={false}
+            placeholder={lang.modalLabel}
+            security={false}
+            editable={true}
+            value={roomName}
+            maxLength={25}
+            onChangeText={txt => {
+              setRoomName(txt);
+            }}
+          />
+          <Btn
+            label={lang.modalButton}
+            color={VARS.color.blue}
+            icon=""
+            iconSize={20}
+            iconColor={VARS.color.white}
+            onPress={() => {
+              handleButtonCreate();
+            }}
+          />
+          <TouchableOpacity
+            style={{
+              backgroundColor: VARS.color.white,
+              height: 52,
+              paddingHorizontal: 35,
+              marginBottom: 12,
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 15,
+              shadowColor: VARS.color.blue,
+              borderColor: VARS.color.blueLight,
+            }}
+            onPress={setVisible}>
+            <Text
+              style={{
+                width: '100%',
+                fontFamily: 'fontRegular',
+                fontSize: 18,
+                letterSpacing: 1,
+              }}>
+              {lang.back}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    </View>      
+
+
   );
 }
 

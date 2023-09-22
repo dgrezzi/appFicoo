@@ -66,7 +66,7 @@ export default function CarrosselCitacao({ id, data, label, updatePage }) {
         )}
         {dataContext.storageData?.superAdm && !disable && (
           <Switch
-            style={{ marginHorizontal: 10 }}
+            style={{ marginHorizontal: 10, transform:[{scaleX:0.75},{scaleY:0.75}]}}
             onValueChange={() => {
               setEdit(!edit);
             }}
