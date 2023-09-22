@@ -22,6 +22,7 @@ export default function Home() {
   const [cooperacao, setCooperacao] = useState();
   const [voluntario, setVoluntario] = useState();
   const [loading, setLoading] = useState(true);
+  const [imageLoad, setImageLoad] = useState(true);
 
   const { locale, getActivationCode } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
@@ -111,13 +112,16 @@ export default function Home() {
       {loading && <Loading />}
       {header && (
         <View style={{ padding: 15 }}>
+          {header && imageLoad && <Loading/>}
           <Image
-            style={{
+            style={[{
               width: '85%',
               aspectRatio: aspectHeader,
               resizeMode: 'contain',
-              //paddingHorizontal: 20,
-            }}
+            },
+          imageLoad && {aspectRatio:2}
+          ]}
+            onLoad={()=>{setImageLoad(false)}}
             source={{ uri: header }}
           />
         </View>

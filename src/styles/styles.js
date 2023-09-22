@@ -14,7 +14,7 @@ export default styles = StyleSheet.create({
     justifyContent: 'center',
   },
   ios:{
-    paddingTop:42
+    paddingTop:48
   },
   logo: {
     width: VARS.size.logo,
