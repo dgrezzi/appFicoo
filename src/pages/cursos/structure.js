@@ -416,12 +416,6 @@ export const Confirmacao = ({ data }) => {
 };
 
 function formatLetter(str) {
-  const stringWithAccentsFixed = str
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-  const words = stringWithAccentsFixed.split(/\s+/);
-  const formattedWords = words.map(word => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  });
-  return formattedWords.join(' ');
+  const lowerCaseString = str.toLowerCase();
+  return lowerCaseString.charAt(0).toUpperCase() + lowerCaseString.slice(1);
 }
