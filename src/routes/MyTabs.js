@@ -30,7 +30,7 @@ export default function MyTabs() {
         tabBarHideOnKeyboard: true,
         tabBarStyle: {
           backgroundColor: VARS.color.blue,
-          height: Platform.OS === 'ios' ? 82 : 54,
+          height: 54,
         },
         tabBarShowLabel: false,
       }}>

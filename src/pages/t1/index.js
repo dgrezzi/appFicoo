@@ -14,7 +14,7 @@ export default function T1() {
   let lang = dic[locale];
 
   return (
-    <View style={[styles.container]}>
+    <View style={[styles.container, { paddingHorizontal: 0 }]}>
       <Image
         style={{ position: 'absolute', top: 0, width: '100%' }}
         source={t1bg}

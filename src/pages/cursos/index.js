@@ -8,7 +8,13 @@ import { AuthContext } from '../../contexts/auth';
 import getDataUserFirebase from '../../functions/getDataUserFirebase';
 import styles from '../../styles/styles';
 import { oficinasD13, oficinasD14 } from './atividades';
-import { Atividades, Aviso, Botoes, Confirmacao } from './structure';
+import {
+  Atividades,
+  Aviso,
+  Botoes,
+  Confirmacao,
+  formatLetter,
+} from './structure';
 
 export default function Cursos() {
   const [activeAba, setActiveAba] = useState(2);
@@ -246,7 +252,7 @@ export default function Cursos() {
                 time={value.time}
                 dia="dia13"
                 editable={editable}
-                title={value.title}
+                title={formatLetter(value.title)}
                 owner={value.owner}
                 number={value.num}
                 id={value.id}
@@ -266,7 +272,7 @@ export default function Cursos() {
                 selected={value.id == meusCursos.oficina2}
                 time={value.time}
                 editable={editable}
-                title={value.title}
+                title={formatLetter(value.title)}
                 owner={value.owner}
                 number={value.num}
                 id={value.id}
@@ -274,7 +280,6 @@ export default function Cursos() {
               />
             );
           })}
-
         <Confirmacao data={meusCursos} />
         {editable && (
           <Btn

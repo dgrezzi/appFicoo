@@ -415,7 +415,7 @@ export const Confirmacao = ({ data }) => {
   );
 };
 
-function formatLetter(str) {
+export function formatLetter(str) {
   const lowerCaseString = str.toLowerCase();
   return lowerCaseString.replace(/\b\w/g, l => l.toUpperCase());
 }
