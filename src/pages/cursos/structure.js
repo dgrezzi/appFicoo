@@ -415,7 +415,13 @@ export const Confirmacao = ({ data }) => {
   );
 };
 
-export function formatLetter(str) {
-  const lowerCaseString = str.toLowerCase();
-  return lowerCaseString.replace(/\b\w/g, l => l.toUpperCase());
+function formatLetter(str) {
+  const stringWithAccentsFixed = str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+  const words = stringWithAccentsFixed.split(/\s+/);
+  const formattedWords = words.map(word => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  });
+  return formattedWords.join(' ');
 }
