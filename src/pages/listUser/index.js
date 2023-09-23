@@ -473,7 +473,6 @@ export default function ListUser() {
         </View>
       );
     }
-
     return (
       <View
         style={{
@@ -481,14 +480,13 @@ export default function ListUser() {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <GestureFlipView width={window.width} height={window.width / 1.22}>
+        <GestureFlipView width={window.width} height={window.width / 1.2}>
           <RenderFront />
           {item?.aboutme ? <RenderBack /> : <RenderFront />}
         </GestureFlipView>
       </View>
     );
   };
-
   return (
     <View style={[styles.container, { paddingHorizontal: 0 }]}>
       {loading && <Loading />}
