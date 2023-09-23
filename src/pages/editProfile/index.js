@@ -206,22 +206,25 @@ export default function EditProfile() {
                   }}
                   source={{ uri: photoAvatar }}
                 />
-                <Ionicons
+                <View
                   style={{
                     position: 'absolute',
                     bottom: 0,
                     right: 0,
                     backgroundColor: VARS.color.blue,
-                    padding: 12,
+                    padding: 8,
                     borderRadius: 100,
                     zIndex: 99,
-                    borderWidth: 1,
+                    borderWidth: 3,
                     borderColor: VARS.color.whiteOpacity,
-                  }}
-                  name="camera-outline"
-                  size={VARS.size.icons * 0.7}
-                  color={VARS.color.white}
-                />
+                  }}>
+                  <Ionicons
+                    style={{ borderRadius: 100 }}
+                    name="camera-outline"
+                    size={VARS.size.icons * 0.7}
+                    color={VARS.color.white}
+                  />
+                </View>
               </TouchableOpacity>
             )}
           </View>

@@ -23,7 +23,7 @@ export default function EditInputTxt(props) {
           fontFamily: 'fontRegular',
           fontSize: 18,
           letterSpacing: 1,
-          color: VARS.color.gray,
+          color: VARS.color.black,
         }}>
         {props.label}:
       </Text>

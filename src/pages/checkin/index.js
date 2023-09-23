@@ -204,8 +204,8 @@ export default function Checkin() {
           style={{
             width: '100%',
             alignItems: 'flex-start',
-            gap: 8,
-            marginVertical: 20,
+            gap: 16,
+            marginVertical: 24,
           }}>
           <Dados data={{ label: lang.labelName, value: id?.name }} />
           <Dados data={{ label: lang.labelEmail, value: id?.email }} />
