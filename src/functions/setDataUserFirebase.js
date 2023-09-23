@@ -9,18 +9,23 @@ function fromBase64(encoded) {
   return Buffer.from(encoded, 'base64').toString('utf8');
 }
 
-export default async function setDataUserFirebase(uid, data) {
+export default async function setDataUserFirebase({
+  uid,
+  name,
+  email,
+  pwd,
+  photoURL,
+}) {
   await firestore()
     .collection('user')
     .doc(uid)
     .set({
-      name: data.name,
+      name: name,
       createdAt: new Date(),
-      pwd: toBase64(data.pwd),
-      email: data.email,
-      photoURL: data.photoURL,
+      pwd: toBase64(pwd),
+      email: email,
+      photoURL: photoURL,
       isAdmin: false,
-      city: data.city,
       disableView: false,
     })
     .then(() => {})

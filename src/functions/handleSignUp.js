@@ -13,14 +13,14 @@ export default async function handleSignUp({ name, email, pwd }) {
         })
         .then(() => {
           const dataFirebase = {
+            uid: value.user.uid,
             name: name,
             email: email,
             pwd: pwd,
-            city: city,
             photoURL:
               'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/avatarM.jpg?alt=media&token=a494693c-611f-435a-b34a-d54fcc38461d',
           };
-          setDataFirebase(value.user.uid, dataFirebase);
+          setDataFirebase(dataFirebase);
           handleSignIn({ email: email, pwd: pwd });
           return;
         })

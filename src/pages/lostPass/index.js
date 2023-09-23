@@ -93,6 +93,7 @@ export default function LostPass() {
             onPress={() => {
               email && sendPasswordResetEmail();
               !email && Alert.alert('Atenção', lang.completeEmail);
+              setEmail('');
             }}
           />
         </View>
