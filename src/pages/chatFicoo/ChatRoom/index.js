@@ -6,7 +6,6 @@ import {
   FlatList,
   KeyboardAvoidingView,
   Modal,
-  SafeAreaView,
   Text,
   View,
 } from 'react-native';
@@ -112,11 +111,7 @@ export default function ChatRoom() {
   }
 
   return (
-    <SafeAreaView
-      style={[
-        styles.container,
-        { backgroundColor: VARS.color.white, paddingHorizontal: 0 },
-      ]}>
+    <View style={[styles.container, { paddingHorizontal: 0 }]}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : null}
         style={[
@@ -144,7 +139,6 @@ export default function ChatRoom() {
             }}>
             {lang.batePapo}
           </Text>
-
           {dataContext.user?.uid && (
             <BtnEdit
               label={lang.newGroup}
@@ -152,7 +146,7 @@ export default function ChatRoom() {
               icon=""
               labelColor={VARS.color.blue}
               iconColor={VARS.color.white}
-              iconSize={VARS.size.icons * 0.8}
+              iconSize={VARS.size.icons * 0.7}
               onPress={() => {
                 setModalVisible(true);
               }}
@@ -199,6 +193,6 @@ export default function ChatRoom() {
           />
         </Modal>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </View>
   );
 }

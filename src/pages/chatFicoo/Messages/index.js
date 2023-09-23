@@ -5,7 +5,6 @@ import {
   FlatList,
   KeyboardAvoidingView,
   Platform,
-  SafeAreaView,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -54,79 +53,73 @@ export default function Messages({ route }) {
   }, []);
 
   return (
-    <SafeAreaView
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : null}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 140 : 0}
       style={[
-        styles.container,
-        { backgroundColor: VARS.color.white, paddingHorizontal: 5 },
+        styles.keyboardAvoidingView,
+        {
+          width: '100%',
+          backgroundColor: 'transparent',
+        },
       ]}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : null}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 140 : 0}
-        style={[
-          styles.keyboardAvoidingView,
-          {
-            width: '100%',
-            backgroundColor: 'transparent',
-          },
-        ]}>
-        <FlatList
-          style={{ width: '100%', backgroundColor: 'transparent' }}
-          data={messages}
-          keyExtractor={item => item._id}
-          renderItem={({ item }) => <ChatMessage data={item} />}
-          inverted={true}
-        />
+      <FlatList
+        style={{ width: '100%', backgroundColor: 'transparent' }}
+        data={messages}
+        keyExtractor={item => item._id}
+        renderItem={({ item }) => <ChatMessage data={item} />}
+        inverted={true}
+      />
+      <View
+        style={{
+          flexDirection: 'row',
+          width: '100%',
+          marginVertical: 10,
+          alignItems: 'center',
+          paddingHorizontal: 10,
+        }}>
         <View
           style={{
             flexDirection: 'row',
-            width: '100%',
-            marginVertical: 10,
             alignItems: 'center',
-            paddingHorizontal: 10,
+            flex: 1,
+            borderRadius: 25,
+            marginRight: 10,
           }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              flex: 1,
-              borderRadius: 25,
-              marginRight: 10,
-            }}>
-            <InputTxt
-              icon=""
-              multiline={false}
-              placeholder={lang.yourMessage}
-              security={false}
-              editable={true}
-              value={input}
-              maxLength={150}
-              onChangeText={txt => {
-                setInput(txt);
-              }}
-            />
-          </View>
-          <TouchableOpacity
-            style={{
-              backgroundColor: VARS.color.orange,
-              width: VARS.size.icons * 1.2,
-              height: VARS.size.icons * 1.2,
-              borderRadius: VARS.size.icons,
-              justifyContent: 'center',
-              alignItems: 'center',
+          <InputTxt
+            icon=""
+            multiline={false}
+            placeholder={lang.yourMessage}
+            security={false}
+            editable={true}
+            value={input}
+            maxLength={150}
+            onChangeText={txt => {
+              setInput(txt);
             }}
-            activeOpacity={0.9}
-            onPress={() => {
-              handleSend(dataContext, thread, input);
-              setInput('');
-            }}>
-            <Ionicons
-              name="navigate-outline"
-              size={VARS.size.icons * 0.7}
-              color={VARS.color.white}
-            />
-          </TouchableOpacity>
+          />
         </View>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+        <TouchableOpacity
+          style={{
+            backgroundColor: VARS.color.orange,
+            width: VARS.size.icons * 1.2,
+            height: VARS.size.icons * 1.2,
+            borderRadius: VARS.size.icons,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          activeOpacity={0.9}
+          onPress={() => {
+            handleSend(dataContext, thread, input);
+            setInput('');
+          }}>
+          <Ionicons
+            name="navigate-outline"
+            size={VARS.size.icons * 0.7}
+            color={VARS.color.white}
+          />
+        </TouchableOpacity>
+      </View>
+    </KeyboardAvoidingView>
   );
 }

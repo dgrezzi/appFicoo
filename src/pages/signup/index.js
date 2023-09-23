@@ -99,7 +99,6 @@ export default function Signup() {
                 setEmail(txt.toLowerCase());
               }}
             />
-
             <InputTxt
               icon="location-outline"
               placeholder={lang.cityLive}

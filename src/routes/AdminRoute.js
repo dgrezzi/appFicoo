@@ -20,7 +20,7 @@ export default function AdminRoute() {
         name="dashboard"
         component={Dashboard}
         options={({ route }) => ({
-          headerShown: true,
+          headerShown: false,
           title: lang.titleDashboard,
         })}
       />

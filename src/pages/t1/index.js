@@ -14,7 +14,7 @@ export default function T1() {
   let lang = dic[locale];
 
   return (
-    <View style={[styles.keyboardAvoidingView]}>
+    <View style={[styles.container]}>
       <Image
         style={{ position: 'absolute', top: 0, width: '100%' }}
         source={t1bg}
@@ -34,7 +34,6 @@ export default function T1() {
           ]}>
           {lang.titleT1}
         </Text>
-
         <Text
           style={[
             {

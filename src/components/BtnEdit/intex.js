@@ -11,7 +11,7 @@ export default function BtnEdit(props) {
         {
           gap: 8,
           paddingHorizontal: 15,
-          padding: 6,
+          padding: 4,
           shadowColor: VARS.color.blue,
           backgroundColor: props?.color ? props?.color : 'white',
           borderRadius: 15,
@@ -23,7 +23,7 @@ export default function BtnEdit(props) {
       ]}>
       <Ionicons
         name={props.icon}
-        size={props.iconSize * 0.75}
+        size={props.iconSize * 0.7}
         color={props.iconColor}
       />
       <Text

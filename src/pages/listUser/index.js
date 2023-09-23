@@ -229,7 +229,6 @@ export default function ListUser() {
       }
     });
     ficoo ? (checked = true) : null;
-
     function RenderFront() {
       return (
         <View
@@ -457,7 +456,6 @@ export default function ListUser() {
               {item?.name}
             </Text>
           </View>
-
           <Text
             numberOfLines={10}
             ellipsizeMode="tail"
@@ -494,7 +492,6 @@ export default function ListUser() {
   return (
     <View style={[styles.container, { paddingHorizontal: 0 }]}>
       {loading && <Loading />}
-
       <View style={[{ paddingHorizontal: 20, padding: 8 }]}>
         <InputTxt
           icon="search-outline"

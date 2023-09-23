@@ -13,7 +13,7 @@ export default function PostRoutes() {
   let lang = dic[locale];
 
   return (
-    <AppStack.Navigator>
+    <AppStack.Navigator initialRouteName="Posts">
       <AppStack.Screen
         name="Post"
         component={Posts}

@@ -101,27 +101,30 @@ export default function Home() {
   };
   return (
     <View
-    style={[
+      style={[
         styles.container,
         {
           alignItems: 'center',
           paddingHorizontal: 0,
         },
-        Platform.OS === 'ios' ? styles.ios : null
+        Platform.OS === 'ios' ? styles.ios : null,
       ]}>
       {loading && <Loading />}
       {header && (
-        <View style={{ padding: 15 }}>
-          {header && imageLoad && <Loading/>}
+        <View style={{ padding: 10 }}>
+          {header && imageLoad && <Loading />}
           <Image
-            style={[{
-              width: '85%',
-              aspectRatio: aspectHeader,
-              resizeMode: 'contain',
-            },
-          imageLoad && {aspectRatio:2}
-          ]}
-            onLoad={()=>{setImageLoad(false)}}
+            style={[
+              {
+                width: '85%',
+                aspectRatio: aspectHeader,
+                resizeMode: 'contain',
+              },
+              imageLoad && { aspectRatio: 2 },
+            ]}
+            onLoad={() => {
+              setImageLoad(false);
+            }}
             source={{ uri: header }}
           />
         </View>

@@ -99,7 +99,10 @@ export default function Carrossel({ id, data, label, updatePage }) {
         )}
         {dataContext.storageData?.superAdm && !disable && (
           <Switch
-            style={{ marginHorizontal: 10, transform:[{scaleX:0.75},{scaleY:0.75}] }}
+            style={{
+              marginHorizontal: 10,
+              transform: [{ scaleX: 0.75 }, { scaleY: 0.75 }],
+            }}
             onValueChange={() => {
               setEdit(!edit);
             }}

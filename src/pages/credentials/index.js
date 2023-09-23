@@ -30,7 +30,6 @@ export default function Credentials() {
           }}>
           {data.label}
         </Text>
-
         <Text
           style={{
             fontFamily: 'fontBold',
@@ -119,7 +118,10 @@ export default function Credentials() {
               }}
             />
             <Dados
-              data={{ label: lang.labelEmail, value: dataContext.user?.email }}
+              data={{
+                label: lang.labelEmail,
+                value: dataContext.user?.email,
+              }}
             />
             <Dados
               data={{ label: lang.identify, value: dataContext.user?.uid }}

@@ -201,7 +201,6 @@ export default function MakeAdmin() {
             </Text>
           </View>
         )}
-
         <Btn
           label={lang.makeAdm}
           color={VARS.color.blue}

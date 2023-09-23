@@ -22,12 +22,6 @@ export default function Calendar() {
     getProgram();
   }, [locale]);
 
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     getProgram();
-  //   }, [locale]),
-  // );
-
   const getProgram = async () => {
     const prog12 = [];
     const prog13 = [];
@@ -111,24 +105,6 @@ export default function Calendar() {
     );
   };
 
-  // const setProgramFirebase = () => {
-  //   dia14en.map(async (value, index) => {
-  //     await firestore()
-  //       .collection('configs')
-  //       .doc('programacao')
-  //       .collection('dia14en')
-  //       .doc()
-  //       .set(value)
-  //       .then(() => {
-  //         console.log('value', index, ':', value);
-  //       })
-  //       .catch(err => {
-  //         console.error('erro no banco:', err);
-  //       });
-  //   });
-  //   return;
-  // };
-
   return (
     <View
       style={[
@@ -140,7 +116,6 @@ export default function Calendar() {
         },
       ]}>
       {loading && <Loading />}
-
       <View
         style={[
           {
@@ -244,7 +219,6 @@ const Dados = props => {
           {props.data?.start} - {props.data?.finish}
         </Text>
       </View>
-
       <Text
         style={{
           fontFamily: 'fontRegular',

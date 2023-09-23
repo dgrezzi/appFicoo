@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { VARS } from '../constants/VARS';
 
 export default styles = StyleSheet.create({
@@ -13,8 +13,8 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  ios:{
-    paddingTop:48
+  ios: {
+    paddingTop: 48,
   },
   logo: {
     width: VARS.size.logo,

@@ -15,7 +15,7 @@ import Loading from '../Loading';
 export default function Card({ info }) {
   const [image, setImage] = useState();
   const [aspect, setAspect] = useState();
-  const [imageLoad, setImageLoad] = useState(true)
+  const [imageLoad, setImageLoad] = useState(true);
 
   const { locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
@@ -28,15 +28,17 @@ export default function Card({ info }) {
     });
   }, [info]);
 
-const handleDelete = ()=>{
-//implementacao del card
-  return
-}
+  const handleDelete = () => {
+    //implementacao del card
+    return;
+  };
 
   return (
     <TouchableOpacity
       activeOpacity={1}
-      onLongPress={() => {handleDelete()}}
+      onLongPress={() => {
+        handleDelete();
+      }}
       onPress={() => {
         info.linkURL &&
           Alert.alert(
@@ -60,8 +62,8 @@ const handleDelete = ()=>{
           backgroundColor: VARS.color.white,
           borderRadius: 18,
           alignItems: 'center',
-          height: 200,
-          minWidth:200,
+          height: 190,
+          minWidth: 150,
           borderWidth: 1,
           borderColor: VARS.color.whiteDark,
           elevation: 10,
@@ -69,27 +71,30 @@ const handleDelete = ()=>{
           marginBottom: 15,
           margin: 5,
         }}>
-        {imageLoad && <Loading/>}
+        {imageLoad && <Loading />}
         {info.linkURL && !imageLoad && (
           <View
             style={{
-              flex:1,
+              flex: 1,
               position: 'absolute',
+              bottom: 10,
+              right: 8,
               zIndex: 999,
-              padding: 5,
-              backgroundColor: VARS.color.blue,
+              padding: 4,
+              paddingHorizontal: 12,
+              backgroundColor: VARS.color.white,
               borderRadius: 30,
-              paddingHorizontal: 10,
-              bottom: 12,
-              right: 12,
+              borderWidth: 1,
+              borderColor: VARS.color.whiteOpacity,
               flexDirection: 'row',
               justifyContent: 'center',
               alignItems: 'center',
               gap: 10,
+              elevation: 5,
             }}>
             <Text
               style={{
-                color: VARS.color.white,
+                color: VARS.color.title,
                 fontFamily: 'fontRegular',
                 fontSize: 14,
                 letterSpacing: 1,
@@ -98,7 +103,7 @@ const handleDelete = ()=>{
             </Text>
             <Ionicons
               name="arrow-forward-circle"
-              size={VARS.size.icons * 0.6}
+              size={VARS.size.icons * 0.5}
               color={VARS.color.orange}
             />
           </View>
@@ -107,19 +112,19 @@ const handleDelete = ()=>{
           <Image
             style={{
               height: '100%',
-              width:'100%',
+              width: '100%',
               aspectRatio: aspect,
-              borderWidth: 1,
-              borderColor:VARS.color.whiteOpacity,
+              borderWidth: 0,
+              borderColor: VARS.color.whiteOpacity,
               borderRadius: 10,
               resizeMode: 'cover',
-              zIndex:990
+              zIndex: 990,
             }}
-            onLoad={()=>{
-              setImageLoad(false)}
-            } 
+            onLoad={() => {
+              setImageLoad(false);
+            }}
             source={{ uri: image }}
-            />
+          />
         )}
       </View>
     </TouchableOpacity>

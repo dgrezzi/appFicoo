@@ -58,7 +58,11 @@ export default function Signin() {
           <View
             style={[
               styles.container,
-              { paddingVertical: 25, justifyContent: 'space-between', gap: 20 },
+              {
+                paddingVertical: 25,
+                justifyContent: 'space-between',
+                gap: 20,
+              },
             ]}>
             <TouchableOpacity
               onLongPress={() => {
@@ -77,7 +81,6 @@ export default function Signin() {
               activeOpacity={1}>
               <Image style={[styles.logo]} source={logo} />
             </TouchableOpacity>
-
             <View
               style={{
                 width: '100%',

@@ -186,7 +186,6 @@ export default function Profile() {
                 {dataContext.user?.email}
               </Text>
             </View>
-
             {dataContext.storageData?.phone ? (
               <View
                 style={{
@@ -197,7 +196,6 @@ export default function Profile() {
                   paddingHorizontal: 10,
                 }}>
                 <Ionicons name="call-outline" size={20} color="red" />
-
                 <Text
                   style={{
                     fontFamily: 'fontRegular',
@@ -209,7 +207,6 @@ export default function Profile() {
                 </Text>
               </View>
             ) : null}
-
             {dataContext.storageData?.instagram ? (
               <View
                 style={{
@@ -220,7 +217,6 @@ export default function Profile() {
                   paddingHorizontal: 10,
                 }}>
                 <Ionicons name="logo-instagram" size={20} color="red" />
-
                 <Text
                   style={{
                     fontFamily: 'fontRegular',
@@ -232,7 +228,6 @@ export default function Profile() {
                 </Text>
               </View>
             ) : null}
-
             {dataContext.storageData?.linkedin ? (
               <View
                 style={{
@@ -243,7 +238,6 @@ export default function Profile() {
                   paddingHorizontal: 10,
                 }}>
                 <Ionicons name="logo-linkedin" size={20} color="red" />
-
                 <Text
                   style={{
                     fontFamily: 'fontRegular',
@@ -255,7 +249,6 @@ export default function Profile() {
                 </Text>
               </View>
             ) : null}
-
             {dataContext.storageData?.city ? (
               <View
                 style={{
@@ -309,7 +302,6 @@ export default function Profile() {
             {dataContext.storageData?.aboutme}
           </Text>
         </View>
-
         <View style={{ gap: 10, paddingBottom: 20, alignItems: 'center' }}>
           <Btn
             label={lang.listUser}

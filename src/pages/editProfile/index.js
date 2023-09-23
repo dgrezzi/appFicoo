@@ -242,7 +242,7 @@ export default function EditProfile() {
               value={email}
               security={false}
               editable={false}
-                    />
+            />
             <EditInputText
               label="instagram"
               placeholder=""

@@ -78,7 +78,7 @@ export default function Posts() {
             color={VARS.color.whiteDark}
             icon="pencil"
             iconColor={VARS.color.blue}
-            iconSize={VARS.size.icons * 0.8}
+            iconSize={VARS.size.icons * 0.7}
           />
         ) : null,
     });

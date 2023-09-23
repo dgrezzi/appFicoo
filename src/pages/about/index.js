@@ -37,7 +37,7 @@ export default function About() {
         {
           backgroundColor: VARS.color.white,
         },
-        styles.ios
+        styles.ios,
       ]}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View

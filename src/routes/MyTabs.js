@@ -23,7 +23,7 @@ export default function MyTabs() {
     <About />
   ) : (
     <Tab.Navigator
-      initialRouteName="messages"
+      initialRouteName="Posts"
       screenOptions={{
         tabBarActiveTintColor: VARS.color.orange,
         tabBarInactiveTintColor: VARS.color.grayLight,
@@ -44,7 +44,7 @@ export default function MyTabs() {
           tabBarIcon: ({ color }) => (
             <Ionicons
               name="home-outline"
-              size={VARS.size.icons * 0.80}
+              size={VARS.size.icons * 0.8}
               color={color}
             />
           ),
@@ -56,12 +56,13 @@ export default function MyTabs() {
         options={{
           headerTitle: lang.titleProgram,
           gestureEnabled: true,
+          headerShown: false,
           animationTypeForReplace: 'push',
           animation: 'slide_from_right',
           tabBarIcon: ({ color }) => (
             <Ionicons
               name="calendar-outline"
-              size={VARS.size.icons * 0.80}
+              size={VARS.size.icons * 0.8}
               color={color}
             />
           ),
@@ -78,7 +79,7 @@ export default function MyTabs() {
           tabBarIcon: ({ color }) => (
             <Ionicons
               name="reader-outline"
-              size={VARS.size.icons * 0.80}
+              size={VARS.size.icons * 0.8}
               color={color}
             />
           ),
@@ -96,7 +97,7 @@ export default function MyTabs() {
             tabBarIcon: ({ color }) => (
               <Ionicons
                 name="mail-open-outline"
-                size={VARS.size.icons * 0.80}
+                size={VARS.size.icons * 0.8}
                 color={color == VARS.color.grayLight ? 'white' : color}
               />
             ),
@@ -114,7 +115,7 @@ export default function MyTabs() {
           tabBarIcon: ({ color }) => (
             <Ionicons
               name="chatbox-ellipses-outline"
-              size={VARS.size.icons * 0.80}
+              size={VARS.size.icons * 0.8}
               color={color}
             />
           ),
@@ -128,7 +129,7 @@ export default function MyTabs() {
           tabBarIcon: ({ color }) => (
             <Ionicons
               name="person-outline"
-              size={VARS.size.icons * 0.80}
+              size={VARS.size.icons * 0.8}
               color={color}
             />
           ),
@@ -143,7 +144,7 @@ export default function MyTabs() {
             tabBarIcon: ({ color }) => (
               <Ionicons
                 name="settings-outline"
-                size={VARS.size.icons * 0.80}
+                size={VARS.size.icons * 0.8}
                 color={color}
               />
             ),

@@ -157,9 +157,16 @@ export default function Dashboard() {
         />
         {dataContext.storageData?.superAdm && (
           <View
-            style={{ flexDirection: 'row', width: '100%', marginVertical: 10 }}>
+            style={{
+              flexDirection: 'row',
+              width: '100%',
+              marginVertical: 10,
+            }}>
             <Switch
-              style={{ marginHorizontal: 8, transform:[{scaleX:0.75},{scaleY:0.75}] }}
+              style={{
+                marginHorizontal: 8,
+                transform: [{ scaleX: 0.75 }, { scaleY: 0.75 }],
+              }}
               onValueChange={() => {
                 Alert.alert(
                   'Atenção!',

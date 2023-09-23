@@ -24,7 +24,7 @@ export default function PerfilRoute() {
         component={SigninPerfil}
         options={{
           title: lang.titleProfile,
-          headerShown: true,
+          headerShown: false,
         }}
       />
       <AppStack.Screen
@@ -32,6 +32,7 @@ export default function PerfilRoute() {
         component={SignupPerfil}
         options={({ route }) => ({
           title: lang.titleInsc,
+          headerShown: true,
         })}
       />
       <AppStack.Screen
@@ -39,6 +40,7 @@ export default function PerfilRoute() {
         component={LostPass}
         options={({ route }) => ({
           title: lang.titlLostPass,
+          headerShown: true,
         })}
       />
       <AppStack.Screen
@@ -46,6 +48,7 @@ export default function PerfilRoute() {
         component={EditProfileRoute}
         options={({ route }) => ({
           title: lang.titleEditProfile,
+          headerShown: true,
         })}
       />
       <AppStack.Screen
@@ -67,6 +70,7 @@ export default function PerfilRoute() {
         component={Cursos}
         options={({ route }) => ({
           title: lang.perfilInsc,
+          headerShown: true,
         })}
       />
     </AppStack.Navigator>

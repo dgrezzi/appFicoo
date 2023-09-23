@@ -1,5 +1,4 @@
 import auth from '@react-native-firebase/auth';
-import { Buffer } from 'buffer';
 import React, { useContext, useState } from 'react';
 import {
   Alert,
@@ -24,7 +23,6 @@ export default function LostPass() {
 
   const sendPasswordResetEmail = async () => {
     Alert.alert('Atenção', 'Verifique seu e-mail para recuperar sua senha');
-    return;
     await auth()
       .sendPasswordResetEmail(email)
       .then(() => {})
@@ -33,17 +31,6 @@ export default function LostPass() {
         console.error(error.message);
       });
   };
-
-  function toBase64(input) {
-    return Buffer.from(input, 'utf-8').toString('base64');
-  }
-
-  function fromBase64(encoded) {
-    return Buffer.from(encoded, 'base64').toString('utf8');
-  }
-
-  const resetPass = async mail => {};
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}

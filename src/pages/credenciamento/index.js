@@ -353,7 +353,11 @@ export default function Credenciamento() {
             setShowList(!showList);
           }}>
           <Text
-            style={{ fontFamily: 'fontBold', fontSize: 16, letterSpacing: 1 }}>
+            style={{
+              fontFamily: 'fontBold',
+              fontSize: 16,
+              letterSpacing: 1,
+            }}>
             {lang.inscritos}
           </Text>
         </TouchableOpacity>

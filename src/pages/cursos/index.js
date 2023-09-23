@@ -1,11 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
-import {
-  Alert,
-  KeyboardAvoidingView,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
+import { Alert, KeyboardAvoidingView, ScrollView } from 'react-native';
 import Btn from '../../components/Btn/intex';
 import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
@@ -214,94 +209,88 @@ export default function Cursos() {
   };
 
   return (
-    <SafeAreaView
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : null}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 140 : 0}
       style={[
-        styles.container,
-        { backgroundColor: VARS.color.white, paddingHorizontal: 0 },
+        styles.keyboardAvoidingView,
+        {
+          width: '100%',
+          backgroundColor: 'transparent',
+        },
       ]}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : null}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 140 : 0}
-        style={[
-          styles.keyboardAvoidingView,
-          {
-            width: '100%',
-            backgroundColor: 'transparent',
-          },
-        ]}>
-        {loading && <Loading />}
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
-          style={{ width: '100%' }}
-          contentContainerStyle={{
-            alignItems: 'center',
-            gap: 6,
-            paddingBottom: 20,
-            paddingTop: editable ? 0 : 15,
-            paddingHorizontal: 0,
-          }}>
-          {editable && <Aviso />}
-          <Botoes abaChange={abaChange} />
-          {activeAba == '2' &&
-            oficinasD13.map((value, index) => {
-              return (
-                <Atividades
-                  onPress={() => {
-                    AddOficina1(value.id);
-                  }}
-                  key={index}
-                  atividadeChange={atividadeChange}
-                  selected={value.id == meusCursos.oficina1}
-                  time={value.time}
-                  dia="dia13"
-                  editable={editable}
-                  title={value.title}
-                  owner={value.owner}
-                  number={value.num}
-                  id={value.id}
-                  vaga={vagas ? vagas[value.id] : null}
-                />
-              );
-            })}
-          {activeAba == '3' &&
-            oficinasD14.map((value, index) => {
-              return (
-                <Atividades
-                  onPress={() => {
-                    AddOficina2(value.id);
-                  }}
-                  key={index}
-                  atividadeChange={atividadeChange}
-                  selected={value.id == meusCursos.oficina2}
-                  time={value.time}
-                  editable={editable}
-                  title={value.title}
-                  owner={value.owner}
-                  number={value.num}
-                  id={value.id}
-                  vaga={vagas ? vagas[value.id] : null}
-                />
-              );
-            })}
+      {loading && <Loading />}
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        style={{ width: '100%' }}
+        contentContainerStyle={{
+          alignItems: 'center',
+          gap: 6,
+          paddingBottom: 20,
+          paddingTop: editable ? 0 : 15,
+          paddingHorizontal: 0,
+        }}>
+        {editable && <Aviso />}
+        <Botoes abaChange={abaChange} />
+        {activeAba == '2' &&
+          oficinasD13.map((value, index) => {
+            return (
+              <Atividades
+                onPress={() => {
+                  AddOficina1(value.id);
+                }}
+                key={index}
+                atividadeChange={atividadeChange}
+                selected={value.id == meusCursos.oficina1}
+                time={value.time}
+                dia="dia13"
+                editable={editable}
+                title={value.title}
+                owner={value.owner}
+                number={value.num}
+                id={value.id}
+                vaga={vagas ? vagas[value.id] : null}
+              />
+            );
+          })}
+        {activeAba == '3' &&
+          oficinasD14.map((value, index) => {
+            return (
+              <Atividades
+                onPress={() => {
+                  AddOficina2(value.id);
+                }}
+                key={index}
+                atividadeChange={atividadeChange}
+                selected={value.id == meusCursos.oficina2}
+                time={value.time}
+                editable={editable}
+                title={value.title}
+                owner={value.owner}
+                number={value.num}
+                id={value.id}
+                vaga={vagas ? vagas[value.id] : null}
+              />
+            );
+          })}
 
-          <Confirmacao data={meusCursos} />
-          {editable && (
-            <Btn
-              label={lang.save}
-              color={VARS.color.blue}
-              icon="checkmark-circle-outline"
-              iconSize={VARS.size.icons * 0.8}
-              iconColor={VARS.color.white}
-              disable={false}
-              onPress={async () => {
-                setLoading(true);
-                handleMeusCursos();
-              }}
-            />
-          )}
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+        <Confirmacao data={meusCursos} />
+        {editable && (
+          <Btn
+            label={lang.save}
+            color={VARS.color.blue}
+            icon="checkmark-circle-outline"
+            iconSize={VARS.size.icons * 0.8}
+            iconColor={VARS.color.white}
+            disable={false}
+            onPress={async () => {
+              setLoading(true);
+              handleMeusCursos();
+            }}
+          />
+        )}
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
