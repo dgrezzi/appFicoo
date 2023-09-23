@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import handleSignIn from './handleSignIn';
 import setDataFirebase from './setDataUserFirebase';
 
-export default async function handleSignUp(name, email, city, pwd) {
+export default async function handleSignUp({ name, email, pwd }) {
   await auth()
     .createUserWithEmailAndPassword(email, pwd)
     .then(async value => {
@@ -21,7 +21,7 @@ export default async function handleSignUp(name, email, city, pwd) {
               'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/avatarM.jpg?alt=media&token=a494693c-611f-435a-b34a-d54fcc38461d',
           };
           setDataFirebase(value.user.uid, dataFirebase);
-          handleSignIn(email, pwd);
+          handleSignIn({ email: email, pwd: pwd });
           return;
         })
         .catch(err => {

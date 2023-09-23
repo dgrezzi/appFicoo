@@ -47,7 +47,7 @@ export default function InputTxt(props) {
         ]}
         autoCorrect={!props.security}
         multiline={props.multiline}
-        placeholder={passVisible ? props.placeholder : '*****'}
+        placeholder={passVisible ? props.placeholder : '*******'}
         secureTextEntry={!passVisible}
         editable={props.editable}
         value={props.value}

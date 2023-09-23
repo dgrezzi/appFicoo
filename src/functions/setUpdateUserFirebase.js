@@ -1,7 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
 import getDataUserFirebase from './getDataUserFirebase';
 
-export default async function setUpdateUserFirebase(dataContext, data) {
+export default async function setUpdateUserFirebase({ dataContext, data }) {
   const uid = dataContext.user.uid;
   const update = {};
   data.name ? (update.name = data.name) : null;

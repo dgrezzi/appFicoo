@@ -329,7 +329,10 @@ export default function EditProfile() {
             linkedin ? (data.linkedin = linkedin) : null;
             aboutme ? (data.aboutme = aboutme) : null;
             setLoading(true);
-            await setUpdateUserFirebase(dataContext, data);
+            await setUpdateUserFirebase({
+              dataContext: dataContext,
+              data: data,
+            });
             setLoading(false);
             navigation.goBack();
           }}

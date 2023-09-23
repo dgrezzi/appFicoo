@@ -18,14 +18,18 @@ export default function BtnEdit(props) {
           justifyContent: 'space-around',
           alignItems: 'center',
           flexDirection: 'row',
-          elevation: 5,
+          elevation: 10,
+          borderWidth: 1,
+          borderColor: VARS.color.whiteOpacity,
         },
       ]}>
-      <Ionicons
-        name={props.icon}
-        size={props.iconSize * 0.7}
-        color={props.iconColor}
-      />
+      {props.icon && (
+        <Ionicons
+          name={props.icon}
+          size={props.iconSize * 0.7}
+          color={props.iconColor}
+        />
+      )}
       <Text
         style={{
           fontFamily: props.fontFamily ? props.fontFamily : 'fontRegular',

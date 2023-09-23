@@ -140,14 +140,14 @@ export default function Signin() {
               onPress={async () => {
                 setLoading(true);
                 if (email && pwd.length >= 6) {
-                  await handleSignIn(email, pwd);
+                  await handleSignIn({ email: email, pwd: pwd });
                 } else {
                   Alert.alert('Atenção', lang.completForm);
                 }
                 setLoading(false);
               }}
             />
-            <View
+            <TouchableOpacity
               style={{
                 backgroundColor: 'white',
                 paddingHorizontal: 30,
@@ -156,25 +156,23 @@ export default function Signin() {
                 elevation: 5,
                 borderWidth: 1,
                 borderColor: VARS.color.whiteDark,
-              }}>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('Signup');
-                }}
-                activeOpacity={0.5}>
-                <Text
-                  style={[
-                    {
-                      fontFamily: 'fontRegular',
-                      color: VARS.color.title,
-                      fontSize: 16,
-                      letterSpacing: 1,
-                    },
-                  ]}>
-                  {lang.subscribe}
-                </Text>
-              </TouchableOpacity>
-            </View>
+              }}
+              onPress={() => {
+                navigation.navigate('Signup');
+              }}
+              activeOpacity={0.5}>
+              <Text
+                style={[
+                  {
+                    fontFamily: 'fontRegular',
+                    color: VARS.color.title,
+                    fontSize: 16,
+                    letterSpacing: 1,
+                  },
+                ]}>
+                {lang.subscribe}
+              </Text>
+            </TouchableOpacity>
             <Language />
           </View>
         </ScrollView>

@@ -12,6 +12,7 @@ export default function AuthProvider({ children }) {
   const [active, setActive] = useState(false);
   const [disable, setDisable] = useState(false);
   const [mpe, setMpe] = useState(false);
+  const [lgpd, setLgpd] = useState('');
   const [activationPass, setActivationPass] = useState('lc5816qd3');
 
   useEffect(() => {
@@ -55,6 +56,7 @@ export default function AuthProvider({ children }) {
         setActivationPass(result._data?.value);
         setDisable(result._data?.disable);
         setMpe(result._data?.mpe);
+        setLgpd(result._data?.lgpd);
       })
       .catch(err => {
         console.error('erro no banco:', err);
@@ -74,6 +76,7 @@ export default function AuthProvider({ children }) {
         getActivationCode,
         mpe,
         setMpe,
+        lgpd,
       }}>
       {children}
     </AuthContext.Provider>

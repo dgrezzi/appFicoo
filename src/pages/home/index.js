@@ -1,7 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
-import { useFocusEffect } from '@react-navigation/native';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { Image, ScrollView, Text, View } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { Image, RefreshControl, ScrollView, Text, View } from 'react-native';
 import Carrossel from '../../components/Carrossel';
 import CarrosselCitacao from '../../components/CarrosselCitacao';
 import Loading from '../../components/Loading';
@@ -42,16 +41,14 @@ export default function Home() {
     'ativo',
   ];
 
-  useFocusEffect(
-    useCallback(() => {
-      getActivationCode();
-      updatePage();
-      header &&
-        Image.getSize(header, (w, h) => {
-          setAspectHeader(w / h);
-        });
-    }, []),
-  );
+  useEffect(() => {
+    getActivationCode();
+    updatePage();
+    header &&
+      Image.getSize(header, (w, h) => {
+        setAspectHeader(w / h);
+      });
+  }, []);
 
   useEffect(() => {
     header &&
@@ -66,6 +63,11 @@ export default function Home() {
       getDados(item);
     });
   };
+
+  const onRefresh = React.useCallback(() => {
+    setLoading(true);
+    updatePage();
+  }, []);
 
   const getDados = async doc => {
     const check = [];
@@ -85,7 +87,6 @@ export default function Home() {
       .catch(err => {
         console.error('erro no banco:', err);
       });
-    //check.sort();
     doc == 'oficoo' ? setOficoo(check) : null;
     doc == 'conferencia' ? setConferencia(check) : null;
     doc == 'paineis' ? setPaineis(check) : null;
@@ -132,6 +133,9 @@ export default function Home() {
       <ScrollView
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={onRefresh} />
+        }
         contentContainerStyle={{
           width: '100%',
           paddingVertical: 8,

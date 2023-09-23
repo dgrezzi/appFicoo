@@ -1,6 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useContext, useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
 import BtnEdit from '../../../components/BtnEdit/intex';
 import CardPost from '../../../components/Cardpost';
@@ -46,16 +46,6 @@ export default function Posts() {
         setLoading(false);
       });
   }
-
-  useFocusEffect(
-    useCallback(() => {
-      let isActive = true;
-      fetchPosts();
-      return () => {
-        isActive = false;
-      };
-    }, []),
-  );
 
   useEffect(() => {
     let isActive = true;

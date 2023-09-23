@@ -5,11 +5,14 @@ import {
   Alert,
   Keyboard,
   KeyboardAvoidingView,
+  ScrollView,
   Text,
+  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import Btn from '../../components/Btn/intex';
+import BtnEdit from '../../components/BtnEdit/intex';
 import InputTxt from '../../components/InputTxt';
 import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
@@ -20,30 +23,21 @@ import styles from '../../styles/styles';
 export default function Signup() {
   const navigation = useNavigation();
 
-  const { locale } = useContext(AuthContext);
+  const { locale, lgpd } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState();
   const [email, setEmail] = useState();
-  const [city, setCity] = useState();
   const [pwd, setPwd] = useState();
   const [pwd2, setPwd2] = useState();
-  const [checkBox1, setCheckBox1] = useState();
-  const [checkBox2, setCheckBox2] = useState();
+  const [checkBox1, setCheckBox1] = useState(false);
+  const [readTerm, setReadTerm] = useState(false);
 
   const validInputSign = () => {
-    if (
-      name &&
-      email &&
-      city &&
-      pwd.length >= 6 &&
-      pwd == pwd2 &&
-      checkBox1 &&
-      checkBox2
-    ) {
-      handleSignUp(name, email, city, pwd)
+    if (name && email && pwd.length >= 6 && pwd == pwd2 && checkBox1) {
+      handleSignUp({ name: name, email: email, pwd: pwd })
         .then(() => {
           setLoading(false);
           navigation.goBack();
@@ -53,7 +47,7 @@ export default function Signup() {
         });
       return;
     }
-    if (!name || !email || city || checkBox1 || checkBox2) {
+    if (!name || !email || checkBox1) {
       Alert.alert('Atenção', lang.allForm);
       setLoading(false);
       return;
@@ -99,15 +93,6 @@ export default function Signup() {
                 setEmail(txt.toLowerCase());
               }}
             />
-            <InputTxt
-              icon="location-outline"
-              placeholder={lang.cityLive}
-              value={city}
-              security={false}
-              onChangeText={txt => {
-                setCity(txt);
-              }}
-            />
           </View>
           <View style={{ width: '100%', gap: 12 }}>
             <InputTxt
@@ -129,7 +114,18 @@ export default function Signup() {
               }}
             />
           </View>
-          <View style={{ width: '100%' }}>
+          <View style={{ width: '100%', gap: 12 }}>
+            <View style={{ width: 180, marginVertical: 10 }}>
+              <BtnEdit
+                label="Ler Termos"
+                color={VARS.color.white}
+                iconColor={VARS.color.green}
+                iconSize={VARS.size.icons * 0.85}
+                onPress={() => {
+                  setReadTerm(true);
+                }}
+              />
+            </View>
             <View
               style={{
                 flexDirection: 'row',
@@ -143,20 +139,6 @@ export default function Signup() {
                 onValueChange={newValue => setCheckBox1(newValue)}
               />
               <Text>{lang.term1}</Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                width: '100%',
-              }}>
-              <CheckBox
-                disabled={false}
-                value={checkBox2}
-                tintColors={{ true: VARS.color.blue, false: VARS.color.gray }}
-                onValueChange={newValue => setCheckBox2(newValue)}
-              />
-              <Text>{lang.term2}</Text>
             </View>
           </View>
           <Btn
@@ -172,6 +154,122 @@ export default function Signup() {
           />
         </View>
       </TouchableWithoutFeedback>
+      {readTerm && (
+        <View
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            backgroundColor: 'white',
+            width: '100%',
+            height: '100%',
+            zIndex: 999,
+            gap: 50,
+          }}>
+          <View
+            style={{
+              backgroundColor: VARS.color.white,
+              flex: 1,
+              margin: 20,
+              borderRadius: 30,
+              borderWidth: 1,
+              borderColor: VARS.color.blueLight,
+              elevation: 10,
+              padding: 20,
+              paddingVertical: 20,
+              alignItems: 'center',
+              gap: 12,
+            }}>
+            <Text
+              style={{
+                width: '100%',
+                textAlign: 'center',
+                fontFamily: 'fontBold',
+                fontSize: 20,
+                letterSpacing: 1,
+                color: VARS.color.blue,
+              }}>
+              {lang.titleLGPD}
+            </Text>
+            <ScrollView
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
+              style={{ width: '100%' }}
+              contentContainerStyle={{
+                gap: 8,
+                padding: 12,
+                borderColor: VARS.color.whiteDark,
+                borderWidth: 1,
+                minHeight: '80%',
+              }}>
+              <Text
+                style={{
+                  width: '100%',
+                  textAlign: 'justify',
+                  fontSize: 16,
+                  letterSpacing: 1,
+                  color: VARS.color.black,
+                }}>
+                {lgpd[locale]}
+              </Text>
+            </ScrollView>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                width: '100%',
+              }}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={{
+                  padding: 8,
+                  backgroundColor: VARS.color.white,
+                  elevation: 5,
+                  paddingHorizontal: 20,
+                  borderRadius: 10,
+                  borderWidth: 1,
+                  borderColor: VARS.color.grayLight,
+                }}
+                onPress={() => {
+                  setReadTerm(false);
+                }}>
+                <Text
+                  style={{
+                    fontFamily: 'fontBold',
+                    fontSize: 16,
+                    letterSpacing: 1,
+                  }}>
+                  {lang.close}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={{
+                  padding: 8,
+                  backgroundColor: VARS.color.white,
+                  elevation: 5,
+                  paddingHorizontal: 20,
+                  borderRadius: 10,
+                  borderWidth: 1,
+                  borderColor: VARS.color.grayLight,
+                }}
+                onPress={() => {
+                  setCheckBox1(true);
+                  setReadTerm(false);
+                }}>
+                <Text
+                  style={{
+                    fontFamily: 'fontBold',
+                    fontSize: 16,
+                    letterSpacing: 1,
+                  }}>
+                  {lang.accept}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      )}
     </KeyboardAvoidingView>
   );
 }
