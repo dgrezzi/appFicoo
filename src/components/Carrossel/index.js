@@ -108,7 +108,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
           <Switch
             style={{
               marginHorizontal: 10,
-              transform: [{ scaleX: 0.75 }, { scaleY: 0.75 }],
+              transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }],
             }}
             onValueChange={() => {
               setEdit(!edit);

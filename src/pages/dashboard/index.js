@@ -165,7 +165,7 @@ export default function Dashboard() {
             <Switch
               style={{
                 marginHorizontal: 8,
-                transform: [{ scaleX: 0.75 }, { scaleY: 0.75 }],
+                transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }],
               }}
               onValueChange={() => {
                 Alert.alert(

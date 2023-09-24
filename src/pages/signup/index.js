@@ -131,10 +131,13 @@ export default function Signup() {
                 flexDirection: 'row',
                 alignItems: 'center',
                 width: '100%',
+                gap: 12,
+                paddingHorizontal: 10,
               }}>
               <CheckBox
                 disabled={false}
                 value={checkBox1}
+                style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
                 tintColors={{ true: VARS.color.blue, false: VARS.color.gray }}
                 onValueChange={newValue => setCheckBox1(newValue)}
               />
