@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import firestore from '@react-native-firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
 import {
   Alert,
@@ -12,7 +13,7 @@ import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import Loading from '../Loading';
 
-export default function Card({ info }) {
+export default function Card({ info, id, update }) {
   const [image, setImage] = useState();
   const [aspect, setAspect] = useState();
   const [imageLoad, setImageLoad] = useState(true);
@@ -28,8 +29,19 @@ export default function Card({ info }) {
     });
   }, [info]);
 
-  const handleDelete = () => {
-    //implementacao del card
+  const handleDelete = async () => {
+    await firestore()
+      .collection('configs')
+      .doc(id)
+      .collection('images')
+      .doc(info.uid)
+      .delete()
+      .then(() => {
+        update();
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
     return;
   };
 
@@ -37,7 +49,17 @@ export default function Card({ info }) {
     <TouchableOpacity
       activeOpacity={1}
       onLongPress={() => {
-        handleDelete();
+        Alert.alert('Atenção!', 'Você deseja apagar esta imagem?', [
+          {
+            text: 'Cancel',
+            onPress: () => {},
+            style: 'cancel',
+          },
+          {
+            text: 'OK',
+            onPress: () => handleDelete(),
+          },
+        ]);
       }}
       onPress={() => {
         info.linkURL &&

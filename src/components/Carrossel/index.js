@@ -7,11 +7,13 @@ import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import Card from '../Card';
 import InputTxt from '../InputTxt';
+import Loading from '../Loading';
 
 export default function Carrossel({ id, data, label, updatePage }) {
   const [input, setInput] = useState();
   const [edit, setEdit] = useState();
   const [disable, setDisable] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { dataContext, locale } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
@@ -30,6 +32,9 @@ export default function Carrossel({ id, data, label, updatePage }) {
       });
     }
     if (result.canceled) {
+      setInput('');
+      setDisable(false);
+      setLoading(false);
     }
   };
 
@@ -67,6 +72,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
     update();
     setInput('');
     setDisable(false);
+    setLoading(false);
   };
 
   const update = () => {
@@ -80,6 +86,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
         paddingHorizontal: 0,
         width: '100%',
       }}>
+      {loading && <Loading />}
       <View
         style={{
           flexDirection: 'row',
@@ -130,6 +137,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
           />
           <TouchableOpacity
             onPress={() => {
+              setLoading(true);
               setDisable(true);
               setEdit(false);
               handleGetFile();
@@ -169,9 +177,9 @@ export default function Carrossel({ id, data, label, updatePage }) {
           paddingBottom: 4,
         }}
         horizontal={true}>
-        {data?.map((info, index) => (
-          <Card key={index} info={info} />
-        ))}
+        {data?.map((info, index) => {
+          return <Card key={index} info={info} id={id} update={update} />;
+        })}
         {!data ? null : (
           <View
             style={{

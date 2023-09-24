@@ -117,7 +117,7 @@ export default function Signup() {
           <View style={{ width: '100%', gap: 12 }}>
             <View style={{ width: 180, marginVertical: 10 }}>
               <BtnEdit
-                label="Ler Termos"
+                label={lang.readTerm}
                 color={VARS.color.white}
                 iconColor={VARS.color.green}
                 iconSize={VARS.size.icons * 0.85}
