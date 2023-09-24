@@ -1,45 +1,34 @@
 {
   "expo": {
-    "name": "FICOO",
-    "owner": "dgrezzi",
-    "slug": "appficoo",
-    "version": "1.0.3",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "assetBundlePatterns": ["**/*"],
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "buildNumber": "3",
-      "googleServicesFile": "./GoogleService-Info.plist",
-      "userInterfaceStyle": "light",
-      "supportsTablet": true,
-      "bundleIdentifier": "com.appficoo",
-      "simulator": true
-    },
     "android": {
-      "versionCode": 3,
-      "googleServicesFile": "./google-services.json",
-      "userInterfaceStyle": "light",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "foregroundImage": "./assets/adaptive-icon.png"
       },
+      "googleServicesFile": "./google-services.json",
       "package": "com.appficoo",
-      "permissions": ["android.permission.RECORD_AUDIO"]
+      "permissions": ["android.permission.RECORD_AUDIO"],
+      "userInterfaceStyle": "light",
+      "versionCode": 3
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
+    "assetBundlePatterns": ["**/*"],
     "extra": {
       "eas": {
         "projectId": "897b33c3-c906-4cad-9f27-a960cae1d2db"
       }
     },
+    "icon": "./assets/icon.png",
+    "ios": {
+      "buildNumber": "4",
+      "bundleIdentifier": "com.appficoo",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "simulator": true,
+      "supportsTablet": true,
+      "userInterfaceStyle": "light"
+    },
+    "name": "FICOO",
+    "orientation": "portrait",
+    "owner": "dgrezzi",
     "plugins": [
       [
         "expo-barcode-scanner",
@@ -64,6 +53,17 @@
       ],
       "@react-native-firebase/app",
       "@react-native-firebase/auth"
-    ]
+    ],
+    "slug": "appficoo",
+    "splash": {
+      "backgroundColor": "#ffffff",
+      "image": "./assets/splash.png",
+      "resizeMode": "contain"
+    },
+    "userInterfaceStyle": "light",
+    "version": "1.0.4",
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
   }
 }
