@@ -9,7 +9,7 @@
       "package": "com.appficoo",
       "permissions": ["android.permission.RECORD_AUDIO"],
       "userInterfaceStyle": "light",
-      "versionCode": 3
+      "versionCode": 4
     },
     "assetBundlePatterns": ["**/*"],
     "extra": {
