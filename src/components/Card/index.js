@@ -18,7 +18,7 @@ export default function Card({ info, id, update }) {
   const [aspect, setAspect] = useState();
   const [imageLoad, setImageLoad] = useState(true);
 
-  const { locale } = useContext(AuthContext);
+  const { locale, dataContext } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
@@ -49,17 +49,19 @@ export default function Card({ info, id, update }) {
     <TouchableOpacity
       activeOpacity={1}
       onLongPress={() => {
-        Alert.alert('Atenção!', 'Você deseja apagar esta imagem?', [
-          {
-            text: 'Cancel',
-            onPress: () => {},
-            style: 'cancel',
-          },
-          {
-            text: 'OK',
-            onPress: () => handleDelete(),
-          },
-        ]);
+        if (dataContext.storageData?.superAdm == true) {
+          Alert.alert('Atenção!', 'Você deseja apagar esta imagem?', [
+            {
+              text: 'Cancel',
+              onPress: () => {},
+              style: 'cancel',
+            },
+            {
+              text: 'OK',
+              onPress: () => handleDelete(),
+            },
+          ]);
+        }
       }}
       onPress={() => {
         info.linkURL &&
