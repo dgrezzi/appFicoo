@@ -9,7 +9,7 @@
       "package": "com.appficoo",
       "permissions": ["android.permission.RECORD_AUDIO"],
       "userInterfaceStyle": "light",
-      "versionCode": 5
+      "versionCode": 6
     },
     "assetBundlePatterns": ["**/*"],
     "extra": {
@@ -19,7 +19,7 @@
     },
     "icon": "./assets/icon.png",
     "ios": {
-      "buildNumber": "5",
+      "buildNumber": "6",
       "bundleIdentifier": "com.appficoo",
       "googleServicesFile": "./GoogleService-Info.plist",
       "simulator": true,
@@ -30,6 +30,7 @@
     "orientation": "portrait",
     "owner": "dgrezzi",
     "plugins": [
+      ["./withDisableForcedDarkModeAndroid.js", {}],
       [
         "expo-barcode-scanner",
         {
@@ -61,7 +62,7 @@
       "resizeMode": "contain"
     },
     "userInterfaceStyle": "light",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "web": {
       "favicon": "./assets/favicon.png"
     }
