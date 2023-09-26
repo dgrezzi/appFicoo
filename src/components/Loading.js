@@ -13,7 +13,7 @@ export default function Loading() {
         alignItems: 'center',
         borderRadius: 20,
         justifyContent: 'center',
-        backgroundColor: VARS.color.opacity,
+        backgroundColor: 'transparent',
       }}>
       <ActivityIndicator
         styl={{}}
