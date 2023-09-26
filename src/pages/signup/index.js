@@ -40,7 +40,7 @@ export default function Signup() {
       handleSignUp({ name: name, email: email, pwd: pwd })
         .then(() => {
           setLoading(false);
-          navigation.goBack();
+          navigation.navigate('PerfilRoute');
         })
         .catch(() => {
           setLoading(false);

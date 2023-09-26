@@ -13,7 +13,7 @@ export default function AuthProvider({ children }) {
   const [disable, setDisable] = useState(false);
   const [mpe, setMpe] = useState(false);
   const [lgpd, setLgpd] = useState('');
-  const [activationPass, setActivationPass] = useState('lc5816qd3');
+  const [activationPass, setActivationPass] = useState('Lc5816qd5');
 
   useEffect(() => {
     getActivationCode();

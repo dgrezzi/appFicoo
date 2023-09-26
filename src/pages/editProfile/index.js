@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { deleteUser, getAuth } from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
 import { useNavigation } from '@react-navigation/native';
@@ -6,6 +7,7 @@ import * as imagePiker from 'expo-image-picker';
 import React, { useContext, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   Image,
   KeyboardAvoidingView,
   ScrollView,
@@ -13,6 +15,7 @@ import {
   View,
 } from 'react-native';
 import Btn from '../../components/Btn/intex';
+import BtnEdit from '../../components/BtnEdit/intex';
 import EditInputText from '../../components/EditInputText';
 import Language from '../../components/Language';
 import Loading from '../../components/Loading';
@@ -21,6 +24,9 @@ import { AuthContext } from '../../contexts/auth';
 import setAuthContext from '../../functions/setAuthContext';
 import setUpdateUserFirebase from '../../functions/setUpdateUserFirebase';
 import styles from '../../styles/styles';
+
+const auth = getAuth();
+const user = auth.currentUser;
 
 export default function EditProfile() {
   const navigation = useNavigation();
@@ -113,40 +119,39 @@ export default function EditProfile() {
       });
   };
 
-  function formatPhoneNumber(text, previousText) {
-    if (!text) return text;
+  const handleSetDisableUser = async () => {
+    await firestore()
+      .collection('user')
+      .doc(dataContext.user.uid)
+      .update({
+        disableAt: new Date(),
+        disableView: true,
+      })
+      .then(() => {
+        handleUserDelete();
+      })
+      .catch(err => {
+        console.error('erro no banco:', err);
+      });
+  };
 
-    const deleting = previousText && previousText.length > text.length;
-    if (deleting) {
-      return text;
+  const handleUserDelete = () => {
+    setLoading(true);
+    if (user != null) {
+      deleteUser(user)
+        .then(() => {
+          setAuthContext('');
+          setLoading(false);
+        })
+        .catch(error => {
+          console.log('erro:', error);
+          setLoading(false);
+        });
+    } else {
+      setAuthContext('');
+      setLoading(false);
     }
-
-    let cleaned = text.replace(/\D/g, '');
-    let match = null;
-
-    if (cleaned.length > 0 && cleaned.length < 1) {
-      return `(${cleaned}`;
-    } else if (cleaned.length == 2) {
-      return `(${cleaned}) `;
-    } else if (cleaned.length > 2 && cleaned.length < 6) {
-      match = cleaned.match(/(\d{2})(\d{2,4})$/);
-      if (match) {
-        return `(${match[1]}) ${match[2]}`;
-      }
-    } else if (cleaned.length == 7) {
-      match = cleaned.match(/(\d{2})(\d{5})$/);
-      if (match) {
-        return `(${match[1]}) ${match[2]}-`;
-      }
-    } else if (cleaned.length > 7 && cleaned.length < 10) {
-      match = cleaned.match(/(\d{2})(\d{5})(\d{5})$/);
-      if (match) {
-        return `(${match[1]}) ${match[2]}-${match[3]}`;
-      }
-    }
-
-    return text;
-  }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -306,6 +311,39 @@ export default function EditProfile() {
             />
           </View>
           <Language />
+        </View>
+        <View
+          style={{
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: 30,
+          }}>
+          <BtnEdit
+            label={lang.removeUser}
+            color={VARS.color.white}
+            icon="close-circle-outline"
+            iconColor={VARS.color.orange}
+            iconSize={VARS.size.icons}
+            colorLabel={VARS.color.orange}
+            onPress={() => {
+              Alert.alert(
+                'Atenção!',
+                'Você deseja apagar esta conta permanentemente?',
+                [
+                  {
+                    text: 'Cancel',
+                    onPress: () => {},
+                    style: 'cancel',
+                  },
+                  {
+                    text: 'OK',
+                    onPress: () => handleSetDisableUser(),
+                  },
+                ],
+              );
+            }}
+          />
         </View>
       </ScrollView>
       <View

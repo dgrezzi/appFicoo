@@ -34,14 +34,14 @@
       [
         "expo-barcode-scanner",
         {
-          "cameraPermission": "Allow $(PRODUCT_NAME) to access camera."
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access camera only to read the app's QR Code. No images are captured."
         }
       ],
       ["./firebasePlugin", "custom"],
       [
         "expo-image-picker",
         {
-          "photosPermission": "The app accesses your photos to let you share them with your friends."
+          "photosPermission": "The app accesses your photos to let you change your profile picture."
         }
       ],
       [
