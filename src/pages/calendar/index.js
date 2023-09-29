@@ -1,11 +1,18 @@
 import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
-import { useContext, useEffect, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import {
+  RefreshControl,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
+import SetProgramacao from './programa';
 
 export default function Calendar() {
   const [aba, setAba] = useState(0);
@@ -74,6 +81,9 @@ export default function Calendar() {
     setDia12(prog12);
     setDia13(prog13);
     setDia14(prog14);
+    console.log('dia12', prog12);
+    console.log('dia13', prog13);
+    console.log('dia14', prog14);
     setLoading(false);
   };
 
@@ -102,6 +112,82 @@ export default function Calendar() {
           {props.label}
         </Text>
       </TouchableOpacity>
+    );
+  };
+
+  const Atividade = props => {
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = React.useCallback(() => {
+      setRefreshing(true);
+      getProgram();
+    }, []);
+
+    return (
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingVertical: 12, paddingHorizontal: 8 }}>
+        {props.dia?.map((v, i) => {
+          return <Dados key={i} data={v} />;
+        })}
+      </ScrollView>
+    );
+  };
+
+  const Dados = props => {
+    const cores = {
+      1: VARS.color.white,
+    };
+    const group = props.data?.group;
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'flex-start',
+          alignItems: 'flex-start',
+          padding: 18,
+          borderWidth: 1,
+          marginHorizontal: 10,
+          borderColor: VARS.color?.blueLight,
+          backgroundColor: group ? cores[group] : VARS.color.white,
+          borderRadius: 10,
+          marginBottom: 12,
+          elevation: 8,
+          gap: 6,
+        }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+          <Ionicons
+            name="time-outline"
+            size={VARS.size.icons * 0.6}
+            color={VARS.color.blue}
+          />
+          <Text
+            style={{
+              fontFamily: 'fontBold',
+              fontSize: 18,
+              color: VARS.color.title,
+              letterSpacing: 1,
+              flex: 1,
+            }}>
+            {props.data?.start} - {props.data?.finish}
+          </Text>
+        </View>
+        <Text
+          style={{
+            fontFamily: 'fontRegular',
+            fontSize: 20,
+            color: VARS.color.title,
+            textAlign: 'justify',
+            width: '100%',
+            letterSpacing: 1,
+          }}>
+          {props.data?.title}
+        </Text>
+      </View>
     );
   };
 
@@ -164,72 +250,7 @@ export default function Calendar() {
         {aba == 1 ? <Atividade dia={dia13} /> : null}
         {aba == 2 ? <Atividade dia={dia14} /> : null}
       </View>
+      <SetProgramacao />
     </View>
   );
 }
-
-const Atividade = props => {
-  return (
-    <ScrollView
-      showsHorizontalScrollIndicator={false}
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ paddingVertical: 12, paddingHorizontal: 8 }}>
-      {props.dia?.map((v, i) => {
-        return <Dados key={i} data={v} />;
-      })}
-    </ScrollView>
-  );
-};
-
-const Dados = props => {
-  const cores = {
-    1: VARS.color.white,
-  };
-  const group = props.data?.group;
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        padding: 18,
-        borderWidth: 1,
-        marginHorizontal: 10,
-        borderColor: VARS.color?.blueLight,
-        backgroundColor: group ? cores[group] : VARS.color.white,
-        borderRadius: 10,
-        marginBottom: 12,
-        elevation: 8,
-        gap: 6,
-      }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-        <Ionicons
-          name="time-outline"
-          size={VARS.size.icons * 0.6}
-          color={VARS.color.blue}
-        />
-        <Text
-          style={{
-            fontFamily: 'fontBold',
-            fontSize: 18,
-            color: VARS.color.title,
-            letterSpacing: 1,
-            flex: 1,
-          }}>
-          {props.data?.start} - {props.data?.finish}
-        </Text>
-      </View>
-      <Text
-        style={{
-          fontFamily: 'fontRegular',
-          fontSize: 20,
-          color: VARS.color.title,
-          textAlign: 'justify',
-          width: '100%',
-          letterSpacing: 1,
-        }}>
-        {props.data?.title}
-      </Text>
-    </View>
-  );
-};

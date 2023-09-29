@@ -56,7 +56,7 @@ export default function MyTabs() {
         options={{
           headerTitle: lang.titleProgram,
           gestureEnabled: true,
-          headerShown: false,
+          headerShown: true,
           animationTypeForReplace: 'push',
           animation: 'slide_from_right',
           tabBarIcon: ({ color }) => (

@@ -1,10 +1,10 @@
 import firestore from '@react-native-firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
-import { Image, RefreshControl, ScrollView, Text, View } from 'react-native';
+import { Image, RefreshControl, ScrollView, View } from 'react-native';
 import Carrossel from '../../components/Carrossel';
 import CarrosselCitacao from '../../components/CarrosselCitacao';
+import Credito from '../../components/Credito';
 import Loading from '../../components/Loading';
-import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 
@@ -20,7 +20,8 @@ export default function Home() {
   const [coracao, setCoracao] = useState();
   const [cooperacao, setCooperacao] = useState();
   const [voluntario, setVoluntario] = useState();
-  const [fotos, setfotos] = useState();
+  const [fotos, setFotos] = useState();
+  const [feira, setFeira] = useState();
   const [convidados, setConvidados] = useState();
   const [loading, setLoading] = useState(true);
   const [imageLoad, setImageLoad] = useState(true);
@@ -43,6 +44,7 @@ export default function Home() {
     'ativo',
     'convidados',
     'fotos',
+    'feira',
   ];
 
   useEffect(() => {
@@ -100,7 +102,8 @@ export default function Home() {
     doc == 'coracao' ? setCoracao(check.reverse()) : null;
     doc == 'cooperacao' ? setCooperacao(check.reverse()) : null;
     doc == 'voluntario' ? setVoluntario(check.reverse()) : null;
-    doc == 'fotos' ? setfotos(check.reverse()) : null;
+    doc == 'fotos' ? setFotos(check.reverse()) : null;
+    doc == 'feira' ? setFeira(check.reverse()) : null;
     doc == 'convidados' ? setConvidados(check.reverse()) : null;
     doc == 'header' ? setHeader(check['0'].photoURL) : null;
     setLoading(false);
@@ -179,19 +182,11 @@ export default function Home() {
             updatePage={updatePage}
           />
         )}
-        {diver && (
+        {feira && (
           <Carrossel
-            id="diver"
-            label={lang.homeDesafio}
-            data={diver}
-            updatePage={updatePage}
-          />
-        )}
-        {parceiros && (
-          <Carrossel
-            id="parceiros"
-            label={lang.homeComunidade}
-            data={parceiros}
+            id="feira"
+            label={lang.homeFeira}
+            data={feira}
             updatePage={updatePage}
           />
         )}
@@ -203,11 +198,27 @@ export default function Home() {
             updatePage={updatePage}
           />
         )}
+        {diver && (
+          <Carrossel
+            id="diver"
+            label={lang.homeDesafio}
+            data={diver}
+            updatePage={updatePage}
+          />
+        )}
         {fotos && (
           <Carrossel
             id="fotos"
             label={lang.homeFotos}
             data={fotos}
+            updatePage={updatePage}
+          />
+        )}
+        {parceiros && (
+          <Carrossel
+            id="parceiros"
+            label={lang.homeComunidade}
+            data={parceiros}
             updatePage={updatePage}
           />
         )}
@@ -235,62 +246,7 @@ export default function Home() {
             updatePage={updatePage}
           />
         )}
-        <Text
-          style={{
-            fontFamily: 'fontRegular',
-            fontSize: 20,
-            letterSpacing: 1,
-            marginHorizontal: 15,
-            color: VARS.color.black,
-          }}>
-          {lang.development}
-        </Text>
-        <View style={{ paddingHorizontal: 10 }}>
-          <View
-            style={{
-              backgroundColor: VARS.color.white,
-              borderRadius: 18,
-              alignItems: 'flex-start',
-              justifyContent: 'space-around',
-              borderWidth: 1,
-              borderColor: VARS.color.whiteDark,
-              elevation: 10,
-              padding: 18,
-              marginBottom: 15,
-              margin: 5,
-              color: VARS.color.black,
-              gap: 10,
-            }}>
-            <Text
-              style={{
-                width: '100%',
-                fontFamily: 'fontBold',
-                fontSize: 20,
-                letterSpacing: 1,
-                textAlign: 'center',
-              }}>
-              {lang.dgSystem}
-            </Text>
-            <Text
-              style={{
-                fontFamily: 'fontRegular',
-                fontSize: 18,
-                letterSpacing: 1,
-                textAlign: 'justify',
-              }}>
-              {lang.dgNames}
-            </Text>
-            <Text
-              style={{
-                fontFamily: 'fontRegular',
-                fontSize: 18,
-                letterSpacing: 1,
-                textAlign: 'justify',
-              }}>
-              {lang.dgContato}
-            </Text>
-          </View>
-        </View>
+        <Credito />
       </ScrollView>
     </View>
   );

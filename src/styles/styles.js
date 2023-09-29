@@ -1,4 +1,4 @@
-import { StyleSheet, StatusBar } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { VARS } from '../constants/VARS';
 
 export default styles = StyleSheet.create({
@@ -27,9 +27,9 @@ export default styles = StyleSheet.create({
     bottom: 0,
     backgroundColor: VARS.color.blue,
     height: 290,
-    borderTopStartRadius: 40,
-    borderTopEndRadius: 40,
-    paddingHorizontal: 38,
+    borderTopStartRadius: 50,
+    borderTopEndRadius: 50,
+    paddingHorizontal: 20,
     paddingVertical: 20,
     justifyContent: 'space-around',
     width: '100%',

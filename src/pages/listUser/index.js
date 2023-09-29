@@ -1,9 +1,10 @@
 import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
   Alert,
   Image,
+  RefreshControl,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -23,6 +24,13 @@ export default function ListUser() {
   const [input, setInput] = useState('');
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setLoading(true);
+    getDocs();
+    getCheckin();
+  }, []);
 
   const [avatarFicoo, setAvatarFicoo] = useState(
     'https://firebasestorage.googleapis.com/v0/b/appficoo-ebbf0.appspot.com/o/logo-white.png?alt=media&token=1d972f3e-339f-4c37-bafe-9431051de805',
@@ -508,6 +516,9 @@ export default function ListUser() {
       <ScrollView
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={onRefresh} />
+        }
         contentContainerStyle={{ paddingBottom: 25 }}>
         {list.map((value, index) => {
           return (

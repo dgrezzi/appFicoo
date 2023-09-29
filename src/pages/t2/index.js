@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { useContext } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
-import t2bg from '../../../src/assets/t2-bg.png';
+import t2bg from '../../../src/assets/t2-bg.jpg';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
@@ -16,7 +16,13 @@ export default function T2() {
   return (
     <View style={[styles.container, { paddingHorizontal: 0 }]}>
       <Image
-        style={{ position: 'absolute', top: 0, width: '100%' }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          resizeMode: 'cover',
+          width: '100%',
+          height: '100%',
+        }}
         source={t2bg}
       />
       <View style={[styles.tview]}>
@@ -38,13 +44,14 @@ export default function T2() {
           style={[
             {
               color: VARS.color.white,
-              textAlign: 'center',
+              textAlign: 'justify',
               width: '100%',
               lineHeight: 34,
               letterSpacing: 0.5,
               fontSize: 18,
               fontFamily: 'fontRegular',
               opacity: 0.8,
+              paddingHorizontal: 10,
             },
           ]}>
           {lang.messageT2}

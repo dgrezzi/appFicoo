@@ -29,7 +29,7 @@ export default function Posts() {
     firestore()
       .collection('posts')
       .orderBy('createdAt', 'desc')
-      .limit(4)
+      .limit(8)
       .get()
       .then(snapshot => {
         setPosts([]);
