@@ -25,7 +25,7 @@ export default function Btn(props) {
       <Text
         style={{
           fontFamily: 'fontRegular',
-          fontSize: 18,
+          fontSize: 16,
           letterSpacing: 1,
           color: props.colorLabel ? props.colorLabel : VARS.color.white,
         }}>
