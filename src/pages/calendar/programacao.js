@@ -1,62 +1,18 @@
-import firestore from '@react-native-firebase/firestore';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { VARS } from '../../constants/VARS';
-
-export default function SetProgramacao() {
-  const setProg = () => {
-    Object.keys(lista).map((value, index) => {
-      lista[value].map(async (i, v) => {
-        await firestore()
-          .collection('configs')
-          .doc('programacao')
-          .collection(value)
-          .doc()
-          .set(i)
-          .then()
-          .catch();
-      });
-    });
-  };
-
-  return (
-    <View style={{ marginVertical: 15 }}>
-      <TouchableOpacity
-        style={{
-          padding: 10,
-          backgroundColor: 'white',
-          elevation: 10,
-          borderWidth: 1,
-          borderColor: VARS.color.whiteDark,
-          borderRadius: 10,
-          paddingHorizontal: 20,
-        }}
-        onPress={() => {
-          setProg();
-        }}>
-        <Text>Gravar</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
-
 const dia12pt = [
   {
     finish: '18h00',
-    group: 1,
     id: 1,
     start: '14h00',
     title: 'Recepção, credenciamento e atividades de conexão',
   },
   {
     finish: '19h00',
-    group: 1,
     id: 2,
     start: '18h00',
     title: 'Abertura do FICOO 2023',
   },
   {
     finish: '20h30',
-    group: 1,
     id: 3,
     start: '19h00',
     title:
@@ -64,23 +20,20 @@ const dia12pt = [
   },
   {
     finish: '21h30',
-    group: 1,
     id: 4,
     start: '20h30',
     title: 'O Desafio FICOO: EDGARD GOUVEIA JR.',
   },
 ];
-const dia13pt = [
+export const dia13pt = [
   {
     finish: '09h00',
-    group: 1,
     id: 1,
     start: '08h30',
     title: 'Atividades de conexão',
   },
   {
     finish: '10h30',
-    group: 1,
     id: 2,
     start: '09h00',
     title:
@@ -88,49 +41,42 @@ const dia13pt = [
   },
   {
     finish: '11h00',
-    group: 1,
     id: 3,
     start: '10h30',
     title: 'Tempo livre e Mercado Colaborativo',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 4,
     start: '11h00',
     title: 'Rodas de ConversAção',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 5,
     start: '11h00',
     title: 'Laboratório de Com-Vivências',
   },
   {
     finish: '14h30',
-    group: 1,
     id: 6,
     start: '13h00',
     title: 'Tempo livre e Mercado Colaborativo',
   },
   {
     finish: '18h30',
-    group: 1,
     id: 7,
     start: '14h30',
     title: 'Oficinas de Cooperação',
   },
   {
     finish: '19h00',
-    group: 1,
     id: 8,
     start: '18h30',
     title: 'Tempo livre e Mercado Colaborativo',
   },
   {
     finish: '20h30',
-    group: 1,
     id: 9,
     start: '19h00',
     title:
@@ -138,23 +84,20 @@ const dia13pt = [
   },
   {
     finish: '22h00',
-    group: 1,
     id: 10,
     start: '20h30',
     title: 'A Comum-Unidade FICOO',
   },
 ];
-const dia14pt = [
+export const dia14pt = [
   {
     finish: '09h00',
-    group: 1,
     id: 1,
     start: '08h30',
     title: 'Atividades de conexão',
   },
   {
     finish: '10h30',
-    group: 1,
     id: 2,
     start: '09h00',
     title:
@@ -162,80 +105,69 @@ const dia14pt = [
   },
   {
     finish: '11h00',
-    group: 1,
     id: 3,
     start: '10h30',
     title: 'Tempo livre e Mercado Colaborativo',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 4,
     start: '11h00',
     title: 'Rodas de ConversAção',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 5,
     start: '11h00',
     title: 'Laboratório de Com-Vivências',
   },
   {
     finish: '14h30',
-    group: 1,
     id: 6,
     start: '13h00',
     title: 'Tempo livre e Mercado Colaborativo',
   },
   {
     finish: '18h00',
-    group: 1,
     id: 7,
     start: '14h30',
     title: 'Oficinas de Cooperação',
   },
   {
     finish: '19h00',
-    group: 1,
     id: 8,
     start: '18h30',
     title: 'Tempo livre e Mercado Colaborativo',
   },
   {
     finish: '20h30',
-    group: 1,
     id: 9,
     start: '19h00',
     title: 'A Grande Síntese: LYDIA REBOUÇAS',
   },
   {
     finish: '22h00',
-    group: 1,
     id: 10,
     start: '20h30',
     title: 'Festa DIVER e Encerramento do Festival',
   },
 ];
 
-const dia12es = [
+export const dia12es = [
   {
     finish: '18h00',
-    group: 1,
     id: 1,
     start: '14h00',
     title: 'Recepción, acreditación y actividades de conexión',
   },
   {
     finish: '19h00',
-    group: 1,
     id: 2,
     start: '18h00',
     title: 'Apertura de FICOO 2023',
   },
   {
     finish: '20h30',
-    group: 1,
     id: 3,
     start: '19h00',
     title:
@@ -243,23 +175,20 @@ const dia12es = [
   },
   {
     finish: '21h30',
-    group: 1,
     id: 4,
     start: '20h30',
     title: 'El Desafío FICOO: EDGARD GOUVEIA JR.',
   },
 ];
-const dia13es = [
+export const dia13es = [
   {
     finish: '09h00',
-    group: 1,
     id: 1,
     start: '08h30',
     title: 'Actividades de conexión',
   },
   {
     finish: '10h30',
-    group: 1,
     id: 2,
     start: '09h00',
     title:
@@ -267,49 +196,42 @@ const dia13es = [
   },
   {
     finish: '11h00',
-    group: 1,
     id: 3,
     start: '10h30',
     title: 'Tiempo libre y Mercado Colaborativo',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 4,
     start: '11h00',
     title: 'Círculos de ConversAcción',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 5,
     start: '11h00',
     title: 'Laboratório de Com-Vivências',
   },
   {
     finish: '14h30',
-    group: 1,
     id: 6,
     start: '13h00',
     title: 'Tiempo libre y Mercado Colaborativo',
   },
   {
     finish: '18h30',
-    group: 1,
     id: 7,
     start: '14h30',
     title: 'Oficinas de Cooperação',
   },
   {
     finish: '19h00',
-    group: 1,
     id: 8,
     start: '18h30',
     title: 'Tiempo libre y Mercado Colaborativo',
   },
   {
     finish: '20h30',
-    group: 1,
     id: 9,
     start: '19h00',
     title:
@@ -317,23 +239,20 @@ const dia13es = [
   },
   {
     finish: '22h00',
-    group: 1,
     id: 10,
     start: '20h30',
     title: 'La Común-Unidad FICOO',
   },
 ];
-const dia14es = [
+export const dia14es = [
   {
     finish: '09h00',
-    group: 1,
     id: 1,
     start: '08h30',
     title: 'Actividades de conexión',
   },
   {
     finish: '10h30',
-    group: 1,
     id: 2,
     start: '09h00',
     title:
@@ -341,80 +260,69 @@ const dia14es = [
   },
   {
     finish: '11h00',
-    group: 1,
     id: 3,
     start: '10h30',
     title: 'Tiempo libre y Mercado Colaborativo',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 4,
     start: '11h00',
     title: 'Círculos de ConversAcción',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 5,
     start: '11h00',
     title: 'Laboratorio de Co-Vivencias',
   },
   {
     finish: '14h30',
-    group: 1,
     id: 6,
     start: '13h00',
     title: 'Tiempo libre y Mercado Colaborativo',
   },
   {
     finish: '18h00',
-    group: 1,
     id: 7,
     start: '14h30',
     title: 'Talleres de Cooperación',
   },
   {
     finish: '19h00',
-    group: 1,
     id: 8,
     start: '18h30',
     title: 'Tiempo libre y Mercado Colaborativo',
   },
   {
     finish: '20h30',
-    group: 1,
     id: 9,
     start: '19h00',
     title: 'La Gran Síntesis: LYDIA REBOUÇAS',
   },
   {
     finish: '22h00',
-    group: 1,
     id: 10,
     start: '20h30',
     title: 'Fiesta DIVER y Cierre del Festival',
   },
 ];
 
-const dia12en = [
+export const dia12en = [
   {
     finish: '18h00',
-    group: 1,
     id: 1,
     start: '14h00',
     title: 'Reception, accreditation, and connection activities',
   },
   {
     finish: '19h00',
-    group: 1,
     id: 2,
     start: '18h00',
     title: 'Opening of FICOO 2023',
   },
   {
     finish: '20h30',
-    group: 1,
     id: 3,
     start: '19h00',
     title:
@@ -422,23 +330,20 @@ const dia12en = [
   },
   {
     finish: '21h30',
-    group: 1,
     id: 4,
     start: '20h30',
     title: 'The FICOO Challenge: EDGARD GOUVEIA JR',
   },
 ];
-const dia13en = [
+export const dia13en = [
   {
     finish: '09h00',
-    group: 1,
     id: 1,
     start: '08h30',
     title: 'Connection activities',
   },
   {
     finish: '10h30',
-    group: 1,
     id: 2,
     start: '09h00',
     title:
@@ -446,49 +351,42 @@ const dia13en = [
   },
   {
     finish: '11h00',
-    group: 1,
     id: 3,
     start: '10h30',
     title: 'Free time and Collaborative Market',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 4,
     start: '11h00',
     title: 'ConversAction Circles',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 5,
     start: '11h00',
     title: 'Co-Living Lab',
   },
   {
     finish: '14h30',
-    group: 1,
     id: 6,
     start: '13h00',
     title: 'Free time and Collaborative Market',
   },
   {
     finish: '18h30',
-    group: 1,
     id: 7,
     start: '14h30',
     title: 'Cooperation Workshops',
   },
   {
     finish: '19h00',
-    group: 1,
     id: 8,
     start: '18h30',
     title: 'Free time and Collaborative Market',
   },
   {
     finish: '20h30',
-    group: 1,
     id: 9,
     start: '19h00',
     title:
@@ -496,23 +394,20 @@ const dia13en = [
   },
   {
     finish: '22h00',
-    group: 1,
     id: 10,
     start: '20h30',
     title: 'The Common-Unity FICOO',
   },
 ];
-const dia14en = [
+export const dia14en = [
   {
     finish: '09h00',
-    group: 1,
     id: 1,
     start: '08h30',
     title: 'Connection activities',
   },
   {
     finish: '10h30',
-    group: 1,
     id: 2,
     start: '09h00',
     title:
@@ -520,63 +415,55 @@ const dia14en = [
   },
   {
     finish: '11h00',
-    group: 1,
     id: 3,
     start: '10h30',
     title: 'Free time and Collaborative Market',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 4,
     start: '11h00',
     title: 'ConversAction Circles',
   },
   {
     finish: '13h00',
-    group: 1,
     id: 5,
     start: '11h00',
     title: 'Co-Living Lab',
   },
   {
     finish: '14h30',
-    group: 1,
     id: 6,
     start: '13h00',
     title: 'Free time and Collaborative Market',
   },
   {
     finish: '18h00',
-    group: 1,
     id: 7,
     start: '14h30',
     title: 'Cooperation Workshops',
   },
   {
     finish: '19h00',
-    group: 1,
     id: 8,
     start: '18h30',
     title: 'Free time and Collaborative Market',
   },
   {
     finish: '20h30',
-    group: 1,
     id: 9,
     start: '19h00',
     title: 'The Grand Synthesis: LYDIA REBOUÇAS',
   },
   {
     finish: '22h00',
-    group: 1,
     id: 10,
     start: '20h30',
     title: 'DIVER Party and Festival Closing',
   },
 ];
 
-const lista = {
+export const list = {
   dia12pt: dia12pt,
   dia12en: dia12en,
   dia12es: dia12es,

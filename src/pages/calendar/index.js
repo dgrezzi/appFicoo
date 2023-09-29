@@ -12,7 +12,6 @@ import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
-import SetProgramacao from './programa';
 
 export default function Calendar() {
   const [aba, setAba] = useState(0);
@@ -37,7 +36,7 @@ export default function Calendar() {
       .collection('configs')
       .doc('programacao')
       .collection('dia12' + locale)
-      .orderBy('start', 'asc')
+      .orderBy('id', 'asc')
       .get()
       .then(result => {
         result.forEach(doc => {
@@ -52,7 +51,7 @@ export default function Calendar() {
       .collection('configs')
       .doc('programacao')
       .collection('dia13' + locale)
-      .orderBy('start', 'asc')
+      .orderBy('id', 'asc')
       .get()
       .then(result => {
         result.forEach(doc => {
@@ -67,7 +66,7 @@ export default function Calendar() {
       .collection('configs')
       .doc('programacao')
       .collection('dia14' + locale)
-      .orderBy('start', 'asc')
+      .orderBy('id', 'asc')
       .get()
       .then(result => {
         result.forEach(doc => {
@@ -81,9 +80,6 @@ export default function Calendar() {
     setDia12(prog12);
     setDia13(prog13);
     setDia14(prog14);
-    console.log('dia12', prog12);
-    console.log('dia13', prog13);
-    console.log('dia14', prog14);
     setLoading(false);
   };
 
@@ -250,7 +246,6 @@ export default function Calendar() {
         {aba == 1 ? <Atividade dia={dia13} /> : null}
         {aba == 2 ? <Atividade dia={dia14} /> : null}
       </View>
-      <SetProgramacao />
     </View>
   );
 }
