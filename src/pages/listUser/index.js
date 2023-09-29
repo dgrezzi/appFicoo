@@ -94,6 +94,7 @@ export default function ListUser() {
         console.error('erro no banco:', err);
       });
     getDocs();
+    getCheckin();
   };
 
   const handleCheckin = async info => {

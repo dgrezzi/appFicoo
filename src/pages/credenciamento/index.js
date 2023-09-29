@@ -71,7 +71,9 @@ export default function Credenciamento() {
       .catch(err => {
         console.error('erro no banco:', err);
       });
-    list?.sort();
+    list?.sort((a, b) => {
+      return a.slice(-2) - b.slice(-2);
+    });
     setAtividades(list);
     return list;
   };

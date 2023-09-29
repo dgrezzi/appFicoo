@@ -101,7 +101,6 @@ export default function Mpe() {
             id: u.id,
           });
         });
-
         setPosts(postList);
         setEmptyList(false);
         setLastItem(snapshot.docs[snapshot.docs.length - 1]);
@@ -116,9 +115,7 @@ export default function Mpe() {
       setLoading(false);
       return null;
     }
-
     if (loading) return;
-
     firestore()
       .collection('mpe')
       .orderBy('createdAt', 'desc')

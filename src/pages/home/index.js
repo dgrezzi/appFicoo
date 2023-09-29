@@ -20,6 +20,8 @@ export default function Home() {
   const [coracao, setCoracao] = useState();
   const [cooperacao, setCooperacao] = useState();
   const [voluntario, setVoluntario] = useState();
+  const [fotos, setfotos] = useState();
+  const [convidados, setConvidados] = useState();
   const [loading, setLoading] = useState(true);
   const [imageLoad, setImageLoad] = useState(true);
 
@@ -39,6 +41,8 @@ export default function Home() {
     'cooperacao',
     'voluntario',
     'ativo',
+    'convidados',
+    'fotos',
   ];
 
   useEffect(() => {
@@ -96,6 +100,8 @@ export default function Home() {
     doc == 'coracao' ? setCoracao(check.reverse()) : null;
     doc == 'cooperacao' ? setCooperacao(check.reverse()) : null;
     doc == 'voluntario' ? setVoluntario(check.reverse()) : null;
+    doc == 'fotos' ? setfotos(check.reverse()) : null;
+    doc == 'convidados' ? setConvidados(check.reverse()) : null;
     doc == 'header' ? setHeader(check['0'].photoURL) : null;
     setLoading(false);
     return check;
@@ -141,60 +147,94 @@ export default function Home() {
           paddingVertical: 8,
           gap: 4,
         }}>
-        <Carrossel
-          id="oficoo"
-          label={lang.homeOficoo}
-          data={oficoo}
-          updatePage={updatePage}
-        />
-        <Carrossel
-          id="conferencia"
-          label={lang.homeConf}
-          data={conferencia}
-          updatePage={updatePage}
-        />
-        <Carrossel
-          id="paineis"
-          label={lang.homePaineis}
-          data={paineis}
-          updatePage={updatePage}
-        />
-        <Carrossel
-          id="oficinas"
-          label={lang.homeOficinas}
-          data={oficinas}
-          updatePage={updatePage}
-        />
-        <Carrossel
-          id="diver"
-          label={lang.homeDesafio}
-          data={diver}
-          updatePage={updatePage}
-        />
-        <Carrossel
-          id="parceiros"
-          label={lang.homeComunidade}
-          data={parceiros}
-          updatePage={updatePage}
-        />
-        <CarrosselCitacao
-          id="coracao"
-          label={lang.homeCoracao}
-          data={coracao}
-          updatePage={updatePage}
-        />
-        <CarrosselCitacao
-          id="cooperacao"
-          label={lang.homeCooperacao}
-          data={cooperacao}
-          updatePage={updatePage}
-        />
-        <CarrosselCitacao
-          id="voluntario"
-          label={lang.homeVoluntario}
-          data={voluntario}
-          updatePage={updatePage}
-        />
+        {oficoo && (
+          <Carrossel
+            id="oficoo"
+            label={lang.homeOficoo}
+            data={oficoo}
+            updatePage={updatePage}
+          />
+        )}
+        {conferencia && (
+          <Carrossel
+            id="conferencia"
+            label={lang.homeConf}
+            data={conferencia}
+            updatePage={updatePage}
+          />
+        )}
+        {paineis && (
+          <Carrossel
+            id="paineis"
+            label={lang.homePaineis}
+            data={paineis}
+            updatePage={updatePage}
+          />
+        )}
+        {oficinas && (
+          <Carrossel
+            id="oficinas"
+            label={lang.homeOficinas}
+            data={oficinas}
+            updatePage={updatePage}
+          />
+        )}
+        {diver && (
+          <Carrossel
+            id="diver"
+            label={lang.homeDesafio}
+            data={diver}
+            updatePage={updatePage}
+          />
+        )}
+        {parceiros && (
+          <Carrossel
+            id="parceiros"
+            label={lang.homeComunidade}
+            data={parceiros}
+            updatePage={updatePage}
+          />
+        )}
+        {convidados && (
+          <Carrossel
+            id="convidados"
+            label={lang.homeConvidados}
+            data={convidados}
+            updatePage={updatePage}
+          />
+        )}
+        {fotos && (
+          <Carrossel
+            id="fotos"
+            label={lang.homeFotos}
+            data={fotos}
+            updatePage={updatePage}
+          />
+        )}
+        {coracao && (
+          <CarrosselCitacao
+            id="coracao"
+            label={lang.homeCoracao}
+            data={coracao}
+            updatePage={updatePage}
+          />
+        )}
+        {cooperacao && (
+          <CarrosselCitacao
+            id="cooperacao"
+            label={lang.homeCooperacao}
+            data={cooperacao}
+            updatePage={updatePage}
+          />
+        )}
+        {voluntario && (
+          <CarrosselCitacao
+            id="voluntario"
+            label={lang.homeVoluntario}
+            data={voluntario}
+            updatePage={updatePage}
+          />
+        )}
         <Text
           style={{
             fontFamily: 'fontRegular',

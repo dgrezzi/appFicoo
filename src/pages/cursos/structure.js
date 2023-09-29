@@ -186,7 +186,7 @@ export const Atividades = ({ atividadeChange, ...props }) => {
   const [qtdActive, setQtdActive] = useState();
   const [loading, setLoading] = useState(true);
 
-  const { locale } = useContext(AuthContext);
+  const { locale, dataContext } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
@@ -222,13 +222,16 @@ export const Atividades = ({ atividadeChange, ...props }) => {
   };
 
   useEffect(() => {
-    if (props.editable == false) setLoading(false);
+    if (dataContext.storageData.inscrito == true) {
+      setLoading(false);
+    }
+    //if (props.editable == false) setLoading(false);
     if (props.editable && props.vaga != null) Promise.all(checkVacancy());
   }, [props]);
 
   return (
     <View style={{ paddingHorizontal: 15 }}>
-      {loading && <Loading />}
+      {loading == true && <Loading />}
       <TouchableOpacity
         activeOpacity={1}
         onPress={() => {

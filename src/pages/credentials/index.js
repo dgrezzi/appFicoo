@@ -5,6 +5,7 @@ import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 import { legenda } from '../cursos/atividades';
+import { formatLetter } from '../cursos/structure';
 
 export default function Credentials() {
   const { dataContext, locale } = useContext(AuthContext);
@@ -177,9 +178,4 @@ export default function Credentials() {
       </ScrollView>
     </View>
   );
-}
-
-function formatLetter(str) {
-  const lowerCaseString = str.toLowerCase();
-  return lowerCaseString.replace(/\b\w/g, l => l.toUpperCase());
 }

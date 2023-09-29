@@ -27,7 +27,7 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
     ) {
       Alert.alert(
         'Atenção!',
-        'Você tem certeza que deseja deletar essa sala?',
+        'Você tem certeza que deseja deletar esse post?',
         [
           {
             text: 'Cancel',
@@ -45,7 +45,7 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
 
   async function handleDeletePost(idRoom) {
     await firestore()
-      .collection('posts')
+      .collection('mpe')
       .doc(idRoom)
       .update({ disable: true })
       .then(() => {})
