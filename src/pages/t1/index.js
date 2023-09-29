@@ -48,7 +48,7 @@ export default function T1() {
               width: '100%',
               lineHeight: 34,
               letterSpacing: 0.5,
-              fontSize: 18,
+              fontSize: 20,
               fontFamily: 'fontRegular',
               opacity: 0.8,
               paddingHorizontal: 10,

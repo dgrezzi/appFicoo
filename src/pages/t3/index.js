@@ -29,26 +29,12 @@ export default function T3() {
         <Text
           style={[
             {
-              fontFamily: 'fontRegular',
-              lineHeight: 34,
-              color: VARS.color.white,
-              textAlign: 'center',
-              width: '100%',
-              fontSize: 24,
-              letterSpacing: 0.6,
-            },
-          ]}>
-          {lang.titleT3}
-        </Text>
-        <Text
-          style={[
-            {
               color: VARS.color.white,
               textAlign: 'justify',
               width: '100%',
               lineHeight: 34,
               letterSpacing: 0.5,
-              fontSize: 18,
+              fontSize: 20,
               fontFamily: 'fontRegular',
               opacity: 0.8,
               paddingHorizontal: 10,

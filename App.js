@@ -13,7 +13,6 @@ export default function App() {
   const [fontsBoldLoaded] = useFonts({
     fontBold: require('./assets/NunitoBold.ttf'),
   });
-
   return (
     <SafeAreaView
       style={{
