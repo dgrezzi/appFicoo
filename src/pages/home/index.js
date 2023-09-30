@@ -99,12 +99,55 @@ export default function Home() {
     doc == 'oficinas' ? setOficinas(check) : null;
     doc == 'diver' ? setDiver(check) : null;
     doc == 'parceiros' ? setParceiros(check) : null;
-    doc == 'coracao' ? setCoracao(check.reverse()) : null;
-    doc == 'cooperacao' ? setCooperacao(check.reverse()) : null;
-    doc == 'voluntario' ? setVoluntario(check.reverse()) : null;
-    doc == 'fotos' ? setFotos(check.reverse()) : null;
-    doc == 'feira' ? setFeira(check.reverse()) : null;
-    doc == 'convidados' ? setConvidados(check.reverse()) : null;
+    doc == 'coracao'
+      ? setCoracao(
+          check.sort((a, b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase();
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+            return 0;
+          }),
+        )
+      : null;
+    doc == 'cooperacao'
+      ? setCooperacao(
+          check.sort((a, b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase();
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+            return 0;
+          }),
+        )
+      : null;
+
+    doc == 'voluntario'
+      ? setVoluntario(
+          check.sort((a, b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase();
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+            return 0;
+          }),
+        )
+      : null;
+    doc == 'fotos' ? setFotos(check) : null;
+    doc == 'feira' ? setFeira(check) : null;
+    doc == 'convidados' ? setConvidados(check) : null;
     doc == 'header' ? setHeader(check['0'].photoURL) : null;
     setLoading(false);
     return check;

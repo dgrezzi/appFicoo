@@ -9,7 +9,7 @@
       "package": "com.appficoo",
       "permissions": ["android.permission.RECORD_AUDIO"],
       "userInterfaceStyle": "light",
-      "versionCode": 8
+      "versionCode": 9
     },
     "assetBundlePatterns": ["**/*"],
     "extra": {
@@ -19,7 +19,7 @@
     },
     "icon": "./assets/icon.png",
     "ios": {
-      "buildNumber": "8",
+      "buildNumber": "9",
       "bundleIdentifier": "com.appficoo",
       "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true,
@@ -61,7 +61,7 @@
       "resizeMode": "contain"
     },
     "userInterfaceStyle": "light",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "web": {
       "favicon": "./assets/favicon.png"
     }
