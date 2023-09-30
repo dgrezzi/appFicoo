@@ -3,7 +3,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
 import BtnEdit from '../../../components/BtnEdit/intex';
-import CardPost from '../../../components/Cardpost';
+import Cardmpe from '../../../components/Cardmpe';
 import Loading from '../../../components/Loading';
 import { VARS } from '../../../constants/VARS';
 import { AuthContext } from '../../../contexts/auth';
@@ -154,7 +154,7 @@ export default function Mpe() {
         onEndReachedThreshold={0.02}
         renderItem={({ item }) =>
           item.disable ? null : (
-            <CardPost
+            <Cardmpe
               data={item}
               userId={dataContext.user?.uid}
               updateChild={updateChild}

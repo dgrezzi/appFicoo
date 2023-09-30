@@ -10,7 +10,7 @@ import { AuthContext } from '../../contexts/auth';
 const storage = new MMKV({ id: 'appFicoo' });
 const avatar = '../assets/avatarM.jpg';
 
-export default function CardPost({ updateChild, data, userId, ...props }) {
+export default function Cardmpe({ updateChild, data, userId, ...props }) {
   const { locale, dataContext } = useContext(AuthContext);
   const getDataUser = storage.getString('user');
   let dataUser = '';
@@ -25,27 +25,23 @@ export default function CardPost({ updateChild, data, userId, ...props }) {
       ownerId == dataContext?.user?.uid ||
       dataContext.storageData?.superAdm == true
     ) {
-      Alert.alert(
-        'Atenção!',
-        'Você tem certeza que deseja deletar esse post?',
-        [
-          {
-            text: 'Cancel',
-            onPress: () => {},
-            style: 'cancel',
-          },
-          {
-            text: 'OK',
-            onPress: () => handleDeletePost(idRoom),
-          },
-        ],
-      );
+      Alert.alert('Atenção!', 'Você tem certeza que deseja deletar esse MPE?', [
+        {
+          text: 'Cancel',
+          onPress: () => {},
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: () => handleDeletePost(idRoom),
+        },
+      ]);
     } else return;
   }
 
   async function handleDeletePost(idRoom) {
     await firestore()
-      .collection('posts')
+      .collection('mpe')
       .doc(idRoom)
       .update({ disable: true })
       .then(() => {})
