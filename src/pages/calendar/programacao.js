@@ -210,7 +210,7 @@ export const dia13es = [
     finish: '13h00',
     id: 5,
     start: '11h00',
-    title: 'Laboratório de Com-Vivências',
+    title: 'Laboratorio de Co-Vivencias',
   },
   {
     finish: '14h30',
@@ -222,7 +222,7 @@ export const dia13es = [
     finish: '18h30',
     id: 7,
     start: '14h30',
-    title: 'Oficinas de Cooperação',
+    title: 'Talleres de Cooperación',
   },
   {
     finish: '19h00',
@@ -235,7 +235,7 @@ export const dia13es = [
     id: 9,
     start: '19h00',
     title:
-      'Painel Colaborativo 2: MARCOS SORRENTINO, CAÇADORES DE BONS EXEMPLOS e WILSON NOBRE | Boas Práticas Colaborativas em Inovação Social, Desenvolvimento Pessoal e Regeneração Ambiental',
+      'Panel Colaborativo 2: MARCOS SORRENTINO, CAZADORES DE BUENOS EJEMPLOS y WILSON NOBRE | Buenas Prácticas Colaborativas en Innovación Social, Desarrollo Personal y Regeneración Ambiental',
   },
   {
     finish: '22h00',

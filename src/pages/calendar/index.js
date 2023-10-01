@@ -246,6 +246,7 @@ export default function Calendar() {
         {aba == 1 ? <Atividade dia={dia13} /> : null}
         {aba == 2 ? <Atividade dia={dia14} /> : null}
       </View>
+      {/* <SetProgramacao /> */}
     </View>
   );
 }
