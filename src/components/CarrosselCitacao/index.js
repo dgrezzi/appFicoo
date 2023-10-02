@@ -49,7 +49,9 @@ export default function CarrosselCitacao({ id, data, label, updatePage }) {
       <View
         style={{
           flexDirection: 'row',
-          alignItems: 'center',
+          maxWidth: '100%',
+          gap: 5,
+          paddingHorizontal: 15,
           justifyContent: 'space-between',
         }}>
         {label && (
@@ -58,15 +60,17 @@ export default function CarrosselCitacao({ id, data, label, updatePage }) {
               fontFamily: 'fontRegular',
               fontSize: 20,
               letterSpacing: 1,
-              marginHorizontal: 15,
               color: VARS.color.black,
+              flex: 1,
             }}>
             {label}
           </Text>
         )}
         {dataContext.storageData?.superAdm && !disable && (
           <Switch
-            style={{ marginHorizontal: 10, transform:[{scaleX:0.75},{scaleY:0.75}]}}
+            style={{
+              transform: [{ scaleX: 0.75 }, { scaleY: 0.75 }],
+            }}
             onValueChange={() => {
               setEdit(!edit);
             }}
@@ -135,9 +139,9 @@ export default function CarrosselCitacao({ id, data, label, updatePage }) {
           paddingHorizontal: 15,
         }}
         horizontal={true}>
-        {data?.map((info, index) => (
-          <Citacao key={index} info={info} />
-        ))}
+        {data?.map((info, index) => {
+          return <Citacao key={index} info={info} id={id} update={update} />;
+        })}
         {!data ? null : (
           <View
             style={{

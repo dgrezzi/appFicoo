@@ -1,8 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
-import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
-import exclamation from '../../assets/exclamation.png';
+import { Alert, Text, TouchableOpacity, View } from 'react-native';
 import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
@@ -76,20 +75,6 @@ export const Aviso = () => {
       }}>
       <Title label={lang.inscLabel} legend={lang.inscLegend} />
       <SubTitle label={lang.inscSubT1} />
-      <Image
-        style={{
-          width: VARS.size.avatar / 3,
-          height: VARS.size.avatar / 3,
-          borderRadius: VARS.size.avatar,
-          margin: 8,
-          borderWidth: 0,
-          borderColor: VARS.color.whiteDark,
-          position: 'absolute',
-          bottom: 30,
-          right: 20,
-        }}
-        source={exclamation}
-      />
     </View>
   );
 };

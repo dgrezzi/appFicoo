@@ -243,7 +243,7 @@ export default function ListUser() {
         <View
           style={{
             width: window.width - 40,
-            aspectRatio: 1.15,
+            aspectRatio: 1.0,
             backgroundColor: ficoo ? '#eef' : VARS.color.white,
             borderWidth: 1,
             borderColor: VARS.color.blueLight,
@@ -437,7 +437,7 @@ export default function ListUser() {
         <View
           style={{
             width: window.width - 40,
-            aspectRatio: 1.15,
+            aspectRatio: 1.0,
             backgroundColor: ficoo ? '#eef' : VARS.color.white,
             borderWidth: 1,
             borderColor: VARS.color.blueLight,
@@ -445,26 +445,18 @@ export default function ListUser() {
             padding: 18,
             borderRadius: 12,
             alignItems: 'center',
-            gap: 6,
+            gap: 12,
           }}>
-          <View
+          <Text
             style={{
               width: '100%',
-              flexDirection: 'row',
-              justifyContent: 'flex-start',
-              alignItems: 'center',
+              fontFamily: 'fontBold',
+              fontSize: 20,
+              letterSpacing: 1,
+              color: 'black',
             }}>
-            <Text
-              style={{
-                width: '100%',
-                fontFamily: 'fontBold',
-                fontSize: 20,
-                letterSpacing: 1,
-                color: 'black',
-              }}>
-              {item?.name}
-            </Text>
-          </View>
+            {item?.name}
+          </Text>
           <Text
             numberOfLines={10}
             ellipsizeMode="tail"
@@ -489,7 +481,7 @@ export default function ListUser() {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <GestureFlipView width={window.width} height={window.width / 1.2}>
+        <GestureFlipView width={window.width} height={window.width / 1.06}>
           <RenderFront />
           {item?.aboutme ? <RenderBack /> : <RenderFront />}
         </GestureFlipView>

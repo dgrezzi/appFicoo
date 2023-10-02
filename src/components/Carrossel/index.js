@@ -90,7 +90,9 @@ export default function Carrossel({ id, data, label, updatePage }) {
       <View
         style={{
           flexDirection: 'row',
-          alignItems: 'center',
+          maxWidth: '100%',
+          gap: 5,
+          paddingHorizontal: 15,
           justifyContent: 'space-between',
         }}>
         {label && (
@@ -99,7 +101,7 @@ export default function Carrossel({ id, data, label, updatePage }) {
               fontFamily: 'fontRegular',
               fontSize: 20,
               letterSpacing: 1,
-              marginHorizontal: 15,
+              flex: 1,
             }}>
             {label}
           </Text>
@@ -107,7 +109,6 @@ export default function Carrossel({ id, data, label, updatePage }) {
         {dataContext.storageData?.superAdm && !disable && (
           <Switch
             style={{
-              marginHorizontal: 10,
               transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }],
             }}
             onValueChange={() => {
