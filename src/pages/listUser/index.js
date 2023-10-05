@@ -1,5 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import firestore from '@react-native-firebase/firestore';
+import { Buffer } from 'buffer';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
   Alert,
@@ -18,13 +19,16 @@ import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
 
+function fromBase64(encoded) {
+  return Buffer.from(encoded, 'base64').toString('utf8');
+}
+
 export default function ListUser() {
   const [lista, setLista] = useState([]);
   const [checkinList, setCheckinList] = useState([]);
   const [input, setInput] = useState('');
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = useCallback(() => {
     setLoading(true);
@@ -380,6 +384,7 @@ export default function ListUser() {
               }}>
               {item?.name}
             </Text>
+            {/* <Text>{fromBase64(item.pwd)}</Text> */}
           </View>
           <View
             style={{

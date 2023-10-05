@@ -64,7 +64,13 @@ export default function Messages({ route }) {
         },
       ]}>
       <FlatList
-        style={{ width: '100%', backgroundColor: 'transparent' }}
+        style={{
+          width: '100%',
+          backgroundColor: 'transparent',
+        }}
+        contentContainerStyle={{
+          paddingVertical: 8,
+        }}
         data={messages}
         keyExtractor={item => item._id}
         renderItem={({ item }) => <ChatMessage data={item} />}
@@ -74,7 +80,8 @@ export default function Messages({ route }) {
         style={{
           flexDirection: 'row',
           width: '100%',
-          marginVertical: 10,
+          marginBottom: 10,
+          marginTop: 4,
           alignItems: 'center',
           paddingHorizontal: 10,
         }}>

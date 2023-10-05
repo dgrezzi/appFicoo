@@ -12,6 +12,7 @@ import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
 import styles from '../../styles/styles';
+import SetProgramacao from './SetProgramacao';
 
 export default function Calendar() {
   const [aba, setAba] = useState(0);
@@ -126,7 +127,7 @@ export default function Calendar() {
         }
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingVertical: 12, paddingHorizontal: 8 }}>
+        contentContainerStyle={{ paddingVertical: 8, paddingHorizontal: 8 }}>
         {props.dia?.map((v, i) => {
           return <Dados key={i} data={v} />;
         })}
@@ -149,11 +150,12 @@ export default function Calendar() {
           borderWidth: 1,
           marginHorizontal: 10,
           borderColor: VARS.color?.blueLight,
-          backgroundColor: group ? cores[group] : VARS.color.white,
+          // backgroundColor: group ? cores[group] : VARS.color.white,
+          backgroundColor: VARS.color.white,
           borderRadius: 10,
           marginBottom: 12,
           elevation: 8,
-          gap: 6,
+          gap: 12,
         }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           <Ionicons
@@ -180,13 +182,57 @@ export default function Calendar() {
             textAlign: 'justify',
             width: '100%',
             letterSpacing: 1,
+            flex: 1,
           }}>
           {props.data?.title}
         </Text>
+        {props.data.local && (
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <Ionicons
+              name="location-outline"
+              size={VARS.size.icons * 0.6}
+              color={VARS.color.blue}
+            />
+            <View
+              style={{
+                flex: 1,
+                gap: 4,
+              }}>
+              {props.data.local.map((value, index) => {
+                return (
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      flex: 1,
+                      gap: 6,
+                      borderBottomWidth: 1,
+                      borderColor: VARS.color.whiteDark,
+                      paddingVertical: 4,
+                    }}
+                    key={index}>
+                    <Text
+                      style={{
+                        fontFamily: 'fontRegular',
+                        fontSize: 18,
+                        color: VARS.color.title,
+                        textAlign: 'justify',
+                        width: '100%',
+                        letterSpacing: 1,
+                        flex: 1,
+                      }}>
+                      {value}
+                    </Text>
+                  </View>
+                );
+              })}
+            </View>
+          </View>
+        )}
       </View>
     );
   };
 
+  const SetProgram = SetProgramacao;
   return (
     <View
       style={[
@@ -194,7 +240,7 @@ export default function Calendar() {
         {
           justifyContent: 'flex-start',
           paddingHorizontal: 0,
-          gap: 15,
+          gap: 10,
         },
       ]}>
       {loading && <Loading />}
@@ -206,7 +252,7 @@ export default function Calendar() {
             borderColor: VARS.color.whiteDark,
             borderRadius: 100,
             gap: 10,
-            marginTop: 10,
+            marginTop: 4,
             padding: 6,
             backgroundColor: VARS.color.white,
             elevation: 8,

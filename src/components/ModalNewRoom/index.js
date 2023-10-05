@@ -54,7 +54,7 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
         name: roomName,
         owner: user.uid,
         lastMessage: {
-          text: `Tema ${roomName} criado. Bem vindo(a)!`,
+          text: `Tema "${roomName}" criado com sucesso.`,
           createdAt: firestore.FieldValue.serverTimestamp(),
         },
       })
@@ -62,7 +62,7 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
         docRef
           .collection('MESSAGES')
           .add({
-            text: `Tema ${roomName} criado. Bem vindo(a)!`,
+            text: `Tema "${roomName}" criado com sucesso.`,
             createdAt: firestore.FieldValue.serverTimestamp(),
             system: true,
             user: {
@@ -80,7 +80,11 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
   }
 
   return (
-    <View style={[{ flex: 1, backgroundColor: VARS.color.whiteOpacity }, Platform.OS === "ios" ? {paddingTop:38}: null]}>
+    <View
+      style={[
+        { flex: 1, backgroundColor: VARS.color.whiteOpacity },
+        Platform.OS === 'ios' ? { paddingTop: 38 } : null,
+      ]}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : null}
         style={[
@@ -91,8 +95,9 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
           },
         ]}>
         <TouchableWithoutFeedback onPress={setVisible}>
-          <View style={{ 
-            flex: 1, 
+          <View
+            style={{
+              flex: 1,
             }}></View>
         </TouchableWithoutFeedback>
         <View
@@ -154,9 +159,7 @@ function ModalNewRoom({ setVisible, setUpdateScreen }) {
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
-    </View>      
-
-
+    </View>
   );
 }
 
