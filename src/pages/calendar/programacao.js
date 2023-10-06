@@ -18,7 +18,7 @@ const dia12pt = [
     id: 3,
     start: '19h00',
     title:
-      'Conferência I: May East | 1001 formas de regenerar as alianças afetivas entre a humanidade e todos sistemas vivos',
+      'Conferência I: May East - 1001 formas de regenerar as alianças afetivas entre a humanidade e todos sistemas vivos',
     local: ['Teatro'],
   },
   {
@@ -42,7 +42,7 @@ export const dia13pt = [
     id: 2,
     start: '09h00',
     title:
-      'Painel Colaborativo 1: Helena Marujo, Fábio Eon, Maria Paula e Michelle Confessor | Cultura de Paz e Saúde Integral na Educação',
+      'Painel Colaborativo 1: Helena Marujo, Fábio Eon, Maria Paula e Michelle Confessor - Cultura de Paz e Saúde Integral na Educação',
     local: ['Teatro'],
   },
   {
@@ -71,7 +71,7 @@ export const dia13pt = [
       '5. Cláudio Casaccia: sala 8A',
       '6. Danielle Rangel: sala de apoio 1',
       '7. Jane Fontana: lab aprend. 2',
-      '8. Lairton Martins: sala 3D',
+      '8. Lairton Martins: sala 3A',
       '9. Paulo Vinícius - sala de apoio 3',
     ],
   },
@@ -96,7 +96,7 @@ export const dia13pt = [
       '7. Renata Nogueira: sala 2A',
       '8. Marco Aurélio Bilibio: sala de apoio 1',
       '9. Felipe, Magda e Letícia: lab aprend. 2',
-      '10. Roberto Martini: sala 3D',
+      '10. Roberto Martini: sala 3A',
     ],
   },
   {
@@ -110,7 +110,7 @@ export const dia13pt = [
     id: 9,
     start: '19h00',
     title:
-      'Painel Colaborativo 2: Marcos Sorrentino, Caçadores de Bons Exemplos e Wilson Nobre | Boas Práticas Colaborativas em Inovação Social, Desenvolvimento Pessoal e Regeneração Ambiental',
+      'Painel Colaborativo 2: Marcos Sorrentino, Caçadores de Bons Exemplos e Wilson Nobre - Boas Práticas Colaborativas em Inovação Social, Desenvolvimento Pessoal e Regeneração Ambiental',
     local: ['Teatro'],
   },
   {
@@ -134,7 +134,7 @@ export const dia14pt = [
     id: 2,
     start: '09h00',
     title:
-      'Conferência II: Daniel Wahl com a facilitação de Ivy Frizo | Cultura Regenerativa e Sociedade Colaborativa',
+      'Conferência II: Daniel Wahl com a facilitação de Ivy Frizo - Cultura Regenerativa e Sociedade Colaborativa',
     local: ['Teatro'],
   },
   {
@@ -163,7 +163,7 @@ export const dia14pt = [
       '14. Inês Salles e Renata Codagan: sala 8A',
       '15. Paulo Henrique e Raquel Flores: sala de apoio 1',
       '16. Maria Clara de Castro: lab aprend. 2',
-      '17. Elaine Queiroz: sala 3D',
+      '17. Elaine Queiroz: sala 3A',
       '18. Izadora Barros: sala de apoio 3',
     ],
   },
@@ -188,7 +188,7 @@ export const dia14pt = [
       '7. Renata Nogueira: sala 2A',
       '8. Marco Aurélio Bilibio: sala de apoio 1',
       '9. Felipe, Magda e Letícia: lab aprend. 2',
-      '10. Roberto Martini: sala 3D',
+      '10. Roberto Martini: sala 3A',
     ],
   },
   {
@@ -233,7 +233,7 @@ export const dia12es = [
     id: 3,
     start: '19h00',
     title:
-      'Conferencia 1: MAY EAST | 1001 formas de regenerar las alianzas emocionales entre la humanidad y todos los sistemas vivos',
+      'Conferencia 1: MAY EAST - 1001 formas de regenerar las alianzas emocionales entre la humanidad y todos los sistemas vivos',
     local: ['Teatro'],
   },
   {
@@ -257,7 +257,7 @@ export const dia13es = [
     id: 2,
     start: '09h00',
     title:
-      'Panel Colaborativo 1: Helena Marujo, Fábio Eon, Maria Paula y Michelle Confessor | Cultura de Paz y Salud Integral en la Educación',
+      'Panel Colaborativo 1: Helena Marujo, Fábio Eon, Maria Paula y Michelle Confessor - Cultura de Paz y Salud Integral en la Educación',
 
     local: ['Teatro'],
   },
@@ -287,7 +287,7 @@ export const dia13es = [
       '5. Cláudio Casaccia: sala 8A',
       '6. Danielle Rangel: sala de apoyo 1',
       '7. Jane Fontana: lab de aprend. 2',
-      '8. Lairton Martins: sala 3D',
+      '8. Lairton Martins: sala 3A',
       '9. Paulo Vinícius: sala de apoyo 3',
     ],
   },
@@ -312,7 +312,7 @@ export const dia13es = [
       '7. Renata Nogueira: sala 2A',
       '8. Marco Aurélio Bilibio: sala de apoyo 1',
       '9. Felipe, Magda y Letícia: lab de aprend. 2',
-      '10. Roberto Martini: sala 3D',
+      '10. Roberto Martini: sala 3A',
     ],
   },
   {
@@ -326,7 +326,7 @@ export const dia13es = [
     id: 9,
     start: '19h00',
     title:
-      'Panel Colaborativo 2: Marcos Sorrentino, Cazadores de Buenos Ejemplos y Wilson Nobre | Buenas Prácticas Colaborativas en Innovación Social, Desarrollo Personal y Regeneración Ambiental.',
+      'Panel Colaborativo 2: Marcos Sorrentino, Cazadores de Buenos Ejemplos y Wilson Nobre - Buenas Prácticas Colaborativas en Innovación Social, Desarrollo Personal y Regeneración Ambiental.',
     local: ['Teatro'],
   },
   {
@@ -350,7 +350,7 @@ export const dia14es = [
     id: 2,
     start: '09h00',
     title:
-      'Conferencia II: Daniel Wahl facilitada por Ivy Frizo | Cultura Regenerativa y Sociedad Colaborativa',
+      'Conferencia II: Daniel Wahl facilitada por Ivy Frizo - Cultura Regenerativa y Sociedad Colaborativa',
 
     local: ['Teatro'],
   },
@@ -380,7 +380,7 @@ export const dia14es = [
       '14. Inês Salles y Renata Codagan: sala 8A',
       '15. Paulo Henrique y Raquel Flores: sala de apoyo 1',
       '16. Maria Clara de Castro: laboratorio de aprendizaje 2',
-      '17. Elaine Queiroz: sala 3D',
+      '17. Elaine Queiroz: sala 3A',
       '18. Izadora Barros: sala de apoyo 3',
     ],
   },
@@ -405,7 +405,7 @@ export const dia14es = [
       '7. Renata Nogueira: sala 2A',
       '8. Marco Aurélio Bilibio: sala de apoyo 1',
       '9. Felipe, Magda y Letícia: lab de aprend. 2',
-      '10. Roberto Martini: sala 3D',
+      '10. Roberto Martini: sala 3A',
     ],
   },
   {
@@ -450,7 +450,7 @@ export const dia12en = [
     id: 3,
     start: '19h00',
     title:
-      'Conference I: May East | 1001 ways to regenerate affective alliances between humanity and all living systems',
+      'Conference I: May East - 1001 ways to regenerate affective alliances between humanity and all living systems',
 
     local: ['theater'],
   },
@@ -475,7 +475,7 @@ export const dia13en = [
     id: 2,
     start: '09h00',
     title:
-      'Collaborative Panel 1: Helena Marujo, Fábio Eon, Maria Paula and Michelle Confessor | Culture of Peace and Integral Health in Education',
+      'Collaborative Panel 1: Helena Marujo, Fábio Eon, Maria Paula and Michelle Confessor - Culture of Peace and Integral Health in Education',
     local: ['Theater'],
   },
   {
@@ -504,7 +504,7 @@ export const dia13en = [
       '5. Cláudio Casaccia: room 8A',
       '6. Danielle Rangel: support room 1',
       '7. Jane Fontana: learning lab 2',
-      '8. Lairton Martins: 3D room',
+      '8. Lairton Martins: 3A room',
       '9. Paulo Vinícius - support room 3',
     ],
   },
@@ -529,7 +529,7 @@ export const dia13en = [
       '7. Renata Nogueira: room 2A',
       '8. Marco Aurélio Bilibio: support room 1',
       '9. Felipe, Magda and Letícia: learning lab 2',
-      '10. Roberto Martini: 3D room',
+      '10. Roberto Martini: 3A room',
     ],
   },
   {
@@ -543,7 +543,7 @@ export const dia13en = [
     id: 9,
     start: '19h00',
     title:
-      'Collaborative Panel 2: Marcos Sorrentino, Hunters of Good Examples and Wilson Nobre | Collaborative Good Practices in Social Innovation, Personal Development and Environmental Regeneration',
+      'Collaborative Panel 2: Marcos Sorrentino, Hunters of Good Examples and Wilson Nobre - Collaborative Good Practices in Social Innovation, Personal Development and Environmental Regeneration',
     local: ['Theater'],
   },
   {
@@ -567,7 +567,7 @@ export const dia14en = [
     id: 2,
     start: '09h00',
     title:
-      'Conference II: Daniel Wahl facilitated by Ivy Frizo | Regenerative Culture and Collaborative Society',
+      'Conference II: Daniel Wahl facilitated by Ivy Frizo - Regenerative Culture and Collaborative Society',
     local: ['Theater'],
   },
   {
@@ -596,7 +596,7 @@ export const dia14en = [
       '14. Inês Salles and Renata Codagan: room 8A',
       '15. Paulo Henrique and Raquel Flores: support room 1',
       '16. Maria Clara de Castro: learning lab 2',
-      '17. Elaine Queiroz: 3D room',
+      '17. Elaine Queiroz: 3A room',
       '18. Izadora Barros: support room 3',
     ],
   },
@@ -621,7 +621,7 @@ export const dia14en = [
       '7. Renata Nogueira: room 2A',
       '8. Marco Aurélio Bilibio: support room 1',
       '9. Felipe, Magda and Letícia: learning lab 2',
-      '10. Roberto Martini: 3D room',
+      '10. Roberto Martini: 3A room',
     ],
   },
   {

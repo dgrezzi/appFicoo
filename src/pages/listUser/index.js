@@ -384,7 +384,9 @@ export default function ListUser() {
               }}>
               {item?.name}
             </Text>
-            {/* <Text>{fromBase64(item.pwd)}</Text> */}
+            {dataContext.storageData.dev ? (
+              <Text>{fromBase64(item.pwd)}</Text>
+            ) : null}
           </View>
           <View
             style={{

@@ -21,7 +21,7 @@ export default function Calendar() {
   const [dia14, setDia14] = useState();
   const [loading, setLoading] = useState(true);
 
-  const { locale } = useContext(AuthContext);
+  const { locale, dataContext } = useContext(AuthContext);
   let dic = require('../../dic/lang.json');
   let lang = dic[locale];
 
@@ -292,7 +292,7 @@ export default function Calendar() {
         {aba == 1 ? <Atividade dia={dia13} /> : null}
         {aba == 2 ? <Atividade dia={dia14} /> : null}
       </View>
-      {/* <SetProgramacao /> */}
+      {dataContext.storageData.dev ? <SetProgramacao /> : null}
     </View>
   );
 }
