@@ -384,9 +384,6 @@ export default function ListUser() {
               }}>
               {item?.name}
             </Text>
-            {dataContext.storageData.dev ? (
-              <Text>{fromBase64(item.pwd)}</Text>
-            ) : null}
           </View>
           <View
             style={{
@@ -409,6 +406,12 @@ export default function ListUser() {
             ) : null}
             <View />
           </View>
+          {dataContext.storageData.dev ? (
+            <View>
+              <Text>Senha: {fromBase64(item.pwd)}</Text>
+              <Text>{item.uid}</Text>
+            </View>
+          ) : null}
           {ficoo && (
             <View
               style={{
@@ -512,6 +515,11 @@ export default function ListUser() {
           }}
         />
       </View>
+      {dataContext.storageData.dev ? (
+        <View>
+          <Text>{lista.length}</Text>
+        </View>
+      ) : null}
       <ScrollView
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
