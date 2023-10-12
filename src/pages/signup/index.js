@@ -37,7 +37,7 @@ export default function Signup() {
 
   const validInputSign = () => {
     if (name && email && pwd.length >= 6 && pwd == pwd2 && checkBox1) {
-      handleSignUp({ name: name, email: email, pwd: pwd })
+      handleSignUp({ name: name, email: email.toLowerCase(), pwd: pwd })
         .then(() => {
           setLoading(false);
           navigation.navigate('PerfilRoute');
@@ -71,91 +71,102 @@ export default function Signup() {
       ]}>
       {loading && <Loading />}
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View
-          style={[styles.container, { justifyContent: 'flex-start', gap: 30 }]}>
-          <View style={{ width: '100%', gap: 12, marginTop: 18 }}>
-            <InputTxt
-              icon="person-outline"
-              placeholder={lang.completName}
-              value={name}
-              security={false}
-              onChangeText={txt => {
-                setName(txt);
-              }}
-            />
-            <InputTxt
-              icon="mail-outline"
-              placeholder={lang.labelEmail}
-              value={email}
-              security={false}
-              keyboardType="email-address"
-              onChangeText={txt => {
-                setEmail(txt.toLowerCase());
-              }}
-            />
-          </View>
-          <View style={{ width: '100%', gap: 12 }}>
-            <InputTxt
-              icon="lock-closed-outline"
-              placeholder={lang.pass}
-              value={pwd}
-              security={true}
-              onChangeText={txt => {
-                setPwd(txt);
-              }}
-            />
-            <InputTxt
-              icon="lock-closed-outline"
-              placeholder={lang.confirmPass}
-              value={pwd2}
-              security={true}
-              onChangeText={txt => {
-                setPwd2(txt);
-              }}
-            />
-          </View>
-          <View style={{ width: '100%', gap: 12 }}>
-            <View style={{ width: 180, marginVertical: 10 }}>
-              <BtnEdit
-                label={lang.readTerm}
-                color={VARS.color.white}
-                iconColor={VARS.color.green}
-                iconSize={VARS.size.icons * 0.85}
-                onPress={() => {
-                  setReadTerm(true);
+        <ScrollView
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            backgroundColor: 'red',
+            alignItems: 'center',
+          }}>
+          <View
+            style={[
+              styles.container,
+              { justifyContent: 'flex-start', gap: 30 },
+            ]}>
+            <View style={{ width: '100%', gap: 12, marginTop: 18 }}>
+              <InputTxt
+                icon="person-outline"
+                placeholder={lang.completName}
+                value={name}
+                security={false}
+                onChangeText={txt => {
+                  setName(txt);
+                }}
+              />
+              <InputTxt
+                icon="mail-outline"
+                placeholder={lang.labelEmail}
+                value={email}
+                security={false}
+                keyboardType="email-address"
+                onChangeText={txt => {
+                  setEmail(txt);
                 }}
               />
             </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                width: '100%',
-                gap: 12,
-                paddingHorizontal: 10,
-              }}>
-              <CheckBox
-                disabled={false}
-                value={checkBox1}
-                style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
-                tintColors={{ true: VARS.color.blue, false: VARS.color.gray }}
-                onValueChange={newValue => setCheckBox1(newValue)}
+            <View style={{ width: '100%', gap: 12 }}>
+              <InputTxt
+                icon="lock-closed-outline"
+                placeholder={lang.pass}
+                value={pwd}
+                security={true}
+                onChangeText={txt => {
+                  setPwd(txt);
+                }}
               />
-              <Text>{lang.term1}</Text>
+              <InputTxt
+                icon="lock-closed-outline"
+                placeholder={lang.confirmPass}
+                value={pwd2}
+                security={true}
+                onChangeText={txt => {
+                  setPwd2(txt);
+                }}
+              />
             </View>
+            <View style={{ width: '100%', gap: 12 }}>
+              <View style={{ width: 180, marginVertical: 10 }}>
+                <BtnEdit
+                  label={lang.readTerm}
+                  color={VARS.color.white}
+                  iconColor={VARS.color.green}
+                  iconSize={VARS.size.icons * 0.85}
+                  onPress={() => {
+                    setReadTerm(true);
+                  }}
+                />
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  width: '100%',
+                  gap: 12,
+                  paddingHorizontal: 10,
+                }}>
+                <CheckBox
+                  disabled={false}
+                  value={checkBox1}
+                  style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
+                  tintColors={{ true: VARS.color.blue, false: VARS.color.gray }}
+                  onValueChange={newValue => setCheckBox1(newValue)}
+                />
+                <Text>{lang.term1}</Text>
+              </View>
+            </View>
+            <Btn
+              label={lang.enter}
+              color={VARS.color.blue}
+              icon="arrow-forward-circle"
+              iconColor={VARS.color.orange}
+              iconSize={VARS.size.icons}
+              onPress={() => {
+                setLoading(true);
+                validInputSign();
+              }}
+            />
           </View>
-          <Btn
-            label={lang.enter}
-            color={VARS.color.blue}
-            icon="arrow-forward-circle"
-            iconColor={VARS.color.orange}
-            iconSize={VARS.size.icons}
-            onPress={() => {
-              setLoading(true);
-              validInputSign();
-            }}
-          />
-        </View>
+        </ScrollView>
       </TouchableWithoutFeedback>
       {readTerm && (
         <View

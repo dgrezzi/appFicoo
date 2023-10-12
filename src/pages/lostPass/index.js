@@ -24,7 +24,7 @@ export default function LostPass() {
   const sendPasswordResetEmail = async () => {
     Alert.alert('Atenção', 'Verifique seu e-mail para recuperar sua senha');
     await auth()
-      .sendPasswordResetEmail(email)
+      .sendPasswordResetEmail(email.toLowerCase())
       .then(() => {})
       .catch(error => {
         // Ocorreu um erro ao enviar o email de redefinição de senha

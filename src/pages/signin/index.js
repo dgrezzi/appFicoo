@@ -93,7 +93,7 @@ export default function Signin() {
                 value={email}
                 security={false}
                 onChangeText={txt => {
-                  setEmail(txt.toLowerCase());
+                  setEmail(txt);
                 }}
               />
               <InputTxt
@@ -140,7 +140,7 @@ export default function Signin() {
               onPress={async () => {
                 setLoading(true);
                 if (email && pwd.length >= 6) {
-                  await handleSignIn({ email: email, pwd: pwd });
+                  await handleSignIn({ email: email.toLowerCase(), pwd: pwd });
                 } else {
                   Alert.alert('Atenção', lang.completForm);
                 }
