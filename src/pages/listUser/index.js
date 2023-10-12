@@ -23,6 +23,20 @@ function fromBase64(encoded) {
   return Buffer.from(encoded, 'base64').toString('utf8');
 }
 
+// const FormatURL = async ({ url, uid }) => {
+//   const uploadFirebase = async response => {
+//     const storegaRef = storage().ref('users').child(uid);
+//     const putFile = await storegaRef.putFile(response).then(() => {
+//       console.log('Sucesso');
+//     });
+//   };
+//   const downloadFileUrl = await download(url, progress => {
+//     console.log('downloadProgress: ', progress);
+//   });
+//   uploadFirebase(downloadFileUrl);
+//   return;
+// };
+
 export default function ListUser() {
   const [lista, setLista] = useState([]);
   const [checkinList, setCheckinList] = useState([]);
@@ -339,6 +353,23 @@ export default function ListUser() {
             {item?.photoURL && (
               <TouchableOpacity
                 activeOpacity={1}
+                // onPress={() => {
+                //   if (dataContext.storageData?.dev == true) {
+                //     Alert.alert('Atenção!', 'Update da foto?', [
+                //       {
+                //         text: 'Cancel',
+                //         onPress: () => {},
+                //         style: 'cancel',
+                //       },
+                //       {
+                //         text: 'OK',
+                //         onPress: () => {
+                //           FormatURL({ url: item.photoURL, uid: item.uid });
+                //         },
+                //       },
+                //     ]);
+                //   }
+                // }}
                 onLongPress={() => {
                   dataContext.storageData?.isAdmin &&
                     Alert.alert(
@@ -406,7 +437,7 @@ export default function ListUser() {
             ) : null}
             <View />
           </View>
-          {dataContext.storageData.dev ? (
+          {dataContext.storageData?.dev ? (
             <View>
               <Text>Senha: {fromBase64(item.pwd)}</Text>
               <Text>{item.uid}</Text>
@@ -498,6 +529,46 @@ export default function ListUser() {
       </View>
     );
   };
+
+  // const exportData = args => {
+  //   console.log('\n', '\n', '\n');
+  //   args.sort((a, b) => {
+  //     const nameA = a.name.toUpperCase();
+  //     const nameB = b.name.toUpperCase();
+  //     if (nameA < nameB) {
+  //       return -1;
+  //     }
+  //     if (nameA > nameB) {
+  //       return 1;
+  //     }
+  //     return 0;
+  //   });
+  //   let dados =
+  //     '\nname;e-mail;Oficina 1; Oficina 2;Usuario ativo;admin;uid;Excluido em\n';
+  //   let disable = '';
+  //   args.map((value, index) => {
+  //     dados =
+  //       dados +
+  //       value.name +
+  //       ';' +
+  //       value.email +
+  //       ';' +
+  //       value.oficina1 +
+  //       ';' +
+  //       value.oficina2 +
+  //       ';' +
+  //       !value.disableView +
+  //       ';' +
+  //       value.isAdmin +
+  //       ';' +
+  //       value.uid +
+  //       ';' +
+  //       fromBase64(value.pwd) +
+  //       '\n';
+  //   });
+  //   console.log(dados);
+  // };
+
   return (
     <View style={[styles.container, { paddingHorizontal: 0 }]}>
       {loading && <Loading />}
@@ -515,10 +586,13 @@ export default function ListUser() {
           }}
         />
       </View>
-      {dataContext.storageData.dev ? (
-        <View>
-          <Text>{lista.length}</Text>
-        </View>
+      {dataContext.storageData?.dev ? (
+        <TouchableOpacity
+          onPress={() => {
+            exportData(list);
+          }}>
+          <Text>Quantidade: {lista.length}</Text>
+        </TouchableOpacity>
       ) : null}
       <ScrollView
         showsHorizontalScrollIndicator={false}

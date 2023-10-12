@@ -292,7 +292,7 @@ export default function Calendar() {
         {aba == 1 ? <Atividade dia={dia13} /> : null}
         {aba == 2 ? <Atividade dia={dia14} /> : null}
       </View>
-      {dataContext.storageData.dev ? <SetProgramacao /> : null}
+      {dataContext.storageData?.dev ? <SetProgramacao /> : null}
     </View>
   );
 }

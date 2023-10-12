@@ -26,6 +26,7 @@ export default function ChatRoom() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(true);
   const [loadingRefresh, setLoadingRefresh] = useState(false);
+  const [txt, setTxt] = useState();
 
   const { dataContext, locale, getActivationCode } = useContext(AuthContext);
   let dic = require('../../../dic/lang.json');
@@ -43,7 +44,6 @@ export default function ChatRoom() {
         firestore()
           .collection('messages')
           .orderBy('lastMessage.createdAt', 'desc')
-          .limit(10)
           .get()
           .then(snapshot => {
             const threads = snapshot.docs.map(documentSnapshot => {
@@ -97,6 +97,16 @@ export default function ChatRoom() {
     setUpdateScreen(!updateScreen);
   }
 
+  // function handleActivateRoom(idRoom) {
+  //   firestore()
+  //     .collection('messages')
+  //     .doc(idRoom)
+  //     .get()
+  //     .then(resp => {
+  //       console.log(resp);
+  //     });
+  // }
+
   async function handleSearch(txt) {
     setInput(txt);
     let newChats = [];
@@ -122,6 +132,37 @@ export default function ChatRoom() {
           },
         ]}>
         {loading && <Loading />}
+        {/* <View style={{ flexDirection: 'row', gap: 20, paddingHorizontal: 20 }}>
+          <TextInput
+            onChangeText={data => {
+              setTxt(data);
+            }}
+            value={txt}
+            style={[
+              {
+                fontFamily: 'fontRegular',
+                fontSize: 18,
+                flex: 1,
+                height: '100%',
+                letterSpacing: 1,
+                borderWidth: 1,
+                borderColor: 'gray',
+                height: 40,
+              },
+            ]}
+          />
+          <TouchableOpacity
+            onPress={() => {
+              handleActivateRoom(txt);
+            }}
+            style={{
+              padding: 5,
+              backgroundColor: 'gray',
+              paddingHorizontal: 20,
+            }}>
+            <Text>Set</Text>
+          </TouchableOpacity>
+        </View> */}
         <View
           style={{
             width: '100%',

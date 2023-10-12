@@ -30,6 +30,7 @@
     "owner": "dgrezzi",
     "plugins": [
       ["./withDisableForcedDarkModeAndroid.js", {}],
+      ["react-native-compressor"],
       [
         "expo-barcode-scanner",
         {
@@ -52,7 +53,8 @@
         }
       ],
       "@react-native-firebase/app",
-      "@react-native-firebase/auth"
+      "@react-native-firebase/auth",
+      "react-native-compressor"
     ],
     "slug": "appficoo",
     "splash": {
