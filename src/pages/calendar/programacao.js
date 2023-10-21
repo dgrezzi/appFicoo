@@ -174,7 +174,7 @@ export const dia14pt = [
     title: 'Tempo livre e Mercado Colaborativo',
   },
   {
-    finish: '18h00',
+    finish: '18h30',
     id: 7,
     start: '14h30',
     title: 'Oficinas de Cooperação:',
@@ -391,7 +391,7 @@ export const dia14es = [
     title: 'Tiempo libre y Mercado Colaborativo',
   },
   {
-    finish: '18h00',
+    finish: '18h30',
     id: 7,
     start: '14h30',
     title: 'Talleres de Cooperación',
@@ -607,7 +607,7 @@ export const dia14en = [
     title: 'Free time and Collaborative Market',
   },
   {
-    finish: '18h00',
+    finish: '18h30',
     id: 7,
     start: '14h30',
     title: 'Cooperation Workshops:',

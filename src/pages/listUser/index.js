@@ -17,6 +17,7 @@ import InputTxt from '../../components/InputTxt';
 import Loading from '../../components/Loading';
 import { VARS } from '../../constants/VARS';
 import { AuthContext } from '../../contexts/auth';
+import exportXls from '../../functions/exportXls';
 import styles from '../../styles/styles';
 
 function fromBase64(encoded) {
@@ -162,6 +163,7 @@ export default function ListUser() {
     const markers = [];
     await firestore()
       .collection('user')
+      // .limit(30)
       .get()
       .then(result => {
         result.forEach(doc => {
@@ -530,44 +532,53 @@ export default function ListUser() {
     );
   };
 
-  // const exportData = args => {
-  //   console.log('\n', '\n', '\n');
-  //   args.sort((a, b) => {
-  //     const nameA = a.name.toUpperCase();
-  //     const nameB = b.name.toUpperCase();
-  //     if (nameA < nameB) {
-  //       return -1;
-  //     }
-  //     if (nameA > nameB) {
-  //       return 1;
-  //     }
-  //     return 0;
-  //   });
-  //   let dados =
-  //     '\nname;e-mail;Oficina 1; Oficina 2;Usuario ativo;admin;uid;Excluido em\n';
-  //   let disable = '';
-  //   args.map((value, index) => {
-  //     dados =
-  //       dados +
-  //       value.name +
-  //       ';' +
-  //       value.email +
-  //       ';' +
-  //       value.oficina1 +
-  //       ';' +
-  //       value.oficina2 +
-  //       ';' +
-  //       !value.disableView +
-  //       ';' +
-  //       value.isAdmin +
-  //       ';' +
-  //       value.uid +
-  //       ';' +
-  //       fromBase64(value.pwd) +
-  //       '\n';
-  //   });
-  //   console.log(dados);
-  // };
+  const exportData = args => {
+    console.log('\n', '\n', '\n');
+    args.sort((a, b) => {
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    let dados =
+      '\nname;e-mail;Oficina 1; Oficina 2;Usuario ativo;admin;checkin;uid;Senha\n';
+    let disable = '';
+    args.map((value, index) => {
+      let checkin = false;
+      checkinList.map((v, i) => {
+        if (v.uid == value.uid) {
+          checkin = true;
+        }
+      });
+      dados =
+        dados +
+        value.name +
+        ';' +
+        value.email +
+        ';' +
+        value.oficina1 +
+        ';' +
+        value.oficina2 +
+        ';' +
+        !value.disableView +
+        ';' +
+        value.isAdmin +
+        ';' +
+        checkin +
+        ';' +
+        value.uid +
+        // ';' +
+        // fromBase64(value.pwd) +
+        '\n';
+    });
+    console.log(dados);
+    // console.log(checkin);
+  };
 
   return (
     <View style={[styles.container, { paddingHorizontal: 0 }]}>
@@ -589,6 +600,10 @@ export default function ListUser() {
       {dataContext.storageData?.dev ? (
         <TouchableOpacity
           onPress={() => {
+            console.log();
+            exportXls({ aba: 'users', data: list });
+            exportXls({ aba: 'chekin', data: checkinList });
+            return;
             exportData(list);
           }}>
           <Text>Quantidade: {lista.length}</Text>

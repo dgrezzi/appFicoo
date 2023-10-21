@@ -4,6 +4,7 @@ import React from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 import { VARS } from './src/constants/VARS';
 import AuthProvider from './src/contexts/auth';
+import ExportUsers from './src/pages/exportUsers';
 import Routes from './src/routes/Routes';
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
   const [fontsBoldLoaded] = useFonts({
     fontBold: require('./assets/NunitoBold.ttf'),
   });
+  const rotas = Routes;
   return (
     <SafeAreaView
       style={{
@@ -28,7 +30,8 @@ export default function App() {
             showHideTransition="fade"
             hidden={false}
           />
-          <Routes />
+          <ExportUsers />
+          {/* <Routes /> */}
         </AuthProvider>
       </NavigationContainer>
     </SafeAreaView>
